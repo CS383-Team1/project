@@ -8,7 +8,7 @@ Repository Rules
 Please use branching for development. The master branch should always be in
 a clean, submitable state. Each contributer should have a branch with their
 username as it's name. Further branches can be created as desired, provided
-they are in the form "<username>-<branchname>".
+they are in the form `<username>-<branchname>`.
 
 Please hardwrap all text files at 80 characters. Some of us have smaller
 displays, and not all editors handle soft wraps gracefully.
