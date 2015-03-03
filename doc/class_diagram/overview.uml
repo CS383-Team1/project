@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Overview Subsystem Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: Tessa Saul
+
+	External Classes: AreaManager
+endlegend
+
+class GameManager {
+	StateManager states
+	AreaManager areas
+	save()
+	load()
+	host()
+	join()
+}
+GameManager *-down- "1" AreaManager
+
+class AreaManager <<external>> {
+	List<Area> areas
+}
+
+@enduml

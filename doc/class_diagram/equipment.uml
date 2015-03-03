@@ -1,0 +1,56 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Equipment Subsystem Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: Tessa Saul
+
+	External Classes: Player
+endlegend
+
+class Player <<external>> {
+	List<Craft> crafts
+	Inventory inventory
+	Equipment equipment
+}
+Player o-right- "0..*" Craft
+Player *-down- "1" Equipment
+Player *-down- "1" Inventory
+
+class Craft {
+	Integer skill
+}
+
+class Inventory {
+	Integer size
+	Integer maxSize
+	Item[] items
+	
+}
+Inventory o-down- "0..Inventory.maxSize" Item
+
+class Equipment {
+}
+Equipment -right-|> Inventory
+
+abstract class Item
+
+class CraftedItemFactory{
+	Craft type
+	Item tool
+	List<Material> materials
+	CraftedItem craft()
+}
+CraftedItemFactory -up-> Craft : uses
+CraftedItemFactory -down-> CraftedItem : creates
+
+class Material
+Material -left-|> Item
+Material -up-> CraftedItemFactory : composes
+
+abstract class CraftedItem
+CraftedItem -up-|> Item
+
+@enduml

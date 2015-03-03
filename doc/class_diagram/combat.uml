@@ -1,0 +1,81 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Combat Subsystem Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: Robin Rakowski
+
+	External Classes: Environment, Inventory, Player
+endlegend
+
+class CombatManager {
+	List<Player> participants
+	Combat combat
+}
+CombatManager *-down- "1" Combat
+
+class Combat {
+	Inventory reward
+	Combatants allies
+	Combatants enemies
+	turn()
+}
+Combat *-left- "1" Inventory
+Combat *-down- "2" Combatants
+Combat -right-> Environment : uses
+Combat *-right- "1" EnemyCombatantFactory
+
+class Environment <<external>>
+
+class Combatants {
+	List<Combatant> members
+}
+Combatants o-down- "*" Combatant
+
+abstract class Combatant {
+	Integer hp
+	Integer caffeine
+	Integer speed
+	move()
+}
+Combatant *-down- "1" Inventory
+Combatant *-down- "1" MoveList
+
+class Player <<external>> {
+	List<NPCCombatant> allies
+}
+Player -left-|> Combatant
+Player -down-> NPCCombatant : commands
+
+abstract class AICombatant
+AICombatant -up-|> Combatant
+
+class NPCCombatant {
+	Player leader
+	command()
+}
+NPCCombatant -left-|> AICombatant
+
+class EnemyCombatantFactory {
+	Combatants create()
+}
+EnemyCombatantFactory -down-> Player : uses
+EnemyCombatantFactory -down-> EnemyCombatant : creates
+EnemyCombatantFactory -right-> Environment : uses
+
+class EnemyCombatant
+EnemyCombatant -up-|> AICombatant
+
+class Inventory <<external>>
+
+class MoveList {
+	Move default
+}
+MoveList o-down- "1..n" Move
+MoveList -right-> Inventory : uses
+
+class Move
+
+@enduml

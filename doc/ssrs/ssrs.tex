@@ -1,0 +1,170 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{titling}
+
+\newcommand{\subtitle}[1]{
+        \posttitle{
+                \par\end{center}
+                \begin{center}\large#1\end{center}
+                \vskip0.5em}
+}
+
+\geometry{margin=1in}
+
+\setcounter{tocdepth}{2}
+
+\title{Requirements Document}
+\subtitle{CS 383 - Team \texttt{\textasciicircum teamname}}
+\date{\today}
+\author{
+Abdulmajeed Alotaibi - \textit{alot4458@vandals.uidaho.edu} \\
+\and Casey Blair - \textit{blai1919@vandals.uidaho.edu} \\
+\and Mason Fabel - \textit{fabe0940@vandals.uidaho.edu} \\
+\and Arthur Putnam - \textit{putn0266@vandals.uidaho.edu} \\
+\and Robin Rakowski - \textit{rako4161@vandals.uidaho.edu} \\
+\and Ronald Rodriguez - \textit{rodr3849@vandals.uidaho.edu} \\
+\and Tessa Saul - \textit{saul7812@vandals.uidaho.edu} \\
+\and Lance Wells - \textit{well3112@vandals.uidaho.edu} \\
+\and Lance Wells - \textit{witt0241@vandals.uidaho.edu} \\
+}
+
+\begin{document}
+\maketitle
+
+\section{Functional Requirements}
+\begin{itemize}
+	\item \textbf{Startup}
+	
+	The game will start with front screen with picture for the game and under
+	it three choices: A) New Game, B) Load Game, and C) Join Game. The player
+	will be able to choose any of the three choice by clicking on it.
+
+	\begin{itemize}
+	\item New Game
+
+	New Game will be a fresh start for the player and it will start look like
+	it is the first time for the player play the game even if the player
+	already played the game and saved the game but want to play again from the
+	beginning, that will be possible. Moreover, the player will get a message
+	which is system reports domainname/IP, so other players can join him.
+
+	\item Load Game
+
+	When the player click on load game it will take the player to last place
+	that the player saved before quit the game. Moreover the system will
+	reports domainname/IP for the player as message so other player can join in
+	the adventurer.
+
+	\item Join Game
+
+	One of the choices the player will be able to chose is join game auto join,
+	the server will check any other player who does not have partner, if it
+	find it will match them.
+	\end{itemize}
+	
+	\emph{Description by Abdulmajeed Alotaibi}
+	
+	\item \textbf{Drop-in Drop-Out Multiplayer}
+	
+	 When users start the game, they will be asked if they want to join an existing game hosted by another user. New users can join and leave other users’ games without the need for all users to start a new multiplayer game. This allows
+for a more fluid gaming experience as new users can come and go as they wish without interrupting other users’ progress. And with up to 27 users joining one game, this will be necessary to have a fluid gameplay experience that isn’t constantly being interrupted by new users wanting to
+join.
+
+\emph{Description by Casey Blair}
+\end{itemize}
+
+\section{Functional Requirements}
+\begin{itemize}
+	\item \textbf{Single/Multi-player}
+	
+	Plays standalone or multiplayer, scaling up to 27 players
+	
+	\item \textbf{Server Functionality}
+	
+	Peer-to-peer connection to a "server" thread allows remote player
+	interaction with the application via a proxy thread
+	
+	\item \textbf{Dungeon Naming} 
+	
+	As this game is going to be set in a Sci-fi world, it would make sense, on 
+	initial thought, to erase the idea of using the term "dungeon" to describe 
+	the environment one is in during a mission, and instead referring to it as 
+	a "site" or a "facility" or something of that nature. We believe, however, 
+	that it may be too early in the planning stages of the game to make this 
+	decision definitively. We may very well end up having some "themed" levels 
+	that take place inside of a computer that could most definitely be referred 
+	to as dungeon-esque. 
+	
+	\emph{Description by Ronald Rodriguez}
+	
+	\item \textbf{Level Editor}
+	
+	Use whatever internal data structure(s) your software design calls
+	for, but the external file format of levels is: ASCII-art text; i.e.
+	Emacs or Vi can be your level editor.
+	
+	\item \textbf{Setting 1}
+	
+	The game starts at the Spaceport America, a 28 square mile
+	complex located in the Jornada del Muerto region in New Mexico, the
+	center of modern commercial space travel. Your levels may
+	start with approximations of the major buildings, starting with the more
+	office/administrative buildings and working towards the space operations
+	buildings.
+	
+	\item \textbf{Setting 2}
+	
+	Levels 1 to $k$ are relatively ordinary "office" training levels. There is
+	no death in the initial levels; the emphasis is on social standing,
+	promotion, bureaucracy, verbal jousting, maybe the occasional photobomb,
+	copy machine prank, toner theft, etc. See the Wikipedia article on
+	verbal self defense. NPC friends that you make here, if you gain enough
+	faction with them, will follow and aid you semi-autonomously. Interface
+	is text/ASCII-art, roguelike. 
+	
+	\item \textbf{Setting 3}
+	
+	Levels $k+1$ to $m$ are "cyber" levels, with death causing the player to bedumped out of cyberspace.
+	Tron-like. Emphasis is on knowledge discovery, resouce acquisition,
+	virus combat. Interface is tile-based, 2D graphical, nethacklike.
+	Real-time until you hit "engagements" by entering enemy
+	zones-of-control; then turn-based.
+	
+	\item \textbf{Setting 4}
+	
+	Levels $m+1$ to $n$ are "space station" levels, with death=game over.
+	Emphasis is on combat with alien weapons and/or computer cyberattacks.
+	Interface is tile-based, enhanced (or 2.5D?) graphical. 
+\end{itemize}
+
+\section{Rejected Requirements}
+\begin{itemize}
+	\item \textbf{Player Threads}
+	
+	System views each player as a thread, thread sends/receives messages
+	to a "controller" thread that manipulates game state.
+	
+	It was originally proposed that the system will view each player as a
+	thread, allowing those threads to send and receive messages from a
+	controller thread which manages the game state. This requirement has been
+	rejected for being too specific. While this is a good solution to the
+	general gameplay requirements, we believe it is better to keep this as a
+	suggestion rather than a requirement.
+	
+	\emph{Description by Mason Fabel}
+		
+	\item \textbf{3-D Gameplay}
+	
+	We said tile-based, not 3D FPS. If you want to do 3D in 480/481 or
+	428, knock the 2D version out of the park 
+	
+	It was mentioned that expanding this project to include 3D graphics might
+	be a future possibility. We believe that designing this project in such a
+	way to intentionally leave this path open is a distraction from the main
+	purpose of the game, and thus this should not be a requirement.
+	
+	\emph{Description by Mason Fabel}
+	
+\end{itemize}
+\end{document}

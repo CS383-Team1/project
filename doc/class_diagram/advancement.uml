@@ -1,0 +1,83 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Advancement Subsystem Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: Tessa Saul
+
+	External Classes: Inventory, Item, Player
+endlegend
+
+class Player <<external>> {
+	Inventory inventory
+	NetworkManager network
+	QuestManager quests
+	List<NPC> allies
+}
+Player -down-|> Entity
+Player *-down- "1" NetworkManager
+Player *-left- "1" QuestManager
+Player *-down- "1" Inventory
+Player o-down- "0..*" NPC
+
+class Inventory <<external>>
+
+class NetworkManager {
+	Player player
+}
+NetworkManager -up->  Player : changes
+NetworkManager *-down- "1" Network
+
+class QuestManager {
+	List<Quest> completed
+	List<Quest> active
+}
+QuestManager o-down- "0..*" Quest
+
+abstract class Quest {
+	Reward reward
+	List<Task> tasks
+}
+Quest *-down- "1..*" Task
+Quest *-down- "0..*" Reward
+
+abstract class Task
+
+abstract class Reward
+
+class ReputationReward {
+	Integer reputation
+}
+ReputationReward -left-|> Reward
+ReputationReward -up-> Edge : changes
+
+class ItemReward {
+	Item item
+}
+ItemReward -up-|> Reward
+ItemReward *-down- "1..*" Item
+ItemReward -right-> Inventory : changes
+
+abstract class Item <<external>>
+
+class Network {
+	List<Edge> edges
+}
+Network *-right- "0..*" Edge
+
+abstract class Edge {
+	Entity from
+	Entity to
+}
+Edge *-right- "2" Entity
+
+interface Entity
+
+class NPC {
+	Integer threshold
+}
+NPC -left-|> Entity
+
+@enduml

@@ -1,0 +1,42 @@
+Weekly Status Report of Mason Fabel
+for the Last Week Ending 2015-02-22 Sunday
+
+Activities Planned for Last Week
+    Finish first draft of class diagrams
+    Compile class diagrams into comprehensive document
+    Review and submit class diagrams
+    Review and update project backlog
+    Identify and assign sprint objectives
+    Update and revise class diagrams
+
+Activities Accomplished Last Week
+    Finish first draft of class diagrams
+    Compile class diagrams into comprehensive document
+    Review and submit class diagrams
+    Review and update project backlog
+    Identify and assign sprint objectives
+    Sample java graphics libraries
+
+Activities Planned for Next Week
+    Update and revise class diagrams
+    Sample java graphics libraries
+    Create initial draft of game story and layout
+    Create initial interface and gameplay sketches
+
+New Issues
+    All team members working on the same tasks - we should split into
+      subteams working on different tasks to help ensure more rapid
+      development.
+
+Old Issues
+    None
+
+Time Log (Approximation)
+    02/16 - 2 hour
+    02/17 - 3 hours
+    02/18 - 0 hours
+    02/19 - 1 hour
+    02/20 - 0 hour
+    02/21 - 1 hours
+    02/22 - 1 hours
+    Total - 8 hours

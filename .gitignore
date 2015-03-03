@@ -1,0 +1,13 @@
+#OSX Finder Files
+.DS_Store
+
+# ViM Swap Files
+*.swp
+
+# LaTeX Build Files
+*.aux
+*.log
+*.toc
+
+# LaTeX Generated PDFs
+*.pdf

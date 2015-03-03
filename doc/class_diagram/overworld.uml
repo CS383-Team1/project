@@ -1,0 +1,63 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Overworld Subsystem Class Diagram
+legend left
+        Authored: Abdulmajeed Alotaibi, Mason Fabel
+        Reviewed: Tessa Saul
+
+        External Classes: CombatManager
+endlegend
+
+class AreaManager {
+	List<Area> areas
+}
+AreaManager o-down- "0..*" Area
+AreaManager -left-> CombatManager : uses
+
+class CombatManager <<external>>
+
+class Area {
+	Environment env
+	List<Entity> entities
+}
+Area *-right- "1" Environment
+Area o-down- "0..*" Entity
+
+abstract class Entity {
+	Position pos
+}
+Entity *-left- "1" Position
+
+class Position {
+	Integer x
+	Integer y
+}
+
+class Player {
+	Integer hp
+	Integer caffeine
+	Integer speed
+	Equipment equipment
+	Inventory inventory
+	NetworkManager network
+	QuestManager quests
+	List<Craft> crafts
+	List<NPC> allies
+	List<NPCCombatant> allies
+	move()
+}
+Player -up-|> Entity
+
+class Tile {
+	Boolean passable
+}
+Tile -up-|> Entity
+
+abstract class InteractableEntity
+InteractableEntity -left-|> Entity
+
+abstract class Environment
+
+@enduml

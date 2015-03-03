@@ -1,0 +1,33 @@
+Weekly Status Report of Mason Fabel
+for the Last Week Ending 2015-03-01 Sunday
+
+My completed work for this week can be found at https://github.com/CS383-Team1/class-diagrams/tree/92da89cbb0ab4fedcb1b63a9111902dd07a5b217.
+
+Activities Planned for Last Week
+    Update and revise class diagrams
+    Sample java graphics libraries
+    Create initial draft of game story and layout
+    Create initial interface and gameplay sketches
+
+Activities Accomplished Last Week
+    Update and revise class diagrams
+
+Activities Planned for Next Week
+    Update and revise class diagrams
+    Update and revise use cases
+
+New Issues
+    Lack of shared creative vision - solution in progress.
+
+Old Issues
+    All team members working on the same tasks - resolved.
+
+Time Log (Approximation)
+    02/23 - 0 hour
+    02/24 - 0 hours
+    02/25 - 0 hours
+    02/26 - 0 hour
+    02/27 - 0 hour
+    02/28 - 10 hours
+    03/01 - 0 hours
+    Total - 10 hours
