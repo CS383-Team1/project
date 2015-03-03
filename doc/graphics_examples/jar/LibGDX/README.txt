@@ -1,0 +1,1 @@
+Up, down, left, and right move character. No collision detection.
