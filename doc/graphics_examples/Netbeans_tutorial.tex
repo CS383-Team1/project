@@ -1,0 +1,38 @@
+% Latex- template.tex
+\documentclass[12pt]{article}
+\begin{document}
+\title{LibGDX Setup for Netbeans}
+\date{March 3, 2015}
+\author{Casey Blair}
+\maketitle
+
+\par
+This is a short tutorial on how to set up LibGDX in Netbeans. 
+
+\par
+\begin{enumerate}
+
+\item Download LigGDX from BadLogicGames: http://libgdx.badlogicgames.com/download.html (click on "`Download Setup App"')
+\item Run Setup App
+\item	A window called "`Libgdx Project Generator"' pops up. Fill out the following fields to setup project: \begin{itemize} 
+\item	Name: name of project
+\item	Package: name of package (name of folder where all game files will be)
+\item	Game Class: Name of main game class
+\item	Destination: where you want to save the project to (I used a folder I created in my "`MyNetbeansProject"' file in my Documents folder to ease finding it in Netbeans later).
+IMPORTANT! Make sure you first create a new file in your MyNetbeansProjects folder (or whatever folder you decide to use) that you will use for your project. DO NOT just use the MyNetbeansProjects folder or any folder with files already in it, as the LibGDX Project Generator will tell you that the folder is not empty, and it must delete all the contents before it can use it! There is a warning message that asks you if you want to delete all the files in the folder first before it would actually delete anything, so if you get to that point, just click cancel, go create an empty new folder, and use that folder for the "`Destination"' of your project.  
+\item	Android SDK: this field is not necessary, since our target is not Android. If you deselect the "`Android"' box in the "`Sub Projects section below "`Android SDK"', the will not require that an Android SDK be present.  
+\end{itemize}
+\item Click "`Generate"' on the bottom of the screen, and a new project will be created. The first time you use this Project Generator, it will download some things necessary to make the project, and may take a while. Wait until it says "`BUILD SUCCESSFUL"' in the bottom of the window. 
+\item Now open Netbeans, and download the "`Gradle"' plugin by clicking on Tools at the top of the window, and selecting "`Plugins"'. Then, click on the "`Available Plugins"' tab, and search for "`Gradle Support"' using the search box at the top right part of the window. Check the "`Install"' box next to the "`Gradle Support"' plugin, and then click "`Install"' at the bottom left of the screen. This should install the Gradle plugin that will recognize the project you just created earlier.
+\item Now open the gradle project in Netbeans. Click file, then Open Project. Navigate to the folder where the gradle project was created, and select it. Then click Open Project.
+\item Now, under the Projects tab in Netbeans, your new LibGDX project should be visible. There will be a couple of different sections of the project once it is expanded: "`core"', "`desktop"', "`html"', and "`iOS"'. Everything except "`core"' are different platforms the java files that will be put into the "`core"' folders can be compiled to. For now, we will focus on "`desktop"' since our game is not being made for the web or iOS.
+\item Double click on "`core"', and it will take you to the core section of the project. This is where all the code that runs the program will be saved. More specifically, it will be saved in the Source Packages/com.projectName.game subfolder. The main game class should already be in this folder, and you can add as many new java files and other folders to this folder as you wish to complete the project.
+\item Now, after you have written some code, and you wish to compile and run the program, now go to the "`desktop"' subproject of your gradle project. Double click on it, and expand the files until you get to the "`DesktopLauncher.java"' file (desktop/Source Packages [Java]/ com.projectName.desktop). Make sure that the project is saved first, then double click on the "`DesktopLauncher.java"' file so it's source is visible in your "`Source"' window. Now, compile and run this file, and it will automatically take the java files from the "`core"' section, and use them to run the program. 
+Note: if you try and compile and run the program on the java files in the "`core"' section, you will get an error saying Netbeans can't find the main class (Cannot execute run because the property "mainClass" is not defined or empty.). So only compile and run the "`DesktopLauncher.java"' file.
+\end{enumerate}
+
+\par
+I hope this tutorial was helpful! If you have any troubles, feel free to email me at blai1919@vandals.uidaho.edu.
+ 
+\item
+\end{document}
