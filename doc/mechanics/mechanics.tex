@@ -1,12 +1,12 @@
-\documentclass[14pt]{article}
+\documentclass[9pt]{article}
 \parskip=.9ex
-\textwidth=7.0in
+\textwidth=7.5in
 \textheight=9.0in
-\oddsidemargin=-.75in
-\topmargin=-.75in
+\oddsidemargin=-0.75in
+\topmargin=-1.00in
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
-\author{Tessa Saul}
+\author{Tyler Wittreich, Tessa Saul}
 \begin{document}
 
 \section*{Mechanics}
@@ -17,6 +17,13 @@ The character will run into enemies in the map and be transitioned
  into a battle mode. The battle mode will be used for combat and 
  conversations. From there, characters can choose their actions for each 
  turn. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 \subsection*{Turns}
 
@@ -33,6 +40,30 @@ regaining health, speaking, and making save checks.
 A mechanism for determining which character's actions are performed
 first in a turn will exist, based on character statistics like how much
 caffeine they have in their system. 
+
+
+\smallskip
+[------------------------------------------
+
+Real Time - 
+A turn in real time will allow the character to perform tasks, complete quests, or explore the game world. While the character is in this state there will be periodic effects that happen over the same gameplay tick as in the turn base state. Force instance, if a character has been wounded in combat or had been pranked, his health and reputation will slowly recover to the characters statistic basis. While in real time, the character will end his turn if he engages in a turn base scenario such as combat or conversation. A player can also end his turn if he chooses to save and quite the game. If a character dies, his turn will be over and he will have to choose to start another turn from a saved game or new game. 
+
+\smallskip
+[------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection*{Action Points}
 
@@ -52,12 +83,104 @@ There are a few things we should decide about how to regulate actions.
 \item Are there actions that every character always gets, such as speaking, or changing weapon? 
 \end{itemize}
 
+
+\smallskip
+[------------------------------------------
+\smallskip
+
+Real time- There will be no number limit to the amount of spaces that a character can move. The character will be able to perform any action multiple times while in real-time, such as saving the game, collecting money, and buying items.
+
+
+Turn base- There will be action points when it comes to conversation and combat. While in a combat or conversation turn base state, a character will get to choose one move or gesture. In combat this could be to attack, run and use an item. In conversation this could be to insult, compliment, or ask a coworker if he needs help. The amount of action points that a character has should be kept the same throughout the game, while only increasing the characters stats and items.
+
+
+[------------------------------------------
+\smallskip
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Catch Up}
+Catch-up
+The game will get progressively harder for the character to progress to higher and higher levels. The difficulty of combat, acquisition of key items, and reputation requirements will become harder across the three main levels of the game. The office levels will be easy. The cyber levels will be mediocre and the space station levels will be the hardest to beat.
+
+[------------------------------------------
+\smallskip
+
+
+
+
+
+
+
+
+
+
+\subsection*{Dice}
+While in combat a character can choose to roll a dice which if he gets a certain number is able to flee the attacker without damage. This will not kill the attacker, but allow your character to build up more stats in the free world if you realize you are not strong enough to beat a certain attacker. The dice will be based off an algorithm that takes a ratio of the attacker’s stats and your stats, giving you certain odds to roll certain numbers on a dice.
+
+[------------------------------------------
+\smallskip
+
+
+
+
+
+
+
+
+
+
+\subsection*{Movement}
+The character will move in a four direction tile formation. In the real-time state the tile movement will be very small making it seem as if the character can move in more than four directions. The character will be bounded by the level map and environmental obstacles that are place on the map. Certain items that a character acquires can eliminate certain environmental obstacles. In a turn base state his movements will be limited by the actions he selects from his character menu while in conversation or combat.
+
+[------------------------------------------
+\smallskip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection*{Resource Management}
 A mechanic of a lot of games is resource management. 
 This involves regulating and replenishing resources like 
 ammo, coffee, health items, and other expendable resources. 
 Players can replenish their resources from sources such as
-co-workers, other players, vending machines, and the refrigerator. 
+co-workers, other players, vending machines, and the refrigerator.
+
+
+\smallskip
+[------------------------------------------
+\smallskip
+
+In resource management characters will also have the ability to manage NPC followers. Characters can choose to make NPC friends stop following them. Characters could also choose to give NPC followers items to increase their loyalty.
+
+[------------------------------------------
+\smallskip
+
+
+
+
+
+
 
 \subsection*{Worker Placement}
 A mechanic of some games is worker placement. This involves
@@ -68,16 +191,95 @@ If we implement this, it will probably take the form of
 directing interns or secretaries to do paperwork, 
 bring the character coffee, or spread gossip about characters. 
 
+\smallskip
+[------------------------------------------
+\smallskip
+
+Once a character gains enough reputation, he will gain the ability to ask coworker to follow him. If a character is required to perform a big takes, he can delegate his followers to help him with the work or increase his reputation from his followers talking to other NPC’s
+
+\smallskip
+[------------------------------------------
+
+
+
+
+
+
+
+
+
+
 \subsection*{Saving}
 The game will have checkpoints throughout it where the player can save. 
 Players can teleport among checkpoints. They can also trade with other 
 players at checkpoints, and can be resurrected at checkpoints if they die. 
+
+\smallskip
+[------------------------------------------
+\smallskip
+
+Depending on the size of the quest, task, or level there will be a limited number of times a character can save until he completes that task, quest, or level.
+
+\smallskip
+[------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Risk and reward}
+
+In certain stages of the game you will have to achieve promotions and if your character decides to ask for a promotion and he doesn’t have enough reputation, he might get it based off of an odds algorithm, or he will be denied. If denied a promotion, a character will lose a substantial amount of his reputation. The reputation advancement of the game is based off user actions that might help or hurt his reputation depending on what he chooses.
+
+\smallskip
+[------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection*{Winning}
 Winning in this game will involve reaching the end of the game, 
 and possibly defeating an end boss. After a player wins, the 
 game will be open world for them to explore, find hidden areas, 
 and collect awesome gear. 
+
+\smallskip
+[------------------------------------------
+\smallskip
+
+The main storyline of the game is to get to the end and defeat the final boss. The game will have a percentage of completion that can only be 100 percent complete if a character has achieved maximum stats. Once this is completed a certain door will open in the game and the character will get the ultimate item or unlock a cheat menu.
+
+\smallskip
+[------------------------------------------
+
+
+
+
+
+
+
+
+
 
 \subsection*{Losing}
 The game will have checkpoints periodically throughout. If a player 
@@ -87,15 +289,103 @@ a small amount of reputation when they die. It is noted that this
 penalty must be small enough so that they game is still fun, even 
 with frequent deaths. 
 
+
+
+
+
+
+
+
+
+
+
+
 \subsection*{Trading}
 The game will allow trading between players, but this can only be done
 at checkpoints where saving can be done, to prevent duplication of items.
+
+\smallskip
+[------------------------------------------
+\smallskip
+
+There will be different levels of trading areas that characters can access. This will be based on the characters stats, to prevent to unfair trading of extremely strong items to newly created characters.
+
+\smallskip
+[------------------------------------------
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
 
 \subsection*{Character Creation}
 Character Creation will consist of filling out a job application type form, 
 with details for the character's physical appearance, like hair and eye color. 
 This may include a preview of the character being created, so players can see
 their avatar before committing. This feature is included for the story. 
+
+
+\smallskip
+[------------------------------------------
+\smallskip
+
+The different color of suit that the character picks changes the characters primary attributes. Certain colors of suits will allow for cheaper stats increase compared to non-primary stats.
+
+\smallskip
+[------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Victory condition}
+
+
+The game will be based on goals and loss avoidance. The character will try to complete goals that lead to new levels and untimely the final boss. On the characters journey he will also have to avoid death by combated or termination because of low reputation.
+
+\smallskip
+[------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection*{In-Game Time}
 This section is a wishlist item. 
@@ -113,5 +403,150 @@ do not wish to go to work at night.
 
 \subsection*{Other}
 We plan to have the main quest line for our game take 7-10 hours for completion.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+\subsection*{Behavioral Momentum}
+The character will have a default action in combat and conversation if the player is taking too long. This behavior momentum will be based off a universal set of default actions that each class of player has.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Bonus}
+A player will receive a bonus in terms of stats upgrades or special items depending on what task, level, or quest he completes.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Cascading information}
+The character will not know the entire game story at once. He will only get the appropriate amount of information to understand the narrative of the gameplay progression.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Community Collaboration}
+Players will be able to use their acquired NPC friends or other willful online players to complete certain tasks.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Countdown}
+The only countdown will be during a players turn in a turn base state. A player will be given an appropriate amount of time to make a move. If he does not, the characters behavioral momentum will perform the task.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Discovery}
+Players will be able to explorer the level maps to find new items, collect money, and build reputation by discovering new coworkers.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Meaning}
+The game will begin by trying to find a job. After working at a new company you noticed the coworkers are impoverished which enlightens you to begin your quest to find and seize the corruption at the top of the corporate ladder.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Free Gift}
+If a player is building good reputation quickly within the office, he might receive a free gift/item from another coworker.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Levels}
+The game will consist of three main types of levels. The first levels will be the office levels. During these levels a player must gain a certain amount of positive reputation to advance to the next set of levels. The next set of levels will be the cyber levels. A player will have to complete certain tasks that will destroy the company’s cyber security, which opens previously secured doors. This allows advanced to the next set of levels, the space station levels. During these levels you will engage in combat and try to escape the alien jail where you have been tricked into getting locked into. After completion you will have completed the characters main meaning of the game stated above.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Ownership}
+A player will acquire items throughout the game that that character owns. A character can also have control over other coworkers if the player has a certain amount of reputation.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Points}
+Money will be the game currency. A character can acquire money through exploration, combat, conversation, trade, or task completion. A character owns his money and can choose to spend it at his discretion. Money can be used to buy items, increase stats, or unlock quests.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Progression}
+A player will be able to view his game progression. He can view the overall game progression based on level completion. He can also view his stats, quests, tasks, exploration, and item acquisition progression.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Quests}
+These will be challenges that a player will attempt to complete. For each quest, there will be a time restraint that the player must complete the quest under. For each quest completion, a player will gain reputation, stats, items, or money.
+
+[------------------------------------------
+\smallskip
+
+
+\subsection*{Status}
+A player will have a status called a job title. There are many status that a player can achieve. A player will achieve a new job title through increased reputation and quest/task completion.
+
+[------------------------------------------
+\smallskip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
