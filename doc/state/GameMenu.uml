@@ -1,0 +1,10 @@
+@startuml
+
+[*]-->GameMenu:pause
+GameMenu-->GameSaved:checkpointReached
+GameMenu-->GameStopped:exit
+GameMenu-->GameResumed:resume
+GameMenu-->DisplaySettings:options
+DisplaySettings-->DisplaySettings:changeSettings
+
+@enduml

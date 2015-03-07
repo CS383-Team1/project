@@ -1,0 +1,8 @@
+@startuml
+
+[*]-->MainMenu:gameStarted
+MainMenu-->StartNewGame:host
+MainMenu-->JoinGame:join
+MainMenu-->LoadSavedGame:load
+
+@enduml
