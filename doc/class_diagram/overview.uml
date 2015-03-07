@@ -11,17 +11,32 @@ legend left
 endlegend
 
 class GameManager {
-	StateManager states
 	AreaManager areas
+	StateManager states
 	save()
 	load()
 	host()
 	join()
+	update()
 }
 GameManager *-down- "1" AreaManager
+GameManager *-right- "1" StateManager
 
 class AreaManager <<external>> {
+	Area current
 	List<Area> areas
+}
+
+class StateManager {
+	State current
+	List<State> states
+	transition()
+}
+StateManager o-down- "0..*" State
+
+abstract class State {
+	Integer code
+	Integer act()
 }
 
 @enduml

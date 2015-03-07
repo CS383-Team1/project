@@ -1,4 +1,12 @@
 @startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Game State Diagram
+legend left
+	Authored: Casey Blair
+	Reviewed:
+endlegend
 
 [*]-->MainMenu:gameStarted
 MainMenu-->StartNewGame:host
