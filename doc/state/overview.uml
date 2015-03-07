@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Overview State Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed:
+endlegend
+
+[*] --> MainMenu
+MainMenu --> Game : startGame
+MainMenu --> Close : exit
+
+Game --> MainMenu : endGame
+
+Close --> [*]
+
+@enduml
