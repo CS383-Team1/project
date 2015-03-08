@@ -1,0 +1,21 @@
+@startuml
+
+skinparam monochrome true
+skinparam shadowing false
+
+title Combat Subsystem Class Diagram
+legend left
+	Authored: Casey Blair
+end legend
+
+[*]-->Combat:enemyEncountered
+Combat-->Defense:move
+Combat-->Attacking:move
+Defense-->Combat:turn
+Attacking-->Combat:turn
+Combat-->Combat:waitTurn
+Combat-->Roam:win, flee
+Combat-->Dead:die
+Dead-->MainMenu:restartGame
+
+@enduml
