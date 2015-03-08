@@ -9,7 +9,7 @@ legend left
 endlegend
 
 [*]-->GameMenu:pause
-GameMenu-->GameSaved:checkpointReached
+GameMenu-->GameSaved
 GameMenu-->GameStopped:exit
 GameMenu-->GameResumed:resume
 GameMenu-->DisplaySettings:options
