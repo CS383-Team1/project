@@ -1,0 +1,17 @@
+@startuml
+
+skinparam monochrome true
+skinparam shadowing false
+
+title Overworld State Diagram
+legend left
+	Authored: Casey Blair
+end legend
+
+[*]-->MainMenu:start
+MainMenu-->Roam:load, join, host
+Roam-->Dead:die
+Dead-->MainMenu:restart
+MainMenu-left->[*]:exit
+
+@enduml
