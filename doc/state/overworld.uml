@@ -8,10 +8,14 @@ legend left
 	Authored: Casey Blair
 end legend
 
-[*]-->MainMenu:start
-MainMenu-->Roam:load, join, host
-Roam-->Dead:die
-Dead-->MainMenu:restart
-MainMenu-left->[*]:exit
+[*]-->StartGame
+StartGame-right->Overworld: join, host, load
+Overworld-up->Pause: pause
+Pause-->Overworld: resume
+Pause-->StartGame: quit
+Overworld-->Combat:enemyEncountered
+Combat-->Overworld:win, flee
+Combat-up->StartGame: die
+StartGame-left->[*]:exit
 
 @enduml
