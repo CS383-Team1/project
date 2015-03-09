@@ -6,8 +6,15 @@ Activities Planned for Last Week
     Update and revise use cases
 
 Activities Accomplished Last Week
+    Update and revise class diagrams
+    First draft of state diagrams
+    Planning of program architecture
 
 Activities Planned for Next Week
+    Update and revise class diagrams
+    Update and revise state diagrams
+    Update and revise program architecture
+    Code demo of first level
 
 New Issues
 
@@ -21,5 +28,5 @@ Time Log (Approximation)
     03/05 - 0 hour
     03/06 - 1 hour
     03/07 - 3 hours
-    03/08 - 0 hours
-    Total - ? hours
+    03/08 - 1 hours
+    Total - 8 hours
