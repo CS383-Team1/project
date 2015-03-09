@@ -1,0 +1,18 @@
+@startuml
+
+skinparam monochrome true
+skinparam shadowing false
+
+title Equipment State Diagram
+legend left
+	Authored: Casey Blair
+end legend
+
+[*]-->ManagingInventory:openInventory
+ManagingInventory-->Crafting:craft
+Crafting-->Roam:addItemToInventory
+ManagingInventory-->ManagingInventory:equipItem, dropItem
+ManagingInventory-->Bartering:buy, sell
+Bartering-->Roam:pay, collect
+
+@enduml
