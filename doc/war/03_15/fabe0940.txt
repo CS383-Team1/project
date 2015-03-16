@@ -8,8 +8,13 @@ Activities Planned for Last Week
     Code demo of first level
 
 Activities Accomplished Last Week
+    Update and revise class diagrams
+    Update and revise state diagrams
+    Update and revise program architecture
+    Midterms
 
 Activities Planned for Next Week
+    Code demo of first level
 
 New Issues
 
@@ -18,10 +23,10 @@ Old Issues
 
 Time Log (Approximation)
     03/02 - 1 hour
-    03/03 - ? hours
-    03/04 - ? hours
-    03/05 - ? hour
-    03/06 - ? hour
-    03/07 - ? hours
-    03/08 - ? hours
-    Total - ? hours
+    03/03 - 6 hours
+    03/04 - 0 hours
+    03/05 - 0 hour
+    03/06 - 0 hour
+    03/07 - 0 hours
+    03/08 - 0 hours
+    Total - 7 hours
