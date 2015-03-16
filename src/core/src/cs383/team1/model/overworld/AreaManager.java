@@ -8,6 +8,7 @@ public final class AreaManager {
 	public static final AreaManager instance = new AreaManager();
 
 	public List<Area> areas;
+	public Area current;
 
 	private AreaManager() {
 		if(instance != null) {
@@ -15,5 +16,6 @@ public final class AreaManager {
 		}
 
 		areas = new ArrayList<Area>();
+		current = null;
 	}
 }
