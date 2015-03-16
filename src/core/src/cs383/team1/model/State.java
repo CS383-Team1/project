@@ -1,5 +1,7 @@
 package cs383.team1.model;
 
+import com.badlogic.gdx.Gdx;
+
 public abstract class State {
 	public int ID;
 
@@ -9,7 +11,8 @@ public abstract class State {
 
 	public State(int newID) {
 		if(newID < 0) {
-			throw new IllegalArgumentException("State:ID must be positive"); 
+			Gdx.app.error("State:State", "illegal state ID");
+			throw new IllegalArgumentException("illegal state ID");
 		}
 
 		ID = newID;
