@@ -3,8 +3,17 @@ package cs383.team1.model;
 public abstract class State {
 	public int ID;
 
-	public int act() {
-		/* not implemented */
-		return 0;
+	public State() {
+		ID = 0;
 	}
+
+	public State(int newID) {
+		if(newID < 0) {
+			throw new IllegalArgumentException("State:ID must be positive"); 
+		}
+
+		ID = newID;
+	}
+
+	public abstract int act();
 }
