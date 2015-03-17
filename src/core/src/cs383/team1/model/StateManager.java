@@ -1,14 +1,14 @@
 package cs383.team1.model;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import cs383.team1.model.State;
 
 public final class StateManager {
 	public static final StateManager instance = new StateManager();
 
-	public List<State> states;
+	public Map<Integer, State> states;
 	public State current;
 
 	private StateManager() {
@@ -19,8 +19,10 @@ public final class StateManager {
 		}
 
 		Gdx.app.debug("StateManager:StateManager", "instantiating class");
-		states = new ArrayList<State>();
-		current = null;
+		states = new HashMap<Integer, State>();
+		states.put(DemoState.STATE_ID, new DemoState());
+
+		current = states.get(DemoState.STATE_ID);
 	}
 
 	public void transition() {

@@ -13,8 +13,8 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public void create () {
-		Gdx.app.setLogLevel(Application.LOG_INFO);
-		/* Gdx.app.setLogLevel(Application.LOG_DEBUG); */
+		/* Gdx.app.setLogLevel(Application.LOG_INFO); */
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.input.setInputProcessor(this);
 
 		Gdx.app.debug("Main:create", "instantiating GameManager");
@@ -53,32 +53,41 @@ public class Main implements ApplicationListener, InputProcessor {
 	}
 
 	@Override
-	public boolean keyDown (int keycode) {
+	public boolean keyDown (int key) {
 		return false;
 	}
 
 	@Override
-	public boolean keyUp (int keycode) {
+	public boolean keyUp (int key) {
 		return false;
 	}
 
 	@Override
-	public boolean keyTyped (char character) {
+	public boolean keyTyped (char ch) {
+		boolean res;
+
+		res = false;
+
+		if(ch == ' ') {
+			gm.update();
+			res = true;
+		}
+
+		return res;
+	}
+
+	@Override
+	public boolean touchDown (int x, int y, int ptr, int btn) {
 		return false;
 	}
 
 	@Override
-	public boolean touchDown (int x, int y, int pointer, int button) {
+	public boolean touchUp (int x, int y, int ptr, int btn) {
 		return false;
 	}
 
 	@Override
-	public boolean touchUp (int x, int y, int pointer, int button) {
-		return false;
-	}
-
-	@Override
-	public boolean touchDragged (int x, int y, int pointer) {
+	public boolean touchDragged (int x, int y, int ptr) {
 		return false;
 	}
 
@@ -88,7 +97,7 @@ public class Main implements ApplicationListener, InputProcessor {
 	}
 
 	@Override
-	public boolean scrolled (int amount) {
+	public boolean scrolled (int val) {
 		return false;
 	}
 }
