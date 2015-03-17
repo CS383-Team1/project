@@ -12,6 +12,7 @@ public abstract class Entity {
 	}
 
 	public Entity(Position p) {
+		Gdx.app.debug("Entity:Entity", "instantiating class");
 		pos = p;
 	}
 }
