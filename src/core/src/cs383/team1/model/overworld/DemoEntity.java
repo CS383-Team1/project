@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import cs383.team1.model.overworld.Entity;
 
 public class DemoEntity extends Entity {
+	public static final int ID = 1;
+
 	public DemoEntity() {
 		super();
 

@@ -7,12 +7,10 @@ public abstract class Entity {
 	public Position pos;
 
 	public Entity() {
-		Gdx.app.debug("Entity:Entity", "instantiating class");
 		pos = new Position(0, 0);
 	}
 
 	public Entity(Position p) {
-		Gdx.app.debug("Entity:Entity", "instantiating class");
 		pos = p;
 	}
 }

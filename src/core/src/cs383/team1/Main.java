@@ -13,16 +13,12 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public void create () {
-		/* Gdx.app.setLogLevel(Application.LOG_INFO); */
-		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		Gdx.app.setLogLevel(Application.LOG_INFO);
+		/* Gdx.app.setLogLevel(Application.LOG_DEBUG); */
 		Gdx.input.setInputProcessor(this);
 
 		Gdx.app.debug("Main:create", "instantiating GameManager");
 		gm = GameManager.instance;
-
-		Gdx.app.debug("Main:create", "creating game Area");
-		Gdx.app.log("Main:create", "AreaManager.createArea() is depreciated");
-		gm.areas.createArea();
 
 		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
 		screen = new DemoDisplay();
