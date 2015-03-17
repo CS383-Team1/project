@@ -1,0 +1,20 @@
+Name
+
+Describe yourself in 3 adjectives or fewer. (Appearance)
+
+Education (Starting "armor")
+- Hershel's School For the Fashion Gifted (Nice suit)
+- Old McDonald's School for Free Range Desk Chair Farming (Office coveralls)
+- Dr. Zorban's College For Dramatic Accounting (Tweed jacket and bowtie)
+- Westshire Academy of Code Wranglin' (Shirt and tie)
+
+"If you were stranded on a desert island and could only bring one item, what would you bring?" (Starting item/weapon)
+- My portfolio, I always wanted to work on beachfront property.
+- My trusty Stapl-o-matic, those coconuts won't stand a chance.
+- My calculator, I can't imagine life without it <3.
+- My solar-powered laptop of course (is there free wi-fi?).
+
+"Oh no! A project is past its deadline! How do you approach the situation?" (Starting stats(?))
+- I run to my supervisor's office and try to save as much time as I can. (Action Points)
+- I inform my supervisor that the deadline wasn't enough and try to make face. (Mana)
+- I take the berating from my supervisor, I can handle a few choice words in my direction. (Health)
