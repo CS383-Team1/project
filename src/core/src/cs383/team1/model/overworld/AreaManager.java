@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.DemoEntity;
+import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
 public final class AreaManager {
@@ -53,10 +54,9 @@ public final class AreaManager {
 		fcontents = fin.readString();
 		vals = fcontents.trim().split("\\s+");
 
-		numTiles = Integer.parseInt(vals[offset++]);
-		numEntities = Integer.parseInt(vals[offset++]);
-
 		Gdx.app.debug("AreaManager:loadArea", "Loading tiles");
+
+		numTiles = Integer.parseInt(vals[offset++]);
 		for(i = offset; i < offset + (numTiles * 3); i += 3) {
 			x = Integer.parseInt(vals[i + 0]);
 			y = Integer.parseInt(vals[i + 1]);
@@ -65,18 +65,21 @@ public final class AreaManager {
 			pos = new Position(x, y);
 
 			switch(type) {
-				case DemoTile.ID:
-					Gdx.app.debug("AreaManager:loadArea", "Loading DemoTile");
+				case DemoTile.TYPE:
+					Gdx.app.debug("AreaManager:loadArea",
+					  "Loading DemoTile (" + vals[i] + "," + vals[i + 1] + ")");
 					tiles.add(new DemoTile(pos));
 					break;
 				default:
 					Gdx.app.error("AreaManager:loadArea",
-					  "Invalid tile ID " + vals[i + 2]);
+					  "invalid tile type " + vals[i + 2]);
 			}
 		}
 		offset += numTiles * 3;
 
 		Gdx.app.debug("AreaManager:loadArea", "Loading entities");
+
+		numEntities = Integer.parseInt(vals[offset++]);
 		for(i = offset; i < offset + (numEntities * 3); i += 3) {
 			x = Integer.parseInt(vals[i + 0]);
 			y = Integer.parseInt(vals[i + 1]);
@@ -85,13 +88,13 @@ public final class AreaManager {
 			pos = new Position(x, y);
 
 			switch(type) {
-				case DemoEntity.ID:
+				case DemoEntity.TYPE:
 					Gdx.app.debug("AreaManager:loadArea", "Loading DemoEntity");
 					entities.add(new DemoEntity(pos));
 					break;
 				default:
 					Gdx.app.error("AreaManager:loadArea",
-					  "Invalid entity ID " + vals[i]);
+					  "invalid entity type " + vals[i + 2]);
 			}
 		}
 		offset += numEntities * 3;

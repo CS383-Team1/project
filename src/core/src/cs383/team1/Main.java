@@ -13,8 +13,8 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public void create () {
-		Gdx.app.setLogLevel(Application.LOG_INFO);
-		/* Gdx.app.setLogLevel(Application.LOG_DEBUG); */
+		/* Gdx.app.setLogLevel(Application.LOG_INFO); */
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.input.setInputProcessor(this);
 
 		Gdx.app.debug("Main:create", "instantiating GameManager");
@@ -32,7 +32,6 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public void render() {
-		Gdx.app.debug("Main:render", "rendering screen");
 		screen.render();
 	}
 
