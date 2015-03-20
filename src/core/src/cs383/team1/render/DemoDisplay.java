@@ -1,4 +1,4 @@
-package cs383.team1;
+package cs383.team1.render;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -8,12 +8,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import cs383.team1.Display;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Tile;
 import cs383.team1.model.overworld.DemoEntity;
 import cs383.team1.model.overworld.DemoTile;
+import cs383.team1.render.Display;
 
 public class DemoDisplay extends Display {
 	private static final String FNAME = "img/demo.png";

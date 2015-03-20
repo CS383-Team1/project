@@ -5,7 +5,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import cs383.team1.model.GameManager;
-import cs383.team1.DemoDisplay;
+import cs383.team1.render.DemoDisplay;
 
 public class Main implements ApplicationListener, InputProcessor {
 	public GameManager gm;
@@ -13,8 +13,8 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public void create () {
-		/* Gdx.app.setLogLevel(Application.LOG_INFO); */
-		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		Gdx.app.setLogLevel(Application.LOG_INFO);
+		/* Gdx.app.setLogLevel(Application.LOG_DEBUG); */
 		Gdx.input.setInputProcessor(this);
 
 		Gdx.app.debug("Main:create", "instantiating GameManager");
