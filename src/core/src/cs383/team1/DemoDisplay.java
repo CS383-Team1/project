@@ -3,6 +3,7 @@ package cs383.team1;
 import java.util.Map;
 import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -19,33 +20,136 @@ public class DemoDisplay extends Display {
 
 	private SpriteBatch batch;
 	private Sprite sprite;
-	private Map<String, Texture> texMap;
+	private Map<Integer, String> tileSprites;
+	private Map<Integer, Texture> tileTextures;
+	private Map<Integer, String> entitySprites;
+	private Map<Integer, Texture> entityTextures;
 
-	private Texture getTexture(String str) {
-		if(texMap.get(str) == null) {
-			Gdx.app.log("DemoDisplay:getTexture", "loading texture " + str);
-			texMap.put(str, new Texture(Gdx.files.internal(str)));
+	private Texture getTileTexture(int i) {
+		String fname;
+
+		if(tileTextures.get(i) == null) {
+			if((fname = tileSprites.get(i)) == null) {
+				Gdx.app.error("DemoDisplay:getTileTexture",
+				  "invalid id " + i);
+				throw new IndexOutOfBoundsException();
+			}
+
+			Gdx.app.log("DemoDisplay:getTileTexture",
+			  "loading texture " + fname);
+			tileTextures.put(i, new Texture(Gdx.files.internal(fname)));
 		}
 
-		return texMap.get(str);
+		return tileTextures.get(i);
+	}
+
+	private Texture getEntityTexture(int i) {
+		String fname;
+
+		if(entityTextures.get(i) == null) {
+			if((fname = entitySprites.get(i)) == null) {
+				Gdx.app.error("DemoDisplay:getEntityTexture",
+				  "invalid id " + i);
+				throw new IndexOutOfBoundsException();
+			}
+
+			Gdx.app.log("DemoDisplay:getEntityTexture",
+			  "loading texture " + fname);
+			entityTextures.put(i, new Texture(Gdx.files.internal(fname)));
+		}
+
+		return entityTextures.get(i);
+	}
+
+	private void loadTileMaps() {
+		int i;
+		int index;
+		int offset;
+		int numEntities;
+		String fname;
+		String fcontents;
+		String sprite;
+		String[] vals;
+		FileHandle fin;
+
+		fname = "img/tiles.txt";
+		offset = 0;
+
+		Gdx.app.log("DemoDisplay:loadTileMaps", "Loading " + fname);
+
+		fin = Gdx.files.internal(fname);
+		fcontents = fin.readString();
+		vals = fcontents.trim().split("\\s+");
+
+		numEntities = Integer.parseInt(vals[offset++]);
+		for(i = offset; i < offset + (numEntities * 2); i += 2) {
+			index = Integer.parseInt(vals[i + 0]);
+			sprite = vals[i + 1];
+
+			tileSprites.put(index, sprite);
+		}
+		offset += numEntities * 2;
+	}
+
+	private void loadEntityMaps() {
+		int i;
+		int index;
+		int offset;
+		int numEntities;
+		String fname;
+		String fcontents;
+		String sprite;
+		String[] vals;
+		FileHandle fin;
+
+		fname = "img/entities.txt";
+		offset = 0;
+
+		Gdx.app.log("DemoDisplay:loadEntityMaps", "Loading " + fname);
+
+		fin = Gdx.files.internal(fname);
+		fcontents = fin.readString();
+		vals = fcontents.trim().split("\\s+");
+
+		numEntities = Integer.parseInt(vals[offset++]);
+		for(i = offset; i < offset + (numEntities * 2); i += 2) {
+			index = Integer.parseInt(vals[i + 0]);
+			sprite = vals[i + 1];
+
+			entitySprites.put(index, sprite);
+		}
+		offset += numEntities * 2;
+	}
+
+	private void loadSpriteMaps() {
+		loadTileMaps();
+		loadEntityMaps();
 	}
 
 	public DemoDisplay() {
 		Gdx.app.debug("DemoDisplay:DemoDisplay", "intantiating class");
 		batch = new SpriteBatch();
-		texMap = new HashMap<String, Texture>();
+		tileSprites = new HashMap<Integer, String>();
+		tileTextures = new HashMap<Integer, Texture>();
+		entitySprites = new HashMap<Integer, String>();
+		entityTextures = new HashMap<Integer, Texture>();
+
+		loadSpriteMaps();
 	}
 
 	public void dispose() {
 		Gdx.app.debug("DemoDisplay:dispose", "disposing textures");
-		for(Map.Entry item : texMap.entrySet()) {
+
+		for(Map.Entry item : tileTextures.entrySet()) {
+			((Texture) item.getValue()).dispose();
+		}
+
+		for(Map.Entry item : entityTextures.entrySet()) {
 			((Texture) item.getValue()).dispose();
 		}
 	}
 
 	public void render() {
-		Texture tex;
-
 		Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -55,37 +159,13 @@ public class DemoDisplay extends Display {
 		batch.begin();
 
 		for(Entity e : GameManager.instance.areas.current.tiles) {
-			switch(e.type()) {
-				case DemoTile.TYPE:
-					tex = getTexture("img/demo_tile.png");
-					break;
-				default:
-					tex = null;
-			}
-
-			if(tex == null) {
-				continue;
-			}
-
-			sprite = new Sprite(tex);
+			sprite = new Sprite(getTileTexture(e.type()));
 			sprite.setPosition(e.pos().x * Tile.WIDTH, e.pos().y * Tile.HEIGHT);
 			sprite.draw(batch);
 		}
 
 		for(Entity e : GameManager.instance.areas.current.entities) {
-			switch(e.type()) {
-				case DemoEntity.TYPE:
-					tex = getTexture("img/demo_entity.png");
-					break;
-				default:
-					tex = null;
-			}
-
-			if(tex == null) {
-				continue;
-			}
-
-			sprite = new Sprite(tex);
+			sprite = new Sprite(getEntityTexture(e.type()));
 			sprite.setPosition(e.pos().x * Tile.WIDTH,
 			  (e.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
 			sprite.draw(batch);

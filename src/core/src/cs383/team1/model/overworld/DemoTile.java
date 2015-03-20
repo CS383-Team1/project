@@ -5,7 +5,7 @@ import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
 public class DemoTile implements Tile {
-	public static final int TYPE = 10;
+	public static final int TYPE = 1;
 
 	private boolean passable;
 	private Position pos;
