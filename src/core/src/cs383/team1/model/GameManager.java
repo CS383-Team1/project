@@ -2,6 +2,7 @@ package cs383.team1.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import cs383.team1.input.Input;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
@@ -44,7 +45,10 @@ public final class GameManager {
 		areas.current = index != -1 ? areas.areas.get(index) : null;
 	}
 
-	public void update() {
+	public void update(Input in) {
+		while(in.keys.peek() != null) {
+		}
+
 		Gdx.app.debug("GameManager:update", "transitioning states");
 		states.transition();
 	}

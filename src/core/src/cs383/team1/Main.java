@@ -4,18 +4,22 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import cs383.team1.input.Input;
 import cs383.team1.model.GameManager;
 import cs383.team1.render.DemoDisplay;
 
 public class Main implements ApplicationListener, InputProcessor {
+	public Input input;
 	public GameManager gm;
 	public DemoDisplay screen;
 
 	@Override
 	public void create () {
-		Gdx.app.setLogLevel(Application.LOG_INFO);
-		/* Gdx.app.setLogLevel(Application.LOG_DEBUG); */
+		/* Gdx.app.setLogLevel(Application.LOG_INFO); */
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.input.setInputProcessor(this);
+
+		input = new Input();
 
 		Gdx.app.debug("Main:create", "instantiating GameManager");
 		gm = GameManager.instance;
@@ -32,6 +36,11 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public void render() {
+		if(input.consumable()) {
+			gm.update(input);
+			input = new Input();
+		}
+
 		screen.render();
 	}
 
@@ -59,16 +68,7 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public boolean keyTyped (char ch) {
-		boolean res;
-
-		res = false;
-
-		if(ch == ' ') {
-			gm.update();
-			res = true;
-		}
-
-		return res;
+		return false;
 	}
 
 	@Override
