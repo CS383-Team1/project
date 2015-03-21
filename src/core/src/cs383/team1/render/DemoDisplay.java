@@ -179,17 +179,17 @@ public class DemoDisplay extends Display {
                 
                 //Draw player based on direction facing (can inplement this function after directional player sprites
                 //are added
-                //playerTexture = setPlayerDirection();
+                //playerTexture = setPlayerDirection(playerTexture);
                 sprite = new Sprite(playerTexture);
-                sprite.setPosition(player.pos().x, player.pos().y);
+                sprite.setPosition(player.pos().x , player.pos().y);
                 sprite.draw(batch);
               
 
 		batch.end();
 	}
         
-        private Texture setPlayerDirection(){
-            Texture user = new Texture("img/player_down.png");
+        private Texture setPlayerDirection(Texture user){
+            
             if(player.playerDirection.equals("up")){
                 user = new Texture("img/player_up.png");
             }
