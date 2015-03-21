@@ -5,7 +5,7 @@ import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
 public final class Player implements Entity {
-	private Position pos;
+	public Position pos;
 
 	public int hp;
 	public int mp;

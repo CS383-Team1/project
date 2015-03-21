@@ -2,16 +2,19 @@ package cs383.team1.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import cs383.team1.input.Input;
+import cs383.team1.input.InputManager;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.Player;
+import cs383.team1.render.DemoDisplay;
 
 public final class GameManager {
 	public static final GameManager instance = new GameManager();
 
 	public AreaManager areas;
 	public StateManager states;
+        
 
 	private GameManager() {
 		if(instance != null) {
@@ -23,7 +26,7 @@ public final class GameManager {
 		Gdx.app.debug("GameManager:GameManager", "instantiating class");
 		areas = AreaManager.instance;
 		states = StateManager.instance;
-
+                
 		load();
 	}
 
@@ -45,8 +48,9 @@ public final class GameManager {
 		areas.current = index != -1 ? areas.areas.get(index) : null;
 	}
 
-	public void update(Input in) {
-		while(in.keys.peek() != null) {
+	public void update(InputManager inputManager, Player player) {
+		while(inputManager.consumable()) {
+                    inputManager.processInput(player);
 		}
 
 		Gdx.app.debug("GameManager:update", "transitioning states");
