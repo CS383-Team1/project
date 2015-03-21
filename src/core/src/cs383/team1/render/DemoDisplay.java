@@ -13,6 +13,7 @@ import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Tile;
 import cs383.team1.model.overworld.DemoEntity;
 import cs383.team1.model.overworld.DemoTile;
+import cs383.team1.model.overworld.Player;
 import cs383.team1.render.Display;
 
 public class DemoDisplay extends Display {
@@ -24,6 +25,9 @@ public class DemoDisplay extends Display {
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
+        private Texture playerTexture = new Texture("img/demo_entity.png");
+        Player player;
+        
 
 	private Texture getTileTexture(int i) {
 		String fname;
@@ -126,13 +130,14 @@ public class DemoDisplay extends Display {
 		loadEntityMaps();
 	}
 
-	public DemoDisplay() {
+	public DemoDisplay(Player user) {
 		Gdx.app.debug("DemoDisplay:DemoDisplay", "intantiating class");
 		batch = new SpriteBatch();
 		tileSprites = new HashMap<Integer, String>();
 		tileTextures = new HashMap<Integer, Texture>();
 		entitySprites = new HashMap<Integer, String>();
 		entityTextures = new HashMap<Integer, Texture>();
+                player = user;
 
 		loadSpriteMaps();
 	}
@@ -170,6 +175,12 @@ public class DemoDisplay extends Display {
 			  (e.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
 			sprite.draw(batch);
 		}
+                
+                //draw player
+                sprite = new Sprite(playerTexture);
+                sprite.setPosition(player.pos().x, player.pos().y);
+                sprite.draw(batch);
+              
 
 		batch.end();
 	}

@@ -23,13 +23,14 @@ public class Main implements ApplicationListener, InputProcessor {
 		Gdx.input.setInputProcessor(this);
 
 		inputManager = new InputManager();
-
+                player = new Player();
+                
 		Gdx.app.debug("Main:create", "instantiating GameManager");
 		gm = GameManager.instance;
 
 		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
-		screen = new DemoDisplay();
-                player = new Player();
+		screen = new DemoDisplay(player);
+                
 	}
 
 	@Override
@@ -42,11 +43,6 @@ public class Main implements ApplicationListener, InputProcessor {
 	public void render() {
             if(inputManager.consumable()) {
 		gm.update(inputManager, player);
-                //if(inputManager.running == false)
-                  //  pause();
-                //if(inputManger.running )
-                 //   resume();
-
             }
             
             
