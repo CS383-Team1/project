@@ -6,19 +6,22 @@ import cs383.team1.model.overworld.Position;
 
 public final class Player implements Entity {
 	public Position pos;
-
+        public String playerDirection;
+        
 	public int hp;
 	public int mp;
 	public int ap;
 
 	public Player() {
 		this(new Position(0, 0));
+                playerDirection = "down";
 	}
 
 	public Player(Position p) {
 		Gdx.app.debug("Player:Player", "instantiating class");
 
 		pos = p;
+                playerDirection = "down";
 	}
 
 	public int type() {

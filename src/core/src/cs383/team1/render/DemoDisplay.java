@@ -25,7 +25,7 @@ public class DemoDisplay extends Display {
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
-        private Texture playerTexture = new Texture("img/demo_entity.png");
+        private Texture playerTexture;
         Player player;
         
 
@@ -137,8 +137,9 @@ public class DemoDisplay extends Display {
 		tileTextures = new HashMap<Integer, Texture>();
 		entitySprites = new HashMap<Integer, String>();
 		entityTextures = new HashMap<Integer, Texture>();
+                playerTexture = new Texture("img/demo_entity.png");
                 player = user;
-
+                
 		loadSpriteMaps();
 	}
 
@@ -176,7 +177,9 @@ public class DemoDisplay extends Display {
 			sprite.draw(batch);
 		}
                 
-                //draw player
+                //Draw player based on direction facing (can inplement this function after directional player sprites
+                //are added
+                //playerTexture = setPlayerDirection();
                 sprite = new Sprite(playerTexture);
                 sprite.setPosition(player.pos().x, player.pos().y);
                 sprite.draw(batch);
@@ -184,4 +187,21 @@ public class DemoDisplay extends Display {
 
 		batch.end();
 	}
+        
+        private Texture setPlayerDirection(){
+            Texture user = new Texture("img/player_down.png");
+            if(player.playerDirection.equals("up")){
+                user = new Texture("img/player_up.png");
+            }
+            if(player.playerDirection.equals("down")){
+                user = new Texture("img/player_down.png");
+            }
+            if(player.playerDirection.equals("left")){
+                user = new Texture("img/player_left.png");
+            }
+            if(player.playerDirection.equals("right")){
+                user  = new Texture("img/player_right.png");
+            }
+            return user;
+        }
 }

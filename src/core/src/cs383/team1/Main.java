@@ -31,6 +31,7 @@ public class Main implements ApplicationListener, InputProcessor {
 		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
 		screen = new DemoDisplay(player);
                 
+                
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class InputManager {
         
 	public InputManager() {
             keys = new ArrayList<Integer>();
-	}
+        }
         
     public void processInput(Player player){
         int currentKey = keys.get(0);        
@@ -29,13 +29,20 @@ public class InputManager {
         
         if(currentKey == Keys.RIGHT){
             translateXRight(player);
+            player.playerDirection = "right";
         }
-        if(currentKey == Keys.LEFT)
+        if(currentKey == Keys.LEFT){
             translateXLeft(player);
-        if(currentKey == Keys.DOWN)
+            player.playerDirection = "left";
+        }
+        if(currentKey == Keys.DOWN){
             translateYDown(player);
-        if(currentKey == Keys.UP)
+            player.playerDirection = "down";
+        }
+        if(currentKey == Keys.UP){
             translateYUp(player);
+            player.playerDirection = "up";
+        }
         if(currentKey == Keys.ESCAPE){
             if(running == true){
                 //Pause game, then launch main menu    
@@ -62,6 +69,8 @@ public class InputManager {
     }
     
     public void translateXLeft(Player player){
+        //Check to see if player is moving out of bounds
+        
         player.pos.x -= moveAmount;
     }
     
