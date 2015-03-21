@@ -13,7 +13,7 @@ public final class Player implements Entity {
 	public int ap;
 
 	public Player() {
-		this(new Position(0, 0));
+		this(new Position(0, 10));
                 playerDirection = "down";
 	}
 
