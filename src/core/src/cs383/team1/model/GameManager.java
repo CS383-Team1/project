@@ -50,7 +50,7 @@ public final class GameManager {
 
 	public void update(InputManager inputManager, Player player) {
 		while(inputManager.consumable()) {
-                    inputManager.processInput(player);
+                    inputManager.processInput(player, areas.current);
 		}
 
 		Gdx.app.debug("GameManager:update", "transitioning states");

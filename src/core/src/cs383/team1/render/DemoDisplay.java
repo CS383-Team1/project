@@ -26,6 +26,10 @@ public class DemoDisplay extends Display {
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
         private Texture playerTexture;
+        private Texture playerDown;
+        private Texture playerUp;
+        private Texture playerRight;
+        private Texture playerLeft;
         Player player;
         
 
@@ -137,7 +141,11 @@ public class DemoDisplay extends Display {
 		tileTextures = new HashMap<Integer, Texture>();
 		entitySprites = new HashMap<Integer, String>();
 		entityTextures = new HashMap<Integer, Texture>();
-                playerTexture = new Texture("img/demo_entity.png");
+                playerTexture = new Texture("img/demo_entity.png");  //Get rid of this after directional sprites are added
+                //playerUp = new Texture("img/player_up.png");
+                //playerDown = new Texture("img/player_down.png");
+                //playerLeft = new Texture("img/player_left.png");
+                //playerRight  = new Texture("img/player_right.png");
                 player = user;
                 
 		loadSpriteMaps();
@@ -178,7 +186,7 @@ public class DemoDisplay extends Display {
 		}
                 
                 //Draw player based on direction facing (can inplement this function after directional player sprites
-                //are added
+                //are added)
                 //playerTexture = setPlayerDirection(playerTexture);
                 sprite = new Sprite(playerTexture);
                 sprite.setPosition(player.pos().x , player.pos().y);
@@ -191,16 +199,16 @@ public class DemoDisplay extends Display {
         private Texture setPlayerDirection(Texture user){
             
             if(player.playerDirection.equals("up")){
-                user = new Texture("img/player_up.png");
+                user = playerUp;
             }
             if(player.playerDirection.equals("down")){
-                user = new Texture("img/player_down.png");
+                user = playerDown;
             }
             if(player.playerDirection.equals("left")){
-                user = new Texture("img/player_left.png");
+                user = playerLeft;
             }
             if(player.playerDirection.equals("right")){
-                user  = new Texture("img/player_right.png");
+                user  = playerRight;
             }
             return user;
         }

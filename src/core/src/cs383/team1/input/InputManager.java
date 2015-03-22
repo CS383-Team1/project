@@ -8,8 +8,10 @@ package cs383.team1.input;
 import java.util.ArrayList;
 import cs383.team1.model.overworld.Player;
 import com.badlogic.gdx.Input.Keys;
-
-
+import cs383.team1.model.overworld.Area;
+import cs383.team1.model.overworld.Position;
+import cs383.team1.model.overworld.Tile;
+import cs383.team1.model.overworld.DemoTile;
 /**
  *
  * @author Casey
@@ -18,43 +20,71 @@ public class InputManager {
  	public ArrayList<Integer> keys;
         float moveAmount = 32.0f;
         public boolean running = true;
+        Position currentPosition;
         
 	public InputManager() {
             keys = new ArrayList<Integer>();
+         
         }
         
-    public void processInput(Player player){
+    public void processInput(Player player, Area area){
         int currentKey = keys.get(0);        
+        currentPosition = player.pos;
+        Tile currentTile = new DemoTile();
+        Tile leftTile = new DemoTile();;
+        Tile rightTile = new DemoTile();
+        Tile upTile = new DemoTile();
+        Tile downTile = new DemoTile();
         
+             
         
-        if(currentKey == Keys.RIGHT){
+        for(int i = 0; i < area.tiles.size(); i++){
+            if((player.pos.x == area.tiles.get(i).pos().x) && (player.pos.y == area.tiles.get(i).pos().y)){
+                 currentTile = area.tiles.get(i);
+                 
+            }
+            if((player.pos.x == (area.tiles.get(i).pos().x) - 32) && (player.pos.y == area.tiles.get(i).pos().y)){
+                 rightTile = area.tiles.get(i);
+                 
+            }
+            if((player.pos.x == (area.tiles.get(i).pos().x) + 32) && (player.pos.y == area.tiles.get(i).pos().y)){
+                 leftTile = area.tiles.get(i);
+                 
+            }
+            if((player.pos.x == area.tiles.get(i).pos().x) && (player.pos.y == (area.tiles.get(i).pos().y) - 32)){
+                 upTile = area.tiles.get(i);
+                 //if(upTile.pos().y < screen)
+                 
+            }
+            if((player.pos.x == area.tiles.get(i).pos().y) && (player.pos.y == (area.tiles.get(i).pos().y) + 32)){
+                 downTile = area.tiles.get(i);
+                 
+            }
+        }
+        
+        if((currentKey == Keys.RIGHT) && (rightTile.passable() != false)){
             translateXRight(player);
             player.playerDirection = "right";
         }
-        if(currentKey == Keys.LEFT){
+        if((currentKey == Keys.LEFT) && (leftTile.passable() != false)){
             translateXLeft(player);
             player.playerDirection = "left";
         }
-        if(currentKey == Keys.DOWN){
+        if((currentKey == Keys.DOWN) && (downTile.passable() != false)){
             translateYDown(player);
             player.playerDirection = "down";
         }
-        if(currentKey == Keys.UP){
+        if((currentKey == Keys.UP) && (upTile.passable() != false)){
             translateYUp(player);
             player.playerDirection = "up";
         }
         if(currentKey == Keys.ESCAPE){
-            if(running == true){
+         
                 //Pause game, then launch main menu    
-                running = false;
+         
                 //Launch Main Menu
-            }
-        
+         
             //If game is already paused, then escape will resume game
-            if(running == false){
-                running = true;
-                //Exit main menu
-            }
         }
         keys.remove(0);
         
