@@ -5,10 +5,13 @@ Activities Planned for Last Week
     Code demo of first level
 
 Activities Accomplished Last Week
+    Code demo of first level
 
 Activities Planned for Next Week
 
 New Issues
+    Insufficient communication causing confusion on who is responsible for which
+      deliverables - will discuss next sprint
 
 Old Issues
     Lack of shared creative vision - solution in progress.
