@@ -63,7 +63,7 @@ public class InputManager {
                  
             }
             if((player.pos.x  == (area.tiles.get(i).pos().x * Tile.WIDTH)) 
-                    && (player.pos.y  == (area.tiles.get(i).pos().y) * Tile.HEIGHT + 10)){
+                    && ((player.pos.y - 10)  == (area.tiles.get(i).pos().y) * Tile.HEIGHT + 32)){
                  downTile = area.tiles.get(i);
                  
             }
