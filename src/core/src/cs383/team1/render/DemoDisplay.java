@@ -191,6 +191,7 @@ public class DemoDisplay extends Display {
                 sprite = new Sprite(playerTexture);
                 sprite.setPosition(player.pos().x , player.pos().y);
                 sprite.draw(batch);
+                //System.out.println("Printing player position: " + player.pos().x + " : " + player.pos().y);
               
 
 		batch.end();

@@ -47,23 +47,23 @@ public class InputManager {
                  
             }
             if((player.pos.x  == (area.tiles.get(i).pos().x) * Tile.WIDTH - 32) 
-                    && (player.pos.y  == (area.tiles.get(i).pos().y * Tile.HEIGHT))){
+                    && ((player.pos.y - 10)  == (area.tiles.get(i).pos().y * Tile.HEIGHT))){
                  rightTile = area.tiles.get(i);
                  
             }
             if((player.pos.x  == (area.tiles.get(i).pos().x) * Tile.WIDTH + 32) 
-                    && (player.pos.y  == (area.tiles.get(i).pos().y * Tile.HEIGHT))){
+                    && ((player.pos.y - 10)  == (area.tiles.get(i).pos().y * Tile.HEIGHT ))){
                  leftTile = area.tiles.get(i);
                  
             }
             if((player.pos.x  == (area.tiles.get(i).pos().x * Tile.WIDTH)) 
-                    && (player.pos.y == (area.tiles.get(i).pos().y) * Tile.HEIGHT - 32)){
+                    && ((player.pos.y - 10) == (area.tiles.get(i).pos().y) * Tile.HEIGHT - 32)){
                  upTile = area.tiles.get(i);
                  
                  
             }
             if((player.pos.x  == (area.tiles.get(i).pos().x * Tile.WIDTH)) 
-                    && (player.pos.y  == (area.tiles.get(i).pos().y) * Tile.HEIGHT + 32)){
+                    && (player.pos.y  == (area.tiles.get(i).pos().y) * Tile.HEIGHT + 10)){
                  downTile = area.tiles.get(i);
                  
             }
