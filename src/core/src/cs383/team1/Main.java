@@ -15,6 +15,7 @@ public class Main implements ApplicationListener, InputProcessor {
 	public GameManager gm;
 	public DemoDisplay screen;
         public Player player;
+        int key;
 
 	@Override
 	public void create () {
@@ -45,10 +46,7 @@ public class Main implements ApplicationListener, InputProcessor {
             if(inputManager.consumable()) {
 		gm.update(inputManager, player);
             }
-            
-            
-           
-		screen.render();
+            screen.render();
 	}
 
 	@Override
@@ -65,13 +63,14 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public boolean keyDown (int keycode) {
+
             inputManager.add(keycode);
-        return true;
+            return true;
 	}
 
 	@Override
 	public boolean keyUp (int key) {
-		return false;
+		return true;
 	}
 
 	@Override

@@ -21,23 +21,26 @@ public class InputManager {
         float moveAmount = 32.0f;
         public boolean running = true;
         Position currentPosition;
+        Tile currentTile;
+        Tile leftTile;
+        Tile rightTile;
+        Tile upTile;
+        Tile downTile;
         
 	public InputManager() {
             keys = new ArrayList<Integer>();
+            currentTile = new DemoTile();
+            leftTile = new DemoTile();;
+            rightTile = new DemoTile();
+            upTile = new DemoTile();
+            downTile = new DemoTile();
          
         }
         
     public void processInput(Player player, Area area){
         int currentKey = keys.get(0);        
         currentPosition = player.pos;
-        Tile currentTile = new DemoTile();
-        Tile leftTile = new DemoTile();;
-        Tile rightTile = new DemoTile();
-        Tile upTile = new DemoTile();
-        Tile downTile = new DemoTile();
-        
              
-        
         for(int i = 0; i < area.tiles.size(); i++){
             if((player.pos.x == area.tiles.get(i).pos().x) && (player.pos.y == area.tiles.get(i).pos().y)){
                  currentTile = area.tiles.get(i);
