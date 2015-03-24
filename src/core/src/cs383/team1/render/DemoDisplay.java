@@ -13,6 +13,7 @@ import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Tile;
 import cs383.team1.model.overworld.DemoEntity;
 import cs383.team1.model.overworld.DemoTile;
+import cs383.team1.model.overworld.Player;
 import cs383.team1.render.Display;
 
 public class DemoDisplay extends Display {
@@ -24,6 +25,13 @@ public class DemoDisplay extends Display {
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
+        private Texture playerTexture;
+        private Texture playerDown;
+        private Texture playerUp;
+        private Texture playerRight;
+        private Texture playerLeft;
+        Player player;
+        
 
 	private Texture getTileTexture(int i) {
 		String fname;
@@ -126,14 +134,20 @@ public class DemoDisplay extends Display {
 		loadEntityMaps();
 	}
 
-	public DemoDisplay() {
+	public DemoDisplay(Player user) {
 		Gdx.app.debug("DemoDisplay:DemoDisplay", "intantiating class");
 		batch = new SpriteBatch();
 		tileSprites = new HashMap<Integer, String>();
 		tileTextures = new HashMap<Integer, Texture>();
 		entitySprites = new HashMap<Integer, String>();
 		entityTextures = new HashMap<Integer, Texture>();
-
+                playerTexture = new Texture("img/demo_entity.png");  //Get rid of this after directional sprites are added
+                //playerUp = new Texture("img/player_up.png");
+                //playerDown = new Texture("img/player_down.png");
+                //playerLeft = new Texture("img/player_left.png");
+                //playerRight  = new Texture("img/player_right.png");
+                player = user;
+                
 		loadSpriteMaps();
 	}
 
@@ -170,7 +184,33 @@ public class DemoDisplay extends Display {
 			  (e.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
 			sprite.draw(batch);
 		}
+                
+                //Draw player based on direction facing (can inplement this function after directional player sprites
+                //are added)
+                //playerTexture = setPlayerDirection(playerTexture);
+                sprite = new Sprite(playerTexture);
+                sprite.setPosition(player.pos().x , player.pos().y);
+                sprite.draw(batch);
+                //System.out.println("Printing player position: " + player.pos().x + " : " + player.pos().y);
+              
 
 		batch.end();
 	}
+        
+        private Texture setPlayerDirection(Texture user){
+            
+            if(player.playerDirection.equals("up")){
+                user = playerUp;
+            }
+            if(player.playerDirection.equals("down")){
+                user = playerDown;
+            }
+            if(player.playerDirection.equals("left")){
+                user = playerLeft;
+            }
+            if(player.playerDirection.equals("right")){
+                user  = playerRight;
+            }
+            return user;
+        }
 }

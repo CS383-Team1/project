@@ -3,15 +3,19 @@ package cs383.team1;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
-import cs383.team1.input.Input;
+import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.Player;
 import cs383.team1.render.DemoDisplay;
 
 public class Main implements ApplicationListener, InputProcessor {
-	public Input input;
+	public InputManager inputManager;
 	public GameManager gm;
 	public DemoDisplay screen;
+        public Player player;
+        int key;
 
 	@Override
 	public void create () {
@@ -19,13 +23,16 @@ public class Main implements ApplicationListener, InputProcessor {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.input.setInputProcessor(this);
 
-		input = new Input();
-
+		inputManager = new InputManager();
+                player = new Player();
+                
 		Gdx.app.debug("Main:create", "instantiating GameManager");
 		gm = GameManager.instance;
 
 		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
-		screen = new DemoDisplay();
+		screen = new DemoDisplay(player);
+                
+                
 	}
 
 	@Override
@@ -36,12 +43,10 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public void render() {
-		if(input.consumable()) {
-			gm.update(input);
-			input = new Input();
-		}
-
-		screen.render();
+            if(inputManager.consumable()) {
+		gm.update(inputManager, player);
+            }
+            screen.render();
 	}
 
 	@Override
@@ -57,13 +62,15 @@ public class Main implements ApplicationListener, InputProcessor {
 	}
 
 	@Override
-	public boolean keyDown (int key) {
-		return false;
+	public boolean keyDown (int keycode) {
+
+            inputManager.add(keycode);
+            return true;
 	}
 
 	@Override
 	public boolean keyUp (int key) {
-		return false;
+		return true;
 	}
 
 	@Override

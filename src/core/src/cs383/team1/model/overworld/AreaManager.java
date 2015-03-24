@@ -65,12 +65,18 @@ public final class AreaManager {
 			pos = new Position(x, y);
 
 			switch(type) {
-				case DemoTile.TYPE:
+                                case 0:
+                                    Gdx.app.debug("AreaManager:loadArea",
+					  "Loading DemoTile (" + vals[i] + "," + vals[i + 1] + ")");
+					tiles.add(new DemoTile(pos, false));
+					break;
+                            
+                                case 1:
 					Gdx.app.debug("AreaManager:loadArea",
 					  "Loading DemoTile (" + vals[i] + "," + vals[i + 1] + ")");
-					tiles.add(new DemoTile(pos));
+					tiles.add(new DemoTile(pos, true));
 					break;
-				default:
+                                default:
 					Gdx.app.error("AreaManager:loadArea",
 					  "invalid tile type " + vals[i + 2]);
 			}
