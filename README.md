@@ -13,6 +13,9 @@ they are in the form `<username>-<branchname>`.
 Please hardwrap all text files at 80 characters. Some of us have smaller
 displays, and not all editors handle soft wraps gracefully.
 
+Please indent with tabs. You can set them to be as wide as you like, but
+for the purpose of hard wrapping lines treat tabs as 4 spaces.
+
 Please use line endings of `\n` instead of `\n\r`. The last thing we need
 is a commit war where contributors alternatively add and remove `\r`
 characters from source files.
