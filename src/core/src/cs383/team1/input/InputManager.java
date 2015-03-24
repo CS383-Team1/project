@@ -42,24 +42,28 @@ public class InputManager {
         currentPosition = player.pos;
              
         for(int i = 0; i < area.tiles.size(); i++){
-            if((player.pos.x == area.tiles.get(i).pos().x) && (player.pos.y == area.tiles.get(i).pos().y)){
+            if((player.pos.x  == (area.tiles.get(i).pos().x * Tile.WIDTH)) && (player.pos.y  == (area.tiles.get(i).pos().y * Tile.HEIGHT))){
                  currentTile = area.tiles.get(i);
                  
             }
-            if((player.pos.x == (area.tiles.get(i).pos().x) - 32) && (player.pos.y == area.tiles.get(i).pos().y)){
+            if((player.pos.x  == (area.tiles.get(i).pos().x) * Tile.WIDTH - 32) 
+                    && (player.pos.y  == (area.tiles.get(i).pos().y * Tile.HEIGHT))){
                  rightTile = area.tiles.get(i);
                  
             }
-            if((player.pos.x == (area.tiles.get(i).pos().x) + 32) && (player.pos.y == area.tiles.get(i).pos().y)){
+            if((player.pos.x  == (area.tiles.get(i).pos().x) * Tile.WIDTH + 32) 
+                    && (player.pos.y  == (area.tiles.get(i).pos().y * Tile.HEIGHT))){
                  leftTile = area.tiles.get(i);
                  
             }
-            if((player.pos.x == area.tiles.get(i).pos().x) && (player.pos.y == (area.tiles.get(i).pos().y) - 32)){
+            if((player.pos.x  == (area.tiles.get(i).pos().x * Tile.WIDTH)) 
+                    && (player.pos.y == (area.tiles.get(i).pos().y) * Tile.HEIGHT - 32)){
                  upTile = area.tiles.get(i);
-                 //if(upTile.pos().y < screen)
+                 
                  
             }
-            if((player.pos.x == area.tiles.get(i).pos().y) && (player.pos.y == (area.tiles.get(i).pos().y) + 32)){
+            if((player.pos.x  == (area.tiles.get(i).pos().x * Tile.WIDTH)) 
+                    && (player.pos.y  == (area.tiles.get(i).pos().y) * Tile.HEIGHT + 32)){
                  downTile = area.tiles.get(i);
                  
             }

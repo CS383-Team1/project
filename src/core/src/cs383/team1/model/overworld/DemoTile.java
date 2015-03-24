@@ -11,13 +11,13 @@ public class DemoTile implements Tile {
 	private Position pos;
 
 	public DemoTile() {
-		this(new Position(0, 0));
+		this(new Position(0, 0), true);
 	}
 
-	public DemoTile(Position p) {
+	public DemoTile(Position p, boolean pass) {
 		Gdx.app.debug("DemoTile:DemoTile", "instantiating class");
 
-		passable = true;
+		passable = pass;
 		pos = p;
 	}
 
