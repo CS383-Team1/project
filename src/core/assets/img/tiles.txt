@@ -1,0 +1,3 @@
+2
+1 img/field.png
+2 img/wall.png
