@@ -11,6 +11,3 @@
 
 # LaTeX Generated PDFs
 *.pdf
-
-# PlantUML Generated PNGs
-*.png
