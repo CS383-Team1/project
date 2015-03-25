@@ -1,2 +1,2 @@
 1
-1 img/demo_entity.png
+1 img/player.png

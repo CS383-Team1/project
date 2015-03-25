@@ -173,7 +173,7 @@ public class DemoDisplay extends Display {
 			sprite.draw(batch);
 		}
 
-		player = GameManager.instance.player;
+		player = GameManager.instance.areas.current.player;
 		sprite = new Sprite(getEntityTexture(player.type()));
 		sprite.setPosition(player.pos().x * Tile.WIDTH,
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));

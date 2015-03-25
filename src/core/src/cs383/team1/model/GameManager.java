@@ -16,7 +16,6 @@ public final class GameManager {
 
 	public AreaManager areas;
 	public StateManager states;
-	public Player player;
 
 	private GameManager() {
 		if(instance != null) {
@@ -28,7 +27,6 @@ public final class GameManager {
 		Gdx.app.debug("GameManager:GameManager", "instantiating class");
 		areas = AreaManager.instance;
 		states = StateManager.instance;
-		player = new Player(new Position(0, 0), 100, 10, 1);
 
 		load();
 	}
@@ -52,8 +50,11 @@ public final class GameManager {
 	}
 
 	public void update(InputManager in) {
+		Player player;
 		Position next;
 		Tile target;
+
+		player = areas.current.player;
 
 		while(in.consumable()) {
 			switch(in.keys.remove(0)) {

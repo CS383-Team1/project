@@ -112,6 +112,8 @@ public final class AreaManager {
 		}
 		offset += numEntities * 3;
 
+		Gdx.app.debug("AreaManager:loadArea", "Loading Player");
+
 		x = Integer.parseInt(vals[offset++]);
 		y = Integer.parseInt(vals[offset++]);
 		hp = Integer.parseInt(vals[offset++]);
