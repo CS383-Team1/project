@@ -4,20 +4,18 @@ import com.badlogic.gdx.Gdx;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
-public class DemoTile implements Tile {
-	public static final int TYPE = 1;
+public class Wall implements Tile {
+	public static final int TYPE = 2;
+	public static final boolean PASSABLE = false;
 
-	private boolean passable;
 	private Position pos;
 
-	public DemoTile() {
-		this(new Position(0, 0), true);
+	public Wall() {
+		this(new Position(0, 0));
 	}
 
-	public DemoTile(Position p, boolean pass) {
-		Gdx.app.debug("DemoTile:DemoTile", "instantiating class");
-
-		passable = pass;
+	public Wall(Position p) {
+		Gdx.app.debug("Wall:Wall", "instantiating class");
 		pos = p;
 	}
 
@@ -30,6 +28,6 @@ public class DemoTile implements Tile {
 	}
 
 	public boolean passable() {
-		return passable;
+		return PASSABLE;
 	}
 }

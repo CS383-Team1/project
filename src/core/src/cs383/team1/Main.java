@@ -7,32 +7,26 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManager;
-import cs383.team1.model.overworld.Player;
 import cs383.team1.render.DemoDisplay;
 
 public class Main implements ApplicationListener, InputProcessor {
 	public InputManager inputManager;
 	public GameManager gm;
 	public DemoDisplay screen;
-        public Player player;
-        int key;
 
 	@Override
 	public void create () {
-		/* Gdx.app.setLogLevel(Application.LOG_INFO); */
-		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		Gdx.app.setLogLevel(Application.LOG_INFO);
+		/* Gdx.app.setLogLevel(Application.LOG_DEBUG); */
 		Gdx.input.setInputProcessor(this);
 
 		inputManager = new InputManager();
-                player = new Player();
-                
+		
 		Gdx.app.debug("Main:create", "instantiating GameManager");
 		gm = GameManager.instance;
 
 		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
-		screen = new DemoDisplay(player);
-                
-                
+		screen = new DemoDisplay();
 	}
 
 	@Override
@@ -43,10 +37,12 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public void render() {
-            if(inputManager.consumable()) {
-		gm.update(inputManager, player);
-            }
-            screen.render();
+		if(inputManager.consumable()) {
+			Gdx.app.debug("Main:render", "Updating GameManager");
+			gm.update(inputManager);
+		}
+
+		screen.render();
 	}
 
 	@Override
@@ -62,10 +58,10 @@ public class Main implements ApplicationListener, InputProcessor {
 	}
 
 	@Override
-	public boolean keyDown (int keycode) {
+	public boolean keyDown (int key) {
+		inputManager.keys.add(key);
 
-            inputManager.add(keycode);
-            return true;
+		return true;
 	}
 
 	@Override

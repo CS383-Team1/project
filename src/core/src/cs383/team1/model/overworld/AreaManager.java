@@ -7,7 +7,11 @@ import com.badlogic.gdx.files.FileHandle;
 import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.DemoEntity;
 import cs383.team1.model.overworld.Entity;
+import cs383.team1.model.overworld.Field;
 import cs383.team1.model.overworld.Position;
+import cs383.team1.model.overworld.Player;
+import cs383.team1.model.overworld.Tile;
+import cs383.team1.model.overworld.Wall;
 
 public final class AreaManager {
 	public static final AreaManager instance = new AreaManager();
@@ -33,16 +37,20 @@ public final class AreaManager {
 		int x;
 		int y;
 		int type;
+		int hp;
+		int mp;
+		int ap;
 		int numEntities;
 		int numTiles;
 		int offset;
 		Area a;
 		String fcontents;
+		Position pos;
+		Player player;
 		String[] vals;
 		FileHandle fin;
 		List<Entity> entities;
 		List<Tile> tiles;
-		Position pos;
 
 		offset = 0;
 		entities = new ArrayList<Entity>();
@@ -65,18 +73,17 @@ public final class AreaManager {
 			pos = new Position(x, y);
 
 			switch(type) {
-                                case 0:
-                                    Gdx.app.debug("AreaManager:loadArea",
-					  "Loading DemoTile (" + vals[i] + "," + vals[i + 1] + ")");
-					tiles.add(new DemoTile(pos, false));
-					break;
-                            
-                                case 1:
+				case 1:
 					Gdx.app.debug("AreaManager:loadArea",
-					  "Loading DemoTile (" + vals[i] + "," + vals[i + 1] + ")");
-					tiles.add(new DemoTile(pos, true));
+					  "Loading Field (" + vals[i] + "," + vals[i + 1] + ")");
+					tiles.add(new Field(pos));
 					break;
-                                default:
+				case 2:
+					Gdx.app.debug("AreaManager:loadArea",
+					  "Loading Wall (" + vals[i] + "," + vals[i + 1] + ")");
+					tiles.add(new Wall(pos));
+					break;
+				default:
 					Gdx.app.error("AreaManager:loadArea",
 					  "invalid tile type " + vals[i + 2]);
 			}
@@ -105,20 +112,19 @@ public final class AreaManager {
 		}
 		offset += numEntities * 3;
 
-		a = new Area(tiles, entities);
+		Gdx.app.debug("AreaManager:loadArea", "Loading Player");
+
+		x = Integer.parseInt(vals[offset++]);
+		y = Integer.parseInt(vals[offset++]);
+		hp = Integer.parseInt(vals[offset++]);
+		mp = Integer.parseInt(vals[offset++]);
+		ap = Integer.parseInt(vals[offset++]);
+		pos = new Position(x, y);
+		player = new Player(pos, hp, mp, ap);
+
+		a = new Area(tiles, entities, player);
 		areas.add(a);
 
 		return a;
-	}
-
-	public void createArea() {
-		Gdx.app.log("AreaManager:createArea", "** depreciated **");
-		Area a;
-
-		a = new Area();
-		a.entities.add(new DemoEntity(new Position(100, 100)));
-
-		areas.add(a);
-		current = a;
 	}
 }

@@ -11,7 +11,10 @@
 
 # LaTeX Generated PDFs
 *.pdf
+<<<<<<< HEAD
 
 # PlantUML Generated PNGs
 *.png
 /src/.nb-gradle/private/
+=======
+>>>>>>> 4b17d78d67180596b952d8d4220b2ab601a594b3
