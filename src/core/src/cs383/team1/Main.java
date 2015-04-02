@@ -5,6 +5,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManager;
 import cs383.team1.render.DemoDisplay;
@@ -13,6 +14,7 @@ public class Main implements ApplicationListener, InputProcessor {
 	public InputManager inputManager;
 	public GameManager gm;
 	public DemoDisplay screen;
+        public DialogueBox textBox;
 
 	@Override
 	public void create () {
@@ -21,13 +23,15 @@ public class Main implements ApplicationListener, InputProcessor {
 		Gdx.input.setInputProcessor(this);
 
 		inputManager = new InputManager();
+                textBox = new DialogueBox();
 		
 		Gdx.app.debug("Main:create", "instantiating GameManager");
 		gm = GameManager.instance;
 
 		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
-		screen = new DemoDisplay();
-	}
+		//screen = new DemoDisplay(textBox);
+                screen = new DemoDisplay();
+        }
 
 	@Override
 	public void dispose() {
@@ -39,7 +43,7 @@ public class Main implements ApplicationListener, InputProcessor {
 	public void render() {
 		if(inputManager.consumable()) {
 			Gdx.app.debug("Main:render", "Updating GameManager");
-			gm.update(inputManager);
+			gm.update(inputManager, textBox);
 		}
 
 		screen.render();
@@ -71,6 +75,7 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public boolean keyTyped (char ch) {
+                
 		return false;
 	}
 

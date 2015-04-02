@@ -99,12 +99,16 @@ public final class AreaManager {
 			type = Integer.parseInt(vals[i + 2]);
 
 			pos = new Position(x, y);
-
+                        
 			switch(type) {
 				case DemoEntity.TYPE:
 					Gdx.app.debug("AreaManager:loadArea", "Loading DemoEntity");
 					entities.add(new DemoEntity(pos));
 					break;
+                                case NPC.TYPE:
+					Gdx.app.debug("AreaManager:loadArea", "Loading NPC");
+					entities.add(new NPC(pos));
+					break;    
 				default:
 					Gdx.app.error("AreaManager:loadArea",
 					  "invalid entity type " + vals[i + 2]);

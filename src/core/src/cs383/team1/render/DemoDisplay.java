@@ -6,14 +6,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Tile;
 import cs383.team1.model.overworld.DemoEntity;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.render.Display;
+import cs383.team1.input.DialogueBox;
 
 public class DemoDisplay extends Display {
 	private static final String FNAME = "img/demo.png";
@@ -24,7 +29,11 @@ public class DemoDisplay extends Display {
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
-
+        private Table table;
+        Skin skin;
+        Label dialogue;
+        DialogueBox chatBox;
+        
 	private Texture getTileTexture(int i) {
 		String fname;
 
@@ -133,6 +142,11 @@ public class DemoDisplay extends Display {
 		tileTextures = new HashMap<Integer, Texture>();
 		entitySprites = new HashMap<Integer, String>();
 		entityTextures = new HashMap<Integer, Texture>();
+                table = new Table();
+                skin = new Skin();
+                //dialogue = new Label(textBox.messages.get(0), skin);
+                //chatBox = textBox;
+                
                 
 		loadSpriteMaps();
 	}
@@ -178,7 +192,12 @@ public class DemoDisplay extends Display {
 		sprite.setPosition(player.pos().x * Tile.WIDTH,
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
 		sprite.draw(batch);
+                
+                //Draw dialogue text on to screen
+                //table.add(dialogue).padBottom(40).row();
+                //table.add(chatBox.button).size(150,60).padBottom(20).row();                
 
+                
 		batch.end();
 	}
 }

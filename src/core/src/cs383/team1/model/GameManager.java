@@ -3,10 +3,12 @@ package cs383.team1.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.Input.Keys;
+import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.NPC;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.Tile;
@@ -49,13 +51,18 @@ public final class GameManager {
 		areas.current = index != -1 ? areas.areas.get(index) : null;
 	}
 
-	public void update(InputManager in) {
+	public void update(InputManager in, DialogueBox textBox) {
 		Player player;
 		Position next;
 		Tile target;
-
+                NPC npc;
 		player = areas.current.player;
-
+                npc = (NPC) areas.current.entities.get(0);
+                npc.ai(areas.current);
+                
+                //while(textBox.consumable()){
+                    
+                //}
 		while(in.consumable()) {
 			switch(in.keys.remove(0)) {
 				case Keys.LEFT:
@@ -70,7 +77,7 @@ public final class GameManager {
 				case Keys.DOWN:
 					next = new Position(player.pos.x, player.pos.y - 1);
 					break;
-				default:
+                                default:
 					continue;
 			}
 
@@ -91,6 +98,8 @@ public final class GameManager {
 				player.pos = next;
 			}
 		}
+                
+                
 
 		/* TODO: move the keyhandling code to the StateManager */
 		/*

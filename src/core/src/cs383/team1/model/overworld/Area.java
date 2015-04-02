@@ -10,6 +10,7 @@ public class Area {
 	public List<Tile> tiles;
 	public List<Entity> entities;
 	public Player player;
+        
 
 	public Area() {
 		this(new ArrayList<Tile>(), new ArrayList<Entity>(), new Player());
@@ -20,5 +21,6 @@ public class Area {
 		tiles = tileList;
 		entities = entityList;
 		player = p;
+                
 	}
 }
