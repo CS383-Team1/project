@@ -1,0 +1,32 @@
+Weekly Status Report of Mason Fabel
+for the Last Week Ending 2015-03-29 Sunday
+
+Activities Planned for Last Week
+    Finish coding demo of first level
+    Establish sprint goals for next sprint
+    Establish sprint deliverables for next sprint
+
+Activities Accomplished Last Week
+    Finish coding demo of first level
+    Establish sprint goals for next sprint
+    Establish sprint deliverables for next sprint
+
+Activities Planned for Next Week
+    Create basic networking features
+
+New Issues
+
+Old Issues
+    Lack of shared creative vision - solution in progress.
+    Insufficient communication causing confusion on who is responsible for which
+      deliverables - resolved
+
+Time Log (Approximation)
+    03/23 - 1 hour
+    03/24 - 5 hours
+    03/25 - 0 hours
+    03/26 - 0 hour
+    03/27 - 0 hour
+    03/28 - 1 hours
+    03/29 - 0 hours
+    Total - 7 hours
