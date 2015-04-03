@@ -12,6 +12,14 @@ public class Main implements ApplicationListener, InputProcessor {
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.input.setInputProcessor(this);
+
+		try {
+			(new Thread(new Server())).start();
+		} catch (Exception e) {
+			Gdx.app.debug("Main:create",
+				"I just don't know what went wrong...");
+			Gdx.app.exit();
+		}
 	}
 
 	@Override
