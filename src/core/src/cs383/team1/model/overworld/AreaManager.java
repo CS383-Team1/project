@@ -141,8 +141,19 @@ public final class AreaManager {
 		return a;
 	}
         
+        public int useStairs(Position p)
+        {
+                StairsEntity se;
+                if ((se = (StairsEntity)findEntity(p, 2)) !=null) {
+                        changeArea(se.destination(),se.destinationPos());
+                        return 0;
+                }
+                return -1;
+        }
+        
         //Find an entity of a given type at position p (well3112)
-        public Entity findEntity(Position p, int t) {
+        public Entity findEntity(Position p, int t)
+        {
                 for (Entity e : current.entities) {
                         if(e.pos().x == p.x && e.pos().y == p.y && e.type() == t)
                                 return e;

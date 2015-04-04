@@ -53,10 +53,6 @@ public final class GameManager {
 		Player player;
 		Position next;
 		Tile target;
-                /*This object is, like, super gross and should be removed once some
-                super smart, awesome person comes up with an alternative solution (well3112)*/
-                StairsEntity se;
-
 
 		player = areas.current.player;
 
@@ -95,9 +91,9 @@ public final class GameManager {
 				player.pos = next;
 			}
                         
-                        //Check if the targeted tile contains a stairs entity (well3112)
-                        if ((se = (StairsEntity)areas.findEntity(next, 2)) !=null)
-                                areas.changeArea(se.destination(),se.destinationPos());
+                        //Try to use stairs entity on a stairs tile (well3112)
+                        if (target.type() == 3)
+                                areas.useStairs(next);
 		}
 
 		/* TODO: move the keyhandling code to the StateManager */
