@@ -2,6 +2,7 @@ package cs383.team1.net;
 
 import java.io.*;
 import java.net.*;
+import com.badlogic.gdx.Gdx;
 
 public class Server implements Runnable {
 	public static final int PORT = 13370;
@@ -20,10 +21,21 @@ public class Server implements Runnable {
 		while (true) {
 			try {
 				s = sock.accept();
-				(new Thread(new ServerThread(msgs, s))).start();
+				Gdx.app.debug("Server:run", "New connection");
+				(new Thread(
+					new ServerThread(msgs, s))).start();
 			} catch (Exception e) {
+				Gdx.app.debug("Server:run", "Error!");
 				/* ignore error */
 			}
+		}
+	}
+
+	public static void main(String[] args) {
+		try {
+			(new Thread(new Server())).start();
+		} catch (Exception e) {
+			Gdx.app.error("Server:main", "No, you're an exception!");
 		}
 	}
 }

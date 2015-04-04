@@ -1,13 +1,15 @@
 package cs383.team1.net;
 
 import java.util.*;
+import com.badlogic.gdx.Gdx;
 
 public class MsgQueue implements Subject {
 	private Queue<String> msgs;
 	private List<Observer> observers;
 
 	public MsgQueue() {
-		msgs = new LinkedList<String>();
+		msgs = new ArrayDeque<String>();
+		observers = new ArrayList<Observer>();
 	}
 
 	public void attach(Observer o) {
@@ -21,15 +23,15 @@ public class MsgQueue implements Subject {
 	public void update() {
 		String msg;
 
-		msg = msgs.remove();
-
-		for (Observer o : observers) {
-			o.update(msg);
+		if ((msg = msgs.poll()) != null) {
+			for (Observer o : observers) {
+				o.update(msg);
+			}
 		}
 	}
 
 	public synchronized void addMsg(String msg) {
-		msgs.add(msg);
+		msgs.offer(msg);
 		update();
 	}
 }

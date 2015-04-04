@@ -7,6 +7,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
 public class Main implements ApplicationListener, InputProcessor {
+	Client c;
 
 	@Override
 	public void create () {
@@ -15,11 +16,13 @@ public class Main implements ApplicationListener, InputProcessor {
 
 		try {
 			(new Thread(new Server())).start();
+			c = new Client("127.0.0.1", Server.PORT);
 		} catch (Exception e) {
 			Gdx.app.debug("Main:create",
 				"I just don't know what went wrong...");
 			Gdx.app.exit();
 		}
+
 	}
 
 	@Override
@@ -28,6 +31,13 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public void render() {
+		String str;
+
+		str = c.update();
+
+		if (!(str.equals(""))) {
+			Gdx.app.log("incoming message", str);
+		}
 	}
 
 	@Override
@@ -54,7 +64,9 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public boolean keyTyped (char ch) {
-		return false;
+		c.addChar(ch);
+
+		return true;
 	}
 
 	@Override
