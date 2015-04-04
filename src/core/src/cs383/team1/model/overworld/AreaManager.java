@@ -12,11 +12,13 @@ import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Tile;
 import cs383.team1.model.overworld.Wall;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class AreaManager {
 	public static final AreaManager instance = new AreaManager();
 
-	public List<Area> areas;
+	public Map<String, Area> areas;
 	public Area current;
 
 	private AreaManager() {
@@ -27,7 +29,7 @@ public final class AreaManager {
 		}
 
 		Gdx.app.debug("AreaManager:AreaManager", "instantiating class");
-		areas = new ArrayList<Area>();
+		areas = new HashMap<String, Area>();
 		current = null;
 	}
 
@@ -128,7 +130,7 @@ public final class AreaManager {
 		player = new Player(pos, hp, mp, ap);
 
 		a = new Area(tiles, entities, player);
-		areas.add(a);
+		areas.put(fname, a);
 
 		return a;
 	}

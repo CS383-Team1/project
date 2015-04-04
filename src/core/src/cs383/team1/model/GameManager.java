@@ -32,21 +32,22 @@ public final class GameManager {
 	}
 
 	public void load() {
-		int index;
+		String index;
 		String fname;
 		FileHandle areaDir;
 
 		Gdx.app.log("GameManager:load", "Loading areas");
 
-		index = -1;
+		index = null;
 		areaDir = Gdx.files.internal("area/");
 
 		for(FileHandle f : areaDir.list()) {
 			fname = new String("area/" + f.name());
 			Gdx.app.debug("GameManager:load", "Loading area " + fname);
-			index = areas.areas.indexOf(areas.loadArea(fname));
+                        areas.loadArea(fname);
+			index = fname;
 		}
-		areas.current = index != -1 ? areas.areas.get(index) : null;
+		areas.current = index != null ? areas.areas.get(index) : null;
 	}
 
 	public void update(InputManager in) {
@@ -71,7 +72,7 @@ public final class GameManager {
 					next = new Position(player.pos.x, player.pos.y - 1);
 					break;
                                 case Keys.P:
-                                        areas.current = 0 != -1 ? areas.areas.get(0) : null;
+                                        areas.current = "area/aa.txt" != null ? areas.areas.get("area/aa.txt") : null;
                                         next = new Position(player.pos.x, player.pos.y);
                                         break;
 				default:
