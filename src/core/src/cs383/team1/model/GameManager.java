@@ -34,22 +34,18 @@ public final class GameManager {
 	}
 
 	public void load() {
-		String index;
 		String fname;
 		FileHandle areaDir;
 
 		Gdx.app.log("GameManager:load", "Loading areas");
 
-		index = null;
 		areaDir = Gdx.files.internal("area/");
 
 		for(FileHandle f : areaDir.list()) {
 			fname = new String("area/" + f.name());
 			Gdx.app.debug("GameManager:load", "Loading area " + fname);
                         areas.loadArea(fname);
-			index = fname;
 		}
-//		areas.current = index != null ? areas.areas.get(index) : null;
 		changeArea("demo");
 	}
 
@@ -57,6 +53,8 @@ public final class GameManager {
 		Player player;
 		Position next;
 		Tile target;
+                //This object is, like, super gross and should be removed once some
+                //super smart, awesome person comes up with an alternative solution (well3112)
                 StairsEntity se;
 
 
@@ -76,10 +74,6 @@ public final class GameManager {
 				case Keys.DOWN:
 					next = new Position(player.pos.x, player.pos.y - 1);
 					break;
-                                case Keys.P:
-                                        areas.current = "area/aa.txt" != null ? areas.areas.get("area/aa.txt") : null;
-                                        next = new Position(player.pos.x, player.pos.y);
-                                        break;
 				default:
 					continue;
 			}
@@ -101,18 +95,28 @@ public final class GameManager {
 				player.pos = next;
 			}
                         
+                        //Check if the current/targeted tile is a stairs tile (well3112)
                         if(target.type() == 3){
-                                System.out.println("ONASTAIRS");
+                                //Iterate through all entities (well3112)
                                 for (Entity e : areas.current.entities) {
                                     if(
+                                            //Find a stairs entity at the current
+                                            //position of the player (well3112)
                                             e.pos().x == player.pos().x &&
                                             e.pos().y == player.pos().y &&
                                             e.type() == 2)
                                     {
+                                            //Typecast the discovered entity into
+                                            //a stairsentity object (well3112)
                                             se = (StairsEntity) e;
-                                            System.out.println(se.destination());
-                                            if (!changeArea(se.destination()))
-                                                Gdx.app.error("GameManager:update", "invalid stairs transition");
+                                            //Change the area and display an
+                                            //error if the transition is invalid (well3112)
+                                            if (!changeArea(
+                                                    se.destination(),
+                                                    se.destinationPos()))
+                                                    Gdx.app.error(
+                                                            "GameManager:update",
+                                                            "invalid stairs transition");
                                     }
                                 }
                         }
@@ -125,14 +129,39 @@ public final class GameManager {
 		*/
 	}
         
+        //Method to change the current area and set the future position (well3112)
+        public boolean changeArea(String s, Position pos)
+        {
+            //Need support/major changes for multiplayer?
+            //Each level currently uses baked-in character data
+            //May need to change this to take a player parameter as well (well3112)
+            
+            //Check if the changearea method was successful (well3112)
+            if(changeArea(s))
+            {
+                    //Add the appropriate level transition formatting 
+                    //and set the player position (well3112)
+                    areas.areas.get("area/".concat(s.concat(".txt"))).player.pos = pos;
+                    //The function was successful, return true (well3112)
+                    return true;
+            }
+            //Level doesn't exist, return false (well3112)
+            return false;
+        }
+        
+        //Method to change the current area (well3112)
         public boolean changeArea(String s)
         {
+            //Add the appropriate level transition formatting (well3112)
             String sFull = "area/".concat(s.concat(".txt"));
+            //Check if the level to transition to exists (well3112)
             if(areas.areas.containsKey(sFull))
             {
-                areas.current = sFull != null ? areas.areas.get(sFull) : null;
-                return true;
+                    //Change the current area and return true (well3112)
+                    areas.current = sFull != null ? areas.areas.get(sFull) : null;
+                    return true;
             }
+            //Level doesn't exist, return false (well3112)
             return false;
         }
 }
