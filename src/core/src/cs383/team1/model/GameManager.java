@@ -70,6 +70,10 @@ public final class GameManager {
 				case Keys.DOWN:
 					next = new Position(player.pos.x, player.pos.y - 1);
 					break;
+                                case Keys.P:
+                                        areas.current = 0 != -1 ? areas.areas.get(0) : null;
+                                        next = new Position(player.pos.x, player.pos.y);
+                                        break;
 				default:
 					continue;
 			}
@@ -90,6 +94,10 @@ public final class GameManager {
 			if(target.passable()) {
 				player.pos = next;
 			}
+                        
+                        if(target.type() == 3){
+                                System.out.println("ONASTAIRS");
+                        }
 		}
 
 		/* TODO: move the keyhandling code to the StateManager */

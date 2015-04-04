@@ -83,6 +83,11 @@ public final class AreaManager {
 					  "Loading Wall (" + vals[i] + "," + vals[i + 1] + ")");
 					tiles.add(new Wall(pos));
 					break;
+				case 3:
+					Gdx.app.debug("AreaManager:loadArea",
+					  "Loading Stairs (" + vals[i] + "," + vals[i + 1] + ")");
+					tiles.add(new Stairs(pos));
+					break;
 				default:
 					Gdx.app.error("AreaManager:loadArea",
 					  "invalid tile type " + vals[i + 2]);
