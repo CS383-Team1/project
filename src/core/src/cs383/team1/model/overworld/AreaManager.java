@@ -47,6 +47,7 @@ public final class AreaManager {
 		int offset;
 		Area a;
 		String fcontents;
+                String entityData;
 		Position pos;
 		Player player;
 		String[] vals;
@@ -100,10 +101,11 @@ public final class AreaManager {
 		Gdx.app.debug("AreaManager:loadArea", "Loading entities");
 
 		numEntities = Integer.parseInt(vals[offset++]);
-		for(i = offset; i < offset + (numEntities * 3); i += 3) {
+		for(i = offset; i < offset + (numEntities * 4); i += 4) {
 			x = Integer.parseInt(vals[i + 0]);
 			y = Integer.parseInt(vals[i + 1]);
 			type = Integer.parseInt(vals[i + 2]);
+                        entityData = vals[i+3];
 
 			pos = new Position(x, y);
 
@@ -112,12 +114,16 @@ public final class AreaManager {
 					Gdx.app.debug("AreaManager:loadArea", "Loading DemoEntity");
 					entities.add(new DemoEntity(pos));
 					break;
+                                case StairsEntity.TYPE:
+					Gdx.app.debug("AreaManager:loadArea", "Loading StairsEntity");
+                                        entities.add(new StairsEntity(pos,entityData));
+                                        break;
 				default:
 					Gdx.app.error("AreaManager:loadArea",
 					  "invalid entity type " + vals[i + 2]);
 			}
 		}
-		offset += numEntities * 3;
+		offset += numEntities * 4;
 
 		Gdx.app.debug("AreaManager:loadArea", "Loading Player");
 

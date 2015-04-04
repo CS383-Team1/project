@@ -7,8 +7,10 @@ import cs383.team1.input.InputManager;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
+import cs383.team1.model.overworld.StairsEntity;
 import cs383.team1.model.overworld.Tile;
 
 public final class GameManager {
@@ -47,13 +49,16 @@ public final class GameManager {
                         areas.loadArea(fname);
 			index = fname;
 		}
-		areas.current = index != null ? areas.areas.get(index) : null;
+//		areas.current = index != null ? areas.areas.get(index) : null;
+		changeArea("demo");
 	}
 
 	public void update(InputManager in) {
 		Player player;
 		Position next;
 		Tile target;
+                StairsEntity se;
+
 
 		player = areas.current.player;
 
@@ -98,6 +103,18 @@ public final class GameManager {
                         
                         if(target.type() == 3){
                                 System.out.println("ONASTAIRS");
+                                for (Entity e : areas.current.entities) {
+                                    if(
+                                            e.pos().x == player.pos().x &&
+                                            e.pos().y == player.pos().y &&
+                                            e.type() == 2)
+                                    {
+                                            se = (StairsEntity) e;
+                                            System.out.println(se.destination());
+                                            if (!changeArea(se.destination()))
+                                                Gdx.app.error("GameManager:update", "invalid stairs transition");
+                                    }
+                                }
                         }
 		}
 
@@ -107,4 +124,15 @@ public final class GameManager {
 		states.transition();
 		*/
 	}
+        
+        public boolean changeArea(String s)
+        {
+            String sFull = "area/".concat(s.concat(".txt"));
+            if(areas.areas.containsKey(sFull))
+            {
+                areas.current = sFull != null ? areas.areas.get(sFull) : null;
+                return true;
+            }
+            return false;
+        }
 }
