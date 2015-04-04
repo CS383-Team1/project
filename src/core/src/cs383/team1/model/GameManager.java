@@ -46,7 +46,7 @@ public final class GameManager {
 			Gdx.app.debug("GameManager:load", "Loading area " + fname);
                         areas.loadArea(fname);
 		}
-		changeArea("demo");
+		areas.changeArea("demo");
 	}
 
 	public void update(InputManager in) {
@@ -97,7 +97,7 @@ public final class GameManager {
                         
                         //Check if the targeted tile contains a stairs entity (well3112)
                         if ((se = (StairsEntity)areas.findEntity(next, 2)) !=null)
-                                changeArea(se.destination(),se.destinationPos());
+                                areas.changeArea(se.destination(),se.destinationPos());
 		}
 
 		/* TODO: move the keyhandling code to the StateManager */
@@ -107,29 +107,4 @@ public final class GameManager {
 		*/
 	}
         
-        //Method to change the current area and set the future position (well3112)
-        public int changeArea(String s, Position pos)
-        {
-            /*Need support/major changes for multiplayer?
-            Each level currently uses baked-in character data
-            May need to change this to take a player parameter as well (well3112)*/
-            
-            if(changeArea(s) == 0) {
-                    areas.areas.get("area/".concat(s.concat(".txt"))).player.pos = pos;
-                    return 0;
-            }
-            return -1;
-        }
-        
-        //Method to change the current area (well3112)
-        public int changeArea(String s)
-        {
-            String sFull = "area/".concat(s.concat(".txt"));
-            if(areas.areas.containsKey(sFull)) {
-                    areas.current = sFull != null ? areas.areas.get(sFull) : null;
-                    return 0;
-            }
-            Gdx.app.error("GameManager:update","invalid stairs transition");
-            return -1;
-        }
 }

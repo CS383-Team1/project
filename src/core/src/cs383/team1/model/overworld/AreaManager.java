@@ -149,4 +149,30 @@ public final class AreaManager {
                 }
                 return null;
         }
+        
+        //Method to change the current area and set the future position (well3112)
+        public int changeArea(String s, Position pos)
+        {
+            /*Need support/major changes for multiplayer?
+            Each level currently uses baked-in character data
+            May need to change this to take a player parameter as well (well3112)*/
+            
+            if(changeArea(s) == 0) {
+                    areas.get("area/".concat(s.concat(".txt"))).player.pos = pos;
+                    return 0;
+            }
+            return -1;
+        }
+        
+        //Method to change the current area (well3112)
+        public int changeArea(String s)
+        {
+            String sFull = "area/".concat(s.concat(".txt"));
+            if(areas.containsKey(sFull)) {
+                    current = sFull != null ? areas.get(sFull) : null;
+                    return 0;
+            }
+            Gdx.app.error("GameManager:update","invalid stairs transition");
+            return -1;
+        }
 }
