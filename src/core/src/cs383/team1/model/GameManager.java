@@ -96,15 +96,8 @@ public final class GameManager {
 			}
                         
                         //Check if the targeted tile contains a stairs entity (well3112)
-                        for (Entity e : areas.current.entities) {
-                                if(
-                                        e.pos().x == player.pos().x &&
-                                        e.pos().y == player.pos().y
-                                        && e.type() == 2) {
-                                        se = (StairsEntity) e;
-                                        changeArea(se.destination(),se.destinationPos());
-                                    }
-                                }
+                        if ((se = (StairsEntity)areas.findEntity(next, 2)) !=null)
+                                changeArea(se.destination(),se.destinationPos());
 		}
 
 		/* TODO: move the keyhandling code to the StateManager */

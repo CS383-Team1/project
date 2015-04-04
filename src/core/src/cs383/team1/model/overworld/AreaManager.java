@@ -76,24 +76,24 @@ public final class AreaManager {
 			pos = new Position(x, y);
 
 			switch(type) {
-				case 1:
-					Gdx.app.debug("AreaManager:loadArea",
-					  "Loading Field (" + vals[i] + "," + vals[i + 1] + ")");
-					tiles.add(new Field(pos));
-					break;
-				case 2:
-					Gdx.app.debug("AreaManager:loadArea",
-					  "Loading Wall (" + vals[i] + "," + vals[i + 1] + ")");
-					tiles.add(new Wall(pos));
-					break;
-				case 3:
-					Gdx.app.debug("AreaManager:loadArea",
-					  "Loading Stairs (" + vals[i] + "," + vals[i + 1] + ")");
-					tiles.add(new Stairs(pos));
-					break;
-				default:
-					Gdx.app.error("AreaManager:loadArea",
-					  "invalid tile type " + vals[i + 2]);
+			case 1:
+				Gdx.app.debug("AreaManager:loadArea",
+				  "Loading Field (" + vals[i] + "," + vals[i + 1] + ")");
+				tiles.add(new Field(pos));
+				break;
+			case 2:
+				Gdx.app.debug("AreaManager:loadArea",
+				  "Loading Wall (" + vals[i] + "," + vals[i + 1] + ")");
+				tiles.add(new Wall(pos));
+				break;
+			case 3:
+				Gdx.app.debug("AreaManager:loadArea",
+				  "Loading Stairs (" + vals[i] + "," + vals[i + 1] + ")");
+				tiles.add(new Stairs(pos));
+				break;
+			default:
+				Gdx.app.error("AreaManager:loadArea",
+				  "invalid tile type " + vals[i + 2]);
 			}
 		}
 		offset += numTiles * 3;
@@ -140,4 +140,13 @@ public final class AreaManager {
 
 		return a;
 	}
+        
+        //Find an entity of a given type at position p (well3112)
+        public Entity findEntity(Position p, int t) {
+                for (Entity e : current.entities) {
+                        if(e.pos().x == p.x && e.pos().y == p.y && e.type() == t)
+                                return e;
+                }
+                return null;
+        }
 }
