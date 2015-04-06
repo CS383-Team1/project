@@ -60,9 +60,6 @@ public final class GameManager {
                 npc = (NPC) areas.current.entities.get(0);
                 npc.ai(areas.current);
                 
-                //while(textBox.consumable()){
-                    
-                //}
 		while(in.consumable()) {
 			switch(in.keys.remove(0)) {
 				case Keys.LEFT:

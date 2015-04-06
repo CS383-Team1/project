@@ -23,14 +23,12 @@ public class Main implements ApplicationListener, InputProcessor {
 		Gdx.input.setInputProcessor(this);
 
 		inputManager = new InputManager();
-                textBox = new DialogueBox();
-		
+                	
 		Gdx.app.debug("Main:create", "instantiating GameManager");
 		gm = GameManager.instance;
 
 		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
-		//screen = new DemoDisplay(textBox);
-                screen = new DemoDisplay();
+		screen = new DemoDisplay();
         }
 
 	@Override
