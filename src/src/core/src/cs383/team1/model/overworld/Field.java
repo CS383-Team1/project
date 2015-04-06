@@ -5,7 +5,7 @@ import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
 public class Field implements Tile {
-	public static final int TYPE = 1;
+	public static final int TYPE = 4;
 	public static final boolean PASSABLE = true;
 
 	private Position pos;

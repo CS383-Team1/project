@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Tile;
@@ -24,6 +25,10 @@ public class DemoDisplay extends Display {
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
+
+    public OrthographicCamera camera;
+
+
 
 	private Texture getTileTexture(int i) {
 		String fname;
@@ -173,12 +178,23 @@ public class DemoDisplay extends Display {
 			sprite.draw(batch);
 		}
 
+
+
+
+
 		player = GameManager.instance.areas.current.player;
 		sprite = new Sprite(getEntityTexture(player.type()));
 		sprite.setPosition(player.pos().x * Tile.WIDTH,
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
-		sprite.draw(batch);
 
+        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.setToOrtho(false);
+        camera.position.set(sprite.getX(), sprite.getY(), 0);
+        camera.update();
+        batch.setProjectionMatrix(camera.combined);
+
+		sprite.draw(batch);
 		batch.end();
+
 	}
 }
