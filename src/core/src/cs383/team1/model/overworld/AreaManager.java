@@ -12,6 +12,7 @@ import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Tile;
 import cs383.team1.model.overworld.Wall;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public final class AreaManager {
 		current = null;
 	}
 
-	public Area loadArea(String fname) {
+	public Area loadArea(String fname){
 		boolean passable;
 		int i;
 		int x;
@@ -117,6 +118,10 @@ public final class AreaManager {
                                 case StairsEntity.TYPE:
 					Gdx.app.debug("AreaManager:loadArea", "Loading StairsEntity");
                                         entities.add(new StairsEntity(pos,entityData));
+                                        break;
+                                case Npc.TYPE:
+					Gdx.app.debug("AreaManager:loadArea", "Loading StairsEntity");
+                                        entities.add(new Npc(pos,entityData));
                                         break;
 				default:
 					Gdx.app.error("AreaManager:loadArea",

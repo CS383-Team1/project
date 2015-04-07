@@ -8,6 +8,7 @@ import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
 import cs383.team1.model.overworld.Entity;
+import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.StairsEntity;
@@ -53,6 +54,7 @@ public final class GameManager {
 		Player player;
 		Position next;
 		Tile target;
+                Npc npc = new Npc();
 
 		player = areas.current.player;
 
@@ -90,6 +92,10 @@ public final class GameManager {
 			if(target.passable()) {
 				player.pos = next;
 			}
+                        
+                        if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
+                                npc.readScript();
+                        }
                         
                         //Try to use stairs entity on a stairs tile (well3112)
                         if (target.type() == 3)
