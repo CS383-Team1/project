@@ -83,13 +83,18 @@ There will be three types of attacks:
 \item Virtual 
 \item Physical
 \end{itemize}
+Verbal attacks will be used in office levels, for verbal sparring with coworker NPCS.
+Virtual attacks will be used in cyberspace levels, for combat with viruses and 
+security systems. Physical attacks will be used in space station levels, for physical
+combat with aliens. 
+
 \subsection*{Verbal}
 There will be several types of verbal attacks which include 
 \begin{itemize}
 \item Compliment 
 \item Insult 
 \item Small Talk 
-\item Logic or Technical 
+\item Technical 
 \end{itemize}
 All of these attack types can affect a character's accuracy, will to go on, 
 health, and so on. Characters will be more susceptible or less susceptible
@@ -100,6 +105,8 @@ health, and so on. Characters will be more susceptible or less susceptible
  Players will generally have access to base versions of the first three verbal
  attacks, but the weapon you are holding may give you better versions of these,
  and may provide access to a technical attack. 
+ 
+ 
   \subsection*{Virtual}
   For simplicity of play, a character's items may be digitized when they enter 
   virtual reality, so they may use the same weapons. Virtual enemies, however,
