@@ -6,7 +6,6 @@ import cs383.team1.input.InputManager;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
-            System.out.println("HERP DERP");
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new InputManager(), config);
 	}
