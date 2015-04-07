@@ -183,6 +183,7 @@ public class DemoDisplay extends Display {
 			sprite.setPosition(e.pos().x * Tile.WIDTH,
 			  (e.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
 			sprite.draw(batch);
+                        
 		}
 
 		player = GameManager.instance.areas.current.player;
@@ -197,7 +198,7 @@ public class DemoDisplay extends Display {
                         font.draw(batch, chatBox.messages.get(i), 1 * Tile.WIDTH, 1 * Tile.HEIGHT + (15 * i));
 		
                     
-                        //font.draw(batch, chatBox.messages.get(0), 1 * Tile.WIDTH, 1 * Tile.HEIGHT);
+                        //If more than 10 messages, delete oldest one
                         if(chatBox.messages.size() > 10){
                             chatBox.removeMessage();
                         }

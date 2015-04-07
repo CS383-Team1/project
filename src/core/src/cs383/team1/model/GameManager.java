@@ -8,6 +8,7 @@ import cs383.team1.input.InputManager;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.NPC;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
@@ -18,6 +19,8 @@ public final class GameManager {
 
 	public AreaManager areas;
 	public StateManager states;
+        DialogueBox dialogue;
+        
 
 	private GameManager() {
 		if(instance != null) {
@@ -29,6 +32,7 @@ public final class GameManager {
 		Gdx.app.debug("GameManager:GameManager", "instantiating class");
 		areas = AreaManager.instance;
 		states = StateManager.instance;
+                dialogue = new DialogueBox();
 
 		load();
 	}
@@ -51,14 +55,11 @@ public final class GameManager {
 		areas.current = index != -1 ? areas.areas.get(index) : null;
 	}
 
-	public void update(InputManager in, DialogueBox textBox) {
+	public void update(InputManager in) {
 		Player player;
 		Position next;
 		Tile target;
-                NPC npc;
 		player = areas.current.player;
-                npc = (NPC) areas.current.entities.get(0);
-                npc.ai(areas.current);
                 
 		while(in.consumable()) {
 			switch(in.keys.remove(0)) {
@@ -85,6 +86,17 @@ public final class GameManager {
 					break;
 				}
 			}
+                        //Check neighboring tiles for NPC's. If any are present, then display their 
+                        //available quests in the DialogueBox
+                        for(Entity e : areas.current.entities) {
+                            if(e.pos().x == next.x && e.pos().y == next.y){
+                                if(e.type() == NPC.TYPE){
+                                    NPC npc = new NPC();
+                                    npc = (NPC) e;
+                                    player.possibleQuests.add(npc.quests.get(0));
+                                }
+                            }
+                        }
 
 			if(target == null) {
 				Gdx.app.error("GameManager:update", "invalid move");

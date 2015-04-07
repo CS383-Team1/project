@@ -6,6 +6,7 @@ import cs383.team1.model.overworld.Position;
 
 public class DemoEntity implements Entity {
 	public static final int TYPE = 1;
+        public String quest;
 
 	private Position pos;
 
@@ -25,4 +26,5 @@ public class DemoEntity implements Entity {
 	public Position pos() {
 		return pos;
 	}
+        
 }

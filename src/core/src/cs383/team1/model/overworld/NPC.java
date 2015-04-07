@@ -10,6 +10,7 @@ import com.badlogic.gdx.Input;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.Tile;
+import java.util.ArrayList;
 import java.util.Random;
 
 public final class NPC implements Entity {
@@ -21,19 +22,20 @@ public final class NPC implements Entity {
 	public int hp;
 	public int mp;
 	public int ap;
-                  
-
+        boolean roaming = true;
+        public ArrayList<String> quests = new ArrayList<String>();
+        String quest;
 	public NPC() {
-		//this(new Position(0, 0), 0, 0, 0);
-            this(new Position(0, 0));
+	    this(new Position(0, 0), new String());
 	}
 
-	
-        public NPC(Position p) {
+        public NPC(Position p, String q) {
 		Gdx.app.debug("Player:Player", "instantiating class");
 		pos = p;
+                quests.add(q);
+                System.out.println("Printing quest in NPC: " + quests.get(0));
         }
-
+        
 	public int type() {
 		return TYPE;
 	}
@@ -42,11 +44,31 @@ public final class NPC implements Entity {
 		return pos;
 	}
         
-        public void ai(Area area) {
+        public String getQuest(){
+            return quests.get(0);
+        }
+        
+        //Add quest to arraylist of quests
+        public void addQuest(String quest){
+            quests.add(quest);
+        }
+        
+        //Delete first quest in arraylist of quests
+        public void deleteQuest(){
+            quests.remove(0);
+        }
+        
+        //Return first quest in list
+        public String displayQuest(){
+            return quests.get(0);
+        }
+        
+        public void overworldAI(Area area) {
             Random randomDirection = new Random();
             int randomint = randomDirection.nextInt(4);
             System.out.println("Printing random direction: " + randomint);
-            switch(randomint) {
+            while(roaming == true){
+                switch(randomint) {
 				case 0:
                                         //Move Left
 					next = new Position(pos.x - 1, pos.y);
@@ -72,6 +94,9 @@ public final class NPC implements Entity {
 					target = t;
 					break;
 				}
+                                //if(t.pos().x == player.pos.x && t.pos().y == player.y){
+                                    
+                                //}
 			}
 
 			if(target == null) {
@@ -82,5 +107,6 @@ public final class NPC implements Entity {
 			if(target.passable()) {
 				pos = next;
 			}
-		}
+                    }
+            }
 }

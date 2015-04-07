@@ -41,7 +41,7 @@ public class Main implements ApplicationListener, InputProcessor {
 	public void render() {
 		if(inputManager.consumable()) {
 			Gdx.app.debug("Main:render", "Updating GameManager");
-			gm.update(inputManager, textBox);
+			gm.update(inputManager);
 		}
 
 		screen.render();

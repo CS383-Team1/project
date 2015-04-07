@@ -51,6 +51,8 @@ public final class AreaManager {
 		FileHandle fin;
 		List<Entity> entities;
 		List<Tile> tiles;
+                String questFile;
+                String questList;
 
 		offset = 0;
 		entities = new ArrayList<Entity>();
@@ -89,14 +91,26 @@ public final class AreaManager {
 			}
 		}
 		offset += numTiles * 3;
+                
+                Gdx.app.debug("AreaManager:loadArea", "Loading quests");
+
+                //Get quests from file and give them to specific NPC's
+                String []readInQuests;
+                questFile = "quests/npc1.txt";
+                fin = Gdx.files.internal(questFile);
+		questList = fin.readString();
+		readInQuests = questList.trim().split("\n");
+                System.out.println("Printing quest: " + readInQuests[0]);
+                
 
 		Gdx.app.debug("AreaManager:loadArea", "Loading entities");
-
+                int k = 0;
 		numEntities = Integer.parseInt(vals[offset++]);
 		for(i = offset; i < offset + (numEntities * 3); i += 3) {
 			x = Integer.parseInt(vals[i + 0]);
 			y = Integer.parseInt(vals[i + 1]);
 			type = Integer.parseInt(vals[i + 2]);
+                        
 
 			pos = new Position(x, y);
                         
@@ -107,13 +121,15 @@ public final class AreaManager {
 					break;
                                 case NPC.TYPE:
 					Gdx.app.debug("AreaManager:loadArea", "Loading NPC");
-					entities.add(new NPC(pos));
-					break;    
+					entities.add(new NPC(pos, readInQuests[k]));
+                                        break;    
 				default:
 					Gdx.app.error("AreaManager:loadArea",
 					  "invalid entity type " + vals[i + 2]);
 			}
+                        k++;
 		}
+                
 		offset += numEntities * 3;
 
 		Gdx.app.debug("AreaManager:loadArea", "Loading Player");
@@ -131,4 +147,9 @@ public final class AreaManager {
 
 		return a;
 	}
+        
+        public void update(){
+            
+        
+        }
 }

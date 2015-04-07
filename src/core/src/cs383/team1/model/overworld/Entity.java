@@ -6,4 +6,5 @@ import cs383.team1.model.overworld.Position;
 public interface Entity {
 	public int type();
 	public Position pos();
+        
 }

@@ -3,6 +3,7 @@ package cs383.team1.model.overworld;
 import com.badlogic.gdx.Gdx;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
+import java.util.ArrayList;
 
 public final class Player implements Entity {
 	public static final int TYPE = 1;
@@ -11,6 +12,8 @@ public final class Player implements Entity {
 	public int hp;
 	public int mp;
 	public int ap;
+        public ArrayList<String> possibleQuests = new ArrayList<String>();
+        public ArrayList<String> acceptedQuests = new ArrayList<String>();
 
 	public Player() {
 		this(new Position(0, 0), 0, 0, 0);
@@ -31,4 +34,10 @@ public final class Player implements Entity {
 	public Position pos() {
 		return pos;
 	}
+        
+        public String getQuest(){
+            return acceptedQuests.get(0);
+        }
+        
+        
 }
