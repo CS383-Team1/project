@@ -142,5 +142,22 @@ There will be three types of virtual attacks. These are
  Players will have access to basic Bludgeoning attacks, but holding a 
  weapon may give the player access to Ranged attacks, or more powerful
  Blugeoning attacks.
+ 
+ 
+ \subsection*{Damage Calculation}
+ The player's damage is given by the base damage (which is determined
+ by their weapon, and affected by their clothing), perhaps with some
+ range determined randomly, such as plus or minus 30%. The player's 
+ equipment also determines their Accuracy, which should be between 0
+ and 100, and is their percent chance to hit when they attack. If they
+ do not hit, their attack has no effect. The player's equipment also
+ determines their Critical Chance, which should also be between 0 and
+ 100. This determines the probability of the player doing critical damage
+ (which multiplies the damage of their attack by two) on an attack which
+ hits an opponent. 
+ 
+ The average damage of a character can be assumed to be: 
+ (ACCURACY%)*(BASE DAMAGE*(1-CRIT%))+ (BASE DAMAGE*2 * CRIT%)
+ 
 
 \end{document}
