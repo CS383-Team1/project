@@ -6,14 +6,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Tile;
 import cs383.team1.model.overworld.DemoEntity;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.render.Display;
+import cs383.team1.input.DialogueBox;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class DemoDisplay extends Display {
 	private static final String FNAME = "img/demo.png";
@@ -24,7 +28,11 @@ public class DemoDisplay extends Display {
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
-
+        DialogueBox chatBox;
+        String fileName;
+        private FreeTypeFontGenerator fontGen;
+        BitmapFont font;
+        
 	private Texture getTileTexture(int i) {
 		String fname;
 
@@ -127,13 +135,18 @@ public class DemoDisplay extends Display {
 	}
 
 	public DemoDisplay() {
+            
 		Gdx.app.debug("DemoDisplay:DemoDisplay", "intantiating class");
 		batch = new SpriteBatch();
+                font = new BitmapFont();
 		tileSprites = new HashMap<Integer, String>();
 		tileTextures = new HashMap<Integer, Texture>();
 		entitySprites = new HashMap<Integer, String>();
 		entityTextures = new HashMap<Integer, Texture>();
-                
+                fileName = "fonts/VCR_OSD_MONO_1.001.ttf";
+		fontGen = new FreeTypeFontGenerator(Gdx.files.internal(fileName));
+                font = fontGen.generateFont(20);
+                chatBox = new DialogueBox();
 		loadSpriteMaps();
 	}
 
@@ -154,8 +167,7 @@ public class DemoDisplay extends Display {
 
 		Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		batch.enableBlending();
+                batch.enableBlending();
 		batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
 		batch.begin();
@@ -171,6 +183,7 @@ public class DemoDisplay extends Display {
 			sprite.setPosition(e.pos().x * Tile.WIDTH,
 			  (e.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
 			sprite.draw(batch);
+                        
 		}
 
 		player = GameManager.instance.areas.current.player;
@@ -178,7 +191,19 @@ public class DemoDisplay extends Display {
 		sprite.setPosition(player.pos().x * Tile.WIDTH,
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
 		sprite.draw(batch);
-
+                
+                //Draw dialogue text on to screen
+                if(chatBox.consumable()){
+                    for(int i = 0; i < chatBox.messages.size(); i++) {
+                        font.draw(batch, chatBox.messages.get(i), 1 * Tile.WIDTH, 1 * Tile.HEIGHT + (15 * i));
+		
+                    
+                        //If more than 10 messages, delete oldest one
+                        if(chatBox.messages.size() > 10){
+                            chatBox.removeMessage();
+                        }
+                    }
+                }
 		batch.end();
 	}
 }
