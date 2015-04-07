@@ -214,11 +214,14 @@ public class DemoDisplay extends Display {
                 //Draw dialogue text on to screen
                 if(chatBox.consumable()){
                     for(int i = 0; i < chatBox.messages.size(); i++) {
+                        /*The math below adjusts the chatBox to the player's
+                        relative position so that it is drawn consistently in
+                        the lower left-hand corner of the screen (well3112)*/
                         font.draw(batch, chatBox.messages.get(i), 
                                 (sprite.getX()-(Gdx.graphics.getWidth()/2)) +
                                         (1 * Tile.WIDTH),
                                 (sprite.getY()-(Gdx.graphics.getHeight()/2)) +
-                                        (1 * Tile.HEIGHT + (15 * i)));
+                                        (1 * Tile.HEIGHT + (18 * (chatBox.messages.size() - i))));
                     
                         //If more than 10 messages, delete oldest one
                         if(chatBox.messages.size() > 10){

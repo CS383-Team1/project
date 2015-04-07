@@ -99,13 +99,14 @@ public final class GameManager {
                                 next = player.pos;
                         }
                         
+                        //Try to use stairs entity on a stairs tile (well3112)
+                        if (target.type() == 3)
+                                areas.useStairs(next);
+                        
 			if(target.passable()) {
 				player.pos = next;
 			}
                         
-                        //Try to use stairs entity on a stairs tile (well3112)
-                        if (target.type() == 3)
-                                areas.useStairs(next);
 		}
 
 		/* TODO: move the keyhandling code to the StateManager */
