@@ -120,7 +120,7 @@ public final class AreaManager {
                                         entities.add(new StairsEntity(pos,entityData));
                                         break;
                                 case Npc.TYPE:
-					Gdx.app.debug("AreaManager:loadArea", "Loading StairsEntity");
+					Gdx.app.debug("AreaManager:loadArea", "Loading NpcEntity");
                                         entities.add(new Npc(pos,entityData));
                                         break;
 				default:

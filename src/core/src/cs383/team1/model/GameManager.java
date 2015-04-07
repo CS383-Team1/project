@@ -89,13 +89,15 @@ public final class GameManager {
 				continue;
 			}
 
+                        //Interact with an NPC (nullifies last attempted move)
+                        if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
+                                npc.readNext();
+                                next = player.pos;
+                        }
+                        
 			if(target.passable()) {
 				player.pos = next;
 			}
-                        
-                        if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
-                                npc.readScript();
-                        }
                         
                         //Try to use stairs entity on a stairs tile (well3112)
                         if (target.type() == 3)
