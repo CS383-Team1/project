@@ -5,6 +5,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -32,6 +33,7 @@ public class DemoDisplay extends Display {
         String fileName;
         private FreeTypeFontGenerator fontGen;
         BitmapFont font;
+        public OrthographicCamera camera;
         
 	private Texture getTileTexture(int i) {
 		String fname;
@@ -187,16 +189,36 @@ public class DemoDisplay extends Display {
 		}
 
 		player = GameManager.instance.areas.current.player;
+                chatBox = GameManager.instance.chatBox;
 		sprite = new Sprite(getEntityTexture(player.type()));
 		sprite.setPosition(player.pos().x * Tile.WIDTH,
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
+                
+                camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+                camera.setToOrtho(false);
+                camera.position.set(sprite.getX(), sprite.getY(), 0);
+                camera.update();
+                batch.setProjectionMatrix(camera.combined);
+                
+                drawChatBox();
+                
 		sprite.draw(batch);
                 
+
+                
+		batch.end();
+	}
+        
+        public void drawChatBox()
+        {
                 //Draw dialogue text on to screen
                 if(chatBox.consumable()){
                     for(int i = 0; i < chatBox.messages.size(); i++) {
-                        font.draw(batch, chatBox.messages.get(i), 1 * Tile.WIDTH, 1 * Tile.HEIGHT + (15 * i));
-		
+                        font.draw(batch, chatBox.messages.get(i), 
+                                (sprite.getX()-(Gdx.graphics.getWidth()/2)) +
+                                        (1 * Tile.WIDTH),
+                                (sprite.getY()-(Gdx.graphics.getHeight()/2)) +
+                                        (1 * Tile.HEIGHT + (15 * i)));
                     
                         //If more than 10 messages, delete oldest one
                         if(chatBox.messages.size() > 10){
@@ -204,6 +226,5 @@ public class DemoDisplay extends Display {
                         }
                     }
                 }
-		batch.end();
-	}
+        }
 }

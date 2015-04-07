@@ -10,7 +10,7 @@ public class Npc implements Entity {
 
 	private final Position pos;
         private final ArrayList<String> talk = new ArrayList();
-        private int nextLine = 0;
+        private int nextLine = -1;
         
 	public Npc()
         {
@@ -53,27 +53,26 @@ public class Npc implements Entity {
 	}
         
         //Reads the entire script into System.out
-        public void readScript() 
+        public ArrayList readScript() 
         {
                 for (String talk1 : talk) {
                         System.out.println(talk1);
                 }
+                return talk;
         }
         
         //Reads the line specified by 'i'
-        public void readLine(int i)
+        public String readLine(int i)
         {
                 if (talk.size() > i)
-                        System.out.println(talk.get(i));
-                else
-                        Gdx.app.error("Npc", 
-                                "Illegal attempt to read past current script");
+                        return talk.get(i);
+                return talk.get(talk.size()-1);
         }
         
         //Reads the line after the last one just read
-        public void readNext()
+        public String readNext()
         {
-                readLine(nextLine);
                 nextLine++;
+                return readLine(nextLine);
         }
 }

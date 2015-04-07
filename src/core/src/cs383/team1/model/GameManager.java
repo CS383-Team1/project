@@ -3,6 +3,7 @@ package cs383.team1.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.Input.Keys;
+import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
@@ -20,6 +21,9 @@ public final class GameManager {
 	public AreaManager areas;
 	public StateManager states;
 
+        public DialogueBox chatBox = new DialogueBox();
+        
+        
 	private GameManager() {
 		if(instance != null) {
 			Gdx.app.error("GameManager:GameManager",
@@ -54,7 +58,7 @@ public final class GameManager {
 		Player player;
 		Position next;
 		Tile target;
-                Npc npc = new Npc();
+                Npc npc;
 
 		player = areas.current.player;
 
@@ -91,7 +95,7 @@ public final class GameManager {
 
                         //Interact with an NPC (nullifies last attempted move)
                         if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
-                                npc.readNext();
+                                chatBox.addMessage(npc.readNext());
                                 next = player.pos;
                         }
                         
