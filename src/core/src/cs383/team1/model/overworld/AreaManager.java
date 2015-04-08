@@ -12,7 +12,19 @@ import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Tile;
 import cs383.team1.model.overworld.Wall;
-import java.io.IOException;
+import cs383.team1.model.overworld.Floor;
+import cs383.team1.model.overworld.Table;
+import cs383.team1.model.overworld.LeftDesk;
+import cs383.team1.model.overworld.RightDesk;
+import cs383.team1.model.overworld.WalkWay;
+import cs383.team1.model.overworld.OutsideWall;
+
+
+
+
+
+
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +46,7 @@ public final class AreaManager {
 		current = null;
 	}
 
-	public Area loadArea(String fname){
+	public Area loadArea(String fname) {
 		boolean passable;
 		int i;
 		int x;
@@ -79,8 +91,8 @@ public final class AreaManager {
 			switch(type) {
 			case 1:
 				Gdx.app.debug("AreaManager:loadArea",
-				  "Loading Field (" + vals[i] + "," + vals[i + 1] + ")");
-				tiles.add(new Field(pos));
+				  "Loading Floor (" + vals[i] + "," + vals[i + 1] + ")");
+				tiles.add(new Floor(pos));
 				break;
 			case 2:
 				Gdx.app.debug("AreaManager:loadArea",
@@ -92,6 +104,36 @@ public final class AreaManager {
 				  "Loading Stairs (" + vals[i] + "," + vals[i + 1] + ")");
 				tiles.add(new Stairs(pos));
 				break;
+            case 4:
+                Gdx.app.debug("AreaManager:loadArea",
+                  "Loading Field (" + vals[i] + "," + vals[i + 1] + ")");
+                tiles.add(new Field(pos));
+                break;
+            case 5:
+                Gdx.app.debug("AreaManager:loadArea",
+                  "Loading Table (" + vals[i] + "," + vals[i + 1] + ")");
+                tiles.add(new Table(pos));
+                break;
+            case 6:
+                Gdx.app.debug("AreaManager:loadArea",
+                  "Loading LeftDesk (" + vals[i] + "," + vals[i + 1] + ")");
+                tiles.add(new LeftDesk(pos));
+                break;
+            case 7:
+                Gdx.app.debug("AreaManager:loadArea",
+                  "Loading RightDesk (" + vals[i] + "," + vals[i + 1] + ")");
+                tiles.add(new RightDesk(pos));
+                break;
+            case 8:
+                Gdx.app.debug("AreaManager:loadArea",
+                  "Loading WalkWay (" + vals[i] + "," + vals[i + 1] + ")");
+                tiles.add(new WalkWay(pos));
+                break;
+            case 9:
+                Gdx.app.debug("AreaManager:loadArea",
+                  "Loading OutsideWall (" + vals[i] + "," + vals[i + 1] + ")");
+                tiles.add(new OutsideWall(pos));
+                break;
 			default:
 				Gdx.app.error("AreaManager:loadArea",
 				  "invalid tile type " + vals[i + 2]);

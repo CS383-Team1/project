@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Tile;
@@ -29,6 +30,7 @@ public class DemoDisplay extends Display {
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
+
         DialogueBox chatBox;
         String fileName;
         private FreeTypeFontGenerator fontGen;
@@ -188,12 +190,16 @@ public class DemoDisplay extends Display {
                         
 		}
 
+
+
+
+
 		player = GameManager.instance.areas.current.player;
                 chatBox = GameManager.instance.chatBox;
 		sprite = new Sprite(getEntityTexture(player.type()));
 		sprite.setPosition(player.pos().x * Tile.WIDTH,
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
-                
+
                 camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
                 camera.setToOrtho(false);
                 camera.position.set(sprite.getX(), sprite.getY(), 0);
@@ -203,10 +209,9 @@ public class DemoDisplay extends Display {
                 drawChatBox(chatBox);
                 
 		sprite.draw(batch);
-                
 
-                
 		batch.end();
+
 	}
         
         public void drawChatBox(DialogueBox db)

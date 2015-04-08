@@ -107,6 +107,9 @@ public final class GameManager {
 				player.pos = next;
 			}
                         
+                        //Try to use stairs entity on a stairs tile (well3112)
+                        if (target.type() == 3)
+                                areas.useStairs(next);
 		}
 
 		/* TODO: move the keyhandling code to the StateManager */

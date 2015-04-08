@@ -23,9 +23,7 @@ public class Stairs implements Tile {
 		return TYPE;
 	}
 
-	public Position pos() {
-		return pos;
-	}
+	public Position pos() {return pos;}
 
 	public boolean passable() {
 		return PASSABLE;
