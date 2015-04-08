@@ -53,10 +53,23 @@ public final class GameManager {
 		Player player;
 		Position next;
 		Tile target;
-
+                
 		player = areas.current.player;
-
+                next = new Position(player.pos.x, player.pos.y );
 		while(in.consumable()) {
+                    if (in.output.size() > 0 ){
+                        if(in.keycodes.get(0).equals(in.output.get(0))){
+                            next = new Position(player.pos.x, player.pos.y + 1);
+                        }else if(in.keycodes.get(1).equals(in.output.get(0))){
+                            next = new Position(player.pos.x + 1, player.pos.y);
+                        }else if(in.keycodes.get(2).equals(in.output.get(0))){
+                            next = new Position(player.pos.x, player.pos.y - 1);
+                        }else if(in.keycodes.get(3).equals(in.output.get(0))){
+                            next = new Position(player.pos.x - 1, player.pos.y);
+                        }
+                        in.output.remove(0);
+                    }
+                    /*
 			switch(in.keys.remove(0)) {
 				case Keys.LEFT:
 					next = new Position(player.pos.x - 1, player.pos.y);
@@ -73,7 +86,8 @@ public final class GameManager {
 				default:
 					continue;
 			}
-
+                    */
+                    in.keys.remove(0);
 			target = null;
 			for(Tile t : areas.current.tiles) {
 				if(t.pos().x == next.x && t.pos().y == next.y) {

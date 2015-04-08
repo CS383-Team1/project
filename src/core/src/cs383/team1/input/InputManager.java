@@ -18,7 +18,8 @@ import cs383.team1.render.DemoDisplay;
 public class InputManager implements ApplicationListener, InputProcessor{
  	public ArrayList<Integer> keys;
         public ArrayList<String> keycodes;
-		
+	public ArrayList<String> output;
+        
 	public InputManager() {
 		keys = new ArrayList<Integer>();
                 keycodes = new ArrayList<String>();
@@ -35,6 +36,8 @@ public class InputManager implements ApplicationListener, InputProcessor{
                 
                 
                 keycodes.add("unknown\n");
+                
+                output = new ArrayList<String>();
                 
 	}
 	
@@ -95,27 +98,35 @@ public class InputManager implements ApplicationListener, InputProcessor{
             switch(key){ 
                 case Input.Keys.A:
                     System.out.print("A KEY ");
+                    inputManager.output.add(keycodes.get(3));
                     break;
                 case Input.Keys.W:
                     System.out.print("W KEY ");
+                    inputManager.output.add(keycodes.get(0));
                     break;
                 case Input.Keys.S:
                     System.out.print("S KEY ");
+                    inputManager.output.add(keycodes.get(2));
                     break;
                 case Input.Keys.D:
                     System.out.print("D KEY ");
+                    inputManager.output.add(keycodes.get(1));
                     break;
                 case Input.Keys.UP:
                     System.out.print("UP KEY ");
+                    inputManager.output.add(keycodes.get(0));
                     break;
                 case Input.Keys.DOWN:
                     System.out.print("DOWN KEY ");
+                    inputManager.output.add(keycodes.get(2));
                     break;
                 case Input.Keys.LEFT:
                     System.out.print("LEFT KEY ");
+                    inputManager.output.add(keycodes.get(3));
                     break;
                 case Input.Keys.RIGHT:
                     System.out.print("RIGHT KEY ");
+                    inputManager.output.add(keycodes.get(1));
                     break;
 
             }
