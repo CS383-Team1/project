@@ -1,4 +1,10 @@
-3
-1 img/field.png
+9
+1 img/floor.png
 2 img/wall.png
 3 img/stairs.png
+4 img/field.png
+5 img/table.png
+6 img/leftdesk.png
+7 img/rightdesk.png
+8 img/walkway.png
+9 img/outsidewall.png

@@ -3,11 +3,13 @@ package cs383.team1.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.Input.Keys;
+import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
 import cs383.team1.model.overworld.Entity;
+import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.StairsEntity;
@@ -19,6 +21,9 @@ public final class GameManager {
 	public AreaManager areas;
 	public StateManager states;
 
+        public DialogueBox chatBox = new DialogueBox();
+        
+        
 	private GameManager() {
 		if(instance != null) {
 			Gdx.app.error("GameManager:GameManager",
@@ -53,6 +58,7 @@ public final class GameManager {
 		Player player;
 		Position next;
 		Tile target;
+                Npc npc;
 
 		player = areas.current.player;
 
@@ -60,15 +66,19 @@ public final class GameManager {
 			switch(in.keys.remove(0)) {
 				case Keys.LEFT:
 					next = new Position(player.pos.x - 1, player.pos.y);
+                                        player.facing = 3;
 					break;
 				case Keys.RIGHT:
 					next = new Position(player.pos.x + 1, player.pos.y);
+                                        player.facing = 1;
 					break;
 				case Keys.UP:
 					next = new Position(player.pos.x, player.pos.y + 1);
+                                        player.facing = 0;
 					break;
 				case Keys.DOWN:
 					next = new Position(player.pos.x, player.pos.y - 1);
+                                        player.facing = 2;
 					break;
 				default:
 					continue;
@@ -87,7 +97,18 @@ public final class GameManager {
 				continue;
 			}
 
+                        //Interact with an NPC (nullifies last attempted move)
+                        if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
+                                chatBox.addMessage(npc.readNext());
+                                next = player.pos;
+                        }
+                        
+                        //Try to use stairs entity on a stairs tile (well3112)
+                        if (target.type() == 3)
+                                areas.useStairs(next);
+                        
 			if(target.passable()) {
+                                player.floatPos = new Position((player.pos().x-next.x) * Tile.WIDTH, (player.pos().y-next.y) * Tile.HEIGHT);
 				player.pos = next;
 			}
                         
