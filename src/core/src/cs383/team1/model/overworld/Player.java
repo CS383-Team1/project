@@ -70,7 +70,7 @@ public final class Player implements Entity {
         public void setImage() {
                 final int animDiv = 28;
                 int anim;
-                if ((Math.max(Math.abs(floatPos.x), Math.abs(floatPos.y)) % animDiv) >= (animDiv / 2))
+                if ((Math.max(Math.abs(floatPos.x), Math.abs(floatPos.y)) % animDiv) >= Math.ceil(animDiv / 2))
                         anim = 0;
                 else
                         anim = 1;
