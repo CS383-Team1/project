@@ -3,8 +3,10 @@ package cs383.team1.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.utils.Timer;
 import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
+import cs383.team1.input.Notification;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
@@ -22,6 +24,7 @@ public final class GameManager {
 	public StateManager states;
 
         public DialogueBox chatBox = new DialogueBox();
+        public Notification notice = new Notification();
         
         
 	private GameManager() {
@@ -100,6 +103,14 @@ public final class GameManager {
                         //Interact with an NPC (nullifies last attempted move)
                         if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
                                 chatBox.addMessage(npc.readNext());
+                                notice = new Notification("ui/quest.png","New Quest!");
+				Timer.schedule(new Timer.Task() {
+					@Override
+					public void run() {
+						notice = new Notification();
+                                                System.out.println("timerout");
+					}
+				}, 5);
                                 next = player.pos;
                         }
                         

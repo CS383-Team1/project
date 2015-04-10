@@ -20,12 +20,19 @@ import cs383.team1.model.overworld.Player;
 import cs383.team1.render.Display;
 import cs383.team1.input.DialogueBox;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import cs383.team1.input.NotificationBox;
 
 public class DemoDisplay extends Display {
 	private static final String FNAME = "img/demo.png";
 
 	private SpriteBatch batch;
 	private Sprite sprite;
+        
 	private Map<Integer, String> tileSprites;
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
@@ -35,6 +42,11 @@ public class DemoDisplay extends Display {
         String fileName;
         private FreeTypeFontGenerator fontGen;
         BitmapFont font;
+        
+//        Stage stage;
+//        Skin skin;
+//        Window notice;
+        
         public OrthographicCamera camera;
         
 	private Texture getTileTexture(int i) {
@@ -150,7 +162,7 @@ public class DemoDisplay extends Display {
                 fileName = "fonts/VCR_OSD_MONO_1.001.ttf";
 		fontGen = new FreeTypeFontGenerator(Gdx.files.internal(fileName));
                 font = fontGen.generateFont(20);
-                chatBox = new DialogueBox();
+                chatBox = new DialogueBox();               
 		loadSpriteMaps();
 	}
 
@@ -191,9 +203,6 @@ public class DemoDisplay extends Display {
 		}
 
 
-
-
-
 		player = GameManager.instance.areas.current.player;
                 chatBox = GameManager.instance.chatBox;
 		sprite = new Sprite(getEntityTexture(player.aType()));
@@ -212,9 +221,10 @@ public class DemoDisplay extends Display {
                 drawChatBox(chatBox);
                 
 		sprite.draw(batch);
-
+//                notice.draw(batch, 0);
+//                stage.draw();
+                
 		batch.end();
-
 	}
         
         public void drawChatBox(DialogueBox db)
@@ -237,5 +247,10 @@ public class DemoDisplay extends Display {
                         }
                     }
                 }
+        }
+        
+        public void drawNoticeBox(NotificationBox nb)
+        {
+                
         }
 }
