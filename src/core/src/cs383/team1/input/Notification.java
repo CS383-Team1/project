@@ -18,11 +18,24 @@ public class Notification {
                 this ("img/null", "");
         }
         
-        public String sprite(){
+        public String sprite() {
                 return sprite;
         }
         
-        public String msg(){
+        public String msg() {
                 return msg;
+        }
+        
+        public void setSprite(String s) {
+                sprite = s;
+        }
+        
+        public void setMsg(String s) {
+                msg = s;
+        }
+        
+        public void clearAll() {
+                sprite = "img/null";
+                msg = "";
         }
 }

@@ -83,6 +83,8 @@ public final class GameManager {
 					next = new Position(player.pos.x, player.pos.y - 1);
                                         player.facing = 2;
 					break;
+                                case Keys.BACKSPACE:
+                                        player.setNotice(new Notification("ui/quest.png", "You pressed backspace!"));
 				default:
 					continue;
 			}
@@ -103,14 +105,7 @@ public final class GameManager {
                         //Interact with an NPC (nullifies last attempted move)
                         if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
                                 chatBox.addMessage(npc.readNext());
-                                notice = new Notification("ui/quest.png","New Quest!");
-				Timer.schedule(new Timer.Task() {
-					@Override
-					public void run() {
-						notice = new Notification();
-                                                System.out.println("timerout");
-					}
-				}, 5);
+                                player.setNotice(new Notification("ui/quest.png","New Quest!"));
                                 next = player.pos;
                         }
                         

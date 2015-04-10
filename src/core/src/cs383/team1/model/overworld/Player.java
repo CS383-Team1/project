@@ -1,6 +1,7 @@
 package cs383.team1.model.overworld;
 
 import com.badlogic.gdx.Gdx;
+import cs383.team1.input.Notification;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
@@ -15,6 +16,8 @@ public final class Player implements Entity {
 	public int mp;
 	public int ap;
 
+        public Notification notice = null;
+        
 	public Player() {
 		this(new Position(0, 0), 0, 0, 0);
 	}
@@ -45,6 +48,14 @@ public final class Player implements Entity {
         
         public void setFloatPos(Position p) {
                 floatPos = p;
+        }
+        
+        public Notification notice() {
+                return notice;
+        }
+        
+        public void setNotice(Notification n) {
+                notice = n;
         }
         
         public void decFloatPos(int i) {

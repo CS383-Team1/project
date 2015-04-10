@@ -221,8 +221,6 @@ public class DemoDisplay extends Display {
                 drawChatBox(chatBox);
                 
 		sprite.draw(batch);
-//                notice.draw(batch, 0);
-//                stage.draw();
                 
 		batch.end();
 	}
