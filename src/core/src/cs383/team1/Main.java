@@ -5,7 +5,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
-import cs383.team1.input.DialogueBox;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManager;
 import cs383.team1.render.DemoDisplay;
@@ -14,13 +14,15 @@ public class Main implements ApplicationListener, InputProcessor {
 	public InputManager inputManager;
 	public GameManager gm;
 	public DemoDisplay screen;
-        public DialogueBox textBox;
+
+    OrthographicCamera camera;
 
 	@Override
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_INFO);
 		/* Gdx.app.setLogLevel(Application.LOG_DEBUG); */
 		Gdx.input.setInputProcessor(this);
+
 
 		inputManager = new InputManager();
                 	
@@ -43,6 +45,7 @@ public class Main implements ApplicationListener, InputProcessor {
 			Gdx.app.debug("Main:render", "Updating GameManager");
 			gm.update(inputManager);
 		}
+
 
 		screen.render();
 	}

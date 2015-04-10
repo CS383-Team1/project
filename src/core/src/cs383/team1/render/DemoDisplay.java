@@ -5,11 +5,13 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Tile;
@@ -32,6 +34,7 @@ public class DemoDisplay extends Display {
         String fileName;
         private FreeTypeFontGenerator fontGen;
         BitmapFont font;
+        public OrthographicCamera camera;
         
 	private Texture getTileTexture(int i) {
 		String fname;
@@ -143,7 +146,7 @@ public class DemoDisplay extends Display {
 		tileTextures = new HashMap<Integer, Texture>();
 		entitySprites = new HashMap<Integer, String>();
 		entityTextures = new HashMap<Integer, Texture>();
-                fileName = "fonts/Marathon.ttf";
+                fileName = "fonts/VCR_OSD_MONO_1.001.ttf";
 		fontGen = new FreeTypeFontGenerator(Gdx.files.internal(fileName));
                 font = fontGen.generateFont(20);
                 chatBox = new DialogueBox();
@@ -187,23 +190,43 @@ public class DemoDisplay extends Display {
 		}
 
 		player = GameManager.instance.areas.current.player;
+                chatBox = GameManager.instance.chatBox;
 		sprite = new Sprite(getEntityTexture(player.type()));
 		sprite.setPosition(player.pos().x * Tile.WIDTH,
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
-		sprite.draw(batch);
+
+                camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+                camera.setToOrtho(false);
+                camera.position.set(sprite.getX(), sprite.getY(), 0);
+                camera.update();
+                batch.setProjectionMatrix(camera.combined);
                 
+                drawChatBox(chatBox);
+                
+		sprite.draw(batch);
+		batch.end();
+
+	}
+        
+        public void drawChatBox(DialogueBox db)
+        {
                 //Draw dialogue text on to screen
-                if(chatBox.consumable()){
-                    for(int i = 0; i < chatBox.messages.size(); i++) {
-                        font.draw(batch, chatBox.messages.get(i), 1 * Tile.WIDTH, 1 * Tile.HEIGHT + (15 * i));
-		
+                if(db.consumable()){
+                    for(int i = 0; i < db.messages.size(); i++) {
+                        /*The math below adjusts the chatBox to the player's
+                        relative position so that it is drawn consistently in
+                        the lower left-hand corner of the screen (well3112)*/
+                        font.draw(batch, db.messages.get(i), 
+                                (sprite.getX()-(Gdx.graphics.getWidth()/2)) +
+                                        (1 * Tile.WIDTH),
+                                (sprite.getY()-(Gdx.graphics.getHeight()/2)) +
+                                        (1 * Tile.HEIGHT + (18 * (db.messages.size() - i))));
                     
                         //If more than 10 messages, delete oldest one
                         if(chatBox.messages.size() > 10){
-                            chatBox.removeMessage();
+                            db.removeMessage();
                         }
                     }
                 }
-		batch.end();
-	}
+        }
 }

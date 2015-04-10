@@ -9,9 +9,10 @@ import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
 import cs383.team1.model.overworld.Entity;
-import cs383.team1.model.overworld.NPC;
+import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
+import cs383.team1.model.overworld.StairsEntity;
 import cs383.team1.model.overworld.Tile;
 
 public final class GameManager {
@@ -22,6 +23,9 @@ public final class GameManager {
         DialogueBox dialogue;
         
 
+        public DialogueBox chatBox = new DialogueBox();
+        
+        
 	private GameManager() {
 		if(instance != null) {
 			Gdx.app.error("GameManager:GameManager",
@@ -38,27 +42,26 @@ public final class GameManager {
 	}
 
 	public void load() {
-		int index;
 		String fname;
 		FileHandle areaDir;
 
 		Gdx.app.log("GameManager:load", "Loading areas");
 
-		index = -1;
 		areaDir = Gdx.files.internal("area/");
 
 		for(FileHandle f : areaDir.list()) {
 			fname = new String("area/" + f.name());
 			Gdx.app.debug("GameManager:load", "Loading area " + fname);
-			index = areas.areas.indexOf(areas.loadArea(fname));
+                        areas.loadArea(fname);
 		}
-		areas.current = index != -1 ? areas.areas.get(index) : null;
+		areas.changeArea("demo");
 	}
 
 	public void update(InputManager in) {
 		Player player;
 		Position next;
 		Tile target;
+                Npc npc;
 		player = areas.current.player;
                 
 		while(in.consumable()) {
@@ -86,26 +89,29 @@ public final class GameManager {
 					break;
 				}
 			}
-                        //Check neighboring tiles for NPC's. If any are present, then display their 
-                        //available quests in the DialogueBox
-                        for(Entity e : areas.current.entities) {
-                            if(e.pos().x == next.x && e.pos().y == next.y){
-                                if(e.type() == NPC.TYPE){
-                                    NPC npc = new NPC();
-                                    npc = (NPC) e;
-                                    player.possibleQuests.add(npc.quests.get(0));
-                                }
-                            }
-                        }
-
+                        
 			if(target == null) {
 				Gdx.app.error("GameManager:update", "invalid move");
 				continue;
 			}
 
+                        //Interact with an NPC (nullifies last attempted move)
+                        if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
+                                chatBox.addMessage(npc.readNext());
+                                next = player.pos;
+                        }
+                        
+                        //Try to use stairs entity on a stairs tile (well3112)
+                        if (target.type() == 3)
+                                areas.useStairs(next);
+                        
 			if(target.passable()) {
 				player.pos = next;
 			}
+                        
+                        //Try to use stairs entity on a stairs tile (well3112)
+                        if (target.type() == 3)
+                                areas.useStairs(next);
 		}
                 
                 
@@ -116,4 +122,5 @@ public final class GameManager {
 		states.transition();
 		*/
 	}
+        
 }

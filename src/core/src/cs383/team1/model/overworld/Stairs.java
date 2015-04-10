@@ -4,18 +4,18 @@ import com.badlogic.gdx.Gdx;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
-public class Field implements Tile {
-	public static final int TYPE = 4;
+public class Stairs implements Tile {
+	public static final int TYPE = 3;
 	public static final boolean PASSABLE = true;
 
 	private Position pos;
 
-	public Field() {
+	public Stairs() {
 		this(new Position(0, 0));
 	}
 
-	public Field(Position p) {
-		Gdx.app.debug("Field:Field", "instantiating class");
+	public Stairs(Position p) {
+		Gdx.app.debug("Stairs:Stairs", "instantiating class");
 		pos = p;
 	}
 
@@ -23,9 +23,7 @@ public class Field implements Tile {
 		return TYPE;
 	}
 
-	public Position pos() {
-		return pos;
-	}
+	public Position pos() {return pos;}
 
 	public boolean passable() {
 		return PASSABLE;

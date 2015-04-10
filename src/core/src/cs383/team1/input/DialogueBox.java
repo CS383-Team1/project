@@ -14,8 +14,6 @@ public class DialogueBox{
     public ArrayList<String> messages = new ArrayList();;
     
      public DialogueBox(){
-        //messages.add("Test Text");
-        //messages.add("Testing line two");
         //System.out.println(messages.get(0));
     }
     
