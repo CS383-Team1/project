@@ -84,7 +84,7 @@ public final class GameManager {
                                         player.facing = 2;
 					break;
                                 case Keys.BACKSPACE:
-                                        player.setNotice(new Notification("ui/quest.png", "You pressed backspace!"));
+                                        player.setNotice(new Notification("ui/back.png", "You pressed backspace!"));
 				default:
 					continue;
 			}
