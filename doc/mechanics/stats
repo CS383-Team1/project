@@ -160,5 +160,4 @@ There will be three types of virtual attacks. These are
  The average damage of a character can be assumed to be: 
  (ACCURACY%)*(BASE DAMAGE*(1-CRIT%))+ (BASE DAMAGE*2 * CRIT%)
  
-
 \end{document}
