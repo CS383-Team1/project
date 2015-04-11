@@ -75,4 +75,51 @@ public class Npc implements Entity {
                 nextLine++;
                 return readLine(nextLine);
         }
+
+	public void overworldAI(Area area) {
+            Random randomDirection = new Random();
+            int randomint = randomDirection.nextInt(4);
+            System.out.println("Printing random direction: " + randomint);
+            while(roaming == true){
+                switch(randomint) {
+				case 0:
+                                        //Move Left
+					next = new Position(pos.x - 1, pos.y);
+					break;
+				case 1:
+                                        //Move right
+					next = new Position(pos.x + 1, pos.y);
+					break;
+				case 2:
+                                        //Move up
+					next = new Position(pos.x, pos.y + 1);
+					break;
+				case 3:
+                                        //Move down
+					next = new Position(pos.x, pos.y - 1);
+					break;
+                                
+			}
+
+			target = null;
+			for(Tile t : area.tiles) {
+				if(t.pos().x == next.x && t.pos().y == next.y) {
+					target = t;
+					break;
+				}
+                                //if(t.pos().x == player.pos.x && t.pos().y == player.y){
+                                    
+                                //}
+			}
+
+			if(target == null) {
+				Gdx.app.error("GameManager:update", "invalid move");
+				
+			}
+
+			if(target.passable()) {
+				pos = next;
+			}
+                    }
+            }
 }
