@@ -18,7 +18,7 @@ com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
   toggle: { down: default-round-down, up: default-round, checked: default-round-down, font: default-font, fontColor: white, downFontColor: red }
 },
 com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
-  default: { vScroll: default-scroll, hScrollKnob: default-round-large, background: default-rect, hScroll: default-scroll, vScrollKnob: default-round-large }
+  default: { vScroll: custom-scroll, hScrollKnob: default-round-large, background: default-rect, hScroll: custom-scroll, vScrollKnob: default-round-large }
 },
 com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
   default: {
@@ -28,8 +28,8 @@ com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
   }
 },
 com.badlogic.gdx.scenes.scene2d.ui.SplitPane$SplitPaneStyle: {
-  default-vertical: { handle: default-splitpane-vertical },
-  default-horizontal: { handle: default-splitpane }
+  default-vertical: { handle: custom-splitpane-vertical },
+  default-horizontal: { handle: custom-splitpane-vertical }
 },
 com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
   default: { titleFont: default-font, background: default-window, titleFontColor: white },

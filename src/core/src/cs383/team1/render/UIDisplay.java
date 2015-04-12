@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.SplitPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import cs383.team1.input.ui.InventoryWindow;
 import cs383.team1.input.ui.MessageBox;
 import cs383.team1.input.ui.NotificationBox;
 import cs383.team1.model.GameManager;
@@ -22,8 +23,7 @@ public class UIDisplay extends Display{
         Skin skin;
         NotificationBox noticeBox;
         MessageBox msg;
-        TextureRegion tR;
-        SplitPane sp;
+        InventoryWindow inv;
 
         @Override
         public void render() {
@@ -41,13 +41,13 @@ public class UIDisplay extends Display{
                         GameManager.instance.msg = null;
                 }
                 stage.draw();
+                stage.act();
         }
         
         public void dispose()
         {
                 stage.dispose();
                 skin.dispose();
-                tR.getTexture().dispose();
         }
 
 
@@ -56,10 +56,10 @@ public class UIDisplay extends Display{
 		stage = s;
                 noticeBox = new NotificationBox(skin);
                 msg = new MessageBox(skin);
-                sp = new SplitPane(new ScrollPane(new Table()), new Table(), true, skin);
+                inv = new InventoryWindow(skin);
                 
+                stage.addActor(inv.w());
                 stage.addActor(noticeBox.window());
                 stage.addActor(msg.t());
-                stage.addActor(sp);
         }
 }
