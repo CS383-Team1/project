@@ -61,5 +61,6 @@ public class UIDisplay extends Display{
                 stage.addActor(noticeBox.window());
                 stage.addActor(msg.t());
                 stage.addActor(inv.w());
+                stage.addActor(inv.inv());
         }
 }
