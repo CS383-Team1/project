@@ -1,4 +1,4 @@
-package cs383.team1.input;
+package cs383.team1.input.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -22,14 +22,12 @@ import com.badlogic.gdx.utils.Timer;
 public class NotificationBox {
         Window window;
         Skin skin;
-        Stage stage;
         TextureRegion tR;
         
         //Constructor, should be used exclusively by the UIDisplay
-        public NotificationBox(Stage st, Skin sk)
+        public NotificationBox(Skin sk)
         {
                 skin = sk;
-                stage = st;
                 window = new Window("Notice", skin);
                 initNotice();
         }

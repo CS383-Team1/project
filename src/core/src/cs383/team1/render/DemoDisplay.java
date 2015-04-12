@@ -25,7 +25,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import cs383.team1.input.NotificationBox;
+import cs383.team1.input.ui.NotificationBox;
 
 public class DemoDisplay extends Display {
 	private static final String FNAME = "img/demo.png";
@@ -204,7 +204,7 @@ public class DemoDisplay extends Display {
 
 
 		player = GameManager.instance.areas.current.player;
-                chatBox = GameManager.instance.chatBox;
+//                chatBox = GameManager.instance.chatBox;
 		sprite = new Sprite(getEntityTexture(player.aType()));
 		sprite.setPosition(
                         player.pos().x * Tile.WIDTH + (int) player.floatPos().x,

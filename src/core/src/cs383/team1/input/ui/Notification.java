@@ -1,4 +1,4 @@
-package cs383.team1.input;
+package cs383.team1.input.ui;
 
 /**
  *

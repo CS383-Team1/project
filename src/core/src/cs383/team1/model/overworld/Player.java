@@ -1,7 +1,7 @@
 package cs383.team1.model.overworld;
 
 import com.badlogic.gdx.Gdx;
-import cs383.team1.input.Notification;
+import cs383.team1.input.ui.Notification;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
