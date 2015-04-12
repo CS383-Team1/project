@@ -57,9 +57,9 @@ public class UIDisplay extends Display{
                 noticeBox = new NotificationBox(skin);
                 msg = new MessageBox(skin);
                 inv = new InventoryWindow(skin);
-                
-                stage.addActor(inv.w());
+
                 stage.addActor(noticeBox.window());
                 stage.addActor(msg.t());
+                stage.addActor(inv.w());
         }
 }

@@ -7,13 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.SplitPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.badlogic.gdx.utils.Scaling;
 
 /**
  *
@@ -46,19 +43,23 @@ public class InventoryWindow {
                 
                 w.top();
 
+                //Create Top Weapons Row
                 t.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/weaponS.png" ) ) ) ) );
                 t.left().add(new Label("weapon name", skin)).padLeft(10).row();
                 t.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/bar.png" ) ) ) ) ).fill(20, 1).padBottom(5).row();
 
+                //Create Top Armor Row
                 t.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/armorS.png" ) ) ) ) );
                 t.left().add(new Label("armor name", skin)).padLeft(10).row();
                 t.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/bar.png" ) ) ) ) ).fill(20, 1).padBottom(5).row();
 
-
+                //Generate the SplitPane
                 sp = new SplitPane(t, itemsPane, true, skin);
                 sp.setSplitAmount((float) 0.3);
                 sp.setMaxSplitAmount((float) 0.3);
                 sp.setMinSplitAmount((float) 0.2999);
+                itemsPane.setFlickScroll(false);
+
                 w.add(sp);
         }
         
