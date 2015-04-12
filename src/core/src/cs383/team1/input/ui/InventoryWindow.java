@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.SplitPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.utils.Scaling;
 import java.util.ArrayList;
 
 /**
@@ -50,6 +51,7 @@ public class InventoryWindow {
                 skin = sk;
 
                 itemsTable = new Table();
+                itemsPane = new ScrollPane( itemsTable, skin );
 
                 itemRanged     = new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/itemRanged.png" ) ) ) );
                 itemMelee      = new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/itemMelee.png" ) ) ) );
@@ -60,34 +62,57 @@ public class InventoryWindow {
                 
                 
                 itemList.add( new ItemLabel("This", "ranged") );
-                itemList.add( new ItemLabel("That", "ranged") );
-                itemList.add( new ItemLabel("Laser Gun", "ranged") );
-                itemList.add( new ItemLabel("LaZer Gun", "ranged") );
-                itemList.add( new ItemLabel("LaZ0r G()n", "ranged") );
-                itemList.add( new ItemLabel("L@Z3R G()N", "ranged") );
-                itemList.add( new ItemLabel("Me Arrrrmor", "armor") );
-                itemList.add( new ItemLabel("'Dis Armor", "armor") );
-                itemList.add( new ItemLabel("'Dat Armor", "armor") );
-                itemList.add( new ItemLabel("Good Armor", "armor") );
-                itemList.add( new ItemLabel("Bad Armor", "armor") );
-                itemList.add( new ItemLabel("Ugly Armor", "armor") );
-                itemList.add( new ItemLabel("Punting Stapler", "melee") );
-                itemList.add( new ItemLabel("Sturdy Briefase", "melee") );
-                itemList.add( new ItemLabel("Potion", "consumable") );
-                itemList.add( new ItemLabel("Bagel", "consumable") );
-                itemList.add( new ItemLabel("Staple", "consumable") );
-                itemList.add( new ItemLabel("Pushpin", "consumable") );
-                itemList.add( new ItemLabel("Donut", "consumable") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+                itemList.add( new ItemLabel("This", "ranged") );
+//                itemList.add( new ItemLabel("That", "ranged") );
+//                itemList.add( new ItemLabel("Laser Gun", "ranged") );
+//                itemList.add( new ItemLabel("LaZer Gun", "ranged") );
+//                itemList.add( new ItemLabel("LaZ0r G()n", "ranged") );
+//                itemList.add( new ItemLabel("L@Z3R G()N", "ranged") );
+//                itemList.add( new ItemLabel("Me Arrrrmor", "armor") );
+//                itemList.add( new ItemLabel("'Dis Armor", "armor") );
+//                itemList.add( new ItemLabel("'Dat Armor", "armor") );
+//                itemList.add( new ItemLabel("Good Armor", "armor") );
+//                itemList.add( new ItemLabel("Bad Armor", "armor") );
+//                itemList.add( new ItemLabel("Ugly Armor", "armor") );
+//                itemList.add( new ItemLabel("Punting Stapler", "melee") );
+//                itemList.add( new ItemLabel("Sturdy Briefase", "melee") );
+//                itemList.add( new ItemLabel("Potion", "consumable") );
+//                itemList.add( new ItemLabel("Bagel", "consumable") );
+//                itemList.add( new ItemLabel("Staple", "consumable") );
+//                itemList.add( new ItemLabel("Pushpin", "consumable") );
+//                itemList.add( new ItemLabel("Donut", "consumable") );
                 
                 updateItems();
 
-
-                itemList = new ArrayList();
                 updateStats(0, 0, 0, 0);
                 items = new List(skin);
                 items.setItems("This", "That", "Potion", "Bagel", "Shoe", "Diamond", "DeLorean", "Laser Gun", "LaZer Gun", "Another thing", "???", "Lots of stuff", "Potions?", "Cube");
-//                itemsPane = new ScrollPane( items, skin );
-                itemsPane = new ScrollPane( itemsTable );
                 equipTable = new Table();
                 statTable = new Table();
                 
@@ -105,54 +130,49 @@ public class InventoryWindow {
                 statTable.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/statHp.png" ) ) ) ) );
                 statTable.left().add( new Label( "HIT: ", skin )).padLeft(10);
                 statTable.left().add( statHp ).row();
-
                 //Attack Stat
                 statTable.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/statAtk.png" ) ) ) ) );
                 statTable.left().add( new Label( "ATK: ", skin )).padLeft(10);
                 statTable.left().add( statAtk ).row();
-
                 //Defence Stat
                 statTable.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/statDef.png" ) ) ) ) );
                 statTable.left().add( new Label( "DEF: ", skin )).padLeft(10);
                 statTable.left().add( statDef ).row();
-
                 //Reputation Stat
                 statTable.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/statRep.png" ) ) ) ) );
                 statTable.left().add( new Label( "REP: ", skin )).padLeft(10);
                 statTable.left().add( statRep ).row();
 
+                //Equipped Row
                 equipTable.add( new Label( "", skin ) );
                 equipTable.add( new Label( "", skin ) );
                 equipTable.add( new Label ( "EQUIPPED", skin ) ).row();
                 equipTable.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/bar.png" ) ) ) ) ).fill(20, 1).padBottom(5).row();
-                
                 //Create Top Weapons Row
                 equipTable.left().add( itemMelee );
                 equipTable.left().add( new Label( "WEP", skin ) );
                 equipTable.left().add( new Label( "weapon name", skin)).padLeft(10).row();
                 equipTable.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/bar.png" ) ) ) ) ).fill(20, 1).padBottom(5).row();
-
                 //Create Top Armor Row
                 equipTable.left().add( itemArmor );
                 equipTable.left().add( new Label( "ARM", skin ) );
                 equipTable.left().add( new Label("armor name", skin)).padLeft(10).row();
                 
+                //Add tables into splitpane
                 charSp = new SplitPane(statTable, equipTable, true, skin);
                 charSp.setSplitAmount((float) 0.5599);
                 charSp.setMaxSplitAmount((float) 0.5599);
                 charSp.setMinSplitAmount((float) 0.5598);
 
-                //Generate the Main SplitPane
-//                sp = new SplitPane(charSp, itemsPane, true, skin);
-//                itemsPane.setFillParent(true);
-//                sp.setSplitAmount((float) 0.5999);
-//                sp.setMaxSplitAmount((float) 0.5999);
-//                sp.setMinSplitAmount((float) 0.5998);
-                itemsPane.setFlickScroll(false);
+                itemsPane.setOverscroll(false, false);
+                itemsPane.setFadeScrollBars(false);
+                itemsPane.setScrollingDisabled(true, false);
 
+                itemsPane.setWidth(9999);
+                inv.left().add(itemsTable);
 
-                inv.left().add(itemsPane);
                 w.add(charSp);
+                w.setFillParent(true);
         }
         
         public Window w() {
@@ -165,11 +185,15 @@ public class InventoryWindow {
         
         private void updateItems()
         {
+                Image img;
                 itemsTable.clearChildren();
-                itemsTable.left();
+                itemsTable.right();
                 for ( int i = 0; i < itemList.size(); i++ ) {
-                        itemsTable.left().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/item" + itemList.get(i).icon() + ".png" ) ) ) ) );
-                        itemsTable.left().add( new Label( itemList.get(i).name(), skin ) ).padLeft(10).row();
+//                        itemsTable.right().add( new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/item" + itemList.get(i).icon() + ".png" ) ) ) ) );
+                        img = new Image( new TextureRegion( new Texture( Gdx.files.internal( "ui/item" + itemList.get(i).icon() + ".png" ) ) ) );
+                        img.setScaling(Scaling.none);
+                        itemsTable.right().add(img);
+                        itemsTable.right().add( new Label( itemList.get(i).name(), skin ) ).padLeft(20).padRight(50).row();
                 }
         }
         

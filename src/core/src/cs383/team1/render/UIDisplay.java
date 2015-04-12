@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.SplitPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import cs383.team1.input.ui.InventoryWindow;
+import cs383.team1.input.ui.MainMenu;
 import cs383.team1.input.ui.MessageBox;
 import cs383.team1.input.ui.NotificationBox;
 import cs383.team1.model.GameManager;
@@ -23,7 +24,8 @@ public class UIDisplay extends Display{
         Skin skin;
         NotificationBox noticeBox;
         MessageBox msg;
-        InventoryWindow inv;
+//        InventoryWindow inv;
+        MainMenu menu;
 
         @Override
         public void render() {
@@ -56,11 +58,13 @@ public class UIDisplay extends Display{
 		stage = s;
                 noticeBox = new NotificationBox(skin);
                 msg = new MessageBox(skin);
-                inv = new InventoryWindow(skin);
+//                inv = new InventoryWindow(skin);
+                menu = new MainMenu(skin);
 
                 stage.addActor(noticeBox.window());
                 stage.addActor(msg.t());
-                stage.addActor(inv.w());
-                stage.addActor(inv.inv());
+                stage.addActor(menu.menu());
+//                stage.addActor(inv.w());
+//                stage.addActor(inv.inv());
         }
 }
