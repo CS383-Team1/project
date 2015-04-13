@@ -78,7 +78,7 @@ public class MenuInventory extends SubMenu {
         }
         
         //Update the player's stats to the new values
-        private void updateStats(int hp, int atk, int def, int rep)
+        public void updateStats( int atk, int def )
         {
                 equipAtk.setText(Integer.toString(atk));
                 equipDef.setText(Integer.toString(def));

@@ -80,4 +80,10 @@ public class MainMenu {
                 else
                         Gdx.app.error("Menu changeMenu", "NYI option: " + s);
         }
+        
+        public void updateStats(int hp, int atk, int def, int rep)
+        {
+                menuC.updateStats(hp, atk, def, rep);
+                menuI.updateStats(atk, def);
+        }
 }
