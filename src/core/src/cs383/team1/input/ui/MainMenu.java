@@ -270,6 +270,7 @@ public class MainMenu {
                         invItemsTable.add(equip);
                         invItemsTable.add(new Label("", skin, "big"));
                         invItemsTable.add(drop).row();
+                        invItemsTable.add( getImage( "bar" ) ).colspan(3).fill().expand().row();
                 }
         }
         
