@@ -44,7 +44,11 @@ public class MainMenu {
         ArrayList<ItemLabel> itemsList;
         Label equipAtk;
         Label equipDef;
-        
+
+        ScrollPane questScroll;
+        Table questTable;
+        ArrayList<QuestLabel> questList;
+
         Label equipWeapon;
         Label equipArmor;
         
@@ -147,11 +151,10 @@ public class MainMenu {
                         .row();
                 
                 itemsList = new ArrayList();
-                
                 invItemsTable = new Table();
                 getDemoItems();
                 updateItems();
-                invScroll = new ScrollPane(invItemsTable, skin);
+                invScroll = new ScrollPane( invItemsTable, skin );
                 invScroll.setFadeScrollBars(false);
                 invScroll.setOverscroll(false, false);
                 
@@ -159,7 +162,17 @@ public class MainMenu {
                 invSp.setSplitAmount   ((float) 0.3500);
                 invSp.setMaxSplitAmount((float) 0.3500);
                 invSp.setMinSplitAmount((float) 0.3499);
-                
+
+
+
+                questList = new ArrayList();
+                questTable = new Table();
+                getDemoQuests();
+                updateQuests();
+                questScroll = new ScrollPane( questTable, skin );
+                questScroll.setFadeScrollBars(false);
+                questScroll.setOverscroll(false, false);
+
                 menu.top().left().add(menuSp).fill().expand();
         }
         
@@ -184,6 +197,8 @@ public class MainMenu {
                         menuSp.setSecondWidget(invSp);
                 else if (s.equals("CHARACTER"))
                         menuSp.setSecondWidget(charSp);
+                else if (s.equals("QUESTS"))
+                        menuSp.setSecondWidget(questScroll);
                 else
                         Gdx.app.error("Menu changeMenu", "NYI option: " + s);
         }
@@ -258,6 +273,46 @@ public class MainMenu {
                 }
         }
         
+        private void updateQuests()
+        {
+                Image img;
+                TextButton abandon;
+                String details;
+                String icon;
+                int totCount;
+                int curCount;
+
+                questTable.clearChildren();
+                questTable.right();
+                for ( int i =0; i < questList.size(); i++ ) {
+                        final String name = questList.get(i).name();
+                        details = questList.get(i).details();
+                        icon = questList.get(i).icon();
+                        totCount = questList.get(i).totCount();
+                        curCount = questList.get(i).curCount();
+
+                        img = getImage("quest" + icon );
+                        img.setScaling(Scaling.none);
+                        questTable.add(img).padTop(10).expand();
+
+                        questTable.add( new Label( name, skin, "big" ) ).expand().fill().padLeft(20).padRight(50).row();
+                        questTable.add( new Label( details, skin ) ).colspan(2).row();
+                        questTable.add( new Label( (Integer.toString(curCount) + "/" + Integer.toString(totCount) ), skin ) );
+
+                        abandon = new TextButton( "abandon" , skin);
+                        abandon.addListener( new ClickListener() {
+                                @Override
+                                public void clicked( InputEvent event, float x, float y ) {
+                                        //TODO: Make this equip/use an item
+                                        System.out.println (name + " abandon");
+                                }
+                        });
+                        questTable.add( abandon ).right().row();
+
+                        questTable.add( getImage( "bar" ) ).colspan(2).fill().expand().row();
+                }
+        }
+        
         private int getNum( Label l )
         {
                 return Integer.parseInt(l.getText().toString());
@@ -299,6 +354,20 @@ public class MainMenu {
                 itemsList.add( new ItemLabel("Pushpin", "consumable", 6) );
                 itemsList.add( new ItemLabel("Donut", "consumable", 1) );
                 
+        }
+        
+        
+        private void getDemoQuests()
+        {
+                questList.clear();
+                questList.add( new QuestLabel("Chair Murder", "Murder ALL the chairs!", "slay", 0, 20) );
+                questList.add( new QuestLabel("Talk to HR", "Hustle yo' butt on over to the HR rep.", "talk", 0, 1) );
+                questList.add( new QuestLabel("Go Outside", "Take a peek into the great outdoors.", "talk", 0, 1) );
+                questList.add( new QuestLabel("Office Cleaner", "Show the intruders the way out.", "slay", 0, 7) );
+                questList.add( new QuestLabel("VR Collector", "Get the V.R. headsets from R&D.", "fetch", 0, 10) );
+                questList.add( new QuestLabel("Quest quest", "Quest for the quest in the quest.", "talk", 0, 1) );
+                questList.add( new QuestLabel("Smack Down", "Lay the hurt down, brother.", "fetch", 0, 18) );
+                questList.add( new QuestLabel("Office Slave", "Clean up the loose paper.", "fetch", 0, 14) );
         }
         
         //Copy the list of items from some source

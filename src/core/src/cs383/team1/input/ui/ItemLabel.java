@@ -7,9 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
  * @author Lance
  */
 public class ItemLabel {
-        String name;
-        String icon;
-        int stat;
+        private String name;
+        private String icon;
+        private int stat;
         
         public ItemLabel(String s, String i, int st) {
                 name = s;
