@@ -42,6 +42,8 @@ public class MainMenu {
         Table invEquipTable;
         Table invItemsTable;
         ArrayList<ItemLabel> itemsList;
+        Label equipAtk;
+        Label equipDef;
         
         Label equipWeapon;
         Label equipArmor;
@@ -58,6 +60,9 @@ public class MainMenu {
                 statAtk = new Label("5", skin, "big");
                 statDef = new Label("4", skin, "big");
                 statRep = new Label("5", skin, "big");
+                
+                equipAtk = new Label("5", skin, "big");
+                equipDef = new Label("4", skin, "big");
                 
                 menu = new Window("Menu", skin, "menu");
                 menu.setFillParent(true);
@@ -133,14 +138,12 @@ public class MainMenu {
                         .padBottom(10);
                 invEquipTable.add( equipWeapon ).padLeft(10)
                         .padBottom(10).expand();
-                invEquipTable.add( new Label( statAtk.getText()
-                        .toString(), skin, "big" ) ).row();
+                invEquipTable.add( equipAtk ).row();
                 invEquipTable.add(getImage( "itemArmorBig" ) )
                         .padBottom(10);
                 invEquipTable.add( equipArmor ).padLeft(10)
                         .padBottom(10).expand();
-                invEquipTable.add(
-                        new Label( statDef.getText().toString(), skin, "big" ) )
+                invEquipTable.add( equipDef )
                         .row();
                 
                 itemsList = new ArrayList();
@@ -192,7 +195,8 @@ public class MainMenu {
         private void updateItems()
         {
                 Image img;
-                TextButton activate;
+                TextButton equip;
+                TextButton drop;
                 int atk = getNum(statAtk);
                 int def = getNum(statDef);
                 invItemsTable.clearChildren();
@@ -201,20 +205,19 @@ public class MainMenu {
                         final String index = itemsList.get(i).name();
                         int stat = itemsList.get(i).stat();
                         String icon = itemsList.get(i).icon();
-                        img = new Image(
-                                new TextureRegion(new Texture(
-                                        Gdx.files.internal(
-                                                "ui/item" +
-                                                        itemsList.get(i).icon()
-                                                        + "Big.png"))));
+                        img = getImage("item" + icon + "Big");
 
+                        //Add Image
                         img.setScaling(Scaling.none);
                         invItemsTable.right().add(img).expand();
+
+                        //Add item name
                         invItemsTable.right().add(
                                 new Label(
                                         itemsList.get(i).name(), skin, "big" ) )
                                 .expand().fill().padLeft(20).padRight(50);
-                        
+
+                        //Add stat identifier
                         if (icon.equals("ranged") || icon.equals("melee"))
                                 if (stat > atk) {
                                         invItemsTable.add( cmpItem( atk, stat, true ) );
@@ -227,17 +230,31 @@ public class MainMenu {
                         if (icon.equals("consumable"))
                                 invItemsTable.add( new Label( "x " + Integer.toString(stat), skin, "big" ) );
                         invItemsTable.row();
+
+                        //Add use/equip button
                         if (icon.equals("consumable"))
-                                activate = new TextButton("Use", skin);
+                                equip = new TextButton("Use", skin);
                         else
-                                activate = new TextButton("Equip", skin);
-                        activate.addListener( new ClickListener() {
+                                equip = new TextButton("Equip", skin);
+                        equip.addListener( new ClickListener() {
                                 @Override
                                 public void clicked( InputEvent event, float x, float y ) {
-                                        System.out.println (index);
+                                        //TODO: Make this equip/use an item
+                                        System.out.println (index + " equip");
                                 }
                         });
-                        invItemsTable.add(activate).row();
+                        
+                        drop = new TextButton("Drop", skin);
+                        drop.addListener( new ClickListener() {
+                           @Override
+                           public void clicked( InputEvent event, float x, float y ) {
+                                   //TODO: Make this drop an item
+                                   System.out.println(index + " drop");
+                           }     
+                        });
+                        invItemsTable.add(equip);
+                        invItemsTable.add(new Label("", skin, "big"));
+                        invItemsTable.add(drop).row();
                 }
         }
         
@@ -304,6 +321,9 @@ public class MainMenu {
                 statAtk.setText(Integer.toString(atk));
                 statDef.setText(Integer.toString(def));
                 statRep.setText(Integer.toString(rep));
+                
+                equipAtk.setText(Integer.toString(atk));
+                equipDef.setText(Integer.toString(def));
         }
         
         //Public alias for updateStats

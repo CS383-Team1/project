@@ -2,15 +2,10 @@ package cs383.team1.render;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.SplitPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import cs383.team1.input.ui.InventoryWindow;
 import cs383.team1.input.ui.MainMenu;
 import cs383.team1.input.ui.MessageBox;
 import cs383.team1.input.ui.NotificationBox;
@@ -27,7 +22,6 @@ public class UIDisplay extends Display{
         Skin skin;
         NotificationBox noticeBox;
         MessageBox msg;
-//        InventoryWindow inv;
         MainMenu menu;
 
         @Override
