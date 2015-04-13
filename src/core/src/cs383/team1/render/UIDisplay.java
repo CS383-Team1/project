@@ -1,7 +1,10 @@
 package cs383.team1.render;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -44,6 +47,8 @@ public class UIDisplay extends Display{
                 }
                 stage.draw();
                 stage.act();
+                
+
         }
         
         public void dispose()
@@ -58,13 +63,28 @@ public class UIDisplay extends Display{
 		stage = s;
                 noticeBox = new NotificationBox(skin);
                 msg = new MessageBox(skin);
-//                inv = new InventoryWindow(skin);
                 menu = new MainMenu(skin);
 
                 stage.addActor(noticeBox.window());
                 stage.addActor(msg.t());
                 stage.addActor(menu.menu());
-//                stage.addActor(inv.w());
-//                stage.addActor(inv.inv());
+                
+
+                menu.menu().setVisible(false);
+
+                stage.addListener(new InputListener () {
+                        @Override
+                        public boolean keyDown( InputEvent event, int keyCode ) {
+                                if ( keyCode == Input.Keys.ESCAPE && menu.menu().isVisible() ) {
+                                        menu.menu().setVisible(false);
+                                        return true;
+                                }
+                                if ( keyCode == Input.Keys.ESCAPE ) {
+                                        menu.menu().setVisible(true);
+                                        return true;
+                                }
+                                return false;
+                        }
+                });
         }
 }
