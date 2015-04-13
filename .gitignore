@@ -11,3 +11,4 @@
 
 # LaTeX Generated PDFs
 *.pdf
+/src/.nb-gradle/private/

@@ -3,12 +3,16 @@ package cs383.team1.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.Input.Keys;
+import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.Entity;
+import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
+import cs383.team1.model.overworld.StairsEntity;
 import cs383.team1.model.overworld.Tile;
 
 public final class GameManager {
@@ -17,6 +21,9 @@ public final class GameManager {
 	public AreaManager areas;
 	public StateManager states;
 
+        public DialogueBox chatBox = new DialogueBox();
+        
+        
 	private GameManager() {
 		if(instance != null) {
 			Gdx.app.error("GameManager:GameManager",
@@ -32,27 +39,26 @@ public final class GameManager {
 	}
 
 	public void load() {
-		int index;
 		String fname;
 		FileHandle areaDir;
 
 		Gdx.app.log("GameManager:load", "Loading areas");
 
-		index = -1;
 		areaDir = Gdx.files.internal("area/");
 
 		for(FileHandle f : areaDir.list()) {
 			fname = new String("area/" + f.name());
 			Gdx.app.debug("GameManager:load", "Loading area " + fname);
-			index = areas.areas.indexOf(areas.loadArea(fname));
+                        areas.loadArea(fname);
 		}
-		areas.current = index != -1 ? areas.areas.get(index) : null;
+		areas.changeArea("demo");
 	}
 
 	public void update(InputManager in) {
 		Player player;
 		Position next;
 		Tile target;
+                Npc npc;
 
 		player = areas.current.player;
 
@@ -87,9 +93,23 @@ public final class GameManager {
 				continue;
 			}
 
+                        //Interact with an NPC (nullifies last attempted move)
+                        if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
+                                chatBox.addMessage(npc.readNext());
+                                next = player.pos;
+                        }
+                        
+                        //Try to use stairs entity on a stairs tile (well3112)
+                        if (target.type() == 3)
+                                areas.useStairs(next);
+                        
 			if(target.passable()) {
 				player.pos = next;
 			}
+                        
+                        //Try to use stairs entity on a stairs tile (well3112)
+                        if (target.type() == 3)
+                                areas.useStairs(next);
 		}
 
 		/* TODO: move the keyhandling code to the StateManager */
@@ -98,4 +118,5 @@ public final class GameManager {
 		states.transition();
 		*/
 	}
+        
 }
