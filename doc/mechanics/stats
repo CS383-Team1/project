@@ -1,0 +1,163 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{titling}
+
+\newcommand{\subtitle}[1]{
+	\posttitle{
+		\par\end{center}
+		\begin{center}\large#1\end{center}
+		\vskip0.5em
+	}
+}
+
+\geometry{margin=1in}
+
+\title{Statistics}
+\subtitle{CS383 - Team \texttt{\textasciicircum teamname}}
+\date{\today}
+\author{
+Tessa Saul
+\and Robin Rakowski
+}
+
+\begin{document}
+
+\maketitle
+
+\section*{Characters}
+\subsection*{Player Characters}
+Player characters have several core statistics that are involved in combat. 
+These include:
+\begin{itemize}
+\item Health
+\item Mana
+\item Action Points 
+\end{itemize}
+The first is a statistic that describes the character's health, and 
+ability to continue in the fight. If this statistic drops to zero, the 
+character can no longer fight. This statistic is usually called health-points,
+abbreviated to hp. I believe Ronnie mentioned calling it ``Will to Live'', or 
+``Will to Go On'', which I think fits nicely with our depressing office 
+setting.
+
+The next is a representation of the character's energy to perform special 
+actions, like big, fancy attacks. I believe Mason suggested calling this 
+statistic ``caffeine''. Once again, this fits nicely into the setting. 
+
+Lastly, action points are a measure of how many actions a character can take
+in a round of combat. A player can break up their action points into several 
+actions, or use most of them for a single more powerful action.  
+
+\section*{Non-Player Characters}
+Non-Player character have health, mana, and action points like player 
+characters, but they will also have some personality statistics. These may
+include:
+\begin{itemize}
+\item Friendliness
+\item Irritability 
+\item Immune System 
+\end{itemize}
+Friendliness will determine how much reputation increasing actions affect a
+certain NPC. Irritability can influence how much reputation decreasing actions 
+affect an NPC. Immune system can determine whether an NPC is in the office, 
+if we choose to make this a feature. 
+
+\section*{Items}
+\subsection*{Weapons}
+Weapons all have three statistics which are 
+\begin{itemize}
+\item Base Power
+\item Accuracy 
+\item Chance to Critical Hit
+\end{itemize}
+Weapons also give access to or upgrade certain types of attacks. An office
+item, for example, may improve a player's "Compliment" ability, and an alien
+ray gun may give them access to the "Ranged" type of physical attack.
+\subsection*{Clothing}
+Clothing and accessories modify a player's base statistics, and the statistics 
+of their weapons. Professional clothing generally modifies the statistics which
+are most used in verbal combat. Firewalls modify the statistics most often used
+in cyberspace levels (such as by reducing the damage of virtul attacks). Armor 
+modifies the statistics used in space station levels for physical combat.
+
+\subsection*{Consumables}
+Consumable items include items like snack, drinks, and medicine. Consumables 
+can give temporary buffs, or instant effects, like restoring health. 
+
+\section*{Attack Types}
+There will be three types of attacks:
+\begin{itemize}
+\item Verbal
+\item Virtual 
+\item Physical
+\end{itemize}
+
+Verbal attacks will be used in office levels, for verbal sparring with coworker NPCS.
+Virtual attacks will be used in cyberspace levels, for combat with viruses and 
+security systems. Physical attacks will be used in space station levels, for physical
+combat with aliens. 
+
+\subsection*{Verbal}
+There will be several types of verbal attacks which include 
+\begin{itemize}
+\item Compliment 
+\item Insult 
+\item Small Talk 
+\item Technical 
+\end{itemize}
+All of these attack types can affect a character's accuracy, will to go on, 
+health, and so on. Characters will be more susceptible or less susceptible
+ to certain attack types based on their equipment. 
+ We could have a single technical type, or many like accounting and IT. 
+ 
+ Players will generally have access to base versions of the first three verbal
+ attacks, but the weapon they are holding may give them better versions of these,
+ and may provide access to a technical attack. 
+ 
+ 
+ 
+  \subsection*{Virtual}
+
+There will be three types of virtual attacks. These are
+\begin{itemize}
+\item Hack
+\item Misdirect
+\item Spoof ID
+\end{itemize}
+  In the cyberspace levels, players will start with a basic firewall, which
+  reduces the amount of damage they take from virtual attacks, and a basic 
+  antivirus program, which has a base damage, accuacy, and chance to critical
+  hit. Improved antivirus programs will allow access to upgraded versions
+  of all three virtual attack types.
+  
+  
+  
+  
+    \subsection*{Physical}
+ There will be two types of physical attacks. These are 
+ \begin{itemize}
+ \item Bludgeoning 
+ \item Ranged
+ \end{itemize}
+ Physical attacks will be used against aliens, but not against humans.
+ Players will have access to basic Bludgeoning attacks, but holding a 
+ weapon may give the player access to Ranged attacks, or more powerful
+ Blugeoning attacks.
+ 
+ 
+ \subsection*{Damage Calculation}
+ The player's damage is given by the base damage (which is determined
+ by their weapon, and affected by their clothing), perhaps with some
+ range determined randomly, such as plus or minus 30%. The player's 
+ equipment also determines their Accuracy, which should be between 0
+ and 100, and is their percent chance to hit when they attack. If they
+ do not hit, their attack has no effect. The player's equipment also
+ determines their Critical Chance, which should also be between 0 and
+ 100. This determines the probability of the player doing critical damage
+ (which multiplies the damage of their attack by two) on an attack which
+ hits an opponent. 
+ 
+ The average damage of a character can be assumed to be: 
+ (ACCURACY%)*(BASE DAMAGE*(1-CRIT%))+ (BASE DAMAGE*2 * CRIT%)
+ 
+\end{document}
