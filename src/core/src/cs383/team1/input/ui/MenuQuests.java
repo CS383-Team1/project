@@ -68,14 +68,27 @@ public class MenuQuests extends SubMenu {
                         abandon.addListener( new ClickListener() {
                                 @Override
                                 public void clicked( InputEvent event, float x, float y ) {
-                                        //TODO: Make this equip/use an item
+                                        //TODO: Make this abandon a quest
                                         System.out.println (name + " abandon");
+                                        abandonQuest( name );
+                                        updateQuests();
                                 }
                         });
                         questTable.add( abandon ).right().row();
 
-                        questTable.add( getImage( "bar" ) ).colspan(2).fill().expand().row();
+                        questTable.add( getImage( "bar" ) ).colspan(2).fillX().expand().row();
                 }
+        }
+        
+        private int abandonQuest( String n )
+        {
+                for (int i = 0; i < questList.size(); i++) {
+                        if (questList.get(i).name().equals(n)) {
+                                questList.remove(i);
+                                return 0;
+                        }
+                }
+                return -1;
         }
         
         private void getDemoQuests()

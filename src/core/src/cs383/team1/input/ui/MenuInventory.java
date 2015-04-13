@@ -149,13 +149,27 @@ public class MenuInventory extends SubMenu {
                            public void clicked( InputEvent event, float x, float y ) {
                                    //TODO: Make this drop an item
                                    System.out.println(index + " drop");
+                                   dropItem( index );
+                                   updateItems();
                            }     
                         });
                         invItemsTable.add(equip);
                         invItemsTable.add(new Label("", skin, "big"));
                         invItemsTable.add(drop).row();
-                        invItemsTable.add( getImage( "bar" ) ).colspan(3).fill().expand().row();
+                        invItemsTable.add( getImage( "bar" ) ).colspan(3).fillX().expand().row();
                 }
+        }
+        
+        
+        private int dropItem( String n )
+        {
+                for (int i = 0; i < itemsList.size(); i++) {
+                        if (itemsList.get(i).name().equals(n)) {
+                                itemsList.remove(i);
+                                return 0;
+                        }
+                }
+                return -1;
         }
         
         private Label cmpItem( int stat, int item, boolean positive )
