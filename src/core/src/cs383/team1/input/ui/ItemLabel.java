@@ -9,10 +9,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class ItemLabel {
         String name;
         String icon;
+        int stat;
         
-        public ItemLabel(String s, String i) {
+        public ItemLabel(String s, String i, int st) {
                 name = s;
                 icon = i;
+                stat = st;
         }
         
         public String name() {
@@ -21,5 +23,9 @@ public class ItemLabel {
         
         public String icon() {
                 return icon;
+        }
+        
+        public int stat() {
+                return stat;
         }
 }
