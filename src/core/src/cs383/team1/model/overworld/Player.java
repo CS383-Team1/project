@@ -50,6 +50,10 @@ public final class Player implements Entity {
                 floatPos = p;
         }
         
+        public boolean zeroFloat() {
+                return (floatPos.x == 0 && floatPos.y == 0);
+        }
+        
         public Notification notice() {
                 return notice;
         }

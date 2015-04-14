@@ -64,6 +64,9 @@ public class Main implements ApplicationListener, InputProcessor {
 		}
 		screen.render();
                 ui.render();
+                if (GameManager.instance.areas.current.player.zeroFloat()) {
+                        inputManager.keys.add(GameManager.instance.keyPressed);
+                }
 	}
 
 	@Override
@@ -81,11 +84,14 @@ public class Main implements ApplicationListener, InputProcessor {
 	@Override
 	public boolean keyDown (int key) {
 		inputManager.keys.add(key);
+                GameManager.instance.keyPressed = key;
 		return false;
 	}
 
 	@Override
 	public boolean keyUp (int key) {
+                if (key == GameManager.instance.keyPressed)
+                        GameManager.instance.keyPressed = 0;
 		return true;
 	}
 

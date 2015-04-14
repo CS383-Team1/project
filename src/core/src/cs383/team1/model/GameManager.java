@@ -22,6 +22,7 @@ public final class GameManager {
 
 	public AreaManager areas;
 	public StateManager states;
+        public int keyPressed;
 
 //        public DialogueBox chatBox = new DialogueBox();
         public String msg;
@@ -29,6 +30,7 @@ public final class GameManager {
         
         
 	private GameManager() {
+                this.keyPressed = 0;
 		if(instance != null) {
 			Gdx.app.error("GameManager:GameManager",
 			  "reinstantiating singleton GameManager");
@@ -66,7 +68,8 @@ public final class GameManager {
 
 		player = areas.current.player;
 
-		while(in.consumable()) {
+                in.limitList();
+                while(in.consumable() && player.zeroFloat()) {
 			switch(in.keys.remove(0)) {
 				case Keys.LEFT:
 					next = new Position(player.pos.x - 1, player.pos.y);
@@ -105,9 +108,9 @@ public final class GameManager {
 
                         //Interact with an NPC (nullifies last attempted move)
                         if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
+                                keyPressed = 0;
                                 msg = npc.readNext();
                                 System.out.println("GameManager: NPC Interaction: " + msg);
-//                                chatBox.addMessage(npc.readNext());
                                 next = player.pos;
                         }
                         
@@ -119,11 +122,8 @@ public final class GameManager {
                                 player.floatPos = new Position((player.pos().x-next.x) * Tile.WIDTH, (player.pos().y-next.y) * Tile.HEIGHT);
 				player.pos = next;
 			}
-                        
-                        //Try to use stairs entity on a stairs tile (well3112)
-                        if (target.type() == 3)
-                                areas.useStairs(next);
 		}
+
 
 		/* TODO: move the keyhandling code to the StateManager */
 		/*

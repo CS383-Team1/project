@@ -74,15 +74,11 @@ public class MessageBox {
                 l.setText(s);
         }
         
+        //This method isn't mine, I'll need to re-find the source
 	private NinePatch getNinePatch(String fname) {
-	    
-		// Get the image
-		final Texture t = new Texture(Gdx.files.internal(fname));
-	    
-		// create a new texture region, otherwise black pixels will show up too, we are simply cropping the image
-		// last 4 numbers respresent the length of how much can each corner can draw,
-		// for example if your image is 50px and you set the numbers 50, your whole image will be drawn in each corner
-		// so what number should be good?, well a little less than half would be nice
-	    return new NinePatch( new TextureRegion(t, 1, 1 , t.getWidth() - 2, t.getWidth() - 2), 10, 10, 10, 10);
+                final Texture t = new Texture( Gdx.files.internal( fname ) );
+                return new NinePatch(
+                        new TextureRegion(
+                                t, 1, 1 , t.getWidth() - 2, t.getWidth() - 2), 10, 10, 10, 10);
 	}
 }
