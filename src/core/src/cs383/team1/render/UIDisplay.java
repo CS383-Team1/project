@@ -60,7 +60,7 @@ public class UIDisplay extends Display{
                 menu = new MainMenu(skin);
 
                 stage.addActor(noticeBox.window());
-                stage.addActor(msg.t());
+                stage.addActor(msg.sp());
                 stage.addActor(menu.menu());
                 
 

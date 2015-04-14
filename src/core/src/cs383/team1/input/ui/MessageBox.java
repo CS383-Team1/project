@@ -1,19 +1,12 @@
 package cs383.team1.input.ui;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -23,62 +16,52 @@ public class MessageBox {
         ArrayList <String> text;
         Label l;
         Table t;
+        ScrollPane sp;
         Drawable bg;
         
         public MessageBox(Skin sk)
         {
                 text = new ArrayList();
-                bg = new NinePatchDrawable(getNinePatch("ui/test.9.png"));
 
                 t = new Table(sk);
-                t.setWidth(Gdx.graphics.getWidth());
-                t.setHeight(Gdx.graphics.getHeight()/5);
-                t.setX(0);
-                t.setY(0);
-
-                t.setBackground(bg);
-                
                 l = new Label("",sk);
-                t.left().bottom().add(l);
+                sp = new ScrollPane(t, sk);
+                sp.setWidth(Gdx.graphics.getWidth());
+                sp.setHeight(Gdx.graphics.getWidth()/6);
+                sp.setX(0);
+                sp.setY(0);
+                t.setFillParent(true);
+                t.left().bottom().add(l).width(sp.getWidth());
+                t.pad(10);
+                t.padBottom(15);
                 l.setWrap(true);
+                
+                sp.setScrollingDisabled(true, false);
+                sp.setOverscroll(false, false);
+                sp.setSmoothScrolling(false);
         }
         
-        public Table t(){
-                return t;
+        public ScrollPane sp(){
+                return sp;
         }
         
+        //Add a message from the input
         public void addMessage(String s)
         {
-                int wrapLength = 83;
-                //Handle text wrapping
-                if (s.length() > wrapLength && s.matches("[^\\s]{83}.+"))
-                        for (int i = 0; i < s.length(); i += Math.min(wrapLength, Math.abs(s.length() - i))) {
-                                text.add(s.substring(i,i+Math.min(wrapLength, Math.abs(s.length() - i))));
-                        }
-                else if (s.length() > wrapLength)
-                        text.addAll(Arrays.asList(s.split("\\s", wrapLength)));
-                else
-                        text.add(s);
-                if (text.size() > 6) {
-                        text.remove(0);
-                }
+                text.add(s);
                 updateMessages();
         }
         
+        //Update messages list
         public void updateMessages()
         {
                 String s = "";
+                if (text.size() > 100)
+                        text.remove(0);
                 for (int i = 0; i < text.size(); i++) {
                         s = s.concat(text.get(i)).concat("\n");
                 }
                 l.setText(s);
+                sp.setScrollPercentY(1);
         }
-        
-        //This method isn't mine, I'll need to re-find the source
-	private NinePatch getNinePatch(String fname) {
-                final Texture t = new Texture( Gdx.files.internal( fname ) );
-                return new NinePatch(
-                        new TextureRegion(
-                                t, 1, 1 , t.getWidth() - 2, t.getWidth() - 2), 10, 10, 10, 10);
-	}
 }
