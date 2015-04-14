@@ -8,35 +8,41 @@ import cs383.team1.server.util.MessageQueue;
 public class Server implements Runnable {
 	public static final int PORT = 13370;
 
-	MessageQueue msgs;
+	MessageQueue incoming;
+	MessageQueue outgoing;
 	ServerSocket sock;
 
-	public Server() throws IOException {
-		msgs = new MessageQueue();
-		sock = new ServerSocket(PORT);
+	public Server(MessageQueue in, MessageQueue out) {
+		incoming = in;
+		outgoing = out;
+
+		try {
+			sock = new ServerSocket(PORT);
+		} catch (IOException e) {
+			Gdx.app.error("Server:Server", "Error!");
+			/* ignore error */
+		}
 	}
 
 	public void run() {
 		Socket s;
+		ServerThread thread;
 
 		while (true) {
 			try {
 				s = sock.accept();
+
 				Gdx.app.debug("Server:run", "New connection");
-				(new Thread(
-					new ServerThread(msgs, s))).start();
+
+				thread = new ServerThread(incoming, s);
+
+				outgoing.attach(thread);
+
+				(new Thread(thread)).start();
 			} catch (Exception e) {
-				Gdx.app.debug("Server:run", "Error!");
+				Gdx.app.error("Server:run", "Error!");
 				/* ignore error */
 			}
-		}
-	}
-
-	public static void main(String[] args) {
-		try {
-			(new Thread(new Server())).start();
-		} catch (Exception e) {
-			Gdx.app.exit();
 		}
 	}
 }

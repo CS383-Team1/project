@@ -31,7 +31,7 @@ public class ServerThread implements Runnable, Observer {
 			while ((line = in.readLine()) != null) {
 				Gdx.app.debug("ServerThread",
 					"New message: " + line);
-				msgs.addMsg(line);
+				msgs.addMessage(line);
 			}
 		} catch (Exception e) {
 			Gdx.app.error("ServerThread:run", "Error!");

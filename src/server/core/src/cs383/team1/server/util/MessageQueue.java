@@ -33,7 +33,7 @@ public class MessageQueue implements Subject {
 		}
 	}
 
-	public synchronized void addMsg(String msg) {
+	public synchronized void addMessage(String msg) {
 		msgs.offer(msg);
 		update();
 	}

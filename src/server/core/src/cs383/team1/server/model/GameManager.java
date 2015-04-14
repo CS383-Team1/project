@@ -11,13 +11,12 @@ public final class GameManager {
 	public AreaManager areas;
 	public StateManager states;
 
-        
-        
 	private GameManager() {
-		if(instance != null) {
+		if (instance != null) {
 			Gdx.app.error("GameManager:GameManager",
-			  "reinstantiating singleton GameManager");
-			throw new IllegalStateException("reinstantiating singleton");
+				"reinstantiating singleton GameManager");
+			throw new IllegalStateException(
+				"reinstantiating singleton");
 		}
 
 		Gdx.app.debug("GameManager:GameManager", "instantiating class");
@@ -35,15 +34,54 @@ public final class GameManager {
 
 		areaDir = Gdx.files.internal("area/");
 
-		for(FileHandle f : areaDir.list()) {
+		for (FileHandle f : areaDir.list()) {
 			fname = new String("area/" + f.name());
-			Gdx.app.debug("GameManager:load", "Loading area " + fname);
+			Gdx.app.debug("GameManager:load",
+				"Loading area " + fname);
                         areas.loadArea(fname);
 		}
+
 		areas.changeArea("demo");
 	}
 
-	public void update() {
+	public String update(String str) {
+		int keycode;
+		int numVals;
+		int offset;
+		int type;
+		int x;
+		int y;
+		String[] vals;
+
+		Gdx.app.log("GameManager:update", "Parsing input string");
+
+		vals = str.trim().split("\\s+");
+		offset = 0;
+
+		numVals = Integer.parseInt(vals[offset++]);
+
+		if (vals[offset].equals("KEY")) {
+			type = 1;
+		} else if (vals[offset].equals("CLICK")) {
+			type = 2;
+		} else {
+			type = 0;
+			Gdx.app.error("GameManager:update",
+				"Invalid input event");
+		}
+
+		offset++;
+
+		switch (type) {
+			case 1:
+				keycode = Integer.parseInt(vals[offset++]);
+				break;
+			case 2:
+				x = Integer.parseInt(vals[offset++]);
+				y = Integer.parseInt(vals[offset++]);
+				break;
+		}
+
+		return areas.current.toString();
 	}
-        
 }
