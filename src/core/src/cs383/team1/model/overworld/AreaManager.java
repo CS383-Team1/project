@@ -4,20 +4,6 @@ import java.util.List;
 import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import cs383.team1.model.overworld.Area;
-import cs383.team1.model.overworld.DemoEntity;
-import cs383.team1.model.overworld.Entity;
-import cs383.team1.model.overworld.Field;
-import cs383.team1.model.overworld.Position;
-import cs383.team1.model.overworld.Player;
-import cs383.team1.model.overworld.Tile;
-import cs383.team1.model.overworld.Wall;
-import cs383.team1.model.overworld.Floor;
-import cs383.team1.model.overworld.Table;
-import cs383.team1.model.overworld.LeftDesk;
-import cs383.team1.model.overworld.RightDesk;
-import cs383.team1.model.overworld.WalkWay;
-import cs383.team1.model.overworld.OutsideWall;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +12,11 @@ public final class AreaManager {
 
 	public Map<String, Area> areas;
 	public Area current;
-
+        Area returnArea;
+        ReturnEntity returnPos;
+        Area combatArea;
+        String originalArea;
+        
 	private AreaManager() {
 		if(instance != null) {
 			Gdx.app.error("AreaManager:AreaManager",
@@ -37,6 +27,10 @@ public final class AreaManager {
 		Gdx.app.debug("AreaManager:AreaManager", "instantiating class");
 		areas = new HashMap<String, Area>();
 		current = null;
+                combatArea = new Area();
+                returnArea = new Area();
+                returnPos = new ReturnEntity();
+                originalArea = new String();
 	}
 
 	public Area loadArea(String fname) {
@@ -239,5 +233,73 @@ public final class AreaManager {
             }
             Gdx.app.error("GameManager:update","invalid stairs transition");
             return -1;
+        }
+        
+        public void getCombatArea(Position p, Player player, Npc npc){
+            
+            player.roaming = false;
+            
+            returnArea = current;
+            combatArea = current;
+            //current = combatArea;
+            //returnArea = areas.get(current);
+                        //Only render tiles in specific radius from player
+                       /* 
+                        for(Tile t : combatArea.tiles){
+                            if((t.pos().x - player.pos().x) > 2 && (t.pos().y - player.pos().y) > 2){
+                                combatArea.tiles.remove(t);
+                            }
+                        }
+                         */       
+            //Remove all other Npcs and players from combat area            
+                        for(Entity e : combatArea.entities){
+                            if(e.type() != 1 || e.pos() != npc.pos()){
+                                //combatArea.entities.remove(e);
+                            }
+                        }
+                        //combatArea.entities.add(player);
+                        //combatArea.entities.add(npc);
+                        //Possibly have transition animation here before changing current
+                        //Probably need to use key from Map of areas here instead
+                        current = combatArea;
+                        //returnPos = returnArea.pos.x;
+                        //returnArea.entities.add(returnPos);
+                        System.out.println("Printing in if statement in startCombat: ");
+                
+        }
+        
+         public int endCombat(Player player){
+            current = returnArea;
+            System.out.println("Printing return pos: " + returnPos.pos().x + " " + returnPos.pos().y);
+            
+            /*
+            for(Entity e : combatArea.entities){
+                combatArea.entities.remove(e);
+            }
+                    */
+            //areas.get(originalArea);
+            //player.pos = returnPos.pos();
+            
+            
+            //Possibly have transition animation here before changing current
+            
+            return 0;
+                
+                
+        }
+        
+        
+        public Entity findCombatant(Position p, int t){
+                for (Entity e : current.entities) {
+                        if(e.pos().x  == (p.x + 1) && e.pos().y == p.y && e.type() == t)
+                                return e;
+                        else if(e.pos().x == (p.x - 1) && e.pos().y == p.y && e.type() == t)
+                                return e;
+                        else if(e.pos().x == p.x && e.pos().y == (p.y + 1) && e.type() == t)
+                                return e;
+                        else if(e.pos().x == p.x && e.pos().y == (p.y - 1) && e.type() == t)
+                                return e;
+                }
+                return null;
         }
 }
