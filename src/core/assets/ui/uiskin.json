@@ -19,6 +19,7 @@ com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 },
 com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
   default: { vScroll: custom-scroll, hScrollKnob: custom-round-large, background: default-rect, hScroll: custom-scroll, vScrollKnob: custom-round-large }
+  chat: { vScroll: custom-scroll, hScrollKnob: custom-round-large, background: chat-rect, hScroll: custom-scroll, vScrollKnob: custom-round-large }
 },
 com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
   default: {
@@ -51,7 +52,7 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
   red: { font: big-font, fontColor: red }
 },
 com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
-  default: { selection: selection, background: textfield, font: default-font, fontColor: white, cursor: cursor }
+  default: { selection: selection, background: custom-textfield, font: default-font, fontColor: white, cursor: custom-cursor }
 },
 com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle: {
   default: { checkboxOn: check-on, checkboxOff: check-off, font: default-font, fontColor: white }

@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
  */
 public class SubMenu {
         //Get an image from its filename
-        public Image getImage( String s )
+        static public Image getImage( String s )
         {
                 return (new Image(
                         new TextureRegion(

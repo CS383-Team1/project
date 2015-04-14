@@ -60,7 +60,7 @@ public class UIDisplay extends Display{
                 menu = new MainMenu(skin);
 
                 stage.addActor(noticeBox.window());
-                stage.addActor(msg.sp());
+                stage.addActor(msg.msg());
                 stage.addActor(menu.menu());
                 
 
@@ -79,6 +79,24 @@ public class UIDisplay extends Display{
                                 }
                                 return false;
                         }
+                });
+                
+                stage.addListener(new InputListener() {
+                        @Override
+                        public boolean keyDown( InputEvent event, int keyCode ) {
+                                if (keyCode == Input.Keys.ENTER) {
+                                        if (!msg.input.equals("") && stage.getKeyboardFocus() == msg.input) {
+                                                msg.addMessage(msg.input.getText());
+                                                msg.input.setText("");
+                                                stage.setKeyboardFocus(null);
+                                                return true;
+                                        } else {
+                                                stage.setKeyboardFocus(msg.input);
+                                        }
+                                }
+                                return false;
+                        }
+                        
                 });
         }
 }

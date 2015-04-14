@@ -14,7 +14,7 @@ public class InputManager {
 	}
 
         public void limitList() {
-                if (keys.size() > 2)
+                if (keys.size() > 1)
                         keys.subList(2, keys.size()).clear();                
         }
 }

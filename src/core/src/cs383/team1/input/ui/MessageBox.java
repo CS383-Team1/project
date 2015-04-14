@@ -1,10 +1,17 @@
 package cs383.team1.input.ui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.SplitPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import java.util.ArrayList;
 
@@ -13,36 +20,62 @@ import java.util.ArrayList;
  * @author Lance
  */
 public class MessageBox {
-        ArrayList <String> text;
-        Label l;
-        Table t;
-        ScrollPane sp;
-        Drawable bg;
+        private ArrayList <String> text;
+        private Label mText;
+        private Table mTable;
+        private ScrollPane mScroll;
+        private SplitPane mHistory;
+        private Table bar;
+        
+        private SplitPane msg;
+        public TextField input;
         
         public MessageBox(Skin sk)
         {
                 text = new ArrayList();
 
-                t = new Table(sk);
-                l = new Label("",sk);
-                sp = new ScrollPane(t, sk);
-                sp.setWidth(Gdx.graphics.getWidth());
-                sp.setHeight(Gdx.graphics.getWidth()/6);
-                sp.setX(0);
-                sp.setY(0);
-                t.setFillParent(true);
-                t.left().bottom().add(l).width(sp.getWidth());
-                t.pad(10);
-                t.padBottom(15);
-                l.setWrap(true);
+                mTable = new Table(sk);
+                mText = new Label("",sk);
+                input = new TextField("", sk);
                 
-                sp.setScrollingDisabled(true, false);
-                sp.setOverscroll(false, false);
-                sp.setSmoothScrolling(false);
+                mScroll = new ScrollPane(mTable, sk, "chat");
+                mTable.pad(10);
+                mTable.padBottom(15);
+                mText.setWrap(true);
+                
+                mScroll.setScrollingDisabled(true, false);
+                mScroll.setOverscroll(false, false);
+                mScroll.setSmoothScrolling(false);
+                
+                bar = new Table();
+                bar.add(SubMenu.getImage("bar")).fillX();
+                
+                mHistory = new SplitPane(bar, mScroll, true, sk);
+                bar.setFillParent(true);
+                mHistory.setSplitAmount   ((float) 0.2500);
+                mHistory.setMaxSplitAmount((float) 0.2500);
+                mHistory.setMinSplitAmount((float) 0.2499);
+                
+//                msg = new SplitPane(mScroll, input, true, sk);
+                msg = new SplitPane(mHistory, input, true, sk);
+
+                msg.setWidth(Gdx.graphics.getWidth());
+                msg.setHeight(Gdx.graphics.getWidth()/6);
+                msg.setX(0);
+                msg.setY(0);
+                
+                System.out.println((float)Gdx.graphics.getWidth()/42);
+                msg.setSplitAmount   ((float) 0.8500);
+                msg.setMaxSplitAmount((float) 0.8500);
+                msg.setMinSplitAmount((float) 0.8499);
+
+                mScroll.setFillParent(true);
+                mTable.setFillParent(true);
+                mTable.left().bottom().add(mText).width(msg.getWidth());
         }
         
-        public ScrollPane sp(){
-                return sp;
+        public SplitPane msg(){
+                return msg;
         }
         
         //Add a message from the input
@@ -61,7 +94,7 @@ public class MessageBox {
                 for (int i = 0; i < text.size(); i++) {
                         s = s.concat(text.get(i)).concat("\n");
                 }
-                l.setText(s);
-                sp.setScrollPercentY(1);
+                mText.setText(s);
+                mScroll.setScrollPercentY(1);
         }
 }
