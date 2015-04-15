@@ -22,10 +22,9 @@ public final class GameManager {
 	public AreaManager areas;
 	public StateManager states;
         public int keyPressed;
+//        public boolean parseInput = true;
 
-//        public DialogueBox chatBox = new DialogueBox();
         public String msg;
-        
         
 	private GameManager() {
                 this.keyPressed = 0;

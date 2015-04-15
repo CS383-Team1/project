@@ -11,7 +11,9 @@ import cs383.team1.input.ui.MainMenu;
 import cs383.team1.input.ui.MessageBox;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Area;
+import cs383.team1.model.overworld.AreaManager;
 import cs383.team1.model.overworld.Player;
+import cs383.team1.model.overworld.Position;
 
 /**
  *
@@ -24,10 +26,14 @@ public class UIDisplay extends Display{
         MessageBox msg;
         MainMenu menu;
         InteractionMenu interact;
+        
+        final Player player = GameManager.instance.areas.current.player;
+        final AreaManager areas = GameManager.instance.areas;
+
 
         @Override
         public void render() {
-                Player player = GameManager.instance.areas.current.player;
+                //Read messages sent to the GameManager to the chat
                 if ( GameManager.instance.msg != null) {
                         msg.addMessage(GameManager.instance.msg);
                         GameManager.instance.msg = null;
@@ -46,7 +52,6 @@ public class UIDisplay extends Display{
 
 
         public UIDisplay(Stage s) {
-                final Player player = GameManager.instance.areas.current.player;
 
 		skin = new Skin(Gdx.files.internal("ui/uiskin.json"));
 		stage = s;
@@ -56,8 +61,10 @@ public class UIDisplay extends Display{
 
                 stage.addActor(msg.msg());
                 stage.addActor(menu.menu());
+                stage.addActor(interact.interact());
 
                 menu.menu().setVisible(false);
+                interact.interact().setVisible(false);
                 
                 stage.addListener(new InputListener() {
                         @Override
@@ -72,17 +79,38 @@ public class UIDisplay extends Display{
                                                 stage.setKeyboardFocus(msg.input);
                                         }
                                         
-                                }
-                                else if ( keyCode == Input.Keys.ESCAPE && menu.menu().isVisible() ) {
+                                } else if ( keyCode == Input.Keys.ESCAPE && menu.menu().isVisible() ) {
                                         menu.menu().setVisible(false);
                                         return true;
-                                }
-                                else if ( keyCode == Input.Keys.ESCAPE ) {
+                                } else if ( keyCode == Input.Keys.ESCAPE ) {
                                         menu.menu().setVisible(true);
                                         return true;
+                                } else if (keyCode == Input.Keys.SPACE) {
+                                        if (player.facing == 0)
+                                                useMenu(new Position(player.pos.x, player.pos.y + 1));
+                                        else if (player.facing == 1)
+                                                useMenu(new Position(player.pos.x + 1, player.pos.y));
+                                        else if (player.facing == 2)
+                                                useMenu(new Position(player.pos.x, player.pos.y - 1));
+                                        else if (player.facing == 3)
+                                                useMenu(new Position(player.pos.x - 1, player.pos.y));
+                                        return true;
+                                } else if (keyCode == Input.Keys.DOWN) {
+                                        interact.getNext();
+                                        return (interact.interact.isVisible());
+                                } else if (keyCode == Input.Keys.UP) {
+                                        interact.getPrevious();
+                                        return (interact.interact.isVisible());
+                                } else if(keyCode == Input.Keys.LEFT || keyCode == Input.Keys.RIGHT) {
+                                        return (interact.interact.isVisible());
                                 }
                                 return false;
                         }
                 });
+        }
+        
+        private void useMenu(Position p)
+        {
+                interact.useMenu(areas.findEntity(p), player.facing);
         }
 }

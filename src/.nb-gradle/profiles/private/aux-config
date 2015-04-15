@@ -4,21 +4,11 @@
   <auxiliary>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-      <group>
-        <file>file:/C:/cygwin64/home/Lance/GitHub/CS383/project/src/core/src/cs383/team1/input/ui/MenuCharacter.java</file>
-        <file>file:/C:/cygwin64/home/Lance/GitHub/CS383/project/src/core/src/cs383/team1/input/ui/MainMenu.java</file>
-        <file>file:/C:/cygwin64/home/Lance/GitHub/CS383/project/src/core/src/cs383/team1/input/ui/MenuInventory.java</file>
-        <file>file:/C:/cygwin64/home/Lance/GitHub/CS383/project/src/core/src/cs383/team1/input/ui/MenuQuests.java</file>
-      </group>
+      <group/>
     </open-files>
     <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-      <group>
-        <file>file:/C:/cygwin64/home/Lance/GitHub/CS383/project/src/core/src/cs383/team1/input/ui/MenuCharacter.java</file>
-        <file>file:/C:/cygwin64/home/Lance/GitHub/CS383/project/src/core/src/cs383/team1/input/ui/MainMenu.java</file>
-        <file>file:/C:/cygwin64/home/Lance/GitHub/CS383/project/src/core/src/cs383/team1/input/ui/MenuInventory.java</file>
-        <file>file:/C:/cygwin64/home/Lance/GitHub/CS383/project/src/core/src/cs383/team1/input/ui/MenuQuests.java</file>
-      </group>
+      <group/>
     </open-files>
   </auxiliary>
 </gradle-project-properties>

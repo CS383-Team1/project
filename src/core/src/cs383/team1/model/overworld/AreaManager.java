@@ -208,6 +208,16 @@ public final class AreaManager {
                 return null;
         }
         
+        //Find the first entity at position p
+        public Entity findEntity(Position p)
+        {
+                for (Entity e : current.entities) {
+                        if(e.pos().x == p.x && e.pos().y == p.y)
+                                return e;
+                }
+                return null;
+        }
+        
         //Method to change the current area and set the future position (well3112)
         public int changeArea(String s, Position pos)
         {
