@@ -16,14 +16,13 @@ import java.util.ArrayList;
  */
 public class CombatManager {
     private ArrayList<Entity> combatants = new ArrayList<Entity>();
-    public boolean fighting;
     int lastPlayerDamage;
     Move playerMove;
     int lastPlayerMove;
     int playerBlockPercent;
     
     public CombatManager(){
-        fighting = false;
+        
         lastPlayerDamage = 0;
         playerMove = new Move();
         lastPlayerMove = 0;
@@ -39,7 +38,7 @@ public class CombatManager {
     }
     
     public int turn(){
-        fighting = true;
+        
         Player player = (Player)combatants.get(0);
         //System.out.println("Printing npc health before cast: " + combatants.get(1).hp);
         Npc npc = (Npc)combatants.get(1);
@@ -53,7 +52,13 @@ public class CombatManager {
                 playerMove = player.attacks.get(0);
                 lastPlayerMove = player.attacks.indexOf(playerMove);
                 playerBlockPercent = playerMove.getBlockPercent();
-                npc.hp -= player.attacks.get(0).getDamage();
+                //If damage attribute in move instance is positive, then deal to npc hp, else add to player hp
+                if(player.attacks.get(0).getDamage() >= 0){
+                    npc.hp -= player.attacks.get(0).getDamage();
+                }
+                else{
+                    player.hp -= player.attacks.get(0).getDamage();
+                }
                 System.out.println("Player attacking with move " + player.attacks.get(0).name);
                 player.removeAttack();
             }
@@ -61,7 +66,13 @@ public class CombatManager {
                 
                 System.out.println("Printing lastPlayerDamage: " + lastPlayerDamage);
                 lastPlayerDamage = npc.attacks.get(0).getDamage();
-                player.hp -= damage / playerBlockPercent;
+                //If damage attribute in move instance is positive, then deal to player hp, else add to npc hp
+                if(npc.attacks.get(0).getDamage() >= 0){
+                    player.hp -= damage / playerBlockPercent;
+                }else{
+                    npc.hp -= player.attacks.get(0).getDamage();
+                }
+                
                 System.out.println("NPC attacking with move " + npc.attacks.get(0).name);
                 npc.removeAttack();
             }

@@ -33,6 +33,7 @@ public class Npc implements Entity{
                 addMove("block", 0, 50);
                 addMove("staple", 10, 1);
                 addMove("throw coffee in face", 5, 1);
+                addMove("drink coffee", -5, 1);
 	}
 
         //Basic Constructor for NPC
@@ -62,7 +63,10 @@ public class Npc implements Entity{
                 mutatedFitness = 0.0;
                 addMove("block", 0, 50);
                 addMove("staple", 10, 1);
-                addMove("flee", 0, 100);
+                addMove("throw coffee in face", 5, 1);
+                //for(int i = 2; i < 10; i++ ){
+                    //addMove(new Move());
+                //}
 	}
 
         
@@ -201,6 +205,10 @@ public class Npc implements Entity{
         //Adds move to list of available moves
         public void addMove(String name, int damage, int blockPercent){
             Move move = new Move(name, damage, blockPercent);
+            moves.add(move);
+        }
+        
+        public void addMove(Move move){
             moves.add(move);
         }
         

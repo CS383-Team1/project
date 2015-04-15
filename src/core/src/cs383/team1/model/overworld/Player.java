@@ -33,7 +33,11 @@ public final class Player implements Entity {
                 addMove("block", 0, 50);
                 addMove("staple", 10, 1);
                 addMove("throw coffee in face", 5, 1);
-                System.out.println("Printing first move " + moves.get(0).name);
+                addMove("drink coffee", -5, 1);
+                for(int i = 3; i < 10; i++ ){
+                    addMove(new Move());
+                }
+                
 	}
 
 	public int type() {
@@ -50,6 +54,10 @@ public final class Player implements Entity {
         
         public void addMove(String name, int damage, int blockPercent){
             Move move = new Move(name, damage, blockPercent);
+            moves.add(move);
+        }
+        
+        public void addMove(Move move){
             moves.add(move);
         }
         

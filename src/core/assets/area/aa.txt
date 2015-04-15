@@ -1023,6 +1023,7 @@
 31 29 9
 31 30 9
 31 31 9
-1
+2
 29 0 2 {destination:demo,destinationX:30,destinationY:30}
+7 7 3 {quests:dialogue/npc1.txt}
 8 7 100 10 1

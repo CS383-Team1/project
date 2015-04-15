@@ -257,13 +257,8 @@ public final class AreaManager {
                                 //combatArea.entities.remove(e);
                             }
                         }
-                        //combatArea.entities.add(player);
-                        //combatArea.entities.add(npc);
-                        //Possibly have transition animation here before changing current
-                        //Probably need to use key from Map of areas here instead
+                        
                         current = combatArea;
-                        //returnPos = returnArea.pos.x;
-                        //returnArea.entities.add(returnPos);
                         System.out.println("Printing in if statement in startCombat: ");
                 
         }

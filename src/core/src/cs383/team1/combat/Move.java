@@ -15,7 +15,9 @@ public class Move {
     private int blockPercent;
     
     public Move(){
-        
+        name = "null";
+        damage = 0;
+        blockPercent = 1;
     }
     
     public Move(String n, int d, int b){

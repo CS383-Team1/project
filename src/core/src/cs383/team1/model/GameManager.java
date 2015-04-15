@@ -136,7 +136,6 @@ public final class GameManager {
                                 areas.getCombatArea(player.pos(), player, npc);
                                 combat.addCombatants(player);
                                 combat.addCombatants(npc);
-                                combat.fighting = true;
                                 combat.turn();
                         }
                         
@@ -189,7 +188,7 @@ public final class GameManager {
                                 selection = 9; 
                                 break;
                             case Keys.E:
-                                combat.fighting = false;
+                                
                                 player.roaming = true;
                                 player.pos = returnPos;
                                 areas.endCombat(player);
@@ -201,13 +200,13 @@ public final class GameManager {
 					continue;
                             }
                         
-                        if(selection < player.moves.size())
+                        if(selection < player.moves.size()){
                             chatBox.addMessage("Player chooses: " + player.moves.get(selection).name);
-                        
+                            chatBox.addMessage("Player hp: " + player.hp);
+                        }
                         
                         
                 }
-                
                 
 
 		/* TODO: move the keyhandling code to the StateManager */
