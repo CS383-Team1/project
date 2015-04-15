@@ -38,44 +38,53 @@ public class CombatManager {
     }
     
     public int turn(){
-        
         Player player = (Player)combatants.get(0);
         //System.out.println("Printing npc health before cast: " + combatants.get(1).hp);
         Npc npc = (Npc)combatants.get(1);
         //System.out.println("Inside fight in combat manager");
-        System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
+        //System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
         //while((combatants.size() > 1) && (player.hp > 0) && npc.hp > 0){
         int damage = npc.combatAI(lastPlayerDamage, lastPlayerMove);
         if((combatants.size() > 1) && (player.hp > 0) && npc.hp > 0){
             playerBlockPercent = 1;
-            if(player.consumableAttack()){
-                playerMove = player.attacks.get(0);
-                lastPlayerMove = player.attacks.indexOf(playerMove);
-                playerBlockPercent = playerMove.getBlockPercent();
-                //If damage attribute in move instance is positive, then deal to npc hp, else add to player hp
-                if(player.attacks.get(0).getDamage() >= 0){
-                    npc.hp -= player.attacks.get(0).getDamage();
+            
+            for(Entity e : combatants){
+                if(e.type() == 1){
+                    player = (Player)e;
+                    if(player.consumableAttack()){
+                    playerMove = player.attacks.get(0);
+                    lastPlayerMove = player.attacks.indexOf(playerMove);
+                    playerBlockPercent = playerMove.getBlockPercent();
+                    //If damage attribute in move instance is positive, then deal to npc hp, else add to player hp
+                    if(player.attacks.get(0).getDamage() >= 0){
+                        npc.hp -= player.attacks.get(0).getDamage();
+                    }
+                    else{
+                        player.hp -= player.attacks.get(0).getDamage();
+                    }
+                        System.out.println("Player attacking with move " + player.attacks.get(0).name);
+                        player.removeAttack();
+                    }
                 }
-                else{
-                    player.hp -= player.attacks.get(0).getDamage();
-                }
-                System.out.println("Player attacking with move " + player.attacks.get(0).name);
-                player.removeAttack();
-            }
-            if(npc.consumableAttack()){
+                if(e.type() == 3){
+                    npc = (Npc)e;
+                    if(npc.consumableAttack()){
                 
-                System.out.println("Printing lastPlayerDamage: " + lastPlayerDamage);
-                lastPlayerDamage = npc.attacks.get(0).getDamage();
-                //If damage attribute in move instance is positive, then deal to player hp, else add to npc hp
-                if(npc.attacks.get(0).getDamage() >= 0){
-                    player.hp -= damage / playerBlockPercent;
-                }else{
-                    npc.hp -= player.attacks.get(0).getDamage();
-                }
+                        System.out.println("Printing lastPlayerDamage: " + lastPlayerDamage);
+                        lastPlayerDamage = npc.attacks.get(0).getDamage();
+                        //If damage attribute in move instance is positive, then deal to player hp, else add to npc hp
+                        if(npc.attacks.get(0).getDamage() >= 0){
+                            player.hp -= damage / playerBlockPercent;
+                        }else{
+                            npc.hp -= player.attacks.get(0).getDamage();
+                        }
                 
-                System.out.println("NPC attacking with move " + npc.attacks.get(0).name);
-                npc.removeAttack();
+                        System.out.println("NPC attacking with move " + npc.attacks.get(0).name);
+                        npc.removeAttack();
+                    }
+                }
             }
+            System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
             
         }else{
             player.roaming = true;
