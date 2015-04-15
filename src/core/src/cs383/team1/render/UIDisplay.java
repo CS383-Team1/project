@@ -6,10 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import cs383.team1.input.ui.InteractionMenu;
 import cs383.team1.input.ui.MainMenu;
 import cs383.team1.input.ui.MessageBox;
-import cs383.team1.input.ui.NotificationBox;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.Player;
 
 /**
@@ -20,22 +21,14 @@ public class UIDisplay extends Display{
         
         Stage stage;
         Skin skin;
-        NotificationBox noticeBox;
         MessageBox msg;
         MainMenu menu;
+        InteractionMenu interact;
 
         @Override
         public void render() {
                 Player player = GameManager.instance.areas.current.player;
-                if ( player.notice!=null && !noticeBox.isVisible() ) {
-                        noticeBox.addNotice(player.notice);
-                        player.notice = null;
-                } else if (player.notice != null && noticeBox.isVisible()) {
-                        noticeBox.clearNotice();
-                        noticeBox.addNotice(player.notice);
-                        player.notice = null;
-                }
-                if (GameManager.instance.msg != null) {
+                if ( GameManager.instance.msg != null) {
                         msg.addMessage(GameManager.instance.msg);
                         GameManager.instance.msg = null;
                 }
@@ -53,33 +46,18 @@ public class UIDisplay extends Display{
 
 
         public UIDisplay(Stage s) {
+                final Player player = GameManager.instance.areas.current.player;
+
 		skin = new Skin(Gdx.files.internal("ui/uiskin.json"));
 		stage = s;
-                noticeBox = new NotificationBox(skin);
                 msg = new MessageBox(skin);
                 menu = new MainMenu(skin);
+                interact = new InteractionMenu(skin);
 
-                stage.addActor(noticeBox.window());
                 stage.addActor(msg.msg());
                 stage.addActor(menu.menu());
-                
 
                 menu.menu().setVisible(false);
-
-                stage.addListener(new InputListener () {
-                        @Override
-                        public boolean keyDown( InputEvent event, int keyCode ) {
-                                if ( keyCode == Input.Keys.ESCAPE && menu.menu().isVisible() ) {
-                                        menu.menu().setVisible(false);
-                                        return true;
-                                }
-                                if ( keyCode == Input.Keys.ESCAPE ) {
-                                        menu.menu().setVisible(true);
-                                        return true;
-                                }
-                                return false;
-                        }
-                });
                 
                 stage.addListener(new InputListener() {
                         @Override
@@ -93,10 +71,18 @@ public class UIDisplay extends Display{
                                         } else {
                                                 stage.setKeyboardFocus(msg.input);
                                         }
+                                        
+                                }
+                                else if ( keyCode == Input.Keys.ESCAPE && menu.menu().isVisible() ) {
+                                        menu.menu().setVisible(false);
+                                        return true;
+                                }
+                                else if ( keyCode == Input.Keys.ESCAPE ) {
+                                        menu.menu().setVisible(true);
+                                        return true;
                                 }
                                 return false;
                         }
-                        
                 });
         }
 }

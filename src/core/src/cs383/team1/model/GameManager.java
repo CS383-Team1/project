@@ -6,7 +6,6 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.utils.Timer;
 import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
-import cs383.team1.input.ui.Notification;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
@@ -26,7 +25,6 @@ public final class GameManager {
 
 //        public DialogueBox chatBox = new DialogueBox();
         public String msg;
-        public Notification notice = new Notification();
         
         
 	private GameManager() {
@@ -87,8 +85,6 @@ public final class GameManager {
 					next = new Position(player.pos.x, player.pos.y - 1);
                                         player.facing = 2;
 					break;
-                                case Keys.BACKSPACE:
-                                        player.setNotice(new Notification("ui/back.png", "You pressed backspace!"));
 				default:
 					continue;
 			}

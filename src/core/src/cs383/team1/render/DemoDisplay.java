@@ -25,7 +25,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import cs383.team1.input.ui.NotificationBox;
 
 public class DemoDisplay extends Display {
 	private static final String FNAME = "img/demo.png";
@@ -247,8 +246,4 @@ public class DemoDisplay extends Display {
                 }
         }
         
-        public void drawNoticeBox(NotificationBox nb)
-        {
-                
-        }
 }
