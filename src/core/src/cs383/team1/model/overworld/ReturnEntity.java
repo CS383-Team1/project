@@ -16,6 +16,7 @@ public class ReturnEntity implements Entity {
     public static final int TYPE = 3;
     public static final boolean PASSABLE = true;
     private Position pos;
+    public String name = new String();
 
     public ReturnEntity(){
         this(new Position(0, 0), "null");
@@ -24,6 +25,7 @@ public class ReturnEntity implements Entity {
     public ReturnEntity(Position p, String s) {
 		Gdx.app.debug("ReturnEntity:ReturnEntity", "instantiating class");
 		pos = p;
+                name = s;
     }
     
     

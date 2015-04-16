@@ -188,7 +188,6 @@ public final class GameManager {
                                 selection = 9; 
                                 break;
                             case Keys.E:
-                                
                                 player.roaming = true;
                                 player.pos = returnPos;
                                 areas.endCombat(player);

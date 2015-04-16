@@ -20,6 +20,8 @@ public class CombatManager {
     Move playerMove;
     int lastPlayerMove;
     int playerBlockPercent;
+    Player player;
+    Npc npc;
     
     public CombatManager(){
         
@@ -38,15 +40,23 @@ public class CombatManager {
     }
     
     public int turn(){
-        Player player = (Player)combatants.get(0);
-        //System.out.println("Printing npc health before cast: " + combatants.get(1).hp);
-        Npc npc = (Npc)combatants.get(1);
-        //System.out.println("Inside fight in combat manager");
         //System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
         //while((combatants.size() > 1) && (player.hp > 0) && npc.hp > 0){
-        int damage = npc.combatAI(lastPlayerDamage, lastPlayerMove);
+        int damage;
+        for(Entity e : combatants){
+                //while((System.currentTimeMillis() - startTime) < 5000){
+                if(e.type() == 1){
+                    player = (Player)e;
+                }
+                else if(e.type() == 3){
+                    npc = (Npc)e;
+                }
+        }
+        
+        
         if((combatants.size() > 1) && (player.hp > 0) && npc.hp > 0){
             playerBlockPercent = 1;
+            long startTime = System.currentTimeMillis();
             
             for(Entity e : combatants){
                 if(e.type() == 1){
@@ -68,6 +78,7 @@ public class CombatManager {
                 }
                 if(e.type() == 3){
                     npc = (Npc)e;
+                    damage = npc.combatAI(lastPlayerDamage, lastPlayerMove);
                     if(npc.consumableAttack()){
                 
                         System.out.println("Printing lastPlayerDamage: " + lastPlayerDamage);
@@ -83,9 +94,8 @@ public class CombatManager {
                         npc.removeAttack();
                     }
                 }
-            }
-            System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
-            
+                }
+             System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
         }else{
             player.roaming = true;
             npc.hp = 100;

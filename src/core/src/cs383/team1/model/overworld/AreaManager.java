@@ -238,49 +238,31 @@ public final class AreaManager {
         public void getCombatArea(Position p, Player player, Npc npc){
             
             player.roaming = false;
-            
             returnArea = current;
-            combatArea = current;
-            //current = combatArea;
-            //returnArea = areas.get(current);
-                        //Only render tiles in specific radius from player
-                       /* 
-                        for(Tile t : combatArea.tiles){
-                            if((t.pos().x - player.pos().x) > 2 && (t.pos().y - player.pos().y) > 2){
-                                combatArea.tiles.remove(t);
-                            }
-                        }
-                         */       
-            //Remove all other Npcs and players from combat area            
-                        for(Entity e : combatArea.entities){
-                            if(e.type() != 1 || e.pos() != npc.pos()){
-                                //combatArea.entities.remove(e);
-                            }
-                        }
-                        
-                        current = combatArea;
-                        System.out.println("Printing in if statement in startCombat: ");
-                
+            for(Tile t : current.tiles){
+                combatArea.tiles.add(t);
+            }
+            
+            for(Entity e : current.entities){
+                if(e.pos() == p){
+                    combatArea.entities.add(e);
+                }else if(e.pos() == npc.pos()){
+                    combatArea.entities.add(e);
+                    }
+            }
         }
         
-         public int endCombat(Player player){
-            current = returnArea;
-            System.out.println("Printing return pos: " + returnPos.pos().x + " " + returnPos.pos().y);
-            
-            /*
-            for(Entity e : combatArea.entities){
-                combatArea.entities.remove(e);
+        public int endCombat(Player player){
+            for(Entity e : current.entities){
+                if(e.type() == 1){
+                    returnArea.entities.add(e);
+                    current.entities.remove(e);
+                }
             }
-                    */
-            //areas.get(originalArea);
-            //player.pos = returnPos.pos();
-            
-            
+            current = returnArea;
             //Possibly have transition animation here before changing current
             
-            return 0;
-                
-                
+            return 0;    
         }
         
         
