@@ -85,7 +85,8 @@ public class UIDisplay extends Display{
                                 } else if ( keyCode == Input.Keys.ESCAPE ) {
                                         menu.menu().setVisible(true);
                                         return true;
-                                } else if (keyCode == Input.Keys.SPACE) {
+                                        // && keyboard focus != messagebox
+                                } else if (keyCode == Input.Keys.SPACE && stage.getKeyboardFocus() != msg.input) {
                                         if (player.facing == 0)
                                                 useMenu(new Position(player.pos.x, player.pos.y + 1));
                                         else if (player.facing == 1)
