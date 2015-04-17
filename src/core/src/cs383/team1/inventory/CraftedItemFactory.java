@@ -29,6 +29,13 @@ public class CraftedItemFactory {
         "neck",
         "normal"
     };
+    Double [][] statList = {
+        {10.0,  0.5,  0.05,  1.5, 10.0,  0.0,  0.0},
+        { 0.0,  0.0,  0.0,   0.0,  0.0,  5.0, 20.0},
+        { 0.0,  0.0,  0.07,  0.0,  0.0,  0.0,  0.0},
+        { 0.0,  0.1,  0.0,   0.0,  0.0,  0.0,  0.0}
+    };
+    
     public Item craft(ArrayList<Item> iList){
         Item ret = null;
         for(int i=0;i<craftList.length;i++){
@@ -47,7 +54,7 @@ public class CraftedItemFactory {
             }
             if(temp.isEmpty()){
                 Item newItem = new Item(craftList[i][craftList[i].length],
-                descList[i],typeList[i]);
+                descList[i],typeList[i], statList[i]);
                 return newItem;
             }
         }
