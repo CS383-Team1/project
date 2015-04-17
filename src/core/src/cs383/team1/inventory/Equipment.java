@@ -48,12 +48,13 @@ public class Equipment {
     
     public Item equip(Item n){
         Item ret = null;
-        if("head".equals(n.type)){ret = head; head = n;}else 
-        if("chest".equals(n.type)){ret = chest;chest = n;}else
-        if("legs".equals(n.type)){ret = legs;chest = n;}else
-        if("feet".equals(n.type)){ret = feet;feet = n;}else
-        if("neck".equals(n.type)){ret = neck;neck = n;}else
-        if("rings".equals(n.type)){
+        System.out.println("equipping " + n.name);
+        if(n.type.contains("head")){ret = head; head = n;}else 
+        if(n.type.contains("chest")){ret = chest;chest = n;}else
+        if(n.type.contains("legs")){ret = legs;chest = n;}else
+        if(n.type.contains("feet")){ret = feet;feet = n;}else
+        if(n.type.contains("neck")){ret = neck;neck = n;}else
+        if(n.type.contains("rings")){
             if( rings.size() < maxRings){
                 rings.add(n);
             }else{
@@ -62,7 +63,7 @@ public class Equipment {
                 rings.add(n);
             }
         }else
-        if("consumable".equals(n.type)){
+        if(n.type.contains("consumable")){
             if(quickSlots.size() < maxSlots){
                 quickSlots.add(n);
             }else{
@@ -75,26 +76,88 @@ public class Equipment {
         return ret;
     }
     
-    public Item unequip(String t){
-        Item ret = null;
-        if("head".equals(t)){ret = head; head = null;}else 
-        if("chest".equals(t)){ret = chest;chest = null;}else
-        if("legs".equals(t)){ret = legs;chest = null;}else
-        if("feet".equals(t)){ret = feet;feet = null;}else
-        if("neck".equals(t)){ret = neck;neck = null;}else
-        if("rings".equals(t)){
-            if( rings.size() < maxRings){
-                ret = rings.get(0);
-                rings.remove(0);
+    public boolean equipWeapon(Item n, String side){
+        if(n.type.contains( "weapon")){
+            if(n.type.contains("two-handed")){
+                // remove any existing weapons
+                unequip(this.rightWeapon);
+                unequip(this.leftWeapon);
+                rightWeapon = n;
+            }else if("right".equals(side)){
+                unequip(this.rightWeapon);
+                rightWeapon = n;
+            }else if ("left".equals(side)){
+                unequip(this.leftWeapon);
+                leftWeapon = n;
+            }else{
+                if(rightWeapon == null){
+                    rightWeapon = n;
+                }else if(leftWeapon == null){
+                    leftWeapon = n;
+                }else{
+                    return false;
+                }
             }
-        }else
-        if("consumable".equals(t)){
-            if(quickSlots.size() < maxSlots){
-                ret = quickSlots.get(0);
-                quickSlots.remove(0);
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public Item unequip(Item t){
+        Item ret = null;
+        if(head.equals(t)){ret = head; head = null;}else 
+        if(chest.equals(t)){ret = chest;chest = null;}else
+        if(legs.equals(t)){ret = legs;chest = null;}else
+        if(feet.equals(t)){ret = feet;feet = null;}else
+        if(neck.equals(t)){ret = neck;neck = null;}
+        for(int i=0;i<rings.size();i++){
+            if(rings.get(i).equals(t)){
+                ret = rings.get(i);
+                rings.remove(i);
+                return ret;
             }
         }
+        for(int i=0;i<quickSlots.size();i++){
+            if(quickSlots.get(i).equals(t)){
+                ret = quickSlots.get(i);
+                quickSlots.remove(i);
+                return ret;
+            }
+        }
+        if(rightWeapon.equals(t)){
+            ret = rightWeapon;
+            rightWeapon = null;
+            return ret;
+        }else if(leftWeapon.equals(t)){
+            ret = leftWeapon;
+            leftWeapon = null;
+            return ret;
+        }
+        return ret;
+    }
+    
+    public String listEquipment(){
+        String ret = "";
+        if(head != null){ret = ret + head.name + ",";}
+        if(chest != null){ret = ret + chest.name + ",";}
+        if(legs != null){ret = ret + legs.name + ",";}
+        if(hands != null){ret = ret + legs.name + ",";}
+        if(feet != null){ret = ret + feet.name + ",";}
+        if(neck != null){ret = ret + neck.name + ",";}
+        for (Item ring : rings) {
+            ret = ret + ring.name + ",";
+        }
+        for (Item quickSlot : this.quickSlots) {
+            ret = ret + quickSlot.name + ",";
+        }
+        if(rightWeapon != null){ret = ret + rightWeapon.name + ",";}
+        if(leftWeapon != null){ret = ret + leftWeapon.name ;}
         
+        if(",".equals(ret.substring(ret.length() - 1)) ){
+            ret = ret.substring(0,ret.length() - 1); 
+        }
+        System.out.println("equipment consists of: " + ret);
         return ret;
     }
 }

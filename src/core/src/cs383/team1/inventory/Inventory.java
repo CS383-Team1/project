@@ -15,8 +15,10 @@ public class Inventory {
     public static void main(String [ ] args){
         System.out.println("testing");
         Inventory i = new Inventory("me");
-        Item x = new Item();
+        Item x = new Item("test", "test desc","chest");
         i.pickUp(x);
+        i.equiped.equip(x);
+        i.equiped.listEquipment();
     }
     
     public Inventory(String o){
