@@ -62,6 +62,17 @@ public final class GameManager {
                         areas.loadArea(fname);
 		}
 		areas.changeArea("demo");
+                
+                //Load battles
+                /*
+                areaDir = Gdx.files.internal("combat/");
+
+		for(FileHandle f : areaDir.list()) {
+			fname = new String("combat/" + f.name());
+			Gdx.app.debug("GameManager:load", "Loading combat " + fname);
+                        //combat.loadCombat(fname);
+		}
+                */
 	}
 
 	public void update(InputManager in) {
@@ -70,7 +81,7 @@ public final class GameManager {
 		Tile target;
                 Npc npc;
 		player = areas.current.player;
-                
+              if(player.hp > 0){  
 		while(in.consumable() && player.roaming == true) {
                         switch(in.keys.remove(0)) {
 				case Keys.LEFT:
@@ -134,9 +145,9 @@ public final class GameManager {
                                 player.pos.x = (tempPos.x + 2);
                                 player.pos.y = tempPos.y;
                                 areas.getCombatArea(player.pos(), player, npc);
-                                combat.addCombatants(player);
-                                combat.addCombatants(npc);
-                                combat.turn();
+                                combat.encounter(player, npc);
+                                //combat.addCombatants(npc);
+                                combat.battles.get(0).turn();
                         }
                         
                 }
@@ -144,7 +155,7 @@ public final class GameManager {
                 //Combat input system
                 while(in.consumable() && player.roaming == false) {
                         int selection = 0;
-                        combat.turn();
+                        combat.battles.get(0).turn();
                         
                         switch(in.keys.remove(0)) {
                             case Keys.NUM_0:
@@ -213,6 +224,11 @@ public final class GameManager {
 		Gdx.app.debug("GameManager:update", "transitioning states");
 		states.transition();
 		*/
-	}
+	}else{
+                  player.roaming = false;
+                  chatBox.addMessage("Game over!");
+              }
+        }
+        
         
 }

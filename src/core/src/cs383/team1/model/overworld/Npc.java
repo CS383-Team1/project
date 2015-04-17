@@ -15,6 +15,7 @@ public class Npc implements Entity{
         int lastPlayerMove;
         double fitness;
         double mutatedFitness;
+        String name;
         
 
 	private Position pos;
@@ -30,6 +31,7 @@ public class Npc implements Entity{
                 lastPlayerMove = 0;
                 fitness = 1.0;
                 mutatedFitness = 0.0;
+                name = new String();
                 addMove("block", 0, 50);
                 addMove("staple", 10, 1);
                 addMove("throw coffee in face", 5, 1);
