@@ -7,16 +7,24 @@ import java.util.ArrayList;
  */
 
 public class Inventory {
-    public int maxSize;
+    public int maxSize = 30;
     public String owner;
     public ArrayList<Item> contents;
     public Equipment equiped;
-    public Inventory(){
-        contents = new ArrayList();
-        System.out.println("made Inventory");
+    
+    public static void main(String [ ] args){
+        System.out.println("testing");
+        Inventory i = new Inventory("me");
+        Item x = new Item();
+        i.pickUp(x);
     }
     
-    
+    public Inventory(String o){
+        owner = o;
+        contents = new ArrayList();
+        equiped = new Equipment();
+        System.out.println("made Inventory for " + o);
+    }
     
     public Item drop(Item n){
         Item ret = null;
