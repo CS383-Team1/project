@@ -66,7 +66,8 @@ public class Main implements ApplicationListener, InputProcessor {
 		}
 		screen.render();
                 ui.render();
-                if (GameManager.instance.areas.current.player.zeroFloat()) {
+                if (GameManager.instance.areas.current.player.zeroFloat() 
+                        && GameManager.instance.areas.current.player.roaming == true) {
                         inputManager.keys.add(GameManager.instance.keyPressed);
                 }
 	}
