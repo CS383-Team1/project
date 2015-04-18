@@ -20,12 +20,18 @@ import cs383.team1.model.overworld.Player;
 import cs383.team1.render.Display;
 import cs383.team1.input.DialogueBox;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class DemoDisplay extends Display {
 	private static final String FNAME = "img/demo.png";
 
 	private SpriteBatch batch;
 	private Sprite sprite;
+        
 	private Map<Integer, String> tileSprites;
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
@@ -34,6 +40,10 @@ public class DemoDisplay extends Display {
         String fileName;
         private FreeTypeFontGenerator fontGen;
         BitmapFont font;
+        
+//        Stage stage;
+//        Skin skin;
+//        Window notice;
         public OrthographicCamera camera;
         
 	private Texture getTileTexture(int i) {
@@ -189,12 +199,15 @@ public class DemoDisplay extends Display {
                         
 		}
 
-		player = GameManager.instance.areas.current.player;
-                chatBox = GameManager.instance.chatBox;
-		sprite = new Sprite(getEntityTexture(player.type()));
-		sprite.setPosition(player.pos().x * Tile.WIDTH,
-		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
 
+		player = GameManager.instance.areas.current.player;
+//                chatBox = GameManager.instance.chatBox;
+		sprite = new Sprite(getEntityTexture(player.aType()));
+		sprite.setPosition(
+                        player.pos().x * Tile.WIDTH + (int) player.floatPos().x,
+		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) player.floatPos().y);
+
+                player.decFloatPos(2);
                 camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
                 camera.setToOrtho(false);
                 camera.position.set(sprite.getX(), sprite.getY(), 0);

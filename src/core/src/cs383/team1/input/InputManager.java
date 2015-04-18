@@ -12,5 +12,9 @@ public class InputManager {
 	public boolean consumable() {
 		return !keys.isEmpty();
 	}
-	
+
+        public void limitList() {
+                if (keys.size() > 1)
+                        keys.subList(1, keys.size()).clear();                
+        }
 }

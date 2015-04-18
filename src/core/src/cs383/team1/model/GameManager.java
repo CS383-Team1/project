@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.Input.Keys;
 import cs383.team1.combat.CombatManager;
+import com.badlogic.gdx.utils.Timer;
 import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.State;
@@ -29,8 +30,15 @@ public final class GameManager {
 
         public DialogueBox chatBox = new DialogueBox();
         
+
+        public int keyPressed;
+//        public boolean parseInput = true;
+
+        public String msg;
+
         
 	private GameManager() {
+                this.keyPressed = 0;
 		if(instance != null) {
 			Gdx.app.error("GameManager:GameManager",
 			  "reinstantiating singleton GameManager");
@@ -80,21 +88,28 @@ public final class GameManager {
 		Position next;
 		Tile target;
                 Npc npc;
+		
+                in.limitList();
+
 		player = areas.current.player;
               if(player.hp > 0){  
-		while(in.consumable() && player.roaming == true) {
+		while(in.consumable() && player.roaming == true && (player.zeroFloat())) {
                         switch(in.keys.remove(0)) {
 				case Keys.LEFT:
 					next = new Position(player.pos.x - 1, player.pos.y);
+                                        player.facing = 3;
 					break;
 				case Keys.RIGHT:
 					next = new Position(player.pos.x + 1, player.pos.y);
+                                        player.facing = 1;
 					break;
 				case Keys.UP:
 					next = new Position(player.pos.x, player.pos.y + 1);
+                                        player.facing = 0;
 					break;
 				case Keys.DOWN:
 					next = new Position(player.pos.x, player.pos.y - 1);
+                                        player.facing = 2;
 					break;
                                 default:
 					continue;
@@ -113,9 +128,11 @@ public final class GameManager {
 				continue;
 			}
 /*
-                        //Interact with an NPC (nullifies last attempted move)
-                        if ((npc = (Npc)areas.findEntity(next, 3)) != null) {
-                                chatBox.addMessage(npc.readNext());
+	                //Interact with an NPC (nullifies last attempted move)
+                        if((npc = (Npc)areas.findEntity(next, 3)) != null) {
+                                keyPressed = 0;
+                                msg = npc.readNext();
+                                System.out.println("GameManager: NPC Interaction: " + msg);
                                 next = player.pos;
                         }
   */                      
@@ -124,19 +141,12 @@ public final class GameManager {
                                 areas.useStairs(next);
                         
 			if(target.passable()) {
+                                player.floatPos = new Position((player.pos().x-next.x) * Tile.WIDTH, (player.pos().y-next.y) * Tile.HEIGHT);
 				player.pos = next;
 			}
                         
-                        //Start combat with combat NPC
-                        /*
-                        if((npc = (Npc)areas.findCombatant(player.pos(), 3)) != null){
-                            System.out.println("Starting combat");
-                            areas.startCombat(player.pos(), player);
-                        }
-                        */
-                        
                         //Start combat with an NPC if they are next to the player
-                        if ((npc = (Npc)areas.findCombatant(player.pos(), 3)) != null) {
+                        if ((npc = (Npc)areas.findCombatant(player.pos(), 3)) != null){
                                 System.out.println("Starting combat");
                                 System.out.println("Pringing npc.hp in GameManager: " + npc.hp);
                                 //npc = (Npc)areas.findEntity(next,3);
@@ -147,13 +157,13 @@ public final class GameManager {
                                 areas.getCombatArea(player.pos(), player, npc);
                                 combat.encounter(player, npc);
                                 //combat.addCombatants(npc);
-                                combat.battles.get(0).turn();
+                                //combat.battles.get(0).turn();
                         }
                         
                 }
                 
                 //Combat input system
-                while(in.consumable() && player.roaming == false) {
+                while(in.consumable() && player.roaming == false && player.zeroFloat()) {
                         int selection = 0;
                         combat.battles.get(0).turn();
                         
@@ -208,16 +218,18 @@ public final class GameManager {
                                     selection = 0;
                                     player.addAttack(player.moves.get(0));
 					continue;
-                            }
+                        }  
                         
                         if(selection < player.moves.size()){
-                            chatBox.addMessage("Player chooses: " + player.moves.get(selection).name);
-                            chatBox.addMessage("Player hp: " + player.hp);
+                            msg = "Player chooses: " + player.moves.get(selection).name;
+                            
                         }
+                  
                         
                         
                 }
                 
+		
 
 		/* TODO: move the keyhandling code to the StateManager */
 		/*

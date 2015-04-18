@@ -4,6 +4,20 @@ import java.util.List;
 import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import cs383.team1.model.overworld.Area;
+import cs383.team1.model.overworld.DemoEntity;
+import cs383.team1.model.overworld.Entity;
+import cs383.team1.model.overworld.Field;
+import cs383.team1.model.overworld.Position;
+import cs383.team1.model.overworld.Player;
+import cs383.team1.model.overworld.Tile;
+import cs383.team1.model.overworld.Wall;
+import cs383.team1.model.overworld.Floor;
+import cs383.team1.model.overworld.Table;
+import cs383.team1.model.overworld.LeftDesk;
+import cs383.team1.model.overworld.RightDesk;
+import cs383.team1.model.overworld.WalkWay;
+import cs383.team1.model.overworld.OutsideWall;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -204,6 +218,16 @@ public final class AreaManager {
         {
                 for (Entity e : current.entities) {
                         if(e.pos().x == p.x && e.pos().y == p.y && e.type() == t)
+                                return e;
+                }
+                return null;
+        }
+        
+        //Find the first entity at position p
+        public Entity findEntity(Position p)
+        {
+                for (Entity e : current.entities) {
+                        if(e.pos().x == p.x && e.pos().y == p.y)
                                 return e;
                 }
                 return null;

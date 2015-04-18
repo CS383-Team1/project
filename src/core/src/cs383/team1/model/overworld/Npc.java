@@ -59,6 +59,7 @@ public class Npc implements Entity{
                 
                 Gdx.app.debug("StairsEntity:StairsEntity", "instantiating class");
 		pos = p;
+
                 hp = 100;
                 lastPlayerMove = 0;
                 fitness = 1.0;
@@ -72,13 +73,17 @@ public class Npc implements Entity{
 	}
 
         
+
+
+        @Override
 	public int type()
         {
 		return TYPE;
 	}
 
-        
-	public Position pos(){
+        @Override
+	public Position pos()
+        {
 		return pos;
 	}
         
@@ -105,6 +110,7 @@ public class Npc implements Entity{
                 nextLine++;
                 return readLine(nextLine);
         }
+
 /*
 	public void overworldAI(Area area) {
             Random randomDirection = new Random();
