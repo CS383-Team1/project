@@ -18,13 +18,6 @@ import cs383.team1.model.overworld.LeftDesk;
 import cs383.team1.model.overworld.RightDesk;
 import cs383.team1.model.overworld.WalkWay;
 import cs383.team1.model.overworld.OutsideWall;
-
-
-
-
-
-
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +26,11 @@ public final class AreaManager {
 
 	public Map<String, Area> areas;
 	public Area current;
-
+        Area returnArea;
+        ReturnEntity returnPos;
+        Area combatArea;
+        String originalArea;
+        
 	private AreaManager() {
 		if(instance != null) {
 			Gdx.app.error("AreaManager:AreaManager",
@@ -44,6 +41,10 @@ public final class AreaManager {
 		Gdx.app.debug("AreaManager:AreaManager", "instantiating class");
 		areas = new HashMap<String, Area>();
 		current = null;
+                combatArea = new Area();
+                returnArea = new Area();
+                returnPos = new ReturnEntity();
+                originalArea = new String();
 	}
 
 	public Area loadArea(String fname) {
@@ -67,6 +68,8 @@ public final class AreaManager {
 		FileHandle fin;
 		List<Entity> entities;
 		List<Tile> tiles;
+                String questFile;
+                String questList;
 
 		offset = 0;
 		entities = new ArrayList<Entity>();
@@ -140,9 +143,20 @@ public final class AreaManager {
 			}
 		}
 		offset += numTiles * 3;
+                
+                Gdx.app.debug("AreaManager:loadArea", "Loading quests");
+
+                //Get quests from file and give them to specific NPC's
+                String []readInQuests;
+                questFile = "quests/npc1.txt";
+                fin = Gdx.files.internal(questFile);
+		questList = fin.readString();
+		readInQuests = questList.trim().split("\n");
+                System.out.println("Printing quest: " + readInQuests[0]);
+                
 
 		Gdx.app.debug("AreaManager:loadArea", "Loading entities");
-
+                int k = 0;
 		numEntities = Integer.parseInt(vals[offset++]);
 		for(i = offset; i < offset + (numEntities * 4); i += 4) {
 			x = Integer.parseInt(vals[i + 0]);
@@ -151,7 +165,7 @@ public final class AreaManager {
                         entityData = vals[i+3];
 
 			pos = new Position(x, y);
-
+                        
 			switch(type) {
 				case DemoEntity.TYPE:
 					Gdx.app.debug("AreaManager:loadArea", "Loading DemoEntity");
@@ -169,6 +183,7 @@ public final class AreaManager {
 					Gdx.app.error("AreaManager:loadArea",
 					  "invalid entity type " + vals[i + 2]);
 			}
+                        k++;
 		}
 		offset += numEntities * 4;
 
@@ -242,5 +257,50 @@ public final class AreaManager {
             }
             Gdx.app.error("GameManager:update","invalid stairs transition");
             return -1;
+        }
+        
+        public void getCombatArea(Position p, Player player, Npc npc){
+            
+            player.roaming = false;
+            returnArea = current;
+            for(Tile t : current.tiles){
+                combatArea.tiles.add(t);
+            }
+            
+            for(Entity e : current.entities){
+                if(e.pos() == p){
+                    combatArea.entities.add(e);
+                }else if(e.pos() == npc.pos()){
+                    combatArea.entities.add(e);
+                    }
+            }
+        }
+        
+        public int endCombat(Player player){
+            for(Entity e : current.entities){
+                if(e.type() == 1){
+                    returnArea.entities.add(e);
+                    current.entities.remove(e);
+                }
+            }
+            current = returnArea;
+            //Possibly have transition animation here before changing current
+            
+            return 0;    
+        }
+        
+        
+        public Entity findCombatant(Position p, int t){
+                for (Entity e : current.entities) {
+                        if(e.pos().x  == (p.x + 1) && e.pos().y == p.y && e.type() == t)
+                                return e;
+                        else if(e.pos().x == (p.x - 1) && e.pos().y == p.y && e.type() == t)
+                                return e;
+                        else if(e.pos().x == p.x && e.pos().y == (p.y + 1) && e.type() == t)
+                                return e;
+                        else if(e.pos().x == p.x && e.pos().y == (p.y - 1) && e.type() == t)
+                                return e;
+                }
+                return null;
         }
 }

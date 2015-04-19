@@ -26,6 +26,8 @@ public class Main implements ApplicationListener, InputProcessor {
 
     OrthographicCamera camera;
 
+
+
 	@Override
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_INFO);
@@ -34,21 +36,21 @@ public class Main implements ApplicationListener, InputProcessor {
                 
                 stage = new Stage(new ScreenViewport());
                 
-                inputManager = new InputManager();
-
-
+		inputManager = new InputManager();
+                	
                 InputMultiplexer im = new InputMultiplexer(stage, this);
-                		
 		Gdx.app.debug("Main:create", "instantiating GameManager");
 		gm = GameManager.instance;
 
 		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
 		screen = new DemoDisplay();
+
 		ui = new UIDisplay(stage);
 
                 
                 Gdx.input.setInputProcessor(im);
 	}
+
 
 	@Override
 	public void dispose() {
@@ -64,7 +66,8 @@ public class Main implements ApplicationListener, InputProcessor {
 		}
 		screen.render();
                 ui.render();
-                if (GameManager.instance.areas.current.player.zeroFloat()) {
+                if (GameManager.instance.areas.current.player.zeroFloat() 
+                        && GameManager.instance.areas.current.player.roaming == true) {
                         inputManager.keys.add(GameManager.instance.keyPressed);
                 }
 	}
@@ -97,6 +100,7 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public boolean keyTyped (char ch) {
+                
 		return false;
 	}
 

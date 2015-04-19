@@ -2,19 +2,40 @@ package cs383.team1.model.overworld;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import cs383.team1.combat.Move;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Random;
 
-public class Npc implements Entity {
+public class Npc implements Entity{
 	public static final int TYPE = 3;
+        public boolean roaming = true;
+        public int hp;
+	public int mp;
+	public int ap;
+        int lastPlayerMove;
+        double fitness;
+        double mutatedFitness;
+        String name;
+        
 
-	private final Position pos;
+	private Position pos;
         private final ArrayList<String> talk = new ArrayList();
+        public ArrayList<Move> moves = new ArrayList<Move>();
+        public ArrayList<Move> attacks = new ArrayList<Move>();
+
         private int nextLine = -1;
         
-	public Npc()
-        {
+	public Npc(){
                 pos = new Position();
+                hp = 100;
+                lastPlayerMove = 0;
+                fitness = 1.0;
+                mutatedFitness = 0.0;
+                name = new String();
+                addMove("block", 0, 50);
+                addMove("staple", 10, 1);
+                addMove("throw coffee in face", 5, 1);
+                addMove("drink coffee", -5, 1);
 	}
 
         //Basic Constructor for NPC
@@ -38,7 +59,21 @@ public class Npc implements Entity {
                 
                 Gdx.app.debug("StairsEntity:StairsEntity", "instantiating class");
 		pos = p;
+
+                hp = 100;
+                lastPlayerMove = 0;
+                fitness = 1.0;
+                mutatedFitness = 0.0;
+                addMove("block", 0, 50);
+                addMove("staple", 10, 1);
+                addMove("throw coffee in face", 5, 1);
+                //for(int i = 2; i < 10; i++ ){
+                    //addMove(new Move());
+                //}
 	}
+
+        
+
 
         @Override
 	public int type()
@@ -74,5 +109,132 @@ public class Npc implements Entity {
         {
                 nextLine++;
                 return readLine(nextLine);
+        }
+
+/*
+	public void overworldAI(Area area) {
+            Random randomDirection = new Random();
+            int randomint = randomDirection.nextInt(4);
+            System.out.println("Printing random direction: " + randomint);
+            while(roaming == true){
+                switch(randomint) {
+				case 0:
+                                        //Move Left
+					next = new Position(pos.x - 1, pos.y);
+					break;
+				case 1:
+                                        //Move right
+					next = new Position(pos.x + 1, pos.y);
+					break;
+				case 2:
+                                        //Move up
+					next = new Position(pos.x, pos.y + 1);
+					break;
+				case 3:
+                                        //Move down
+					next = new Position(pos.x, pos.y - 1);
+					break;
+                                
+			}
+
+			target = null;
+			for(Tile t : area.tiles) {
+				if(t.pos().x == next.x && t.pos().y == next.y) {
+					target = t;
+					break;
+				}
+                                //if(t.pos().x == player.pos.x && t.pos().y == player.y){
+                                    
+                                //}
+			}
+
+			if(target == null) {
+				Gdx.app.error("GameManager:update", "invalid move");
+				
+			}
+
+			if(target.passable()) {
+				pos = next;
+			}
+                    }
+            }
+        */
+        
+        public int combatAI(int lastPlayerDamage, int lastPlayerExpectedDamage){
+            
+                        
+                Random selectionGen = new Random();
+                int selection;
+                double selectedMoveDamage;
+                double moveDamage = 0.0;
+                //add random default attack
+                int lastNpcMove;
+                
+                addAttack(moves.get(selectionGen.nextInt(moves.size())));
+                moveDamage = attacks.get(0).getDamage();
+                /*
+                //Getting default attack damage
+                
+                moveDamage = moves.get(0).getDamage();
+                //Check fitness of default attack
+                fitness = checkAttackFitness(lastPlayerExpectedDamage, lastPlayerDamage);
+               
+                while(fitness > mutatedFitness){
+                selection = selectionGen.nextInt(moves.size());
+                Move moveSelected = moves.get(selection);
+                selectedMoveDamage = moveSelected.getDamage();
+                System.out.println("Printing random direction: " + selection);
+              
+                //fitness = checkAttackFitness(lastPlayerMove, lastPlayerDamage);
+                //Selected move damage will not work here as second variable: will return 0
+                mutatedFitness = checkAttackFitness(selection, (selectedMoveDamage * fitness));
+                //Probably need to limit this loop by a delta time value (5 seconds)
+                //while(fitness < mutatedFitness){
+                if(mutatedFitness < fitness){
+                    lastNpcMove = selection;
+                    fitness = mutatedFitness;
+                    moveDamage = selectedMoveDamage;
+                    addAttack(moves.get(selection));
+                }
+                }
+                //Not sure if this is what to return
+                        */
+                return (int)moveDamage;
+            
+        }
+        //Returns percentage of player
+        public double checkAttackFitness(int expectedDamage, int actualDamage){
+             
+            double result = Math.pow((expectedDamage - actualDamage), 2);
+            
+            return result;
+        }
+        
+        //Adds move to list of available moves
+        public void addMove(String name, int damage, int blockPercent){
+            Move move = new Move(name, damage, blockPercent);
+            moves.add(move);
+        }
+        
+        public void addMove(Move move){
+            moves.add(move);
+        }
+        
+        public void removeMove(int index){
+            moves.remove(index);
+        }
+        
+        //Adds chosen move to list of attacks waiting to be processed by CombatManager
+        public void addAttack(Move move){
+            attacks.add(move);
+        }
+        
+        //Removes first move in list of attacks waiting to be processed by CombatManager
+        public void removeAttack(){
+            attacks.remove(0);
+        }
+        
+         public boolean consumableAttack(){
+            return !attacks.isEmpty();
         }
 }

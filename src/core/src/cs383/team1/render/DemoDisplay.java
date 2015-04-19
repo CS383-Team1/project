@@ -36,7 +36,6 @@ public class DemoDisplay extends Display {
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
-
         DialogueBox chatBox;
         String fileName;
         private FreeTypeFontGenerator fontGen;
@@ -45,7 +44,6 @@ public class DemoDisplay extends Display {
 //        Stage stage;
 //        Skin skin;
 //        Window notice;
-        
         public OrthographicCamera camera;
         
 	private Texture getTileTexture(int i) {
@@ -161,7 +159,7 @@ public class DemoDisplay extends Display {
                 fileName = "fonts/VCR_OSD_MONO_1.001.ttf";
 		fontGen = new FreeTypeFontGenerator(Gdx.files.internal(fileName));
                 font = fontGen.generateFont(20);
-                chatBox = new DialogueBox();               
+                chatBox = new DialogueBox();
 		loadSpriteMaps();
 	}
 
@@ -210,7 +208,6 @@ public class DemoDisplay extends Display {
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) player.floatPos().y);
 
                 player.decFloatPos(2);
-                
                 camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
                 camera.setToOrtho(false);
                 camera.position.set(sprite.getX(), sprite.getY(), 0);
@@ -220,8 +217,8 @@ public class DemoDisplay extends Display {
                 drawChatBox(chatBox);
                 
 		sprite.draw(batch);
-                
 		batch.end();
+
 	}
         
         public void drawChatBox(DialogueBox db)
@@ -245,5 +242,4 @@ public class DemoDisplay extends Display {
                     }
                 }
         }
-        
 }
