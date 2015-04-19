@@ -72,52 +72,5 @@ public class UIDisplay extends Display{
                 
                 stage.addListener(uiListen);
                 
-//                stage.addListener(new InputListener() {
-//                        @Override
-//                        public boolean keyDown( InputEvent event, int keyCode ) {
-//                                if (keyCode == Input.Keys.ENTER) {
-//                                        if (!msg.input.equals("") && stage.getKeyboardFocus() == msg.input) {
-//                                                msg.addMessage(msg.input.getText());
-//                                                msg.input.setText("");
-//                                                stage.setKeyboardFocus(null);
-//                                                return true;
-//                                        } else {
-//                                                stage.setKeyboardFocus(msg.input);
-//                                        }
-//                                        
-//                                } else if ( keyCode == Input.Keys.ESCAPE && menu.menu().isVisible() ) {
-//                                        menu.menu().setVisible(false);
-//                                        return true;
-//                                } else if ( keyCode == Input.Keys.ESCAPE ) {
-//                                        menu.menu().setVisible(true);
-//                                        return true;
-//                                        // && keyboard focus != messagebox
-//                                } else if (keyCode == Input.Keys.SPACE && stage.getKeyboardFocus() != msg.input) {
-//                                        if (player.facing == 0)
-//                                                useMenu(new Position(player.pos.x, player.pos.y + 1));
-//                                        else if (player.facing == 1)
-//                                                useMenu(new Position(player.pos.x + 1, player.pos.y));
-//                                        else if (player.facing == 2)
-//                                                useMenu(new Position(player.pos.x, player.pos.y - 1));
-//                                        else if (player.facing == 3)
-//                                                useMenu(new Position(player.pos.x - 1, player.pos.y));
-//                                        return true;
-//                                } else if (keyCode == Input.Keys.DOWN) {
-//                                        interact.getNext();
-//                                        return (interact.interact.isVisible());
-//                                } else if (keyCode == Input.Keys.UP) {
-//                                        interact.getPrevious();
-//                                        return (interact.interact.isVisible());
-//                                } else if(keyCode == Input.Keys.LEFT || keyCode == Input.Keys.RIGHT) {
-//                                        return (interact.interact.isVisible());
-//                                }
-//                                return false;
-//                        }
-//                });
         }
-        
-//        private void useMenu(Position p)
-//        {
-//                interact.useMenu(areas.findEntity(p), player.facing);
-//        }
 }
