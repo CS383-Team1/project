@@ -88,32 +88,39 @@ public final class GameManager {
 		Position next;
 		Tile target;
                 Npc npc;
+                
+                player = areas.current.player;
+
+                int x = player.pos.x;
+                int y = player.pos.y;
 		
                 in.limitList();
+		while(
+                        player.hp > 0 &&
+                        in.consumable() &&
+                        player.roaming == true &&
+                        player.zeroFloat()) {
 
-		player = areas.current.player;
-              if(player.hp > 0){  
-		while(in.consumable() && player.roaming == true && (player.zeroFloat())) {
                         switch(in.keys.remove(0)) {
 				case Keys.LEFT:
-					next = new Position(player.pos.x - 1, player.pos.y);
+					next = new Position(x - 1, y);
                                         player.facing = 3;
 					break;
 				case Keys.RIGHT:
-					next = new Position(player.pos.x + 1, player.pos.y);
+					next = new Position(x + 1, y);
                                         player.facing = 1;
 					break;
 				case Keys.UP:
-					next = new Position(player.pos.x, player.pos.y + 1);
+					next = new Position(x, y + 1);
                                         player.facing = 0;
 					break;
 				case Keys.DOWN:
-					next = new Position(player.pos.x, player.pos.y - 1);
+					next = new Position(x, y - 1);
                                         player.facing = 2;
 					break;
                                 default:
 					continue;
-                            }
+                        }
                     
 			target = null;
 			for(Tile t : areas.current.tiles) {
@@ -141,7 +148,8 @@ public final class GameManager {
                                 areas.useStairs(next);
                         
 			if(target.passable()) {
-                                player.floatPos = new Position((player.pos().x-next.x) * Tile.WIDTH, (player.pos().y-next.y) * Tile.HEIGHT);
+                                player.floatPos = new Position((x-next.x) *
+                                        Tile.WIDTH, (y-next.y) * Tile.HEIGHT);
 				player.pos = next;
 			}
                         
@@ -163,7 +171,10 @@ public final class GameManager {
                 }
                 
                 //Combat input system
-                while(in.consumable() && player.roaming == false && player.zeroFloat()) {
+                while(
+                        in.consumable() &&
+                        player.roaming == false
+                        && player.zeroFloat()) {
                         int selection = 0;
                         combat.battles.get(0).turn();
                         
@@ -236,7 +247,7 @@ public final class GameManager {
 		Gdx.app.debug("GameManager:update", "transitioning states");
 		states.transition();
 		*/
-	}else{
+	if (player.hp < 1) {
                   player.roaming = false;
                   chatBox.addMessage("Game over!");
               }
