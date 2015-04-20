@@ -93,8 +93,6 @@ public class MenuInventory extends SubMenu {
                 Image img;
                 TextButton equip;
                 TextButton drop;
-//                int atk = getNum(statAtk);
-//                int def = getNum(statDef);
 
                 int atk = 5;
                 int def = 4;

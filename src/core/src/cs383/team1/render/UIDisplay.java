@@ -42,8 +42,6 @@ public class UIDisplay extends Display{
                 }
                 stage.draw();
                 stage.act();
-                
-
         }
         
         public void dispose()
@@ -52,9 +50,7 @@ public class UIDisplay extends Display{
                 skin.dispose();
         }
 
-
         public UIDisplay(Stage s) {
-
 		skin = new Skin(Gdx.files.internal("ui/uiskin.json"));
 		stage = s;
                 msg = new MessageBox(skin);
@@ -71,6 +67,5 @@ public class UIDisplay extends Display{
                 interact.interact().setVisible(false);
                 
                 stage.addListener(uiListen);
-                
         }
 }

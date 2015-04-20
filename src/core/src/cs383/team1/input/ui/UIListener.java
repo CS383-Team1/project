@@ -68,12 +68,16 @@ public class UIListener extends InputListener{
                                 switch (player.facing) {
                                 case (0) :
                                         useMenu(new Position(x, y + 1));
+                                        break;
                                 case (1) :
                                         useMenu(new Position(x + 1, y));
+                                        break;
                                 case (2) :
                                         useMenu(new Position(x, y - 1));
+                                        break;
                                 case (3) :
                                         useMenu(new Position(x - 1, y ));
+                                        break;
                                 } return true;
                         }
                         break;
