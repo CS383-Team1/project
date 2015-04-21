@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.combat.Move;
+import cs383.team1.inventory.Inventory;
 import java.util.ArrayList;
 
 
@@ -21,6 +22,7 @@ public final class Player implements Entity {
         public ArrayList<String> acceptedQuests = new ArrayList<String>();
         public ArrayList<Move> moves = new ArrayList<Move>();
         public ArrayList<Move> attacks = new ArrayList<Move>();
+        public Inventory inventory;
 
         
 	public Player() {
@@ -40,6 +42,7 @@ public final class Player implements Entity {
                 for(int i = 3; i < 10; i++ ){
                     addMove(new Move());
                 }
+                inventory = new Inventory("me");
                 
 	}
 

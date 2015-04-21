@@ -7,6 +7,7 @@ import cs383.team1.combat.CombatManager;
 import com.badlogic.gdx.utils.Timer;
 import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
+import cs383.team1.inventory.Item;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
@@ -88,6 +89,7 @@ public final class GameManager {
 		Position next;
 		Tile target;
                 Npc npc;
+                Item item;
 		
                 in.limitList();
 
@@ -111,11 +113,20 @@ public final class GameManager {
 					next = new Position(player.pos.x, player.pos.y - 1);
                                         player.facing = 2;
 					break;
+                                case Keys.E:
+                                        if((item = (Item)areas.findItem(player.pos(), -1)) != null) {
+                                            System.out.println("Found Item");
+                                            item = (Item)areas.findItem(player.pos(), -1);
+                                            player.inventory.pickUp(item);
+                                        }
+                                        next = player.pos;
+                                        break;
                                 default:
 					continue;
                             }
                     
 			target = null;
+                        
 			for(Tile t : areas.current.tiles) {
 				if(t.pos().x == next.x && t.pos().y == next.y) {
 					target = t;
@@ -127,6 +138,7 @@ public final class GameManager {
 				Gdx.app.error("GameManager:update", "invalid move");
 				continue;
 			}
+                                               
 /*
 	                //Interact with an NPC (nullifies last attempted move)
                         if((npc = (Npc)areas.findEntity(next, 3)) != null) {
@@ -148,16 +160,13 @@ public final class GameManager {
                         //Start combat with an NPC if they are next to the player
                         if ((npc = (Npc)areas.findCombatant(player.pos(), 3)) != null){
                                 System.out.println("Starting combat");
-                                System.out.println("Pringing npc.hp in GameManager: " + npc.hp);
-                                //npc = (Npc)areas.findEntity(next,3);
                                 tempPos = npc.pos();
                                 returnPos = player.pos();
                                 player.pos.x = (tempPos.x + 2);
                                 player.pos.y = tempPos.y;
                                 areas.getCombatArea(player.pos(), player, npc);
                                 combat.encounter(player, npc);
-                                //combat.addCombatants(npc);
-                                //combat.battles.get(0).turn();
+                                
                         }
                         
                 }
@@ -224,10 +233,7 @@ public final class GameManager {
                             msg = "Player chooses: " + player.moves.get(selection).name;
                             
                         }
-                  
-                        
-                        
-                }
+                  }
                 
 		
 

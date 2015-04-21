@@ -1,15 +1,19 @@
 
 package cs383.team1.inventory;
 
+import cs383.team1.model.overworld.Entity;
+import cs383.team1.model.overworld.Position;
+
 /**
  *
  * @author Tessa
  */
-public class Item {
+public class Item implements Entity {
     // object for sprite?
     public String name;
     public String description;
     public String type; //need not be string. Type could be ints or something
+    
     public Double hitChance; //0.0 to 1.0
     public Double critChance; 
     public Double critMultiplier;
@@ -60,5 +64,16 @@ public class Item {
             d = d*critMultiplier;
         }
         return d;
+    }
+
+    @Override
+    public int type() {
+        int type = -1;
+        return type;
+    }
+
+    @Override
+    public Position pos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

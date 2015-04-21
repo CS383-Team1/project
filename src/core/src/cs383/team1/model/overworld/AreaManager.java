@@ -303,4 +303,18 @@ public final class AreaManager {
                 }
                 return null;
         }
+        
+        public Entity findItem(Position p, int t){
+                for (Entity e : current.entities) {
+                        if(e.pos().x  == (p.x + 1) && e.pos().y == p.y && e.type() == t)
+                                return e;
+                        else if(e.pos().x == (p.x - 1) && e.pos().y == p.y && e.type() == t)
+                                return e;
+                        else if(e.pos().x == p.x && e.pos().y == (p.y + 1) && e.type() == t)
+                                return e;
+                        else if(e.pos().x == p.x && e.pos().y == (p.y - 1) && e.type() == t)
+                                return e;
+                }
+                return null;
+        }
 }

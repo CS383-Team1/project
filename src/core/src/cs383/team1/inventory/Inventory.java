@@ -11,7 +11,7 @@ public class Inventory {
     public String owner;
     public ArrayList<Item> contents;
     public Equipment equiped;
-    
+    /*
     public static void main(String [ ] args){
         System.out.println("testing");
         Inventory i = new Inventory("me");
@@ -20,6 +20,7 @@ public class Inventory {
         i.equiped.equip(x);
         i.equiped.listEquipment();
     }
+    */
     
     public Inventory(String o){
         owner = o;
