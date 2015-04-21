@@ -2,7 +2,7 @@
  Since we decided to go with the bair minimum of stats, I left off the 
 plain craft object. You can just craft anything.
  */
-package cs383.team1.inventory;
+package cs383.team1.model.inventory;
 import java.util.ArrayList;
 /**
  *

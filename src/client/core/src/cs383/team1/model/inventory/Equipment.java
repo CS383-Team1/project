@@ -1,5 +1,5 @@
 
-package cs383.team1.inventory;
+package cs383.team1.model.inventory;
 import java.util.ArrayList;
 /**
  *

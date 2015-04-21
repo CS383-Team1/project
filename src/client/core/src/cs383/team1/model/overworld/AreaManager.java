@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import cs383.team1.inventory.Item;
+import cs383.team1.model.inventory.Item;
 import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.DemoEntity;
 import cs383.team1.model.overworld.Entity;
