@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import cs383.team1.input.ui.CombatMenu;
 import cs383.team1.input.ui.InteractionMenu;
 import cs383.team1.input.ui.MainMenu;
 import cs383.team1.input.ui.MessageBox;
@@ -27,6 +28,7 @@ public class UIDisplay extends Display{
         MessageBox msg;
         MainMenu menu;
         InteractionMenu interact;
+        CombatMenu combat;
         UIListener uiListen;
         
         final Player player = GameManager.instance.areas.current.player;
@@ -36,10 +38,15 @@ public class UIDisplay extends Display{
         @Override
         public void render() {
                 //Read messages sent to the GameManager to the chat
-                if ( GameManager.instance.msg != null) {
-                        msg.addMessage(GameManager.instance.msg);
-                        GameManager.instance.msg = null;
+                if ( GameManager.instance.msg != null &&
+                        GameManager.instance.msg.size()>0) {
+                        msg.addMessage(GameManager.instance.msg.get(0));
+                        GameManager.instance.msg.remove(0);
                 }
+                if ( !player.roaming )
+                        combat.combat().setVisible(true);
+                else if ( player.roaming )
+                        combat.combat().setVisible(false);
                 stage.draw();
                 stage.act();
         }
@@ -56,15 +63,18 @@ public class UIDisplay extends Display{
                 msg = new MessageBox(skin);
                 menu = new MainMenu(skin);
                 interact = new InteractionMenu(skin);
+                combat = new CombatMenu(skin);
                 
                 uiListen = new UIListener(stage, player, menu, msg, interact);
 
                 stage.addActor(msg.msg());
                 stage.addActor(menu.menu());
                 stage.addActor(interact.interact());
+                stage.addActor(combat.combat());
 
                 menu.menu().setVisible(false);
                 interact.interact().setVisible(false);
+                combat.combat().setVisible(false);
                 
                 stage.addListener(uiListen);
         }

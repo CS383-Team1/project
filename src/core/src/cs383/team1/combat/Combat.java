@@ -5,6 +5,7 @@
  */
 package cs383.team1.combat;
 
+import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
@@ -103,6 +104,7 @@ public class Combat {
                 }
         
              System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
+             GameManager.instance.msg.add("Player HP: " + player.hp + "; NPC HP: " + npc.hp);
         }else{
             player.roaming = true;
             
