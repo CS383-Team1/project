@@ -1,0 +1,25 @@
+Weekly Status Report of Mason Fabel
+for the Last Week Ending 2015-04-19 Sunday
+
+Activities Planned for Last Week
+	Implement multiplayer network code
+
+Activities Accomplished Last Week
+	Partly implemented multiplayer network features
+
+Activities Planned for Next Week
+	Finish implementing multiplayer network features
+
+New Issues
+
+Old Issues
+
+Time Log (Approximation)
+    04/13 - 3 hour
+    04/14 - 1 hours
+    04/15 - 0 hours
+    04/16 - 0 hour
+    04/17 - 3 hour
+    04/18 - 0 hours
+    04/19 - 0 hours
+    Total - 7 hours
