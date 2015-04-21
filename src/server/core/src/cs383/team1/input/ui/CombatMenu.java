@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import cs383.team1.combat.Move;
+import cs383.team1.model.combat.Move;
 import static cs383.team1.input.ui.SubMenu.getImage;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Player;
