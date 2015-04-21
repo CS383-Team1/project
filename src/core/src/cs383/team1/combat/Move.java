@@ -11,7 +11,7 @@ package cs383.team1.combat;
  */
 public class Move {
     public String name = new String();
-    private int damage;
+    private double damage;
     private int blockPercent;
     
     public Move(){
@@ -20,13 +20,14 @@ public class Move {
         blockPercent = 1;
     }
     
-    public Move(String n, int d, int b){
-        name = n;
-        damage = d;
-        blockPercent = b;
+    public Move(String n, double d, int b){
+        this.name = n;
+        this.damage = d;
+        this.blockPercent = b;
+        
     }
     
-    public int getDamage(){
+    public double getDamage(){
         return damage;
     }
     

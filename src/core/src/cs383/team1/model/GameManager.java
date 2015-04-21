@@ -27,14 +27,13 @@ public final class GameManager {
         CombatManager combat;
         Position tempPos;
         Position returnPos;
+        Entity temp;
         
 
         public DialogueBox chatBox = new DialogueBox();
         
 
         public int keyPressed;
-//        public boolean parseInput = true;
-
         public String msg;
 
         
@@ -114,13 +113,20 @@ public final class GameManager {
                                         player.facing = 2;
 					break;
                                 case Keys.E:
-                                        if((item = (Item)areas.findItem(player.pos(), -1)) != null) {
-                                            System.out.println("Found Item");
-                                            item = (Item)areas.findItem(player.pos(), -1);
+                                        if((item = (Item)areas.findItem(player.pos(), 16)) != null) {
+                                            System.out.println("Picked up Item");
+                                            temp = areas.findItem(player.pos(), 16);
+                                            player.addMove(item);
                                             player.inventory.pickUp(item);
+                                            areas.current.entities.remove(temp);
                                         }
                                         next = player.pos;
                                         break;
+                                case Keys.D:
+                                        //Drop Item: not really sure how to implement this with UI
+                                        Item droppedItem = new Item(); 
+                                        player.inventory.drop(droppedItem);
+                                
                                 default:
 					continue;
                             }
@@ -166,7 +172,6 @@ public final class GameManager {
                                 player.pos.y = tempPos.y;
                                 areas.getCombatArea(player.pos(), player, npc);
                                 combat.encounter(player, npc);
-                                
                         }
                         
                 }
@@ -178,44 +183,44 @@ public final class GameManager {
                         
                         switch(in.keys.remove(0)) {
                             case Keys.NUM_0:
-                                player.addAttack(player.moves.get(0));
-                                selection = 0;
+                                    player.addAttack(player.moves.get(0));
+                                    selection = 0;
                                 break;
                             case Keys.NUM_1:
-                                player.addAttack(player.moves.get(1));
-                                selection = 1;
+                                    player.addAttack(player.moves.get(1));
+                                    selection = 1;
                                 break;
                             case Keys.NUM_2:
-                                player.addAttack(player.moves.get(2));
-                                selection = 2;
+                                    player.addAttack(player.moves.get(2));
+                                    selection = 2;
                                 break;
                             case Keys.NUM_3:
-                                player.addAttack(player.moves.get(3));
-                                selection = 3;
+                                    player.addAttack(player.moves.get(3));
+                                    selection = 3;
                                 break;
                             case Keys.NUM_4:
-                                player.addAttack(player.moves.get(4));
-                                selection = 4;
+                                    player.addAttack(player.moves.get(4));
+                                    selection = 4;
                                 break;
                             case Keys.NUM_5:
-                                player.addAttack(player.moves.get(5));
-                                selection = 5;
+                                    player.addAttack(player.moves.get(5));
+                                    selection = 5;
                                 break;
                             case Keys.NUM_6:
-                                player.addAttack(player.moves.get(6));
-                                selection = 6;
+                                    player.addAttack(player.moves.get(6));
+                                    selection = 6;
                                 break;
                             case Keys.NUM_7:
-                                player.addAttack(player.moves.get(7));
-                                selection = 7;
+                                    player.addAttack(player.moves.get(7));
+                                    selection = 7;
                                 break;
                             case Keys.NUM_8:
-                                player.addAttack(player.moves.get(8));
-                                selection = 8; 
+                                    player.addAttack(player.moves.get(8));
+                                    selection = 8;
                                 break;
                             case Keys.NUM_9:
-                                player.addAttack(player.moves.get(9));
-                                selection = 9; 
+                                    player.addAttack(player.moves.get(9));
+                                    selection = 9;
                                 break;
                             case Keys.E:
                                 player.roaming = true;
@@ -234,14 +239,7 @@ public final class GameManager {
                             
                         }
                   }
-                
-		
-
-		/* TODO: move the keyhandling code to the StateManager */
-		/*
-		Gdx.app.debug("GameManager:update", "transitioning states");
-		states.transition();
-		*/
+               
 	}else{
                   player.roaming = false;
                   chatBox.addMessage("Game over!");

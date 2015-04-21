@@ -18,31 +18,36 @@ import java.util.Random;
 public class Combat {
     Combatants allies = new Combatants();
     Combatants enemies;
-    int lastPlayerDamage;
+    double lastPlayerDamage;
     Move playerMove;
+    Move npcMove;
     int lastPlayerMove;
     int playerBlockPercent;
+    int npcBlockPercent;
     Player player;
     Npc npc;
     Random selectionGen; 
     int random;
+    
     //Item reward;
     
     public Combat(){
         allies = new Combatants();
         enemies = new Combatants();
-        lastPlayerDamage = 0;
+        lastPlayerDamage = 0.0;
         playerMove = new Move();
+        npcMove = new Move();
         lastPlayerMove = 0;
         playerBlockPercent = 1;
+        npcBlockPercent = 1;
         selectionGen = new Random();
         //reward = new Item();
     }
     
     public int turn(){
-        //System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
-        
-        int damage;
+                
+        double damage;
+        //Implement this when muliplayer is added
         //for(Entity e : allies.members){
                 
                     player = (Player)allies.members.get(0);
@@ -69,7 +74,7 @@ public class Combat {
                     playerBlockPercent = playerMove.getBlockPercent();
                     //If damage attribute in move instance is positive, then deal to npc hp, else add to player hp
                     if(player.attacks.get(0).getDamage() >= 0){
-                        npc.hp -= player.attacks.get(0).getDamage();
+                        npc.hp -= player.attacks.get(0).getDamage() / npcBlockPercent;
                     }
                     else{
                         player.hp -= player.attacks.get(0).getDamage();
@@ -84,7 +89,8 @@ public class Combat {
                     npc = (Npc)e;
                     damage = npc.combatAI(lastPlayerDamage, lastPlayerMove);
                     if(npc.consumableAttack()){
-                
+                        npcMove = npc.attacks.get(0);
+                        npcBlockPercent = npcMove.getBlockPercent();
                         System.out.println("Printing lastPlayerDamage: " + lastPlayerDamage);
                         lastPlayerDamage = npc.attacks.get(0).getDamage();
                         //Picking random player to attack
