@@ -110,7 +110,7 @@ public class Combat {
                 }
         
              System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
-             GameManager.instance.msg.add("Player HP: " + player.hp + "; NPC HP: " + npc.hp);
+             GameManager.instance.addMessage("Player HP: " + player.hp + "; NPC HP: " + npc.hp);
         }else{
             player.roaming = true;
             

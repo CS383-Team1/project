@@ -20,7 +20,7 @@ public class UIListener extends InputListener{
         Player player;
         InteractionMenu interact;
         
-        final AreaManager areas = GameManager.instance.areas;
+        final AreaManager areas = GameManager.instance.areas();
 
         
         public UIListener(

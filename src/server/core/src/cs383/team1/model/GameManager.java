@@ -10,6 +10,7 @@ import cs383.team1.model.combat.CombatManager;
 import cs383.team1.model.inventory.Item;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
+import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.AreaManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
@@ -17,26 +18,22 @@ import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.StairsEntity;
 import cs383.team1.model.overworld.Tile;
+import java.util.List;
 import java.util.ArrayList;
 
-public final class GameManager {
+public final class GameManager implements GameManagerInterface {
 	public static final GameManager instance = new GameManager();
 
-	public AreaManager areas;
-	public StateManager states;
-        DialogueBox dialogue;
-        public CombatManager combat;
-        Position tempPos;
-        Position returnPos;
-        Entity temp;
-        
-
-        public DialogueBox chatBox = new DialogueBox();
-        
-
-        public int keyPressed;
-//        public boolean parseInput = true;
-        public ArrayList <String> msg;
+	private AreaManager areas;
+	private StateManager states;
+        private DialogueBox dialogue;
+        private CombatManager combat;
+        private Position tempPos;
+        private Position returnPos;
+        private Entity temp;
+        private DialogueBox chatBox = new DialogueBox();
+        private int keyPressed;
+        private List<String> msg;
 
         
 	private GameManager() {
@@ -155,15 +152,6 @@ public final class GameManager {
 				continue;
 			}
                                                
-/*
-	                //Interact with an NPC (nullifies last attempted move)
-                        if((npc = (Npc)areas.findEntity(next, 3)) != null) {
-                                keyPressed = 0;
-                                msg = npc.readNext();
-                                System.out.println("GameManager: NPC Interaction: " + msg);
-                                next = player.pos;
-                        }
-  */                      
                         //Try to use stairs entity on a stairs tile (well3112)
                         if (target.type() == 3)
                                 areas.useStairs(next);
@@ -186,87 +174,37 @@ public final class GameManager {
                         }
                         
                 }
-                
-                //Combat input system
-//                while(
-//                        in.consumable() &&
-//                        player.roaming == false
-//                        && player.zeroFloat()) {
-//                        int selection = 0;
-//                        combat.battles.get(0).turn();
-//                        
-//                        switch(in.keys.remove(0)) {
-//                            case Keys.NUM_0:
-//                                player.addAttack(player.moves.get(0));
-//                                selection = 0;
-//                                break;
-//                            case Keys.NUM_1:
-//                                player.addAttack(player.moves.get(1));
-//                                selection = 1;
-//                                break;
-//                            case Keys.NUM_2:
-//                                player.addAttack(player.moves.get(2));
-//                                selection = 2;
-//                                break;
-//                            case Keys.NUM_3:
-//                                player.addAttack(player.moves.get(3));
-//                                selection = 3;
-//                                break;
-//                            case Keys.NUM_4:
-//                                player.addAttack(player.moves.get(4));
-//                                selection = 4;
-//                                break;
-//                            case Keys.NUM_5:
-//                                player.addAttack(player.moves.get(5));
-//                                selection = 5;
-//                                break;
-//                            case Keys.NUM_6:
-//                                player.addAttack(player.moves.get(6));
-//                                selection = 6;
-//                                break;
-//                            case Keys.NUM_7:
-//                                player.addAttack(player.moves.get(7));
-//                                selection = 7;
-//                                break;
-//                            case Keys.NUM_8:
-//                                player.addAttack(player.moves.get(8));
-//                                selection = 8; 
-//                                break;
-//                            case Keys.NUM_9:
-//                                player.addAttack(player.moves.get(9));
-//                                selection = 9; 
-//                                break;
-//                            case Keys.E:
-//                                player.roaming = true;
-//                                player.pos = returnPos;
-//                                areas.endCombat(player);
-//                                selection = 0;
-//                                break;
-//                                default:
-//                                    selection = 0;
-//                                    player.addAttack(player.moves.get(0));
-//					continue;
-//                        }  
-                        
-//                        if(selection < player.moves.size()){
-//                            msg = "Player chooses: " + player.moves.get(selection).name;
-//                            
-//                        }
-                  
-                        
-                        
-                }
-                
-		
+	}
 
-		/* TODO: move the keyhandling code to the StateManager */
-		/*
-		Gdx.app.debug("GameManager:update", "transitioning states");
-		states.transition();
-		*/
-//	if (player.hp < 1) {
-//                  player.roaming = false;
-//                  chatBox.addMessage("Game over!");
-//              }
-//        }
+	public void setKey(int k) {
+		keyPressed = k;
+	}
+
+	public int getKey() {
+		return keyPressed;
+	}
+
+	public AreaManager areas() {
+		return areas;
+	}
+
+	public CombatManager combat() {
+		return combat;
+	}
+
+	public Area currentArea() {
+		return areas.current;
+	}
+
+	public void addMessage(String m) {
+		msg.add(m);
+	}
+
+	public String getMessage(int m) {
+		return msg.get(m);
+	}
+
+	public void removeMessage(int m) {
+		msg.remove(m);
+	}
 }

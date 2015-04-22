@@ -37,7 +37,7 @@ public class CombatMenu {
         
         Skin skin;
         
-        Player player = GameManager.instance.areas.current.player;
+        Player player = GameManager.instance.currentArea().player;
         public CombatMenu(Skin sk) {
                 attacks = new ArrayList();
                 atkTable = new Table();
@@ -120,10 +120,10 @@ public class CombatMenu {
                         atkButton.addListener(new ClickListener() {
                                 @Override
                                 public void clicked( InputEvent event, float x, float y ) {
-                                        GameManager.instance.combat.battles.get(0).turn();
+                                        GameManager.instance.combat().battles.get(0).turn();
                                         player.addAttack(attacks.get(index));
                                         System.out.println(atk);
-                                        GameManager.instance.msg.add("Player uses: " + atk);
+                                        GameManager.instance.addMessage("Player uses: " + atk);
                                 }
                         });
                         atkTable.add(atkButton).row();

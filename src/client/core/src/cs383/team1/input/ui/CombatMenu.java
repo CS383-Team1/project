@@ -14,9 +14,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import cs383.team1.Main;
 import cs383.team1.model.combat.Move;
 import static cs383.team1.input.ui.SubMenu.getImage;
-import cs383.team1.model.GameManager;
+import cs383.team1.model.GameManagerInterface;
 import cs383.team1.model.overworld.Player;
 import java.util.ArrayList;
 
@@ -34,10 +35,9 @@ public class CombatMenu {
         ProgressBar countdown;
         ArrayList <Move> attacks;
         Table atkTable;
-        
         Skin skin;
-        
-        Player player = GameManager.instance.areas.current.player;
+        Player player = null;
+
         public CombatMenu(Skin sk) {
                 attacks = new ArrayList();
                 atkTable = new Table();
@@ -101,6 +101,7 @@ public class CombatMenu {
         }
         
         public void updateAttacks() {
+        	if(player == null) player = Main.gm.currentArea().player;
                 TextButton atkButton;
                 attacks.clear();
                 attacks.addAll(player.moves);
@@ -120,10 +121,11 @@ public class CombatMenu {
                         atkButton.addListener(new ClickListener() {
                                 @Override
                                 public void clicked( InputEvent event, float x, float y ) {
-                                        GameManager.instance.combat.battles.get(0).turn();
+					Main.gm.combat().battles.get(0).turn();
                                         player.addAttack(attacks.get(index));
                                         System.out.println(atk);
-                                        GameManager.instance.msg.add("Player uses: " + atk);
+					Main.gm.addMessage("Player uses"
+						+ atk);
                                 }
                         });
                         atkTable.add(atkButton).row();

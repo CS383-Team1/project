@@ -1,0 +1,4298 @@
+./gradlew desktop:run
+Configuration on demand is an incubating feature.
+:core:compileJava
+:core:processResources UP-TO-DATE
+:core:classes
+:core:jar
+:desktop:compileJava
+:desktop:processResources UP-TO-DATE
+:desktop:classes
+:desktop:run
+Main:create: instantiating GameManager
+GameManager:GameManager: instantiating class
+AreaManager:AreaManager: instantiating class
+Player:Player: instantiating class
+made Equipment
+made Inventory for me
+Area:Area: instantiating class
+Player:Player: instantiating class
+made Equipment
+made Inventory for me
+Area:Area: instantiating class
+ReturnEntity:ReturnEntity: instantiating class
+StateManager:StateManager: instantiating class
+GameManager:load: Loading areas
+GameManager:load: Loading area area/aa.txt
+AreaManager:loadArea: Loading area/aa.txt
+AreaManager:loadArea: Loading tiles
+AreaManager:loadArea: Loading OutsideWall (0,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,1)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,2)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,3)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,4)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,5)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,6)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,7)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,8)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,9)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,10)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,11)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,12)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,13)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,14)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,15)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,16)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,17)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,18)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,19)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,20)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,21)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,22)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,23)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,24)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,25)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,26)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,27)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,28)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,29)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,30)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (0,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (1,0)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,9)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,19)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (1,31)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,0)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,1)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,2)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,3)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,4)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,5)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,6)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,7)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,8)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (2,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (2,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (2,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (2,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (2,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (2,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (2,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (2,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (2,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,20)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,21)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,22)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,23)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,24)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,25)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,26)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,27)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,28)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,29)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,30)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (2,31)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (3,0)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (3,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (3,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (3,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (3,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (3,31)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (4,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (4,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (4,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (4,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (4,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (4,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (4,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (4,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (5,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (5,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (5,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (5,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (5,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (5,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (5,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (5,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (6,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (6,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (6,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (6,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (6,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (6,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (6,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (6,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (7,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (7,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (7,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (7,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (7,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (7,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (7,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (7,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (8,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (8,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (8,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (8,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (8,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (8,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (8,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (8,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (9,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (9,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (9,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (9,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (9,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (9,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (9,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (9,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (10,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (10,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (10,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (10,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (10,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (10,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (10,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (10,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (11,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (11,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (11,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (11,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (11,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (11,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (11,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (11,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (12,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (12,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (12,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (12,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (12,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (12,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (12,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (12,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (13,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (13,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (13,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (13,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (13,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (13,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (13,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (13,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (14,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (14,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (14,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (14,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (14,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (14,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (14,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (14,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (15,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (15,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,10)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,11)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,12)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,13)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,14)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,15)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,16)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,17)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,18)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (15,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (15,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (15,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (15,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (16,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (16,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (16,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (16,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (16,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (16,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (16,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (16,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (17,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (17,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (17,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (17,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (17,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (17,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (17,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (17,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (18,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (18,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (18,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (18,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (18,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (18,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (18,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (18,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (19,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (19,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (19,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (19,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (19,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (19,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (19,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (19,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (20,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (20,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (20,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (20,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (20,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (20,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (20,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (20,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (21,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (21,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (21,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (21,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (21,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (21,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (21,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (21,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (22,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (22,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (22,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (22,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (22,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (22,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (22,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (22,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (23,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (23,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (23,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (23,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (23,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (23,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (23,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (23,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (24,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (24,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (24,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (24,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (24,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (24,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (24,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (24,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (25,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (25,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (25,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (25,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (25,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (25,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (25,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (25,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (26,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (26,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (26,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (26,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (26,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (26,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (26,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (26,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (27,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (27,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (27,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (27,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (27,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (27,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (27,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (27,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading Field (28,0)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (28,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (28,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (28,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (28,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (28,31)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Stairs (29,0)
+Stairs:Stairs: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,1)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,2)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,3)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,4)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,5)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,6)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,7)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,8)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,9)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (29,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (29,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (29,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (29,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (29,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (29,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (29,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (29,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (29,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,19)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,20)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,21)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,22)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,23)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,24)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,25)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,26)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,27)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,28)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,29)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,30)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading WalkWay (29,31)
+WalkWay:WalkWay: instantiating class
+AreaManager:loadArea: Loading Field (30,0)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,1)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,2)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,3)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,4)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,5)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,6)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,7)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,8)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,9)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,10)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,11)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,12)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,13)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,14)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,15)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,16)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,17)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,18)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,19)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,20)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,21)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,22)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,23)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,24)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,25)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,26)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,27)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,28)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,29)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,30)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading Field (30,31)
+Field:Field: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,0)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,1)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,2)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,3)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,4)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,5)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,6)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,7)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,8)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,9)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,10)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,11)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,12)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,13)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,14)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,15)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,16)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,17)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,18)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,19)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,20)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,21)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,22)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,23)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,24)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,25)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,26)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,27)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,28)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,29)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,30)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading OutsideWall (31,31)
+OutsideWall:OutsideWall: instantiating class
+AreaManager:loadArea: Loading quests
+Printing quest: Janet needs a new stapler. Would you bring her one from the supply closet? (y/n)
+AreaManager:loadArea: Loading entities
+AreaManager:loadArea: Loading StairsEntity
+StairsEntity:StairsEntity: instantiating class
+AreaManager:loadArea: Loading NpcEntity
+StairsEntity:StairsEntity: instantiating class
+AreaManager:loadArea: Loading Player
+Player:Player: instantiating class
+made Equipment
+made Inventory for me
+Area:Area: instantiating class
+GameManager:load: Loading area area/demo.txt
+AreaManager:loadArea: Loading area/demo.txt
+AreaManager:loadArea: Loading tiles
+AreaManager:loadArea: Loading Wall (0,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,1)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,2)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,3)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,4)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,5)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,6)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,7)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,8)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,9)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,10)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,11)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,12)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,13)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,14)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,15)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,16)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,17)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,18)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,19)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,20)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,21)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,22)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,23)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,24)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,25)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,26)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,27)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,28)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,29)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,30)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (0,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (1,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (1,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (1,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (1,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (2,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (2,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (2,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (2,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (3,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (3,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading LeftDesk (3,4)
+LeftDesk:LeftDesk: instantiating class
+AreaManager:loadArea: Loading Floor (3,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading LeftDesk (3,15)
+LeftDesk:LeftDesk: instantiating class
+AreaManager:loadArea: Loading Floor (3,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading LeftDesk (3,26)
+LeftDesk:LeftDesk: instantiating class
+AreaManager:loadArea: Loading Floor (3,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (3,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (3,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (4,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (4,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading RightDesk (4,4)
+RightDesk:RightDesk: instantiating class
+AreaManager:loadArea: Loading Floor (4,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading RightDesk (4,15)
+RightDesk:RightDesk: instantiating class
+AreaManager:loadArea: Loading Floor (4,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading RightDesk (4,26)
+RightDesk:RightDesk: instantiating class
+AreaManager:loadArea: Loading Floor (4,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (4,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (4,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (5,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (5,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (5,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (5,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (6,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (6,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (6,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (6,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (7,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (7,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (7,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (7,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (8,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (8,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (8,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (8,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (9,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (9,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (9,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (9,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (10,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (10,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (10,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (10,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (11,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (11,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (11,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (11,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (12,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (12,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (12,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (12,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (13,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (13,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (13,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (13,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (14,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (14,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (14,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (14,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (15,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (15,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading LeftDesk (15,4)
+LeftDesk:LeftDesk: instantiating class
+AreaManager:loadArea: Loading Floor (15,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading LeftDesk (15,15)
+LeftDesk:LeftDesk: instantiating class
+AreaManager:loadArea: Loading Floor (15,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading LeftDesk (15,26)
+LeftDesk:LeftDesk: instantiating class
+AreaManager:loadArea: Loading Floor (15,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (15,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (15,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (16,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (16,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading RightDesk (16,4)
+RightDesk:RightDesk: instantiating class
+AreaManager:loadArea: Loading Floor (16,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading RightDesk (16,15)
+RightDesk:RightDesk: instantiating class
+AreaManager:loadArea: Loading Floor (16,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading RightDesk (16,26)
+RightDesk:RightDesk: instantiating class
+AreaManager:loadArea: Loading Floor (16,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (16,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (16,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (17,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (17,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (17,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (17,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (18,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (18,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (18,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (18,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (19,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (19,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (19,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (19,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (20,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (20,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (20,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (20,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (21,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (21,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (21,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (21,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (22,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (22,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (22,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (22,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (23,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (23,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (23,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (23,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (24,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (24,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (24,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (24,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (25,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (25,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (25,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (25,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (26,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (26,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (26,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (26,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (27,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (27,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading LeftDesk (27,4)
+LeftDesk:LeftDesk: instantiating class
+AreaManager:loadArea: Loading Floor (27,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading LeftDesk (27,15)
+LeftDesk:LeftDesk: instantiating class
+AreaManager:loadArea: Loading Floor (27,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading LeftDesk (27,26)
+LeftDesk:LeftDesk: instantiating class
+AreaManager:loadArea: Loading Floor (27,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (27,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (27,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (28,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (28,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading RightDesk (28,4)
+RightDesk:RightDesk: instantiating class
+AreaManager:loadArea: Loading Floor (28,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading RightDesk (28,15)
+RightDesk:RightDesk: instantiating class
+AreaManager:loadArea: Loading Floor (28,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading RightDesk (28,26)
+RightDesk:RightDesk: instantiating class
+AreaManager:loadArea: Loading Floor (28,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (28,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (28,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (29,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (29,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (29,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Wall (29,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (30,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Floor (30,1)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,2)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,3)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,4)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,5)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,6)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,7)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,8)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,9)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,10)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,11)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,12)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,13)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,14)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,15)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,16)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,17)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,18)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,19)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,20)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,21)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,22)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,23)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,24)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,25)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,26)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,27)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,28)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,29)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Floor (30,30)
+Floor:Floor: instantiating class
+AreaManager:loadArea: Loading Stairs (30,31)
+Stairs:Stairs: instantiating class
+AreaManager:loadArea: Loading Wall (31,0)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,1)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,2)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,3)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,4)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,5)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,6)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,7)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,8)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,9)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,10)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,11)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,12)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,13)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,14)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,15)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,16)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,17)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,18)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,19)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,20)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,21)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,22)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,23)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,24)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,25)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,26)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,27)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,28)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,29)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,30)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading Wall (31,31)
+Wall:Wall: instantiating class
+AreaManager:loadArea: Loading quests
+Printing quest: Janet needs a new stapler. Would you bring her one from the supply closet? (y/n)
+AreaManager:loadArea: Loading entities
+AreaManager:loadArea: Loading StairsEntity
+StairsEntity:StairsEntity: instantiating class
+AreaManager:loadArea: Loading NpcEntity
+StairsEntity:StairsEntity: instantiating class
+AreaManager:loadArea: Loading Player
+Player:Player: instantiating class
+made Equipment
+made Inventory for me
+Area:Area: instantiating class
+Main:create: Launching server
+00:04 TRACE: [kryo] Register class ID 0: int (com.esotericsoftware.kryo.serializers.DefaultSerializers$IntSerializer)
+00:04 TRACE: [kryo] Register class ID 1: String (com.esotericsoftware.kryo.serializers.DefaultSerializers$StringSerializer)
+00:04 TRACE: [kryo] Register class ID 2: float (com.esotericsoftware.kryo.serializers.DefaultSerializers$FloatSerializer)
+00:04 TRACE: [kryo] Register class ID 3: boolean (com.esotericsoftware.kryo.serializers.DefaultSerializers$BooleanSerializer)
+00:04 TRACE: [kryo] Register class ID 4: byte (com.esotericsoftware.kryo.serializers.DefaultSerializers$ByteSerializer)
+00:04 TRACE: [kryo] Register class ID 5: char (com.esotericsoftware.kryo.serializers.DefaultSerializers$CharSerializer)
+00:04 TRACE: [kryo] Register class ID 6: short (com.esotericsoftware.kryo.serializers.DefaultSerializers$ShortSerializer)
+00:04 TRACE: [kryo] Register class ID 7: long (com.esotericsoftware.kryo.serializers.DefaultSerializers$LongSerializer)
+00:04 TRACE: [kryo] Register class ID 8: double (com.esotericsoftware.kryo.serializers.DefaultSerializers$DoubleSerializer)
+00:04 TRACE: [kryo] Register class ID 9: void (com.esotericsoftware.kryo.serializers.DefaultSerializers$VoidSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Field connectionID: int
+00:04 TRACE: [kryo] Register class ID 10: com.esotericsoftware.kryonet.FrameworkMessage$RegisterTCP (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Field connectionID: int
+00:04 TRACE: [kryo] Register class ID 11: com.esotericsoftware.kryonet.FrameworkMessage$RegisterUDP (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Register class ID 12: com.esotericsoftware.kryonet.FrameworkMessage$KeepAlive (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Register class ID 13: com.esotericsoftware.kryonet.FrameworkMessage$DiscoverHost (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Field id: int
+00:04 TRACE: [kryo] Field isReply: boolean
+00:04 TRACE: [kryo] Register class ID 14: com.esotericsoftware.kryonet.FrameworkMessage$Ping (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 TRACE: [kryo] References: false
+00:04 TRACE: [kryo] Registration required: true
+00:04 TRACE: [kryo] Register class ID 15: Object[] (com.esotericsoftware.kryo.serializers.DefaultArraySerializers$ObjectArraySerializer)
+00:04 TRACE: [kryo] Register class ID 16: com.esotericsoftware.kryonet.rmi.ObjectSpace$InvokeMethod (com.esotericsoftware.kryo.serializers.DefaultSerializers$KryoSerializableSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Field objectID: int
+00:04 TRACE: [kryo] Field responseID: byte
+00:04 TRACE: [kryo] Field result: class java.lang.Object
+00:04 TRACE: [kryo] Register class ID 17: com.esotericsoftware.kryonet.rmi.ObjectSpace$InvokeMethodResult (com.esotericsoftware.kryonet.rmi.ObjectSpace$3)
+00:04 TRACE: [kryo] Register class ID 18: java.lang.reflect.InvocationHandler (com.esotericsoftware.kryonet.rmi.ObjectSpace$4)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Register class ID 19: cs383.team1.model.GameManagerInterface (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Field 'tiles' of type interface java.util.List of generic type java.util.List<cs383.team1.model.overworld.Tile>
+00:04 TRACE: [kryo] Field generic type is of class sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
+00:04 TRACE: [kryo] Processing generic type java.util.List<cs383.team1.model.overworld.Tile>
+00:04 TRACE: [kryo] Processing actual type interface cs383.team1.model.overworld.Tile (java.lang.Class)
+00:04 TRACE: [kryo] Class java.util.List has generic type parameters
+00:04 TRACE: [kryo] Type parameter variable: name=E type bounds=[class java.lang.Object]
+00:04 TRACE: [kryo] Concrete type used for E is: cs383.team1.model.overworld.Tile
+00:04 TRACE: [kryo] Generics scope of field 'tiles' of class java.util.List<cs383.team1.model.overworld.Tile> is {E=interface cs383.team1.model.overworld.Tile}
+00:04 TRACE: [kryo] Determined concrete class of parametrized 'tiles' to be java.util.List<cs383.team1.model.overworld.Tile> where type parameters are [interface cs383.team1.model.overworld.Tile]
+00:04 TRACE: [kryo] Field generics: [interface cs383.team1.model.overworld.Tile]
+00:04 TRACE: [kryo] Field 'entities' of type interface java.util.List of generic type java.util.List<cs383.team1.model.overworld.Entity>
+00:04 TRACE: [kryo] Field generic type is of class sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
+00:04 TRACE: [kryo] Processing generic type java.util.List<cs383.team1.model.overworld.Entity>
+00:04 TRACE: [kryo] Processing actual type interface cs383.team1.model.overworld.Entity (java.lang.Class)
+00:04 TRACE: [kryo] Class java.util.List has generic type parameters
+00:04 TRACE: [kryo] Type parameter variable: name=E type bounds=[class java.lang.Object]
+00:04 TRACE: [kryo] Concrete type used for E is: cs383.team1.model.overworld.Entity
+00:04 TRACE: [kryo] Generics scope of field 'entities' of class java.util.List<cs383.team1.model.overworld.Entity> is {E=interface cs383.team1.model.overworld.Entity}
+00:04 TRACE: [kryo] Determined concrete class of parametrized 'entities' to be java.util.List<cs383.team1.model.overworld.Entity> where type parameters are [interface cs383.team1.model.overworld.Entity]
+00:04 TRACE: [kryo] Field generics: [interface cs383.team1.model.overworld.Entity]
+00:04 TRACE: [kryo] Field player: class cs383.team1.model.overworld.Player
+00:04 TRACE: [kryo] Register class ID 20: cs383.team1.model.overworld.Area (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Field 'areas' of type interface java.util.Map of generic type java.util.Map<java.lang.String, cs383.team1.model.overworld.Area>
+00:04 TRACE: [kryo] Field generic type is of class sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
+00:04 TRACE: [kryo] Processing generic type java.util.Map<java.lang.String, cs383.team1.model.overworld.Area>
+00:04 TRACE: [kryo] Processing actual type class java.lang.String (java.lang.Class)
+00:04 TRACE: [kryo] Processing actual type class cs383.team1.model.overworld.Area (java.lang.Class)
+00:04 TRACE: [kryo] Class java.util.Map has generic type parameters
+00:04 TRACE: [kryo] Type parameter variable: name=K type bounds=[class java.lang.Object]
+00:04 TRACE: [kryo] Concrete type used for K is: java.lang.String
+00:04 TRACE: [kryo] Type parameter variable: name=V type bounds=[class java.lang.Object]
+00:04 TRACE: [kryo] Concrete type used for V is: cs383.team1.model.overworld.Area
+00:04 TRACE: [kryo] Generics scope of field 'areas' of class java.util.Map<java.lang.String, cs383.team1.model.overworld.Area> is {V=class cs383.team1.model.overworld.Area, K=class java.lang.String}
+00:04 TRACE: [kryo] Determined concrete class of parametrized 'areas' to be java.util.Map<java.lang.String, cs383.team1.model.overworld.Area> where type parameters are [class java.lang.String, class cs383.team1.model.overworld.Area]
+00:04 TRACE: [kryo] Field generics: [class java.lang.String, class cs383.team1.model.overworld.Area]
+00:04 TRACE: [kryo] Field current: class cs383.team1.model.overworld.Area
+00:04 TRACE: [kryo] Field returnArea: class cs383.team1.model.overworld.Area
+00:04 TRACE: [kryo] Field returnPos: class cs383.team1.model.overworld.ReturnEntity
+00:04 TRACE: [kryo] Field combatArea: class cs383.team1.model.overworld.Area
+00:04 TRACE: [kryo] Field originalArea: class java.lang.String
+00:04 TRACE: [kryo] Register class ID 21: cs383.team1.model.overworld.AreaManager (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Field currentBattle: class cs383.team1.model.combat.Combat
+00:04 TRACE: [kryo] Field 'participants' of type class java.util.ArrayList of generic type java.util.ArrayList<cs383.team1.model.overworld.Player>
+00:04 TRACE: [kryo] Field generic type is of class sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
+00:04 TRACE: [kryo] Processing generic type java.util.ArrayList<cs383.team1.model.overworld.Player>
+00:04 TRACE: [kryo] Processing actual type class cs383.team1.model.overworld.Player (java.lang.Class)
+00:04 TRACE: [kryo] Class java.util.ArrayList has generic type parameters
+00:04 TRACE: [kryo] Type parameter variable: name=E type bounds=[class java.lang.Object]
+00:04 TRACE: [kryo] Concrete type used for E is: cs383.team1.model.overworld.Player
+00:04 TRACE: [kryo] Generics scope of field 'participants' of class java.util.ArrayList<cs383.team1.model.overworld.Player> is {E=class cs383.team1.model.overworld.Player}
+00:04 TRACE: [kryo] Determined concrete class of parametrized 'participants' to be java.util.ArrayList<cs383.team1.model.overworld.Player> where type parameters are [class cs383.team1.model.overworld.Player]
+00:04 TRACE: [kryo] Field generics: [class cs383.team1.model.overworld.Player]
+00:04 TRACE: [kryo] Field 'e' of type class java.util.ArrayList of generic type java.util.ArrayList<cs383.team1.model.overworld.Npc>
+00:04 TRACE: [kryo] Field generic type is of class sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
+00:04 TRACE: [kryo] Processing generic type java.util.ArrayList<cs383.team1.model.overworld.Npc>
+00:04 TRACE: [kryo] Processing actual type class cs383.team1.model.overworld.Npc (java.lang.Class)
+00:04 TRACE: [kryo] Class java.util.ArrayList has generic type parameters
+00:04 TRACE: [kryo] Type parameter variable: name=E type bounds=[class java.lang.Object]
+00:04 TRACE: [kryo] Concrete type used for E is: cs383.team1.model.overworld.Npc
+00:04 TRACE: [kryo] Generics scope of field 'e' of class java.util.ArrayList<cs383.team1.model.overworld.Npc> is {E=class cs383.team1.model.overworld.Npc}
+00:04 TRACE: [kryo] Determined concrete class of parametrized 'e' to be java.util.ArrayList<cs383.team1.model.overworld.Npc> where type parameters are [class cs383.team1.model.overworld.Npc]
+00:04 TRACE: [kryo] Field generics: [class cs383.team1.model.overworld.Npc]
+00:04 TRACE: [kryo] Field 'battles' of type class java.util.ArrayList of generic type java.util.ArrayList<cs383.team1.model.combat.Combat>
+00:04 TRACE: [kryo] Field generic type is of class sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
+00:04 TRACE: [kryo] Processing generic type java.util.ArrayList<cs383.team1.model.combat.Combat>
+00:04 TRACE: [kryo] Processing actual type class cs383.team1.model.combat.Combat (java.lang.Class)
+00:04 TRACE: [kryo] Class java.util.ArrayList has generic type parameters
+00:04 TRACE: [kryo] Type parameter variable: name=E type bounds=[class java.lang.Object]
+00:04 TRACE: [kryo] Concrete type used for E is: cs383.team1.model.combat.Combat
+00:04 TRACE: [kryo] Generics scope of field 'battles' of class java.util.ArrayList<cs383.team1.model.combat.Combat> is {E=class cs383.team1.model.combat.Combat}
+00:04 TRACE: [kryo] Determined concrete class of parametrized 'battles' to be java.util.ArrayList<cs383.team1.model.combat.Combat> where type parameters are [class cs383.team1.model.combat.Combat]
+00:04 TRACE: [kryo] Field generics: [class cs383.team1.model.combat.Combat]
+00:04 TRACE: [kryo] Register class ID 22: cs383.team1.model.combat.CombatManager (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 TRACE: [kryo] Optimize ints: true
+00:04 TRACE: [kryo] Field 'keys' of type class java.util.ArrayList of generic type java.util.ArrayList<java.lang.Integer>
+00:04 TRACE: [kryo] Field generic type is of class sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
+00:04 TRACE: [kryo] Processing generic type java.util.ArrayList<java.lang.Integer>
+00:04 TRACE: [kryo] Processing actual type class java.lang.Integer (java.lang.Class)
+00:04 TRACE: [kryo] Class java.util.ArrayList has generic type parameters
+00:04 TRACE: [kryo] Type parameter variable: name=E type bounds=[class java.lang.Object]
+00:04 TRACE: [kryo] Concrete type used for E is: java.lang.Integer
+00:04 TRACE: [kryo] Generics scope of field 'keys' of class java.util.ArrayList<java.lang.Integer> is {E=class java.lang.Integer}
+00:04 TRACE: [kryo] Determined concrete class of parametrized 'keys' to be java.util.ArrayList<java.lang.Integer> where type parameters are [class java.lang.Integer]
+00:04 TRACE: [kryo] Field generics: [class java.lang.Integer]
+00:04 TRACE: [kryo] Register class ID 23: cs383.team1.input.InputManager (com.esotericsoftware.kryo.serializers.FieldSerializer)
+00:04 DEBUG: [kryonet] Accepting connections on port: 0.0.0.0/0.0.0.0:54777/TCP
+00:04  INFO: [kryonet] Server opened.
+00:04 TRACE: [kryonet] Server thread started.
+00:23 DEBUG: [kryonet] Port 54777/TCP connected to: /127.0.0.1:52326
+00:23 TRACE: [kryonet] Connection listener added: com.esotericsoftware.kryonet.Server$1
+00:23 TRACE: [kryo] Write class 10: com.esotericsoftware.kryonet.FrameworkMessage$RegisterTCP
+00:23 DEBUG: [kryo] Write: com.esotericsoftware.kryonet.FrameworkMessage$RegisterTCP
+00:23 TRACE: [kryo] FieldSerializer.write fields of class: com.esotericsoftware.kryonet.FrameworkMessage$RegisterTCP
+00:23 TRACE: [kryo] Object graph complete.
+00:23 TRACE: [kryonet] Connection 1 sent TCP: RegisterTCP (6)
+00:23  INFO: [kryonet] Connection 1 connected: /127.0.0.1
+00:24 TRACE: [kryo] Read class 16: com.esotericsoftware.kryonet.rmi.ObjectSpace$InvokeMethod
+00:24 TRACE: [kryo] Read: 129
+00:24 DEBUG: [kryo] Read: com.esotericsoftware.kryonet.rmi.ObjectSpace$InvokeMethod
+00:24 TRACE: [kryo] Object graph complete.
+00:24 TRACE: [kryonet] Connection 1 received TCP: InvokeMethod
+00:27 TRACE: [kryonet] Unable to read TCP from: Connection 1
+java.net.SocketException: Connection is closed.
+	at com.esotericsoftware.kryonet.TcpConnection.readObject(TcpConnection.java:109)
+	at com.esotericsoftware.kryonet.Server.update(Server.java:205)
+	at com.esotericsoftware.kryonet.Server.run(Server.java:372)
+	at java.lang.Thread.run(Thread.java:695)
+00:27  INFO: [kryonet] Connection 1 disconnected.

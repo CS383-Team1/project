@@ -12,41 +12,57 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.esotericsoftware.kryonet.Client;
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
+import com.esotericsoftware.kryonet.rmi.ObjectSpace;
+import com.esotericsoftware.minlog.Log;
 import cs383.team1.input.InputManager;
-import cs383.team1.model.GameManager;
+import cs383.team1.model.GameManagerInterface;
+import cs383.team1.net.Network;
 import cs383.team1.render.DemoDisplay;
 import cs383.team1.render.UIDisplay;
+import java.io.IOException;
 
 public class Main implements ApplicationListener, InputProcessor {
-	public InputManager inputManager;
-	public GameManager gm;
+	public static InputManager inputManager;
+	public static GameManagerInterface gm;
 	public DemoDisplay screen;
         public UIDisplay ui;
         public Stage stage;
-
-    OrthographicCamera camera;
+	public OrthographicCamera camera;
+	public Client client;
 
 
 
 	@Override
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_INFO);
-		/* Gdx.app.setLogLevel(Application.LOG_DEBUG); */
-//		Gdx.input.setInputProcessor(this);
                 
-                stage = new Stage(new ScreenViewport());
-                
-		inputManager = new InputManager();
-                	
-                InputMultiplexer im = new InputMultiplexer(stage, this);
-		Gdx.app.debug("Main:create", "instantiating GameManager");
-		gm = GameManager.instance;
+		Gdx.app.debug("Main:create", "Connecting to server");
+
+		client = new Client();
+		client.start();
+		try {
+			client.connect(10000, "127.0.0.1",
+				Network.port);
+		} catch (IOException ex) {
+			Gdx.app.error("Main:create", "Failed to connect!");
+			ex.printStackTrace();
+			Gdx.app.exit();
+		}
+		Network.registerKryo(client);
+
+		gm = ObjectSpace.getRemoteObject(client, Network.GM_ID,
+			GameManagerInterface.class);	
 
 		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
+
+                stage = new Stage(new ScreenViewport());
+		inputManager = new InputManager();
+                InputMultiplexer im = new InputMultiplexer(stage, this);
 		screen = new DemoDisplay();
-
 		ui = new UIDisplay(stage);
-
                 
                 Gdx.input.setInputProcessor(im);
 	}
@@ -66,9 +82,9 @@ public class Main implements ApplicationListener, InputProcessor {
 		}
 		screen.render();
                 ui.render();
-                if (GameManager.instance.areas.current.player.zeroFloat() 
-                        && GameManager.instance.areas.current.player.roaming == true) {
-                        inputManager.keys.add(GameManager.instance.keyPressed);
+                if (gm.currentArea().player.zeroFloat() 
+                        && gm.currentArea().player.roaming == true) {
+                        inputManager.keys.add(gm.getKey());
                 }
 	}
 
@@ -87,14 +103,15 @@ public class Main implements ApplicationListener, InputProcessor {
 	@Override
 	public boolean keyDown (int key) {
 		inputManager.keys.add(key);
-                GameManager.instance.keyPressed = key;
+                gm.setKey(key);
 		return false;
 	}
 
 	@Override
 	public boolean keyUp (int key) {
-                if (key == GameManager.instance.keyPressed)
-                        GameManager.instance.keyPressed = 0;
+                if (key == gm.getKey()) {
+                        gm.setKey(0);
+		}
 		return true;
 	}
 

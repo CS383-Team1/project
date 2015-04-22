@@ -12,7 +12,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import cs383.team1.Main;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Tile;
 import cs383.team1.model.overworld.DemoEntity;
@@ -176,6 +178,7 @@ public class DemoDisplay extends Display {
 	}
 
 	public void render() {
+		Area area = Main.gm.currentArea();
 		Player player;
 
 		Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -185,13 +188,13 @@ public class DemoDisplay extends Display {
 
 		batch.begin();
 
-		for(Entity e : GameManager.instance.areas.current.tiles) {
+		for(Entity e : area.tiles) {
 			sprite = new Sprite(getTileTexture(e.type()));
 			sprite.setPosition(e.pos().x * Tile.WIDTH, e.pos().y * Tile.HEIGHT);
 			sprite.draw(batch);
 		}
 
-		for(Entity e : GameManager.instance.areas.current.entities) {
+		for(Entity e : area.entities) {
 			sprite = new Sprite(getEntityTexture(e.type()));
 			sprite.setPosition(e.pos().x * Tile.WIDTH,
 			  (e.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
@@ -200,7 +203,7 @@ public class DemoDisplay extends Display {
 		}
 
 
-		player = GameManager.instance.areas.current.player;
+		player = area.player;
 //                chatBox = GameManager.instance.chatBox;
 		sprite = new Sprite(getEntityTexture(player.aType()));
 		sprite.setPosition(
