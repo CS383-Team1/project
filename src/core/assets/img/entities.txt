@@ -17,4 +17,4 @@
 13 img/playerWalkU2.png
 14 img/playerWalkL2.png
 15 img/playerWalkR2.png
-16 img/field.png
+16 img/items/Items_on_ground.png
