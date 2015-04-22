@@ -44,10 +44,12 @@ public class UIDisplay extends Display{
                         msg.addMessage(GameManager.instance.msg.get(0));
                         GameManager.instance.msg.remove(0);
                 }
-                if ( !player.roaming )
+                if ( !player.roaming && !combat.visible())
                         combat.combat().setVisible(true);
-                else if ( player.roaming )
+                else if ( player.roaming && combat.visible()) {
                         combat.combat().setVisible(false);
+                        combat.changeMenu("MAIN");
+		}
                 stage.draw();
                 stage.act();
         }
