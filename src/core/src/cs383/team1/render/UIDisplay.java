@@ -50,8 +50,10 @@ public class UIDisplay extends Display{
                         combat.combat().setVisible(false);
                         combat.changeMenu("MAIN");
 		}
-                stage.draw();
                 stage.act();
+                stage.draw();
+                if (msg.toBottom())
+                        msg.scrollBottom();
         }
         
         public void dispose()

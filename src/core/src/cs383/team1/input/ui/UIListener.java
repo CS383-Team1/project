@@ -45,9 +45,9 @@ public class UIListener extends InputListener{
                 switch (keyCode) {
                 case (Input.Keys.ENTER) :
                         if (
-                                !msg.input.getText().equals("")
-                                && stage.getKeyboardFocus() == msg.input) {
-                                msg.addMessage(msg.input.getText());
+                                stage.getKeyboardFocus() == msg.input) {
+                                if (!msg.input.getText().equals(""))
+                                        msg.addMessage(msg.input.getText());
                                 msg.input.setText("");
                                 stage.setKeyboardFocus(null);
                                 return true;

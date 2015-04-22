@@ -24,6 +24,8 @@ public class MessageBox {
         private final SplitPane msg;
         public TextField input;
         
+        private boolean toBottom;
+        
         public MessageBox(Skin sk)
         {
                 text = new ArrayList();
@@ -33,8 +35,7 @@ public class MessageBox {
                 
                 //Create the "Chat History" section
                 mScroll = new ScrollPane(mTable, sk, "chat");
-                mTable.pad(30);
-                mTable.padBottom(15);
+                mTable.padTop(30);
                 mText.setWrap(true);
                 
                 mScroll.setScrollingDisabled(true, false);
@@ -75,7 +76,7 @@ public class MessageBox {
         //Add a message from the input
         public void addMessage(String s)
         {
-                if (s.equals("?") || s.equals("help")) {
+                if (s.equals("?") || s.toLowerCase().equals("help")) {
                      text.add("Pickup item: E");
                      text.add("Move: Arrow Keys");
                      text.add("Main Menu: ESC");
@@ -96,6 +97,15 @@ public class MessageBox {
                         s = s.concat(text.get(i)).concat("\n");
                 }
                 mText.setText(s);
+                toBottom = true;
+        }
+        
+        public boolean toBottom() {
+                return toBottom;
+        }
+        
+        public void scrollBottom() {
                 mScroll.setScrollPercentY(1);
+                toBottom = false;
         }
 }
