@@ -10,12 +10,6 @@ a clean, submitable state. Each contributer should have a branch with their
 username as it's name. Further branches can be created as desired, provided
 they are in the form `<username>-<branchname>`.
 
-Please hardwrap all text files at 80 characters. Some of us have smaller
-displays, and not all editors handle soft wraps gracefully.
-
-Please indent with tabs. You can set them to be as wide as you like, but
-for the purpose of hard wrapping lines treat tabs as 4 spaces.
-
 Please use line endings of `\n` instead of `\n\r`. The last thing we need
 is a commit war where contributors alternatively add and remove `\r`
 characters from source files.
@@ -45,6 +39,12 @@ cannot.
 Commits not following these rules can and will be reverted by the
 organization admins. Care will be taken to preserve work, but commits not
 honoring the rules cannot be guaranteed to be preserved.
+
+
+Coding Standards
+----------------
+
+All code must follow the linux kernel coding rules, which can be found [https://www.kernel.org/doc/Documentation/CodingStyle](here).
 
 
 Organization

@@ -25,9 +25,9 @@ import java.util.ArrayList;
  * @author Lance
  */
 public class CombatMenu {
-        SplitPane combat;
-        ScrollPane cmdScroll;
-        Table cmdGroup;
+	SplitPane combat;
+	ScrollPane cmdScroll;
+	Table cmdGroup;
         List cmdList;
         Table cmdTable;
         Table hud;
@@ -89,9 +89,11 @@ public class CombatMenu {
         }
         
         //Change the "submenu" to the one specified by 's'
-        private void changeMenu( String s )
+        public void changeMenu( String s )
         {
-                if (s.equals("ATTACK")) {
+                if (s.equals("MAIN"))
+                        cmdScroll.setWidget(cmdGroup);
+                else if (s.equals("ATTACK")) {
 //                        combat.setSecondWidget(atkTable);
                         cmdScroll.setWidget(atkTable);
                         updateAttacks();
@@ -109,7 +111,9 @@ public class CombatMenu {
                 for (int i = 0; i < attacks.size(); i++) {
                         final int index = i;
                         final String atk = attacks.get(i).name;
-                        String dmg = Integer.toString(attacks.get(i).getDamage());
+                        if (atk.equals("null"))
+                                continue;
+                        String dmg = Double.toString(attacks.get(i).getDamage());
                         String blk = Integer.toString(attacks.get(i).getBlockPercent());
 
                         atkTable.add(new Label(atk, skin)).expand().colspan(2).fillX().row();
@@ -130,4 +134,8 @@ public class CombatMenu {
                         atkTable.add( getImage( "bar" ) ).colspan(2).fillX().expand().row();
                 }
         }
+	
+	public boolean visible() {
+		return combat.isVisible();
+	}
 }

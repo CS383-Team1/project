@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.combat.Move;
+import cs383.team1.inventory.Inventory;
 import java.util.ArrayList;
+import cs383.team1.inventory.Item;
 
 
 public final class Player implements Entity {
@@ -21,6 +23,7 @@ public final class Player implements Entity {
         public ArrayList<String> acceptedQuests = new ArrayList<String>();
         public ArrayList<Move> moves = new ArrayList<Move>();
         public ArrayList<Move> attacks = new ArrayList<Move>();
+        public Inventory inventory;
 
         
 	public Player() {
@@ -34,12 +37,13 @@ public final class Player implements Entity {
 		mp = mp_0 > 0 ? mp_0 : 0;
 		ap = ap_0 > 0 ? ap_0 : 0;
                 addMove("block", 0, 50);
-                addMove("staple", 10, 1);
+                //addMove("staple", 10, 1);
                 addMove("throw coffee in face", 5, 1);
                 addMove("drink coffee", -5, 1);
                 for(int i = 3; i < 10; i++ ){
                     addMove(new Move());
                 }
+                inventory = new Inventory("me");
                 
 	}
 
@@ -59,12 +63,31 @@ public final class Player implements Entity {
             return acceptedQuests.get(0);
         }
         
-        public void addMove(String name, int damage, int blockPercent){
+        public void addMove(String name, double damage, int blockPercent){
             Move move = new Move(name, damage, blockPercent);
+             for(Move m : this.moves){
+                if("null".equals(m.name)){
+                    int index = moves.indexOf(m);
+                    moves.set(index, move);
+                    return;
+                }
+            }
             moves.add(move);
         }
         
         public void addMove(Move move){
+            moves.add(move);
+        }
+        
+        public void addMove(Item i){
+            Move move = new Move(i.name, i.damage, 1);
+            for(Move m : this.moves){
+                if("null".equals(m.name)){
+                    int index = moves.indexOf(m);
+                    moves.set(index, move);
+                    return;
+                }
+            }
             moves.add(move);
         }
         

@@ -1,4 +1,4 @@
-15
+16
 1 img/player.png
 2 img/null.png
 3 img/player.png
@@ -17,3 +17,4 @@
 13 img/playerWalkU2.png
 14 img/playerWalkL2.png
 15 img/playerWalkR2.png
+16 img/Items_on_ground.png

@@ -67,9 +67,7 @@ public class Npc implements Entity{
                 addMove("block", 0, 50);
                 addMove("staple", 10, 1);
                 addMove("throw coffee in face", 5, 1);
-                //for(int i = 2; i < 10; i++ ){
-                    //addMove(new Move());
-                //}
+                
 	}
 
         
@@ -160,7 +158,7 @@ public class Npc implements Entity{
             }
         */
         
-        public int combatAI(int lastPlayerDamage, int lastPlayerExpectedDamage){
+        public double combatAI(double lastPlayerDamage, int lastPlayerExpectedDamage){
             
                         
                 Random selectionGen = new Random();
@@ -199,7 +197,7 @@ public class Npc implements Entity{
                 }
                 //Not sure if this is what to return
                         */
-                return (int)moveDamage;
+                return moveDamage;
             
         }
         //Returns percentage of player

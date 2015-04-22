@@ -31,22 +31,25 @@ public class UIDisplay extends Display{
         CombatMenu combat;
         UIListener uiListen;
         
-        final Player player = GameManager.instance.areas.current.player;
+        Player player = GameManager.instance.areas.current.player;
         final AreaManager areas = GameManager.instance.areas;
 
 
         @Override
         public void render() {
+                player = GameManager.instance.areas.current.player;
                 //Read messages sent to the GameManager to the chat
                 if ( GameManager.instance.msg != null &&
                         GameManager.instance.msg.size()>0) {
                         msg.addMessage(GameManager.instance.msg.get(0));
                         GameManager.instance.msg.remove(0);
                 }
-                if ( !player.roaming )
+                if ( !player.roaming && !combat.visible())
                         combat.combat().setVisible(true);
-                else if ( player.roaming )
+                else if ( player.roaming && combat.visible()) {
                         combat.combat().setVisible(false);
+                        combat.changeMenu("MAIN");
+		}
                 stage.draw();
                 stage.act();
         }

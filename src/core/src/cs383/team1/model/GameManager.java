@@ -7,6 +7,7 @@ import cs383.team1.combat.CombatManager;
 import com.badlogic.gdx.utils.Timer;
 import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
+import cs383.team1.inventory.Item;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
@@ -27,6 +28,7 @@ public final class GameManager {
         public CombatManager combat;
         Position tempPos;
         Position returnPos;
+        Entity temp;
         
 
         public DialogueBox chatBox = new DialogueBox();
@@ -90,7 +92,7 @@ public final class GameManager {
 		Position next;
 		Tile target;
                 Npc npc;
-                
+                Item item;
                 player = areas.current.player;
 
                 int x = player.pos.x;
@@ -120,11 +122,28 @@ public final class GameManager {
 					next = new Position(x, y - 1);
                                         player.facing = 2;
 					break;
+                                case Keys.E:
+                                        if((item = (Item)areas.findItem(player.pos(), 16)) != null) {
+                                            System.out.println("Picked up Item");
+                                            temp = areas.findItem(player.pos(), 16);
+                                            player.addMove(item);
+                                            player.inventory.pickUp(item);
+                                            msg.add("Picked up " + item.name);
+                                            areas.current.entities.remove(temp);
+                                        }
+                                        next = player.pos;
+                                        break;
+                                case Keys.D:
+                                        //Drop Item: not really sure how to implement this with UI
+                                        Item droppedItem = new Item(); 
+                                        player.inventory.drop(droppedItem);
+                                
                                 default:
 					continue;
                         }
                     
 			target = null;
+                        
 			for(Tile t : areas.current.tiles) {
 				if(t.pos().x == next.x && t.pos().y == next.y) {
 					target = t;
@@ -136,6 +155,7 @@ public final class GameManager {
 				Gdx.app.error("GameManager:update", "invalid move");
 				continue;
 			}
+                                               
 /*
 	                //Interact with an NPC (nullifies last attempted move)
                         if((npc = (Npc)areas.findEntity(next, 3)) != null) {
@@ -158,102 +178,88 @@ public final class GameManager {
                         //Start combat with an NPC if they are next to the player
                         if ((npc = (Npc)areas.findCombatant(player.pos(), 3)) != null){
                                 System.out.println("Starting combat");
-                                System.out.println("Pringing npc.hp in GameManager: " + npc.hp);
-                                //npc = (Npc)areas.findEntity(next,3);
                                 tempPos = npc.pos();
                                 returnPos = player.pos();
                                 player.pos.x = (tempPos.x + 2);
                                 player.pos.y = tempPos.y;
                                 areas.getCombatArea(player.pos(), player, npc);
-                                combat.encounter(player, npc);
-                                //combat.addCombatants(npc);
-                                //combat.battles.get(0).turn();
+                                combat.encounter(areas.current.player, npc);
                         }
                         
                 }
-                
+                /*
                 //Combat input system
-//                while(
-//                        in.consumable() &&
-//                        player.roaming == false
-//                        && player.zeroFloat()) {
-//                        int selection = 0;
-//                        combat.battles.get(0).turn();
-//                        
-//                        switch(in.keys.remove(0)) {
-//                            case Keys.NUM_0:
-//                                player.addAttack(player.moves.get(0));
-//                                selection = 0;
-//                                break;
-//                            case Keys.NUM_1:
-//                                player.addAttack(player.moves.get(1));
-//                                selection = 1;
-//                                break;
-//                            case Keys.NUM_2:
-//                                player.addAttack(player.moves.get(2));
-//                                selection = 2;
-//                                break;
-//                            case Keys.NUM_3:
-//                                player.addAttack(player.moves.get(3));
-//                                selection = 3;
-//                                break;
-//                            case Keys.NUM_4:
-//                                player.addAttack(player.moves.get(4));
-//                                selection = 4;
-//                                break;
-//                            case Keys.NUM_5:
-//                                player.addAttack(player.moves.get(5));
-//                                selection = 5;
-//                                break;
-//                            case Keys.NUM_6:
-//                                player.addAttack(player.moves.get(6));
-//                                selection = 6;
-//                                break;
-//                            case Keys.NUM_7:
-//                                player.addAttack(player.moves.get(7));
-//                                selection = 7;
-//                                break;
-//                            case Keys.NUM_8:
-//                                player.addAttack(player.moves.get(8));
-//                                selection = 8; 
-//                                break;
-//                            case Keys.NUM_9:
-//                                player.addAttack(player.moves.get(9));
-//                                selection = 9; 
-//                                break;
-//                            case Keys.E:
-//                                player.roaming = true;
-//                                player.pos = returnPos;
-//                                areas.endCombat(player);
-//                                selection = 0;
-//                                break;
-//                                default:
-//                                    selection = 0;
-//                                    player.addAttack(player.moves.get(0));
-//					continue;
-//                        }  
+                if(player.hp > 0){  
+                    while(in.consumable() && player.roaming == false && player.zeroFloat()) {
+                        int selection = 0;
+                        combat.battles.get(0).turn();
                         
-//                        if(selection < player.moves.size()){
-//                            msg = "Player chooses: " + player.moves.get(selection).name;
-//                            
-//                        }
-                  
+                        switch(in.keys.remove(0)) {
+                            case Keys.NUM_0:
+                                    player.addAttack(player.moves.get(0));
+                                    selection = 0;
+                                break;
+                            case Keys.NUM_1:
+                                    player.addAttack(player.moves.get(1));
+                                    selection = 1;
+                                break;
+                            case Keys.NUM_2:
+                                    player.addAttack(player.moves.get(2));
+                                    selection = 2;
+                                break;
+                            case Keys.NUM_3:
+                                    player.addAttack(player.moves.get(3));
+                                    selection = 3;
+                                break;
+                            case Keys.NUM_4:
+                                    player.addAttack(player.moves.get(4));
+                                    selection = 4;
+                                break;
+                            case Keys.NUM_5:
+                                    player.addAttack(player.moves.get(5));
+                                    selection = 5;
+                                break;
+                            case Keys.NUM_6:
+                                    player.addAttack(player.moves.get(6));
+                                    selection = 6;
+                                break;
+                            case Keys.NUM_7:
+                                    player.addAttack(player.moves.get(7));
+                                    selection = 7;
+                                break;
+                            case Keys.NUM_8:
+                                    player.addAttack(player.moves.get(8));
+                                    selection = 8;
+                                break;
+                            case Keys.NUM_9:
+                                    player.addAttack(player.moves.get(9));
+                                    selection = 9;
+                                break;
+                            case Keys.E:
+                                player.roaming = true;
+                                player.pos = returnPos;
+                                areas.endCombat(player);
+                                selection = 0;
+                                break;
+                                default:
+                                    selection = 0;
+                                    player.addAttack(player.moves.get(0));
+					continue;
+                        }  
                         
+                        //if(selection < player.moves.size()){
+                          //  msg = "Player chooses: " + player.moves.get(selection).name;
+                            
+                        //}
+  
+                        }
                         
-                }
-                
-		
-
-		/* TODO: move the keyhandling code to the StateManager */
-		/*
-		Gdx.app.debug("GameManager:update", "transitioning states");
-		states.transition();
-		*/
-//	if (player.hp < 1) {
-//                  player.roaming = false;
-//                  chatBox.addMessage("Game over!");
-//              }
-//        }
+               
+	}else{
+                player.roaming = false;
+                //msg = "Game Over!";
+              }
         
-        
+        */
+        }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import cs383.team1.inventory.Item;
 import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.DemoEntity;
 import cs383.team1.model.overworld.Entity;
@@ -61,7 +62,7 @@ public final class AreaManager {
 		int offset;
 		Area a;
 		String fcontents;
-                String entityData;
+                String entityData = new String();
 		Position pos;
 		Player player;
 		String[] vals;
@@ -179,6 +180,12 @@ public final class AreaManager {
 					Gdx.app.debug("AreaManager:loadArea", "Loading NpcEntity");
                                         entities.add(new Npc(pos,entityData));
                                         break;
+                                case 16:
+                                        Gdx.app.debug("AreaManager:loadArea", "Loading Item Entity");
+                                        System.out.println("Printing entitydata: " + entityData);
+                                        entities.add(new Item(pos,entityData));
+                                        break;
+                                           
 				default:
 					Gdx.app.error("AreaManager:loadArea",
 					  "invalid entity type " + vals[i + 2]);
@@ -291,6 +298,20 @@ public final class AreaManager {
         
         
         public Entity findCombatant(Position p, int t){
+                for (Entity e : current.entities) {
+                        if(e.pos().x  == (p.x + 1) && e.pos().y == p.y && e.type() == t)
+                                return e;
+                        else if(e.pos().x == (p.x - 1) && e.pos().y == p.y && e.type() == t)
+                                return e;
+                        else if(e.pos().x == p.x && e.pos().y == (p.y + 1) && e.type() == t)
+                                return e;
+                        else if(e.pos().x == p.x && e.pos().y == (p.y - 1) && e.type() == t)
+                                return e;
+                }
+                return null;
+        }
+        
+        public Entity findItem(Position p, int t){
                 for (Entity e : current.entities) {
                         if(e.pos().x  == (p.x + 1) && e.pos().y == p.y && e.type() == t)
                                 return e;
