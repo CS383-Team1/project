@@ -50,7 +50,7 @@ public class Combat {
         double damage;
         //Implement this when muliplayer is added
         //for(Entity e : allies.members){
-                
+                    
                     player = (Player)allies.members.get(0);
                 
         //}

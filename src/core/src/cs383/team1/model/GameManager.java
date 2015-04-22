@@ -183,7 +183,7 @@ public final class GameManager {
                                 player.pos.x = (tempPos.x + 2);
                                 player.pos.y = tempPos.y;
                                 areas.getCombatArea(player.pos(), player, npc);
-                                combat.encounter(player, npc);
+                                combat.encounter(areas.current.player, npc);
                         }
                         
                 }
