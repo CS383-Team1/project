@@ -241,8 +241,8 @@ public final class GameManager {
                   }
                
 	}else{
-                  player.roaming = false;
-                  chatBox.addMessage("Game over!");
+                player.roaming = false;
+                msg = "Game Over!";
               }
         }
         
