@@ -86,6 +86,7 @@ public class Main implements ApplicationListener, InputProcessor {
 
 	@Override
 	public boolean keyDown (int key) {
+                System.out.println(GameManager.instance.areas.current.player.roaming);
 		inputManager.keys.add(key);
                 GameManager.instance.keyPressed = key;
 		return false;

@@ -75,7 +75,12 @@ public class MessageBox {
         //Add a message from the input
         public void addMessage(String s)
         {
-                text.add(s);
+                if (s.equals("?") || s.equals("help")) {
+                     text.add("Pickup item: E");
+                     text.add("Move: Arrow Keys");
+                     text.add("Main Menu: ESC");
+                     text.add("Chat: Enter");
+                } else text.add(s);
                 updateMessages();
         }
         
