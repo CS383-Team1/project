@@ -17,6 +17,7 @@ import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.StairsEntity;
 import cs383.team1.model.overworld.Tile;
+import java.util.ArrayList;
 
 public final class GameManager {
 	public static final GameManager instance = new GameManager();
@@ -24,7 +25,7 @@ public final class GameManager {
 	public AreaManager areas;
 	public StateManager states;
         DialogueBox dialogue;
-        CombatManager combat;
+        public CombatManager combat;
         Position tempPos;
         Position returnPos;
         Entity temp;
@@ -34,11 +35,14 @@ public final class GameManager {
         
 
         public int keyPressed;
-        public String msg;
+//        public boolean parseInput = true;
+
+        public ArrayList <String> msg;
 
         
 	private GameManager() {
                 this.keyPressed = 0;
+                this.msg = new ArrayList();
 		if(instance != null) {
 			Gdx.app.error("GameManager:GameManager",
 			  "reinstantiating singleton GameManager");
@@ -89,27 +93,33 @@ public final class GameManager {
 		Tile target;
                 Npc npc;
                 Item item;
+                player = areas.current.player;
+
+                int x = player.pos.x;
+                int y = player.pos.y;
 		
                 in.limitList();
+		while(
+                        player.hp > 0 &&
+                        in.consumable() &&
+                        player.roaming == true &&
+                        player.zeroFloat()) {
 
-		player = areas.current.player;
-              if(player.hp > 0){  
-		while(in.consumable() && player.roaming == true && (player.zeroFloat())) {
                         switch(in.keys.remove(0)) {
 				case Keys.LEFT:
-					next = new Position(player.pos.x - 1, player.pos.y);
+					next = new Position(x - 1, y);
                                         player.facing = 3;
 					break;
 				case Keys.RIGHT:
-					next = new Position(player.pos.x + 1, player.pos.y);
+					next = new Position(x + 1, y);
                                         player.facing = 1;
 					break;
 				case Keys.UP:
-					next = new Position(player.pos.x, player.pos.y + 1);
+					next = new Position(x, y + 1);
                                         player.facing = 0;
 					break;
 				case Keys.DOWN:
-					next = new Position(player.pos.x, player.pos.y - 1);
+					next = new Position(x, y - 1);
                                         player.facing = 2;
 					break;
                                 case Keys.E:
@@ -129,7 +139,7 @@ public final class GameManager {
                                 
                                 default:
 					continue;
-                            }
+                        }
                     
 			target = null;
                         
@@ -159,7 +169,8 @@ public final class GameManager {
                                 areas.useStairs(next);
                         
 			if(target.passable()) {
-                                player.floatPos = new Position((player.pos().x-next.x) * Tile.WIDTH, (player.pos().y-next.y) * Tile.HEIGHT);
+                                player.floatPos = new Position((x-next.x) *
+                                        Tile.WIDTH, (y-next.y) * Tile.HEIGHT);
 				player.pos = next;
 			}
                         
@@ -175,9 +186,10 @@ public final class GameManager {
                         }
                         
                 }
-                
+                /*
                 //Combat input system
-                while(in.consumable() && player.roaming == false && player.zeroFloat()) {
+                if(player.hp > 0){  
+                    while(in.consumable() && player.roaming == false && player.zeroFloat()) {
                         int selection = 0;
                         combat.battles.get(0).turn();
                         
@@ -234,17 +246,19 @@ public final class GameManager {
 					continue;
                         }  
                         
-                        if(selection < player.moves.size()){
-                            msg = "Player chooses: " + player.moves.get(selection).name;
+                        //if(selection < player.moves.size()){
+                          //  msg = "Player chooses: " + player.moves.get(selection).name;
                             
+                        //}
+  
                         }
-                  }
+                        
                
 	}else{
                 player.roaming = false;
-                msg = "Game Over!";
+                //msg = "Game Over!";
               }
+        
+        */
         }
-        
-        
 }
