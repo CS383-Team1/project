@@ -128,6 +128,7 @@ public final class GameManager {
                                             temp = areas.findItem(player.pos(), 16);
                                             player.addMove(item);
                                             player.inventory.pickUp(item);
+                                            msg.add("Picked up " + item.name);
                                             areas.current.entities.remove(temp);
                                         }
                                         next = player.pos;
