@@ -62,6 +62,11 @@ public class CoWorker implements Entity{
 		return pos;
 	}
         
+        public String name()
+        {
+                return name;
+        }
+        
         //Reads the entire script into System.out
         public ArrayList readScript() 
         {

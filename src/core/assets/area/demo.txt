@@ -1026,7 +1026,7 @@
 6
 30 31 2 {destination:aa,destinationX:29,destinationY:1}
 8 8 3 {quests:dialogue/npc1.txt}
-15 8 17 {quests:dialogue/roderigo.txt,name:Roderigo}
+15 8 17 {quests:dialogue/bigtastee.txt,name:Big_Tastee}
 22 8 17 {quests:dialogue/iago.txt,name:Iago}
 27 8 3 {quests:dialogue/npc1.txt}
 10 10 16 {name:stapler,desc:stapler,type:stapler,hit:20.0,critC:2.0,critM:1.0,d:10.0,r:2.0}

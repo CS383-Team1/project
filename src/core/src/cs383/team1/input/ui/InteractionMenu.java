@@ -10,8 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import cs383.team1.inventory.Item;
 import cs383.team1.model.GameManager;
-import cs383.team1.model.overworld.Npc;
+import cs383.team1.model.overworld.CoWorker;
+import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.Tile;
 
@@ -84,9 +86,15 @@ public class InteractionMenu {
         public void useMenu(Object o, int facing) {
                 target = o;
                 if (interact.isVisible()) {
+                        if (listOptions.getSelected().equals("Pickup")) {
+                                GameManager.instance.areas.current.player.inventory.pickUp((Item) target);
+                                GameManager.instance.areas.current.player.addMove((Item) target);
+                                GameManager.instance.msg.add("Picked up " + ((Item) target).name);
+                                GameManager.instance.areas.current.entities.remove(target);
+                        }
                         System.out.println(listOptions.getSelected());
                         interact.setVisible(false);
-                } else if (o instanceof Npc)
+                } else if (o instanceof Entity)
                         spawnMenu(facing);
         }
 
@@ -115,14 +123,17 @@ public class InteractionMenu {
                         interact.setX( centerX );
                         interact.setY( centerY );
                         break;
-                };
+                }
                 listOptions.clear();
 
-                if (target instanceof Npc) {
-                        setTitle("NPC");
-                        listOptions.setItems("Talk", "Buy/Sell", "Examine");
+                if (target instanceof CoWorker) {
+                        setTitle(((CoWorker) target).name());
+                        listOptions.setItems("Talk", "Buy/Sell", "Examine", "Cancel");
+                } else if (target instanceof Item) {
+                        setTitle(((Item) target).name);
+                        listOptions.setItems("Pickup", "Cancel");
                 }
-                interact.setHeight(listOptions.getItems().size * 22);
+                interact.setHeight(listOptions.getItems().size * ((float) (Tile.HEIGHT * 0.4)) + Tile.HEIGHT);
                 interact.setVisible(true);
         }
         
