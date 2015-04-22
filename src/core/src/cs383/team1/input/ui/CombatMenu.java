@@ -109,6 +109,8 @@ public class CombatMenu {
                 for (int i = 0; i < attacks.size(); i++) {
                         final int index = i;
                         final String atk = attacks.get(i).name;
+                        if (atk.equals("null"))
+                                continue;
                         String dmg = Double.toString(attacks.get(i).getDamage());
                         String blk = Integer.toString(attacks.get(i).getBlockPercent());
 

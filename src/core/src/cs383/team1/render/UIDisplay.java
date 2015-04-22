@@ -31,12 +31,13 @@ public class UIDisplay extends Display{
         CombatMenu combat;
         UIListener uiListen;
         
-        final Player player = GameManager.instance.areas.current.player;
+        Player player = GameManager.instance.areas.current.player;
         final AreaManager areas = GameManager.instance.areas;
 
 
         @Override
         public void render() {
+                player = GameManager.instance.areas.current.player;
                 //Read messages sent to the GameManager to the chat
                 if ( GameManager.instance.msg != null &&
                         GameManager.instance.msg.size()>0) {
