@@ -1,20 +1,18 @@
-16
+17
 1 img/player.png
 2 img/null.png
-3 img/player.png
-
+3 img/enemy.png
 4 img/playerStandD.png
 5 img/playerStandU.png
 6 img/playerStandL.png
 7 img/playerStandR.png
-
 8 img/playerWalkD1.png
 9 img/playerWalkU1.png
 10 img/playerWalkL1.png
 11 img/playerWalkR1.png
-
 12 img/playerWalkD2.png
 13 img/playerWalkU2.png
 14 img/playerWalkL2.png
 15 img/playerWalkR2.png
 16 img/Items_on_ground.png
+17 img/coworker.png

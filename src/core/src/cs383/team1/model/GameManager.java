@@ -11,6 +11,7 @@ import cs383.team1.inventory.Item;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.CoWorker;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
@@ -91,7 +92,8 @@ public final class GameManager {
 		Player player;
 		Position next;
 		Tile target;
-                Npc npc;
+                CoWorker coworker;
+		Npc npc;
                 Item item;
                 player = areas.current.player;
 
@@ -156,15 +158,15 @@ public final class GameManager {
 				continue;
 			}
                                                
-/*
+
 	                //Interact with an NPC (nullifies last attempted move)
-                        if((npc = (Npc)areas.findEntity(next, 3)) != null) {
+                        if((coworker = (CoWorker)areas.findEntity(next, 17)) != null) {
                                 keyPressed = 0;
-                                msg = npc.readNext();
+                                msg.add(coworker.readNext());
                                 System.out.println("GameManager: NPC Interaction: " + msg);
                                 next = player.pos;
                         }
-  */                      
+			
                         //Try to use stairs entity on a stairs tile (well3112)
                         if (target.type() == 3)
                                 areas.useStairs(next);

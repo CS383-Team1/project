@@ -27,7 +27,7 @@ public class Npc implements Entity{
         
 	public Npc(){
                 pos = new Position();
-                hp = 100;
+                hp = 20;
                 lastPlayerMove = 0;
                 fitness = 1.0;
                 mutatedFitness = 0.0;
@@ -60,7 +60,7 @@ public class Npc implements Entity{
                 Gdx.app.debug("StairsEntity:StairsEntity", "instantiating class");
 		pos = p;
 
-                hp = 100;
+                hp = 20;
                 lastPlayerMove = 0;
                 fitness = 1.0;
                 mutatedFitness = 0.0;

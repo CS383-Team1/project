@@ -1023,8 +1023,11 @@
 31 29 2
 31 30 2
 31 31 2
-3
+6
 30 31 2 {destination:aa,destinationX:29,destinationY:1}
 8 8 3 {quests:dialogue/npc1.txt}
+15 8 17 {quests:dialogue/roderigo.txt,name:Roderigo}
+22 8 17 {quests:dialogue/iago.txt,name:Iago}
+27 8 3 {quests:dialogue/npc1.txt}
 10 10 16 {name:stapler,desc:stapler,type:stapler,hit:20.0,critC:2.0,critM:1.0,d:10.0,r:2.0}
 8 7 100 10 1

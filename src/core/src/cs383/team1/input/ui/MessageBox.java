@@ -33,7 +33,7 @@ public class MessageBox {
                 
                 //Create the "Chat History" section
                 mScroll = new ScrollPane(mTable, sk, "chat");
-                mTable.pad(10);
+                mTable.pad(30);
                 mTable.padBottom(15);
                 mText.setWrap(true);
                 
