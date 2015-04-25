@@ -1,5 +1,0 @@
-4
-block 0 50
-staple 10 1
-throw coffee in face 5 1
-drink coffee -5 1

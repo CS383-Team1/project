@@ -15,7 +15,7 @@ import cs383.team1.model.GameManager;
 import cs383.team1.net.Network;
 import java.io.IOException;
 
-public class Main implements ApplicationListener {
+public class ServerScreen implements ApplicationListener {
 	public GameManager gm;
 	public Server server;
 
@@ -60,3 +60,4 @@ public class Main implements ApplicationListener {
 	public void resume() {
 	}
 }
+
