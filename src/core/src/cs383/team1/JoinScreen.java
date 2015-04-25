@@ -1,8 +1,8 @@
 package cs383.team1;
 
 import com.badlogic.gdx.Application;
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
@@ -17,75 +17,73 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.rmi.ObjectSpace;
 import com.esotericsoftware.minlog.Log;
+import cs383.team1.Main;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManagerInterface;
 import cs383.team1.net.Network;
+import cs383.team1.net.GameClient;
 import cs383.team1.render.DemoDisplay;
 import cs383.team1.render.UIDisplay;
 import java.io.IOException;
 
-public class ClientScreen implements ApplicationListener, InputProcessor {
-	public static InputManager inputManager;
-	public static GameManagerInterface gm;
-	public DemoDisplay screen;
-        public UIDisplay ui;
-        public Stage stage;
-	public OrthographicCamera camera;
-	public Client client;
+public class JoinScreen implements Screen, InputProcessor {
+	private boolean clientFail;
+	private DemoDisplay screen;
+	private GameClient client;
+	private GameManagerInterface gm;
+	private InputManager inputManager;
+	private Main game;
+	private OrthographicCamera camera;
+	private Stage stage;
+	private UIDisplay ui;
 
+	public JoinScreen(Main m) {
+		InputMultiplexer im;
 
+		Gdx.app.log("JoinScreen:JoinScreen", "Initializing");
 
-	@Override
-	public void create () {
-		Gdx.app.setLogLevel(Application.LOG_INFO);
-                
-		Gdx.app.debug("Main:create", "Connecting to server");
+		game = m;
 
-		client = new Client();
-		client.start();
-		try {
-			client.connect(10000, "127.0.0.1",
-				Network.port);
-		} catch (IOException ex) {
-			Gdx.app.error("Main:create", "Failed to connect!");
-			ex.printStackTrace();
-			Gdx.app.exit();
+		client = new GameClient();
+		clientFail = false;
+		if (!client.connect("127.0.0.1", Network.port)) {
+			clientFail = true;
 		}
-		Network.registerKryo(client);
 
-		gm = ObjectSpace.getRemoteObject(client, Network.GM_ID,
-			GameManagerInterface.class);	
+		gm = game.gm;
 
-		Gdx.app.debug("Main:create", "instantiating DemoDisplay");
-
-                stage = new Stage(new ScreenViewport());
 		inputManager = new InputManager();
-                InputMultiplexer im = new InputMultiplexer(stage, this);
+		im = new InputMultiplexer(stage, this);
+		Gdx.input.setInputProcessor(im);
+
 		screen = new DemoDisplay();
+
+		stage = new Stage(new ScreenViewport());
+
 		ui = new UIDisplay(stage);
-                
-                Gdx.input.setInputProcessor(im);
-	}
-
-
-	@Override
-	public void dispose() {
-		Gdx.app.debug("Main:dispose", "disposing screen");
-		screen.dispose();
+		
 	}
 
 	@Override
-	public void render() {
+	public void render(float delta) {
+		update();
+		draw();
+	}
+
+	void update() {
 		if(inputManager.consumable()) {
-			Gdx.app.debug("Main:render", "Updating GameManager");
 			gm.update(inputManager);
 		}
+
+		if (gm.currentArea().player.zeroFloat() 
+			&& gm.currentArea().player.roaming == true) {
+			inputManager.keys.add(gm.getKey());
+		}
+	}
+
+	void draw() {
 		screen.render();
-                ui.render();
-                if (gm.currentArea().player.zeroFloat() 
-                        && gm.currentArea().player.roaming == true) {
-                        inputManager.keys.add(gm.getKey());
-                }
+		ui.render();
 	}
 
 	@Override
@@ -93,31 +91,23 @@ public class ClientScreen implements ApplicationListener, InputProcessor {
 	}
 
 	@Override
-	public void pause() {
-	}
-
-	@Override
-	public void resume() {
-	}
-
-	@Override
 	public boolean keyDown (int key) {
 		inputManager.keys.add(key);
-                gm.setKey(key);
+		gm.setKey(key);
 		return false;
 	}
 
 	@Override
 	public boolean keyUp (int key) {
-                if (key == gm.getKey()) {
-                        gm.setKey(0);
+		if (key == gm.getKey()) {
+			gm.setKey(0);
 		}
 		return true;
 	}
 
 	@Override
 	public boolean keyTyped (char ch) {
-                
+		
 		return false;
 	}
 
@@ -144,5 +134,26 @@ public class ClientScreen implements ApplicationListener, InputProcessor {
 	@Override
 	public boolean scrolled (int val) {
 		return false;
+	}
+
+	@Override
+	public void hide() {
+	}
+
+	@Override
+	public void show() {
+	}
+
+	@Override
+	public void pause() {
+	}
+
+	@Override
+	public void resume() {
+	}
+
+	@Override
+	public void dispose() {
+		screen.dispose();
 	}
 }

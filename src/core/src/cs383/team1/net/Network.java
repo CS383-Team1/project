@@ -11,7 +11,7 @@ import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.AreaManager;
 
 public class Network {
-	static public final int port = 54777;
+	static public final int port = 13370;
 
 	static public final short GM_ID = 100;
 

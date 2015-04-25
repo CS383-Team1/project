@@ -10,8 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
-import cs383.team1.ClientScreen;
-import cs383.team1.ServerScreen;
+import cs383.team1.HostScreen;
+import cs383.team1.JoinScreen;
 
 public class MenuScreen extends ScreenAdapter {
 	private BitmapFont font;
@@ -35,7 +35,7 @@ public class MenuScreen extends ScreenAdapter {
 		ttfGen = new FreeTypeFontGenerator(Gdx.files.internal(
 			"fonts/VCR_OSD_MONO_1.001.ttf"));
 
-		font = ttfGen.generateFont(20);
+		font = ttfGen.generateFont(30);
 		font.setColor(Color.WHITE);
 
 		game = m;
@@ -66,11 +66,11 @@ public class MenuScreen extends ScreenAdapter {
 			guiCam.unproject(clickPos);
 
 			if (hostBounds.contains(clickPos.x, clickPos.y)) {
-				// game.setScreen(new ServerScreen(game));
+				game.setScreen(new HostScreen(game));
 			}
 
 			if (joinBounds.contains(clickPos.x, clickPos.y)) {
-				// game.setScreen(new ClientScreen(game));
+				game.setScreen(new JoinScreen(game));
 			}
 
 			if (exitBounds.contains(clickPos.x, clickPos.y)) {
@@ -82,7 +82,13 @@ public class MenuScreen extends ScreenAdapter {
 	public void draw() {
 		GL20 gl = Gdx.gl;
 		gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT |
+			GL20.GL_DEPTH_BUFFER_BIT);
+		Gdx.gl20.glEnable(GL20.GL_BLEND);
+		Gdx.gl20.glBlendFunc(GL20.GL_SRC_ALPHA,
+			GL20.GL_ONE_MINUS_SRC_ALPHA);
+		Gdx.gl20.glEnable(GL20.GL_TEXTURE_2D);
+		Gdx.gl20.glBlendEquation(GL20.GL_BLEND);
 
 		guiCam.update();
 		batcher.setProjectionMatrix(guiCam.combined);
@@ -90,11 +96,11 @@ public class MenuScreen extends ScreenAdapter {
 		batcher.disableBlending();
 		batcher.begin();
 
-		font.draw(batcher, "HOST", 100,
+		font.draw(batcher, "HOST", Gdx.graphics.getWidth() / 4,
 			Gdx.graphics.getHeight() - 100);
-		font.draw(batcher, "JOIN", Gdx.graphics.getWidth() / 2,
+		font.draw(batcher, "JOIN", 3 * Gdx.graphics.getWidth() / 4,
 			Gdx.graphics.getHeight() - 100);
-		font.draw(batcher, "EXIT", Gdx.graphics.getWidth() / 2, 5);
+		font.draw(batcher, "EXIT", Gdx.graphics.getWidth() / 2, 35);
 
 		batcher.end();
 	}
