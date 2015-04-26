@@ -9,21 +9,23 @@ import cs383.team1.net.Network;
 import java.io.IOException;
 
 public class GameClient {
-	public static final int TIMEOUT = 3000;
-	public static final int STATE_NEW = 1;
-	public static final int STATE_READY = 2;
-	public static final int STATE_CONNECTED = 3;
-	public static final int STATE_DISCONNECTED = 4;
+	private static final int TIMEOUT = 3000;
+	private static final int STATE_NEW = 1;
+	private static final int STATE_READY = 2;
+	private static final int STATE_CONNECTED = 3;
+	private static final int STATE_DISCONNECTED = 4;
+	private static final int BUFFER_SIZE = 1024 * 8;
 
-	private int state;
 	public Client client;
+	private int state;
 
 	public GameClient() {
 		Log.set(Log.LEVEL_DEBUG);
 
-		state = STATE_NEW;
+		/* state = STATE_NEW; */
+		state = STATE_READY;
 
-		client = new Client();
+		client = new Client(BUFFER_SIZE, BUFFER_SIZE);
 		client.start();
 
 		Network.registerKryo(client);
@@ -37,19 +39,26 @@ public class GameClient {
 		}
 	}
 
-	public boolean connect(String host, int port) {
+	public boolean connect(final String host, final int port) {
 		if (state != STATE_READY) {
 			return false;
 		}
 
-		try {
-			client.connect(TIMEOUT, host, port);
-			state = STATE_CONNECTED;
-		} catch (IOException e) {
-			Gdx.app.error("GameClient:connect",
-				"Unable to connect to host");
-			return false;
-		}
+		new Thread("Client") {
+			public void run() {
+				try {
+					client.connect(TIMEOUT, host, port);
+					state = STATE_CONNECTED;
+
+					while (true) {
+						client.update(0);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+					System.exit(1);
+				}
+			}
+		}.start();
 
 		return true;
 	}

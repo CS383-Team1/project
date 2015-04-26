@@ -201,10 +201,10 @@ public final class GameManager implements GameManagerInterface {
 	}
 
 	public String getMessage(int m) {
-		return msg.get(m);
+		return msg.size() > 0 ? msg.get(m) : "";
 	}
 
 	public void removeMessage(int m) {
-		msg.remove(m);
+		if (msg.size() > 0) msg.remove(m);
 	}
 }

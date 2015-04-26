@@ -18,6 +18,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.rmi.ObjectSpace;
 import com.esotericsoftware.minlog.Log;
 import cs383.team1.Main;
+import cs383.team1.MenuScreen;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManagerInterface;
 import cs383.team1.net.Network;
@@ -45,23 +46,27 @@ public class JoinScreen implements Screen, InputProcessor {
 		game = m;
 
 		client = new GameClient();
-		clientFail = false;
-		if (!client.connect("127.0.0.1", Network.port)) {
-			clientFail = true;
+		clientFail = !client.connect("127.0.0.1", Network.port);
+		
+		Gdx.app.log("JoinScreen:JoinScreen", "Connecting...");
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		gm = game.gm;
-
-		inputManager = new InputManager();
-		im = new InputMultiplexer(stage, this);
-		Gdx.input.setInputProcessor(im);
+		gm = ObjectSpace.getRemoteObject(client.client, Network.GM_ID,
+			GameManagerInterface.class);
 
 		screen = new DemoDisplay();
 
 		stage = new Stage(new ScreenViewport());
 
 		ui = new UIDisplay(stage);
-		
+
+		inputManager = new InputManager();
+		im = new InputMultiplexer(stage, this);
+		Gdx.input.setInputProcessor(im);
 	}
 
 	@Override
@@ -71,7 +76,12 @@ public class JoinScreen implements Screen, InputProcessor {
 	}
 
 	void update() {
-		if(inputManager.consumable()) {
+		if (clientFail) {
+			Gdx.app.log("JoinScreen:update", "Client failure");
+			game.setScreen(new MenuScreen(game));
+		}
+
+		if (inputManager.consumable()) {
 			gm.update(inputManager);
 		}
 
