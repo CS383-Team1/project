@@ -96,6 +96,8 @@ public class MenuInventory extends SubMenu {
         //Also adds "equip" button functionality for each item in the list
         public void updateItems()
         {
+                Table imgTable;
+                Table txtTable;
                 Image img;
                 TextButton equip;
                 TextButton drop;
@@ -127,12 +129,31 @@ public class MenuInventory extends SubMenu {
 
                         //Add Image
                         img.setScaling(Scaling.none);
-                        invItemsTable.right().add(img).expand();
+//                        invItemsTable.right().add(img).expand();
+//                        invItemsTable.add(new Table().add(new Label("this", skin, "big"))).left();
+                        imgTable = new Table();
+                        txtTable = new Table();
+//                        imgTable.add(new Label("this", skin, "big"));
+                        imgTable.add(img);
+                        invItemsTable.add(imgTable).right();
 
+                        txtTable.padLeft(20);
+                        
                         //Add item name
-                        invItemsTable.right().add(
+                        txtTable.left().add(
                                 new Label( name, skin, "big" ) )
-                                .expand().fill().padLeft(20).padRight(50);
+                                .colspan(5).expand().fillX();
+                        
+                        txtTable.row();
+//                        txtTable.padLeft(20);
+                        txtTable.left().add(new Label(desc, skin)).colspan(5).fillX().expand().row();
+                        txtTable.add(new Label("", skin)).pad(5);
+                        txtTable.add(new Label("H " + hitChance, skin)).pad(5);
+                        txtTable.add(new Label("C " + critChance, skin)).pad(5);
+                        txtTable.add(new Label("X " + critMult, skin)).pad(5);
+//                        txtTable.left().row();
+                        txtTable.add(new Label("R " + range, skin)).pad(5);
+                        txtTable.add(new Label("D " + damage, skin)).pad(5);
 
                         //Add stat identifier
 //                        if (type.equals("ranged") || type.equals("melee"))
@@ -149,6 +170,7 @@ public class MenuInventory extends SubMenu {
 //                        if (icon.equals("consumable"))
 //                                invItemsTable.add( new Label( "x " +
 //					Integer.toString(stat), skin, "big" ) );
+                        invItemsTable.add(txtTable).expand().fillX();
                         invItemsTable.row();
 
                         //Add use/equip button

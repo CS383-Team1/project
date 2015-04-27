@@ -34,13 +34,13 @@ public class CombatMenu {
         ProgressBar countdown;
         ArrayList <Move> attacks;
         Table atkTable;
-	
-	GameManager gm = GameManager.instance;
         
         Skin skin;
         
         Player player = GameManager.instance.areas.current.player;
-	
+        
+        GameManager gm = GameManager.instance;
+        
         public CombatMenu(Skin sk) {
                 attacks = new ArrayList();
                 atkTable = new Table();
@@ -77,7 +77,7 @@ public class CombatMenu {
                 combat.setX(0);
                 combat.setY((int)Gdx.graphics.getHeight()/(float)5.8);
                 combat.setWidth(Gdx.graphics.getWidth());
-                combat.setHeight((int)Gdx.graphics.getHeight()*(float)(8.25));
+                combat.setHeight((int)Gdx.graphics.getHeight()*(float)(4.8/5.8));
         }
         
         public SplitPane combat(){
@@ -97,6 +97,7 @@ public class CombatMenu {
                 if (s.equals("MAIN"))
                         cmdScroll.setWidget(cmdGroup);
                 else if (s.equals("ATTACK")) {
+//                        combat.setSecondWidget(atkTable);
                         cmdScroll.setWidget(atkTable);
                         updateAttacks();
                 }
@@ -107,7 +108,7 @@ public class CombatMenu {
         public void updateAttacks() {
                 TextButton atkButton;
                 attacks.clear();
-                attacks.addAll(gm.areas.current.player.moves);
+                attacks.addAll(player.moves);
                 
                 atkTable.clearChildren();
                 for (int i = 0; i < attacks.size(); i++) {
@@ -115,35 +116,38 @@ public class CombatMenu {
                         final String atk = attacks.get(i).name;
                         if (atk.equals("null"))
                                 continue;
-                        String dmg = Double.toString(attacks.get(i).getDamage());
-                        String blk = Integer.toString(
-				attacks.get(i).getBlockPercent());
+                        String dmg = Double.toString(attacks.get(i)
+                                .getDamage());
+                        String blk = Integer.toString(attacks.get(i)
+                                .getBlockPercent());
 
-                        atkButton = new TextButton( atk, skin );
-                        atkButton.addListener(new ClickListener() {
-                                @Override
-                                public void clicked(
-					InputEvent event, float x, float y ) {
-                                        gm.combat.battles.get(0).turn();
-                                        gm.areas.current.player.addAttack(attacks.get(index));
-                                        System.out.println(atk);
-                                        gm.msg.add("Player uses: " + atk);
-                                }
-                        });
-                        atkTable.add(atkButton).colspan(2)
-				.fillX().expand().row();
-			
+//                        atkTable.add(new Label(atk, skin))
+//                                .expand().colspan(2).fillX().row();
 			if (attacks.get(i).getDamage() > -1)
 				atkTable.add(new Label(dmg + " dmg", skin))
 					.left();
 			else
 				atkTable.add(new Label("+" + dmg.substring(1) +
 					" health", skin, "smgreen")).left();				
-			
+
                         atkTable.add(new Label(blk + "% block", skin))
-				.right().row();
-                        atkTable.add( getImage( "bar" ) ).colspan(2).fillX()
-				.expand().row();
+                                .right().row();
+
+                        atkButton = new TextButton( atk, skin );
+                        atkButton.addListener(new ClickListener() {
+                                @Override
+                                public void clicked(
+                                        InputEvent event, float x, float y ) {
+                                        gm.combat.battles.get(0).turn();
+                                        player.addAttack(attacks.get(index));
+                                        System.out.println(atk);
+                                        gm.msg.add("Player uses: " + atk);
+                                }
+                        });
+                        atkTable.add(atkButton).colspan(2)
+                                .expand().fillX().row();
+                        atkTable.add( getImage( "bar" ) )
+                                .colspan(2).fillX().expand().row();
                 }
         }
 	
