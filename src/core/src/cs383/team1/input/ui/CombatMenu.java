@@ -40,6 +40,7 @@ public class CombatMenu {
         Skin skin;
         
         Player player = GameManager.instance.areas.current.player;
+	
         public CombatMenu(Skin sk) {
                 attacks = new ArrayList();
                 atkTable = new Table();
@@ -96,7 +97,6 @@ public class CombatMenu {
                 if (s.equals("MAIN"))
                         cmdScroll.setWidget(cmdGroup);
                 else if (s.equals("ATTACK")) {
-//                        combat.setSecondWidget(atkTable);
                         cmdScroll.setWidget(atkTable);
                         updateAttacks();
                 }
@@ -107,7 +107,7 @@ public class CombatMenu {
         public void updateAttacks() {
                 TextButton atkButton;
                 attacks.clear();
-                attacks.addAll(player.moves);
+                attacks.addAll(gm.areas.current.player.moves);
                 
                 atkTable.clearChildren();
                 for (int i = 0; i < attacks.size(); i++) {
@@ -125,7 +125,7 @@ public class CombatMenu {
                                 public void clicked(
 					InputEvent event, float x, float y ) {
                                         gm.combat.battles.get(0).turn();
-                                        player.addAttack(attacks.get(index));
+                                        gm.areas.current.player.addAttack(attacks.get(index));
                                         System.out.println(atk);
                                         gm.msg.add("Player uses: " + atk);
                                 }

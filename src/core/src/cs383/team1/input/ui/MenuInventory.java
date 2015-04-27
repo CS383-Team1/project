@@ -10,6 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Scaling;
+import cs383.team1.inventory.Item;
+import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.Player;
 import java.util.ArrayList;
 
 /**
@@ -21,13 +24,16 @@ public class MenuInventory extends SubMenu {
         private ScrollPane invScroll;
         private Table invEquipTable;
         private Table invItemsTable;
-        private ArrayList<ItemLabel> itemsList;
+//        private ArrayList<ItemLabel> itemsList;
+        private ArrayList<Item> itemsList;
         private Label equipAtk;
         private Label equipDef;
         private Skin skin;
         
         private Label equipWeapon;
         private Label equipArmor;
+	
+	private Player player;
         
 
         public MenuInventory(Skin sk)
@@ -61,7 +67,7 @@ public class MenuInventory extends SubMenu {
                 
                 itemsList = new ArrayList();
                 invItemsTable = new Table();
-                getDemoItems();
+//                getDemoItems();
                 updateItems();
                 invScroll = new ScrollPane( invItemsTable, skin );
                 invScroll.setFadeScrollBars(false);
@@ -88,7 +94,7 @@ public class MenuInventory extends SubMenu {
         /*This should happen after the list reads the player's inventory,
         which should happen once the menu is opened*/
         //Also adds "equip" button functionality for each item in the list
-        private void updateItems()
+        public void updateItems()
         {
                 Image img;
                 TextButton equip;
@@ -99,10 +105,25 @@ public class MenuInventory extends SubMenu {
                 invItemsTable.clearChildren();
                 invItemsTable.right();
                 for (int i = 0; i < itemsList.size(); i++) {
-                        final String index = itemsList.get(i).name();
-                        int stat = itemsList.get(i).stat();
-                        String icon = itemsList.get(i).icon();
-                        img = getImage("item" + icon + "Big");
+                        final String name = itemsList.get(i).name;
+//                        int stat = itemsList.get(i).stat();
+//    public String name;
+//    public String description;
+//    public String type; //need not be string. Type could be ints or something
+//    
+//    public Double hitChance; //0.0 to 1.0
+//    public Double critChance; 
+//    public Double critMultiplier;
+//    public Double range;
+//    public Double damage;
+			String desc = itemsList.get(i).description;
+                        String type = itemsList.get(i).type;
+			Double hitChance = itemsList.get(i).hitChance;
+			Double critChance = itemsList.get(i).critChance;
+			Double critMult = itemsList.get(i).critMultiplier;
+			Double range = itemsList.get(i).range;
+			Double damage = itemsList.get(i).damage;
+                        img = getIcon(type);
 
                         //Add Image
                         img.setScaling(Scaling.none);
@@ -110,29 +131,28 @@ public class MenuInventory extends SubMenu {
 
                         //Add item name
                         invItemsTable.right().add(
-                                new Label(
-                                        itemsList.get(i).name(), skin, "big" ) )
+                                new Label( name, skin, "big" ) )
                                 .expand().fill().padLeft(20).padRight(50);
 
                         //Add stat identifier
-                        if (icon.equals("ranged") || icon.equals("melee"))
-                                if (stat > atk) {
-                                        invItemsTable.add( cmpItem(
-						atk, stat, true ) );
-                                } else
-                                        invItemsTable.add( cmpItem(
-						atk, stat, false ) );
-                        if ( icon.equals("armor") && stat > def)
-                                invItemsTable.add( cmpItem( def, stat, true ) );
-                        if ( icon.equals("armor") && stat <= def)
-                                invItemsTable.add( cmpItem( atk, stat, false ) );
-                        if (icon.equals("consumable"))
-                                invItemsTable.add( new Label( "x " +
-					Integer.toString(stat), skin, "big" ) );
+//                        if (type.equals("ranged") || type.equals("melee"))
+//                                if (type > atk) {
+//                                        invItemsTable.add( cmpItem(
+//						atk, damage, true ) );
+//                                } else
+//                                        invItemsTable.add( cmpItem(
+//						atk, damage, false ) );
+//                        if ( icon.equals("armor") && stat > def)
+//                                invItemsTable.add( cmpItem( def, stat, true ) );
+//                        if ( icon.equals("armor") && stat <= def)
+//                                invItemsTable.add( cmpItem( atk, stat, false ) );
+//                        if (icon.equals("consumable"))
+//                                invItemsTable.add( new Label( "x " +
+//					Integer.toString(stat), skin, "big" ) );
                         invItemsTable.row();
 
                         //Add use/equip button
-                        if (icon.equals("consumable"))
+                        if (type.equals("consumable"))
                                 equip = new TextButton("Use", skin);
                         else
                                 equip = new TextButton("Equip", skin);
@@ -141,7 +161,7 @@ public class MenuInventory extends SubMenu {
                                 public void clicked(
 					InputEvent event, float x, float y ) {
                                         //TODO: Make this equip/use an item
-                                        System.out.println (index + " equip");
+                                        System.out.println (name + " equip");
                                 }
                         });
                         
@@ -151,8 +171,8 @@ public class MenuInventory extends SubMenu {
                            public void clicked(
 				   InputEvent event, float x, float y ) {
                                    //TODO: Make this drop an item
-                                   System.out.println(index + " drop");
-                                   dropItem( index );
+                                   System.out.println(name + " drop");
+                                   dropItem( name );
                                    updateItems();
                            }     
                         });
@@ -168,7 +188,7 @@ public class MenuInventory extends SubMenu {
         private int dropItem( String n )
         {
                 for (int i = 0; i < itemsList.size(); i++) {
-                        if (itemsList.get(i).name().equals(n)) {
+                        if (itemsList.get(i).name.equals(n)) {
                                 itemsList.remove(i);
                                 return 0;
                         }
@@ -193,37 +213,60 @@ public class MenuInventory extends SubMenu {
         private void getDemoItems()
         {
                 itemsList.clear();
-                itemsList.add( new ItemLabel("This", "ranged", 3) );
-                itemsList.add( new ItemLabel("That", "ranged", 5) );
-                itemsList.add( new ItemLabel("Laser Gun", "ranged", 7) );
-                itemsList.add( new ItemLabel("LaZer Gun", "ranged", 9) );
-                itemsList.add( new ItemLabel("LaZ0r G()n", "ranged", 11) );
-                itemsList.add( new ItemLabel("L@Z3R G()N", "ranged", 9001) );
-                itemsList.add( new ItemLabel("'Dis Armor", "armor", 3) );
-                itemsList.add( new ItemLabel("'Dat Armor", "armor", 1) );
-                itemsList.add( new ItemLabel("Good Armor", "armor", 9) );
-                itemsList.add( new ItemLabel("Bad Armor", "armor", 1) );
-                itemsList.add( new ItemLabel("Ugly Armor", "armor", 4) );
-                itemsList.add( new ItemLabel("Punting Stapler", "melee", 3) );
-                itemsList.add( new ItemLabel("Sturdy Briefase", "melee", 1) );
-                itemsList.add( new ItemLabel("Potion", "consumable", 6) );
-                itemsList.add( new ItemLabel("Bagel", "consumable", 4) );
-                itemsList.add( new ItemLabel("Staple", "consumable", 2) );
-                itemsList.add( new ItemLabel("Pushpin", "consumable", 6) );
-                itemsList.add( new ItemLabel("Donut", "consumable", 1) );
+//                itemsList.add( new ItemLabel("This", "ranged", 3) );
+//                itemsList.add( new ItemLabel("That", "ranged", 5) );
+//                itemsList.add( new ItemLabel("Laser Gun", "ranged", 7) );
+//                itemsList.add( new ItemLabel("LaZer Gun", "ranged", 9) );
+//                itemsList.add( new ItemLabel("LaZ0r G()n", "ranged", 11) );
+//                itemsList.add( new ItemLabel("L@Z3R G()N", "ranged", 9001) );
+//                itemsList.add( new ItemLabel("'Dis Armor", "armor", 3) );
+//                itemsList.add( new ItemLabel("'Dat Armor", "armor", 1) );
+//                itemsList.add( new ItemLabel("Good Armor", "armor", 9) );
+//                itemsList.add( new ItemLabel("Bad Armor", "armor", 1) );
+//                itemsList.add( new ItemLabel("Ugly Armor", "armor", 4) );
+//                itemsList.add( new ItemLabel("Punting Stapler", "melee", 3) );
+//                itemsList.add( new ItemLabel("Sturdy Briefase", "melee", 1) );
+//                itemsList.add( new ItemLabel("Potion", "consumable", 6) );
+//                itemsList.add( new ItemLabel("Bagel", "consumable", 4) );
+//                itemsList.add( new ItemLabel("Staple", "consumable", 2) );
+//                itemsList.add( new ItemLabel("Pushpin", "consumable", 6) );
+//                itemsList.add( new ItemLabel("Donut", "consumable", 1) );
                 
         }
         
         //Copy the list of items from some source
-        private void readItems(ArrayList<ItemLabel> aL)
+        private void readItems(ArrayList<Item> aL)
         {
                 itemsList = aL;
         }
         
         //Accessible option to feed the inventory menu the player's inventory
-        public void getItems(ArrayList<ItemLabel> aL)
+        public void getItems(ArrayList<Item> aL)
         {
                 readItems(aL);
                 updateItems();
         }
+	
+	public void getPlayerItems()
+	{
+		itemsList = GameManager.instance.areas.current.player.inventory.contents;
+	}
+	
+	private Image getIcon(String s)
+	{
+		if (
+			s.equals("melee") ||
+			s.equals("ranged") ||
+			s.equals("armor") ||
+			s.equals("consumable"))
+			return getImage("item" + s + "Big");
+		else
+			return getImage("item_unknown");
+	}
+	
+	public void sayItems()
+	{
+		for (int i = 0; i < itemsList.size(); i++)
+			System.out.println(itemsList.get(i).name);
+	}
 }

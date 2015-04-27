@@ -58,8 +58,12 @@ public class UIListener extends InputListener{
                 case (Input.Keys.ESCAPE) :
                         if (menu.menu.isVisible())
                                 menu.menu().setVisible(false);
-                        else
+			else {
                                 menu.menu().setVisible(true);
+				menu.menuI.getPlayerItems();
+				menu.menuI.updateItems();
+				menu.menuI.sayItems();
+			}
                         return true;
                 case (Input.Keys.SPACE) :
                         if (stage.getKeyboardFocus() != msg.input){
