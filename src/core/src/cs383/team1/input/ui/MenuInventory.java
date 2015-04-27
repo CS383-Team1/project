@@ -117,15 +117,18 @@ public class MenuInventory extends SubMenu {
                         //Add stat identifier
                         if (icon.equals("ranged") || icon.equals("melee"))
                                 if (stat > atk) {
-                                        invItemsTable.add( cmpItem( atk, stat, true ) );
+                                        invItemsTable.add( cmpItem(
+						atk, stat, true ) );
                                 } else
-                                        invItemsTable.add( cmpItem( atk, stat, false ) );
+                                        invItemsTable.add( cmpItem(
+						atk, stat, false ) );
                         if ( icon.equals("armor") && stat > def)
                                 invItemsTable.add( cmpItem( def, stat, true ) );
                         if ( icon.equals("armor") && stat <= def)
                                 invItemsTable.add( cmpItem( atk, stat, false ) );
                         if (icon.equals("consumable"))
-                                invItemsTable.add( new Label( "x " + Integer.toString(stat), skin, "big" ) );
+                                invItemsTable.add( new Label( "x " +
+					Integer.toString(stat), skin, "big" ) );
                         invItemsTable.row();
 
                         //Add use/equip button
@@ -135,7 +138,8 @@ public class MenuInventory extends SubMenu {
                                 equip = new TextButton("Equip", skin);
                         equip.addListener( new ClickListener() {
                                 @Override
-                                public void clicked( InputEvent event, float x, float y ) {
+                                public void clicked(
+					InputEvent event, float x, float y ) {
                                         //TODO: Make this equip/use an item
                                         System.out.println (index + " equip");
                                 }
@@ -144,7 +148,8 @@ public class MenuInventory extends SubMenu {
                         drop = new TextButton("Drop", skin);
                         drop.addListener( new ClickListener() {
                            @Override
-                           public void clicked( InputEvent event, float x, float y ) {
+                           public void clicked(
+				   InputEvent event, float x, float y ) {
                                    //TODO: Make this drop an item
                                    System.out.println(index + " drop");
                                    dropItem( index );
@@ -154,7 +159,8 @@ public class MenuInventory extends SubMenu {
                         invItemsTable.add(equip);
                         invItemsTable.add(new Label("", skin, "big"));
                         invItemsTable.add(drop).row();
-                        invItemsTable.add( getImage( "bar" ) ).colspan(3).fillX().expand().row();
+                        invItemsTable.add( getImage( "bar" ) ).colspan(3)
+				.fillX().expand().row();
                 }
         }
         
