@@ -77,7 +77,7 @@ public class CombatMenu {
                 combat.setX(0);
                 combat.setY((int)Gdx.graphics.getHeight()/(float)5.8);
                 combat.setWidth(Gdx.graphics.getWidth());
-                combat.setHeight((int)Gdx.graphics.getHeight()*(float)(4.8/5.8));
+                combat.setHeight((int)Gdx.graphics.getHeight()*(float)(8.25));
         }
         
         public SplitPane combat(){
