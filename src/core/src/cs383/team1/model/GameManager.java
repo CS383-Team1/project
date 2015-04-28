@@ -93,8 +93,11 @@ public final class GameManager {
 		Tile target;
                 Npc npc;
                 Item item;
-                player = areas.current.player;
-
+                //for(Entity e : areas.current.entities){
+                  //  if(e.type() == 1){
+                        player = areas.current.player;
+                    //}
+                //}
                 int x = player.pos.x;
                 int y = player.pos.y;
 		
@@ -166,9 +169,9 @@ public final class GameManager {
                         }
   */                      
                         //Try to use stairs entity on a stairs tile (well3112)
-                        if (target.type() == 3)
-                                areas.useStairs(next);
-                        
+                        if (target.type() == 3){
+                            areas.useStairs(next, player);
+                        }
 			if(target.passable()) {
                                 player.floatPos = new Position((x-next.x) *
                                         Tile.WIDTH, (y-next.y) * Tile.HEIGHT);
@@ -187,79 +190,5 @@ public final class GameManager {
                         }
                         
                 }
-                /*
-                //Combat input system
-                if(player.hp > 0){  
-                    while(in.consumable() && player.roaming == false && player.zeroFloat()) {
-                        int selection = 0;
-                        combat.battles.get(0).turn();
-                        
-                        switch(in.keys.remove(0)) {
-                            case Keys.NUM_0:
-                                    player.addAttack(player.moves.get(0));
-                                    selection = 0;
-                                break;
-                            case Keys.NUM_1:
-                                    player.addAttack(player.moves.get(1));
-                                    selection = 1;
-                                break;
-                            case Keys.NUM_2:
-                                    player.addAttack(player.moves.get(2));
-                                    selection = 2;
-                                break;
-                            case Keys.NUM_3:
-                                    player.addAttack(player.moves.get(3));
-                                    selection = 3;
-                                break;
-                            case Keys.NUM_4:
-                                    player.addAttack(player.moves.get(4));
-                                    selection = 4;
-                                break;
-                            case Keys.NUM_5:
-                                    player.addAttack(player.moves.get(5));
-                                    selection = 5;
-                                break;
-                            case Keys.NUM_6:
-                                    player.addAttack(player.moves.get(6));
-                                    selection = 6;
-                                break;
-                            case Keys.NUM_7:
-                                    player.addAttack(player.moves.get(7));
-                                    selection = 7;
-                                break;
-                            case Keys.NUM_8:
-                                    player.addAttack(player.moves.get(8));
-                                    selection = 8;
-                                break;
-                            case Keys.NUM_9:
-                                    player.addAttack(player.moves.get(9));
-                                    selection = 9;
-                                break;
-                            case Keys.E:
-                                player.roaming = true;
-                                player.pos = returnPos;
-                                areas.endCombat(player);
-                                selection = 0;
-                                break;
-                                default:
-                                    selection = 0;
-                                    player.addAttack(player.moves.get(0));
-					continue;
-                        }  
-                        
-                        //if(selection < player.moves.size()){
-                          //  msg = "Player chooses: " + player.moves.get(selection).name;
-                            
-                        //}
-  
-                        }
-                        
-               
-	}else{
-                player.roaming = false;
-                //msg = "Game Over!";
-              }
-        
-        */
         }
 }

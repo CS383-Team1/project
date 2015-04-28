@@ -14,7 +14,6 @@ public class Item implements Entity {
     public String name;
     public String description;
     public String type; //need not be string. Type could be ints or something
-    
     public Double hitChance; //0.0 to 1.0
     public Double critChance; 
     public Double critMultiplier;
@@ -46,7 +45,6 @@ public class Item implements Entity {
         this.critMultiplier = 0.0;
         this.damage = 0.0;
         this.range = 0.0;
-        
         System.out.println("Made Item named " + n);
     }
     

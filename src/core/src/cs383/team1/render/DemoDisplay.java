@@ -201,7 +201,17 @@ public class DemoDisplay extends Display {
 
 
 		player = GameManager.instance.areas.current.player;
-//                chatBox = GameManager.instance.chatBox;
+
+                //Find player in current area to set for texture
+                //Probably will need to change this for multiplayer
+                /*
+                for(Entity e : GameManager.instance.areas.current.entities){
+                    if(e.type() == 1){
+                        player = (Player)e;
+                        System.out.println("Setting player in DemoDisplay");
+                    }
+                }
+                */
 		sprite = new Sprite(getEntityTexture(player.aType()));
 		sprite.setPosition(
                         player.pos().x * Tile.WIDTH + (int) player.floatPos().x,

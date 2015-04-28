@@ -23,4 +23,10 @@ public class Area {
                 player = p;
                 
 	}
+        
+        public Area(List<Tile> tileList, List<Entity> entityList) {
+		Gdx.app.debug("Area:Area", "instantiating class");
+		tiles = tileList;
+		entities = entityList;
+	}
 }
