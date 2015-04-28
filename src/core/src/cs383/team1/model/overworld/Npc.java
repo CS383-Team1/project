@@ -36,9 +36,10 @@ public class Npc implements Entity{
                 mutatedFitness = 0.0;
                 name = new String();
                 addMove("block", 0, 50);
-                addMove("staple", 10, 1);
-                addMove("throw coffee in face", 5, 1);
+                addMove("staple", 5, 1);
+                addMove("throw coffee in face", 3, 1);
                 addMove("drink coffee", -5, 1);
+                addMove(inventory.contents.get(0).name, inventory.contents.get(0).damage, 1);
 	}
 
         //Basic Constructor for NPC
@@ -76,6 +77,8 @@ public class Npc implements Entity{
                 items = f.substring(f.indexOf("{name:"));//, f.indexOf("}"));
                 Item winnableItem = new Item(pos, items);
                 inventory.contents.add(winnableItem);
+                //Add move based on NPC's item read in from file
+                addMove(inventory.contents.get(0).name, inventory.contents.get(0).damage, 1);
               
         }
 
@@ -210,7 +213,7 @@ public class Npc implements Entity{
         }
         
         //Adds move to list of available moves
-        public void addMove(String name, int damage, int blockPercent){
+        public void addMove(String name, double damage, int blockPercent){
             Move move = new Move(name, damage, blockPercent);
             moves.add(move);
         }

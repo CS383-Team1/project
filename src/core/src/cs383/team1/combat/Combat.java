@@ -135,6 +135,7 @@ public class Combat {
                     System.out.println("Giving reward: " + i.name);
                     player.inventory.pickUp(i);
                     player.addMove(i);
+                    npc.inventory.drop(i);
                 }
             }
             
