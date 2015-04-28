@@ -121,19 +121,7 @@ public class CombatMenu {
                         String blk = Integer.toString(attacks.get(i)
                                 .getBlockPercent());
 
-//                        atkTable.add(new Label(atk, skin))
-//                                .expand().colspan(2).fillX().row();
-			if (attacks.get(i).getDamage() > -1)
-				atkTable.add(new Label(dmg + " dmg", skin))
-					.left();
-			else
-				atkTable.add(new Label("+" + dmg.substring(1) +
-					" health", skin, "smgreen")).left();				
-
-                        atkTable.add(new Label(blk + "% block", skin))
-                                .right().row();
-
-                        atkButton = new TextButton( atk, skin );
+                        atkButton = new TextButton( atk, skin, "exp" );
                         atkButton.addListener(new ClickListener() {
                                 @Override
                                 public void clicked(
@@ -144,10 +132,21 @@ public class CombatMenu {
                                         gm.msg.add("Player uses: " + atk);
                                 }
                         });
-                        atkTable.add(atkButton).colspan(2)
+                        atkTable.add(atkButton).colspan(2).padBottom(10)
                                 .expand().fillX().row();
+			
+			if (attacks.get(i).getDamage() > -1)
+				atkTable.add(new Label(dmg + " dmg", skin))
+					.left();
+			else
+				atkTable.add(new Label("+" + dmg.substring(1) +
+					" health", skin, "smgreen")).left();				
+
+                        atkTable.add(new Label(blk + "% block", skin))
+                                .right().padBottom(5).row();
+
                         atkTable.add( getImage( "bar" ) )
-                                .colspan(2).fillX().expand().row();
+                                .colspan(2).padBottom(5).fillX().expand().row();
                 }
         }
 	

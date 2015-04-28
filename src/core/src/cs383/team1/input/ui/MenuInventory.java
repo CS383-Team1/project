@@ -53,12 +53,12 @@ public class MenuInventory extends SubMenu {
                 invEquipTable.left();
                 invEquipTable.add( getImage("bar") ).fill(20, 1)
                         .padBottom(5).row();
-                invEquipTable.add(getImage( "itemMeleeBig" ) )
+                invEquipTable.add(getImage( "itemMelee" ) )
                         .padBottom(10);
                 invEquipTable.add( equipWeapon ).padLeft(10)
                         .padBottom(10).expand();
                 invEquipTable.add( equipAtk ).row();
-                invEquipTable.add(getImage( "itemArmorBig" ) )
+                invEquipTable.add(getImage( "itemArmor" ) )
                         .padBottom(10);
                 invEquipTable.add( equipArmor ).padLeft(10)
                         .padBottom(10).expand();
@@ -108,35 +108,29 @@ public class MenuInventory extends SubMenu {
                 invItemsTable.right();
                 for (int i = 0; i < itemsList.size(); i++) {
                         final String name = itemsList.get(i).name;
-//                        int stat = itemsList.get(i).stat();
-//    public String name;
-//    public String description;
-//    public String type; //need not be string. Type could be ints or something
-//    
-//    public Double hitChance; //0.0 to 1.0
-//    public Double critChance; 
-//    public Double critMultiplier;
-//    public Double range;
-//    public Double damage;
 			String desc = itemsList.get(i).description;
                         String type = itemsList.get(i).type;
-			Double hitChance = itemsList.get(i).hitChance;
-			Double critChance = itemsList.get(i).critChance;
-			Double critMult = itemsList.get(i).critMultiplier;
-			Double range = itemsList.get(i).range;
-			Double damage = itemsList.get(i).damage;
-                        img = getIcon(type);
+			String hitChance = itemsList.get(i).hitChance.toString();
+			String critChance = itemsList.get(i).critChance.toString();
+			String critMult = itemsList.get(i).critMultiplier.toString();
+			String range = itemsList.get(i).range.toString();
+			String damage = itemsList.get(i).damage.toString();
+//                        img = getIcon(type);
+
 
                         //Add Image
-                        img.setScaling(Scaling.none);
-//                        invItemsTable.right().add(img).expand();
-//                        invItemsTable.add(new Table().add(new Label("this", skin, "big"))).left();
+//                        img.setScaling(Scaling.none);
                         imgTable = new Table();
                         txtTable = new Table();
-//                        imgTable.add(new Label("this", skin, "big"));
-                        imgTable.add(img);
+//                        imgTable.add(img).row();
                         invItemsTable.add(imgTable).right();
 
+			
+//                        img = getIcon(type);
+//                        img.setScaling(Scaling.none);
+//                        imgTable.add(img).row();
+			
+			
                         txtTable.padLeft(20);
                         
                         //Add item name
@@ -145,39 +139,30 @@ public class MenuInventory extends SubMenu {
                                 .colspan(5).expand().fillX();
                         
                         txtTable.row();
-//                        txtTable.padLeft(20);
                         txtTable.left().add(new Label(desc, skin)).colspan(5).fillX().expand().row();
-                        txtTable.add(new Label("", skin)).pad(5);
-                        txtTable.add(new Label("H " + hitChance, skin)).pad(5);
-                        txtTable.add(new Label("C " + critChance, skin)).pad(5);
-                        txtTable.add(new Label("X " + critMult, skin)).pad(5);
-//                        txtTable.left().row();
-                        txtTable.add(new Label("R " + range, skin)).pad(5);
-                        txtTable.add(new Label("D " + damage, skin)).pad(5);
+			addIcon("statHitChance", txtTable);
+                        txtTable.left().add(new Label(hitChance, skin)).fillX().expand();
+			addIcon("statCritChance", txtTable);
+                        txtTable.left().add(new Label(critChance, skin)).fillX().expand();
+			addIcon("statCritMult", txtTable);
+                        txtTable.left().add(new Label(critMult, skin)).fillX().expand().row();
+			addIcon("statRange", txtTable);
+                        txtTable.left().add(new Label(range, skin)).fillX().expand();
+			addIcon("statDamage", txtTable);
+                        txtTable.left().add(new Label(damage, skin)).fillX().expand();
 
                         //Add stat identifier
-//                        if (type.equals("ranged") || type.equals("melee"))
-//                                if (type > atk) {
-//                                        invItemsTable.add( cmpItem(
-//						atk, damage, true ) );
-//                                } else
-//                                        invItemsTable.add( cmpItem(
-//						atk, damage, false ) );
-//                        if ( icon.equals("armor") && stat > def)
-//                                invItemsTable.add( cmpItem( def, stat, true ) );
-//                        if ( icon.equals("armor") && stat <= def)
-//                                invItemsTable.add( cmpItem( atk, stat, false ) );
-//                        if (icon.equals("consumable"))
-//                                invItemsTable.add( new Label( "x " +
-//					Integer.toString(stat), skin, "big" ) );
                         invItemsTable.add(txtTable).expand().fillX();
-                        invItemsTable.row();
+//                        invItemsTable.row();
 
                         //Add use/equip button
-                        if (type.equals("consumable"))
-                                equip = new TextButton("Use", skin);
+                        if (
+				type.equals("armor") ||
+				type.equals("melee") ||
+				type.equals("ranged"))
+                                equip = new TextButton("Equip", skin, "exp");
                         else
-                                equip = new TextButton("Equip", skin);
+                                equip = new TextButton("Use", skin, "exp");
                         equip.addListener( new ClickListener() {
                                 @Override
                                 public void clicked(
@@ -187,7 +172,7 @@ public class MenuInventory extends SubMenu {
                                 }
                         });
                         
-                        drop = new TextButton("Drop", skin);
+                        drop = new TextButton("Drop", skin, "exp");
                         drop.addListener( new ClickListener() {
                            @Override
                            public void clicked(
@@ -198,9 +183,26 @@ public class MenuInventory extends SubMenu {
                                    updateItems();
                            }     
                         });
-                        invItemsTable.add(equip);
+			
+
+//                        imgTable.add(drop).padBottom(5).fillX().expand().row();
+
+                        img = getIcon(type);
+                        img.setScaling(Scaling.none);
+                        imgTable.add(img).row();
+
+//                        imgTable.add(equip).padTop(5).fillX().expand();
+
+			txtTable.add(drop).fillX().expand();
+			txtTable.add(equip).fillX().expand();
+
+//                        invItemsTable.add(equip);
+//                        imgTable.add(equip);
                         invItemsTable.add(new Label("", skin, "big"));
-                        invItemsTable.add(drop).row();
+//                        invItemsTable.add(drop).row();
+			txtTable.add(new Label("", skin));
+//                        txtTable.add(drop).fillX().expand().row();
+			invItemsTable.row();
                         invItemsTable.add( getImage( "bar" ) ).colspan(3)
 				.fillX().expand().row();
                 }
@@ -230,32 +232,7 @@ public class MenuInventory extends SubMenu {
                         skin,
                         "red" ) );
         }
-        
-        //Generate a list of items to demonstrate the inventory list
-        private void getDemoItems()
-        {
-                itemsList.clear();
-//                itemsList.add( new ItemLabel("This", "ranged", 3) );
-//                itemsList.add( new ItemLabel("That", "ranged", 5) );
-//                itemsList.add( new ItemLabel("Laser Gun", "ranged", 7) );
-//                itemsList.add( new ItemLabel("LaZer Gun", "ranged", 9) );
-//                itemsList.add( new ItemLabel("LaZ0r G()n", "ranged", 11) );
-//                itemsList.add( new ItemLabel("L@Z3R G()N", "ranged", 9001) );
-//                itemsList.add( new ItemLabel("'Dis Armor", "armor", 3) );
-//                itemsList.add( new ItemLabel("'Dat Armor", "armor", 1) );
-//                itemsList.add( new ItemLabel("Good Armor", "armor", 9) );
-//                itemsList.add( new ItemLabel("Bad Armor", "armor", 1) );
-//                itemsList.add( new ItemLabel("Ugly Armor", "armor", 4) );
-//                itemsList.add( new ItemLabel("Punting Stapler", "melee", 3) );
-//                itemsList.add( new ItemLabel("Sturdy Briefase", "melee", 1) );
-//                itemsList.add( new ItemLabel("Potion", "consumable", 6) );
-//                itemsList.add( new ItemLabel("Bagel", "consumable", 4) );
-//                itemsList.add( new ItemLabel("Staple", "consumable", 2) );
-//                itemsList.add( new ItemLabel("Pushpin", "consumable", 6) );
-//                itemsList.add( new ItemLabel("Donut", "consumable", 1) );
-                
-        }
-        
+
         //Copy the list of items from some source
         private void readItems(ArrayList<Item> aL)
         {
@@ -281,14 +258,23 @@ public class MenuInventory extends SubMenu {
 			s.equals("ranged") ||
 			s.equals("armor") ||
 			s.equals("consumable"))
-			return getImage("item" + s + "Big");
+			return getImage("item" + s);
 		else
-			return getImage("item_unknown");
+			return getImage("itemUnknown");
 	}
 	
 	public void sayItems()
 	{
 		for (int i = 0; i < itemsList.size(); i++)
 			System.out.println(itemsList.get(i).name);
+	}
+	
+	private void addIcon(String s, Table txtTable)
+	{
+		Image img;
+
+		img = getImage(s);
+		img.setScaling(Scaling.none);
+		txtTable.left().add(img).fillX().expand();
 	}
 }

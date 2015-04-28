@@ -97,6 +97,7 @@ public class MessageBox {
                         s = s.concat(text.get(i)).concat("\n");
                 }
                 mText.setText(s);
+//		mText.setsc
                 toBottom = true;
         }
         
