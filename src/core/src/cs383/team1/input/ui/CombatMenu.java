@@ -25,9 +25,9 @@ import java.util.ArrayList;
  * @author Lance
  */
 public class CombatMenu {
-        SplitPane combat;
-        ScrollPane cmdScroll;
-        Table cmdGroup;
+	SplitPane combat;
+	ScrollPane cmdScroll;
+	Table cmdGroup;
         List cmdList;
         Table cmdTable;
         Table hud;
@@ -89,9 +89,11 @@ public class CombatMenu {
         }
         
         //Change the "submenu" to the one specified by 's'
-        private void changeMenu( String s )
+        public void changeMenu( String s )
         {
-                if (s.equals("ATTACK")) {
+                if (s.equals("MAIN"))
+                        cmdScroll.setWidget(cmdGroup);
+                else if (s.equals("ATTACK")) {
 //                        combat.setSecondWidget(atkTable);
                         cmdScroll.setWidget(atkTable);
                         updateAttacks();
@@ -132,4 +134,8 @@ public class CombatMenu {
                         atkTable.add( getImage( "bar" ) ).colspan(2).fillX().expand().row();
                 }
         }
+	
+	public boolean visible() {
+		return combat.isVisible();
+	}
 }
