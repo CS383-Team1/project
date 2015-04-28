@@ -39,7 +39,7 @@ public final class Player implements Entity {
                 addMove("block", 0, 50);
                 //addMove("staple", 10, 1);
                 addMove("throw coffee in face", 5, 1);
-                addMove("drink coffee", -5, 1);
+                //addMove("drink coffee", -5, 1);
                 for(int i = 3; i < 10; i++ ){
                     addMove(new Move());
                 }

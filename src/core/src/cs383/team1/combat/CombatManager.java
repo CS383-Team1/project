@@ -5,13 +5,12 @@
  */
 package cs383.team1.combat;
 
-import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.files.FileHandle;
-import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Npc;
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *
@@ -20,16 +19,16 @@ import java.util.List;
 public class CombatManager {
     Combat currentBattle;
     ArrayList<Player> participants = new ArrayList<Player>();
-    //Will change this when file read in is figured out
-    ArrayList<Npc> e = new ArrayList<Npc>();
     
     public ArrayList<Combat> battles = new ArrayList<Combat>();
     
     public CombatManager(){
-        battles.add(new Combat());
+        //battles.add(new Combat());
     }
     
     public void encounter(Player player, Npc npc){
+        battles.add(new Combat());
+        battles.get(0).reward = npc.inventory;
         participants.add(player);
         battles.get(0).allies.members.add(player);
         battles.get(0).enemies.members.add(npc);

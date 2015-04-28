@@ -164,6 +164,7 @@ public final class AreaManager {
 			y = Integer.parseInt(vals[i + 1]);
 			type = Integer.parseInt(vals[i + 2]);
                         entityData = vals[i+3];
+                        System.out.println("Printing entity data: " + entityData);
 
 			pos = new Position(x, y);
                         

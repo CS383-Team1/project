@@ -44,9 +44,9 @@ public final class GameManager {
                 this.keyPressed = 0;
                 this.msg = new ArrayList();
 		if(instance != null) {
-			Gdx.app.error("GameManager:GameManager",
+                    Gdx.app.error("GameManager:GameManager",
 			  "reinstantiating singleton GameManager");
-			throw new IllegalStateException("reinstantiating singleton");
+                    throw new IllegalStateException("reinstantiating singleton");
 		}
 
 		Gdx.app.debug("GameManager:GameManager", "instantiating class");
@@ -69,9 +69,9 @@ public final class GameManager {
 		areaDir = Gdx.files.internal("area/");
 
 		for(FileHandle f : areaDir.list()) {
-			fname = new String("area/" + f.name());
-			Gdx.app.debug("GameManager:load", "Loading area " + fname);
-                        areas.loadArea(fname);
+                    fname = new String("area/" + f.name());
+                    Gdx.app.debug("GameManager:load", "Loading area " + fname);
+                    areas.loadArea(fname);
 		}
 		areas.changeArea("demo");
                 
@@ -93,14 +93,12 @@ public final class GameManager {
 		Tile target;
                 Npc npc;
                 Item item;
-                //for(Entity e : areas.current.entities){
-                  //  if(e.type() == 1){
-                        player = areas.current.player;
-                    //}
-                //}
+                player = areas.current.player;
+                
                 int x = player.pos.x;
                 int y = player.pos.y;
 		
+                //Input system for overworld walking using arrow keys
                 in.limitList();
 		while(
                         player.hp > 0 &&
@@ -126,9 +124,13 @@ public final class GameManager {
                                         player.facing = 2;
 					break;
                                 case Keys.E:
-                                        if((item = (Item)areas.findItem(player.pos(), 16)) != null) {
+                                        /*If E is pressed next to item, then
+                                        item is picked up*/
+                                        if((item = (Item)areas.findItem(
+                                        player.pos(), 16)) != null) {
                                             System.out.println("Picked up Item");
-                                            temp = areas.findItem(player.pos(), 16);
+                                            temp = areas.findItem(
+                                                    player.pos(), 16);
                                             player.addMove(item);
                                             player.inventory.pickUp(item);
                                             msg.add("Picked up " + item.name);
@@ -137,7 +139,8 @@ public final class GameManager {
                                         next = player.pos;
                                         break;
                                 case Keys.D:
-                                        //Drop Item: not really sure how to implement this with UI
+                                        /*Drop Item: not really sure how to 
+                                        implement this with UI*/
                                         Item droppedItem = new Item(); 
                                         player.inventory.drop(droppedItem);
                                 
@@ -155,8 +158,8 @@ public final class GameManager {
 			}
                         
 			if(target == null) {
-				Gdx.app.error("GameManager:update", "invalid move");
-				continue;
+                            Gdx.app.error("GameManager:update", "invalid move");
+                            continue;
 			}
                                                
 /*
@@ -178,13 +181,38 @@ public final class GameManager {
 				player.pos = next;
 			}
                         
-                        //Start combat with an NPC if they are next to the player
-                        if ((npc = (Npc)areas.findCombatant(player.pos(), 3)) != null){
+                        //Start combat with an NPC if they are next to player
+                        if ((npc = (Npc)areas.findCombatant(
+                        player.pos(), 3)) != null){
                                 System.out.println("Starting combat");
                                 tempPos = npc.pos();
                                 returnPos = player.pos();
-                                player.pos.x = (tempPos.x + 2);
-                                player.pos.y = tempPos.y;
+                                /*Check tile two tiles right of player
+                                If passible, use for player pos. If not, use
+                                tile two tiles to the left of NPC.*/
+                                for(Tile t : areas.current.tiles){
+                                    if((t.pos().x == (npc.pos().x + 2)) && 
+                                            (t.pos().y == npc.pos().y) && 
+                                            t.passable() == true){
+                                        player.pos.x = tempPos.x + 2;
+                                        player.pos.y = tempPos.y;
+                                    }else if((t.pos().x == (npc.pos().x - 2)) && 
+                                            (t.pos().y == npc.pos().y) && 
+                                            t.passable() == true){
+                                        player.pos.x = (tempPos.x - 2);
+                                        player.pos.y = tempPos.y;
+                                    }else if((t.pos().x == npc.pos().x) && 
+                                            (t.pos().y == (npc.pos().y + 2)) && 
+                                            t.passable() == true){
+                                        player.pos.x = tempPos.x;
+                                        player.pos.y = tempPos.y + 2;
+                                    }else if((t.pos().x == npc.pos().x) && 
+                                            (t.pos().y == (npc.pos().y - 2)) && 
+                                            t.passable() == true){
+                                        player.pos.x = tempPos.x ;
+                                        player.pos.y = tempPos.y - 2;
+                                    }
+                                }
                                 areas.getCombatArea(player.pos(), player, npc);
                                 combat.encounter(areas.current.player, npc);
                         }

@@ -3,6 +3,8 @@ package cs383.team1.model.overworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import cs383.team1.combat.Move;
+import cs383.team1.inventory.Inventory;
+import cs383.team1.inventory.Item;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,6 +18,7 @@ public class Npc implements Entity{
         double fitness;
         double mutatedFitness;
         String name;
+        public Inventory inventory = new Inventory("NPC");
         
 
 	private Position pos;
@@ -44,22 +47,10 @@ public class Npc implements Entity{
         {
                 String [] lines;
                 String fileContents;
-                
-                f = f.substring(f.indexOf("quests:")+7, f.indexOf("}"));
-                
-		FileHandle fin = Gdx.files.internal(f);
-                if (!fin.exists()) {
-                        Gdx.app.error("Npc:", "Invalid Dialogue Filename");
-                        talk.add("IAMERROR");
-                } else {
-                        fileContents = fin.readString();
-                        lines = fileContents.trim().split("\n");
-                        for (String line : lines) talk.add(line.trim());
-                }
-                
-                Gdx.app.debug("StairsEntity:StairsEntity", "instantiating class");
+                String quests;
+                String items = new String();
+                  Gdx.app.debug("NPC:NPC", "instantiating class");
 		pos = p;
-
                 hp = 100;
                 lastPlayerMove = 0;
                 fitness = 1.0;
@@ -68,26 +59,38 @@ public class Npc implements Entity{
                 addMove("staple", 10, 1);
                 addMove("throw coffee in face", 5, 1);
                 
-	}
-
-        
-
+                quests = f.substring(f.indexOf("quests:")+7, f.indexOf("}"));
+                System.out.println("Printing string in npc: " + f);
+		FileHandle fin = Gdx.files.internal(quests);
+                if (!fin.exists()) {
+                        Gdx.app.error("Npc:", "Invalid Dialogue Filename");
+                        talk.add("IAMERROR");
+                } else {
+                        fileContents = fin.readString();
+                        lines = fileContents.trim().split("\n");
+                        for (String line : lines) talk.add(line.trim());
+                }
+                //Add items to inventory of NPC: used later to give to player
+                //after defeat in battle
+                
+                items = f.substring(f.indexOf("{name:"));//, f.indexOf("}"));
+                Item winnableItem = new Item(pos, items);
+                inventory.contents.add(winnableItem);
+              
+        }
 
         @Override
-	public int type()
-        {
+	public int type(){
 		return TYPE;
 	}
 
         @Override
-	public Position pos()
-        {
+	public Position pos(){
 		return pos;
 	}
         
         //Reads the entire script into System.out
-        public ArrayList readScript() 
-        {
+        public ArrayList readScript() {
                 for (String talk1 : talk) {
                         System.out.println(talk1);
                 }
@@ -95,16 +98,14 @@ public class Npc implements Entity{
         }
         
         //Reads the line specified by 'i'
-        public String readLine(int i)
-        {
+        public String readLine(int i){
                 if (talk.size() > i)
                         return talk.get(i);
                 return talk.get(talk.size()-1);
         }
         
         //Reads the line after the last one just read
-        public String readNext()
-        {
+        public String readNext(){
                 nextLine++;
                 return readLine(nextLine);
         }
