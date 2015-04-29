@@ -62,6 +62,7 @@ public class UIListener extends InputListener{
 				menu.menu().setVisible(true);
 				menu.menuI.getPlayerItems();
 				menu.menuI.updateItems();
+				menu.menuE.update();
 			}
 			return true;
 		case (Input.Keys.SPACE) :

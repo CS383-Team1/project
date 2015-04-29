@@ -112,15 +112,9 @@ public class CombatMenu {
 		TextButton atkButton;
 		attacks.clear();
 		attacks.addAll(player.moves);
-//		atkTable.top();
 		
 		atkTable.clearChildren();
 		
-//		atkTable.add( getImage( "bar" ) )
-//			.colspan(2).padBottom(5).fillX().expandX().row();
-//		atkTable.add( getImage( "bar" ) )
-//			.colspan(2).padBottom(5).fillX().expandX().row();
-			
 		for (int i = 0; i < attacks.size(); i++) {
 			final int index = i;
 			final String atk = atkName(attacks.get(i).name);

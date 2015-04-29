@@ -19,9 +19,10 @@ public class MainMenu {
 	SplitPane menuSp;
 	List<String> menuList;
 
-	MenuCharacter menuC;
-	MenuInventory menuI;
-	MenuQuests    menuQ;
+	MenuCharacter	menuC;
+	MenuInventory	menuI;
+	MenuQuests	menuQ;
+	MenuEquip	menuE;
 
 	public MainMenu(Skin sk)
 	{
@@ -30,7 +31,7 @@ public class MainMenu {
 		menu.setFillParent(true);
 
 		menuList = new List(skin, "big");
-		menuList.setItems("CHARACTER", "INVENTORY", "QUESTS");
+		menuList.setItems("CHARACTER", "INVENTORY", "QUESTS", "EQUIPPED");
 
 		//Add a listener for changing submenus
 		menuList.addListener(new ClickListener(){
@@ -45,6 +46,7 @@ public class MainMenu {
 		menuC = new MenuCharacter(skin);
 		menuI = new MenuInventory(skin);
 		menuQ = new MenuQuests(skin);
+		menuE = new MenuEquip(skin);
 
 		menuSp = new SplitPane(menuList, menuC.charSp(), false, skin);
 		menuSp.setSplitAmount   ((float) 0.2500);
@@ -67,7 +69,10 @@ public class MainMenu {
 			menuSp.setSecondWidget(menuC.charSp());
 		else if (s.equals("QUESTS"))
 			menuSp.setSecondWidget(menuQ.questScroll());
-		else
+		else if (s.equals("EQUIPPED")) {
+			menuSp.setSecondWidget(menuE.equipT());
+			menuE.update();
+		} else
 			Gdx.app.error("Menu changeMenu", "NYI option: " + s);
 	}
 	

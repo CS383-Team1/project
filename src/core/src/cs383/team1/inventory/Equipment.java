@@ -23,13 +23,26 @@ public class Equipment {
     public ArrayList<Item> quickSlots ; // maybe max 4?
     
     public Equipment(){
-        head = null;
-        chest = null;
-        legs = null;
-        hands = null;
+//        head = null;
+//        chest = null;
+//        legs = null;
+//        hands = null;
+//        rings = new ArrayList();
+//        feet = null;
+//        neck = null;
+//	rightWeapon = null;
+//	leftWeapon = null;
+
+        head = new Item();
+        chest = new Item();
+        legs = new Item();
+        hands = new Item();
         rings = new ArrayList();
-        feet = null;
-        neck = null;
+        feet = new Item();
+        neck = new Item();
+	rightWeapon = new Item();
+	leftWeapon = new Item();
+	    
         quickSlots = new ArrayList();
         System.out.println("made Equipment");
     }
@@ -51,7 +64,8 @@ public class Equipment {
         System.out.println("equipping " + n.name);
         if(n.type.contains("head")){ret = head; head = n;}else 
         if(n.type.contains("chest")){ret = chest;chest = n;}else
-        if(n.type.contains("legs")){ret = legs;chest = n;}else
+	if(n.type.contains("hands")){ret = hands;hands = n;}else
+        if(n.type.contains("legs")){ret = legs;legs = n;}else
         if(n.type.contains("feet")){ret = feet;feet = n;}else
         if(n.type.contains("neck")){ret = neck;neck = n;}else
         if(n.type.contains("rings")){

@@ -93,7 +93,7 @@ public class MenuQuests extends SubMenu {
 					updateQuests();
 				}
 			});
-			txtTable.add( abandon ).right();
+			txtTable.add(abandon).right();
 			questTable.add(imgTable).padRight(10);
 			questTable.add(txtTable).fillX().expand().row();
 

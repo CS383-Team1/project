@@ -32,6 +32,8 @@ public class MenuInventory extends SubMenu {
 	private int maxCount;
   
 	GameManager gm;
+	
+	Player p;
 
 	public MenuInventory(Skin sk)
 	{
@@ -69,6 +71,11 @@ public class MenuInventory extends SubMenu {
 		Image img;
 		TextButton equip;
 		TextButton drop;
+		TextButton use = new TextButton("ERROR", skin);
+		
+		Table buttonT;
+		
+		Label descL;
 
 		invItemsTable.clearChildren();
 		invItemsTable.right();
@@ -81,6 +88,7 @@ public class MenuInventory extends SubMenu {
 		for (int i = 0; i < itemsList.size(); i++) {
 			//Get String values from item for labels
 			final String name = itemsList.get(i).name;
+			final Item itm = itemsList.get(i);
 			String desc = itemsList.get(i).description;
 			String type = itemsList.get(i).type;
 			String hitChance = itemsList.get(i).hitChance
@@ -110,35 +118,39 @@ public class MenuInventory extends SubMenu {
 			
 			//Setup Text Table
 			txtTable.row();
-			txtTable.left().add(new Label(desc.replace("_", " ")
-				, skin))
-				.colspan(5).fillX().expandX().row();
-			addIcon("statDamage", txtTable);
-			txtTable.left().add(new Label(damage, skin))
-				.fillX().expandX();
-			addIcon("statHitChance", txtTable);
-			txtTable.left().add(new Label(hitChance, skin))
-				.fillX().expandX();
-			addIcon("statRange", txtTable);
-			txtTable.left().add(new Label(range, skin))
-				.fillX().expandX().row();
-			addIcon("statCritChance", txtTable);
-			txtTable.left().add(new Label(critChance, skin))
-				.fillX().expandX();
-			addIcon("statCritMult", txtTable);
-			txtTable.left().add(new Label(critMult, skin))
-				.fillX().expandX();
+			descL = new Label(desc.replace("_", " ") , skin);
+			descL.setWrap(true);
 
+			txtTable.left().add(descL)
+				.colspan(6).fillX().expandX().row();
 
+			if (type.contains("weapon")) {
+				addIcon("statDamage", txtTable);
+				txtTable.left().add(new Label(damage, skin))
+					.left().fillX().expandX();
+//				.left().fillX().expandX().width(24)
+				addIcon("statHitChance", txtTable);
+				txtTable.left().add(new Label(hitChance, skin))
+					.left().fillX().expandX();
+				addIcon("statRange", txtTable);
+				txtTable.left().add(new Label(range, skin))
+					.left().fillX().expandX().row();
+				addIcon("statCritChance", txtTable);
+				txtTable.left().add(new Label(critChance, skin))
+					.left().fillX().expandX();
+				addIcon("statCritMult", txtTable);
+				txtTable.left().add(new Label(critMult, skin))
+					.left().fillX().expandX().row();
+			} else {
+				txtTable.add(new Label("", skin)).padBottom(48).row();
+			}
+				
 
-			//Create use/equip button
-			if (
-				type.equals("armor") ||
-				type.equals("melee") ||
-				type.equals("ranged"))
-				equip = new TextButton("Equip", skin, "exp");
-			else
-				equip = new TextButton("Use", skin, "exp");
+//			//Create use/equip button
+//			if (!type.equals("consumable"))
+			equip = new TextButton("Equip", skin, "exp");
+//			else
+//				equip = new TextButton("Use", skin, "exp");
 			
 			//Add use/equip listener
 			equip.addListener( new ClickListener() {
@@ -147,8 +159,22 @@ public class MenuInventory extends SubMenu {
 					InputEvent event, float x, float y ) {
 					//TODO: Make this equip/use an item
 					System.out.println (name + " equip");
+					p.inventory.equiped.equip(itm);
 				}
 			});
+			
+			if (!type.equals("consumable")) {
+				use = new TextButton("Use", skin, "exp");
+				use.addListener( new ClickListener() {
+					@Override
+					public void clicked(
+						InputEvent event,
+						float x,
+						float y ) {
+						System.out.println (name + " use");
+					}
+				});
+			}
 			
 			//Create drop button
 			drop = new TextButton("Drop", skin, "exp");
@@ -158,24 +184,33 @@ public class MenuInventory extends SubMenu {
 			   @Override
 			   public void clicked(
 				   InputEvent event, float x, float y ) {
-				   //TODO: Make this drop an item
-				   System.out.println(name + " drop");
 				   dropItem( name );
 				   updateItems();
 			   }     
 			});
 			
 			//Add the type icon
-			img = getIcon(type);
+			if (!type.contains("weapon") ||
+				type.contains("two-handed"))
+				img = getIcon(type);
+			else img = getWepIcon(Double.parseDouble(range));
 			img.setScaling(Scaling.none);
 			imgTable.add(img).row();
 
-			//Add the drop and equip buttons
-			txtTable.add(equip).width(65).expandX();
-			txtTable.add(drop).width(65).expandX();
+			//Add the button table
+			buttonT = new Table();
+			if (type.contains("consumable")) {
+				buttonT.add(equip).left().width(65).fillX().expandX();
+				buttonT.add(use).center().width(65).padLeft(15).expandX();
+			} else if (!type.contains("weapon"))
+				buttonT.add(equip).left().width(65).fillX().expandX();
+			else
+				wepButtons(itm, buttonT);
+			buttonT.add(drop).right().width(65).fillX().expandX();
 
 			//Add the dividing bar to the bottom of the item label
 			invItemsTable.row();
+			invItemsTable.add(buttonT).fillX().expandX().colspan(3).row();
 			invItemsTable.add( getImage( "bar" ) ).colspan(3)
 				.fillX().expandX().row();
 		}
@@ -250,8 +285,8 @@ public class MenuInventory extends SubMenu {
 	//Get the list of items and the inventory size from the player
 	public void getPlayerItems()
 	{
-		Inventory inv = GameManager.instance
-			.areas.current.player.inventory;
+		p = gm.areas.current.player;
+		Inventory inv = p.inventory;
 		itemsList = inv.contents;
 		
 		maxCount = inv.maxSize;
@@ -264,13 +299,27 @@ public class MenuInventory extends SubMenu {
 	private Image getIcon(String s)
 	{
 		if (
-			s.equals("melee") ||
-			s.equals("ranged") ||
-			s.equals("armor") ||
 			s.equals("consumable"))
 			return getImage("item" + s);
+		else if (
+			s.contains("head") ||
+			s.contains("neck") ||
+			s.contains("chest") ||
+			s.contains("hands") ||
+			s.contains("legs") ||
+			s.contains("feet") ||
+			s.contains("rings"))
+			return getImage("itemArmor");
 		else
 			return getImage("itemUnknown");
+	}
+	
+	private Image getWepIcon(Double r)
+	{
+		if (r > 1)
+			return getImage("itemRanged");
+		else
+			return getImage("itemMelee");
 	}
 	
 	//Add the stat icon to the current item;  Used for line shortening
@@ -280,7 +329,36 @@ public class MenuInventory extends SubMenu {
 
 		img = getImage(s);
 		img.setScaling(Scaling.none);
-		txtTable.left().add(img).fillX().expandX().width(24);
+		txtTable.add(img).left().fillX().expandX().width(24);
 	}
 
+	private void wepButtons(final Item itm, Table t)
+	{
+		TextButton l;
+		TextButton r;
+
+		l = new TextButton("Equip L", skin, "exp");
+		r = new TextButton("Equip R", skin, "exp");
+		
+		l.addListener(new ClickListener() {
+			@Override
+			public void clicked(
+				InputEvent event, float x, float y ) {
+				System.out.println(itm.name + "L hand");
+				p.inventory.equiped.equipWeapon(itm, "left");
+			}
+		});
+		
+		r.addListener(new ClickListener() {
+			@Override
+			public void clicked(
+				InputEvent event, float x, float y ) {
+				System.out.println(itm.name + "R hand");
+				p.inventory.equiped.equipWeapon(itm, "right");
+			}
+		});
+		
+		t.add(l).left().width(65).fillX().expandX().colspan(2);
+		t.add(r).center().width(65).fillX().expandX().colspan(2);
+	}
 }
