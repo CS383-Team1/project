@@ -10,9 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Scaling;
+import cs383.team1.inventory.Inventory;
 import cs383.team1.inventory.Item;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Player;
+import cs383.team1.model.overworld.Position;
 import java.util.ArrayList;
 
 /**
@@ -22,79 +24,46 @@ import java.util.ArrayList;
 public class MenuInventory extends SubMenu {
         private SplitPane invSp;
         private ScrollPane invScroll;
-        private Table invEquipTable;
         private Table invItemsTable;
-//        private ArrayList<ItemLabel> itemsList;
         private ArrayList<Item> itemsList;
-        private Label equipAtk;
-        private Label equipDef;
         private Skin skin;
-        
-        private Label equipWeapon;
-        private Label equipArmor;
-	
+	private Table invSize;
+	private Label itemCount;
+	private int maxCount;
+  
 	private Player player;
         
+	GameManager gm;
 
         public MenuInventory(Skin sk)
         {
+		gm = GameManager.instance;
                 skin = sk;
-                
-                equipWeapon = new Label( "Sturdy Briefcase", skin, "big" );
-                equipArmor = new Label( "Snazzy Suit", skin, "big" );
-                
-                equipAtk = new Label( "5", skin, "big");
-                equipDef = new Label( "4", skin, "big" );
-
-                invEquipTable = new Table();
-                invEquipTable.padRight(40).padLeft(40);
-                invEquipTable.add(new Label( "EQUIPPED", skin, "big" ) )
-                        .colspan(2).row();
-                invEquipTable.left();
-                invEquipTable.add( getImage("bar") ).fill(20, 1)
-                        .padBottom(5).row();
-                invEquipTable.add(getImage( "itemMelee" ) )
-                        .padBottom(10);
-                invEquipTable.add( equipWeapon ).padLeft(10)
-                        .padBottom(10).expand();
-                invEquipTable.add( equipAtk ).row();
-                invEquipTable.add(getImage( "itemArmor" ) )
-                        .padBottom(10);
-                invEquipTable.add( equipArmor ).padLeft(10)
-                        .padBottom(10).expand();
-                invEquipTable.add( equipDef )
-                        .row();
-                
+		invSize = new Table();
+		itemCount = new Label("(0/30)", skin, "big");
+		invSize.add(itemCount);
                 itemsList = new ArrayList();
                 invItemsTable = new Table();
-//                getDemoItems();
                 updateItems();
                 invScroll = new ScrollPane( invItemsTable, skin );
                 invScroll.setFadeScrollBars(false);
                 invScroll.setOverscroll(false, false);
                 
-                invSp = new SplitPane(invEquipTable, invScroll, true, skin);
-                invSp.setSplitAmount   ((float) 0.3500);
-                invSp.setMaxSplitAmount((float) 0.3500);
-                invSp.setMinSplitAmount((float) 0.3499);
+                invSp = new SplitPane(invSize, invScroll, true, skin);
+                invSp.setSplitAmount   ((float) 0.1000);
+                invSp.setMaxSplitAmount((float) 0.1000);
+                invSp.setMinSplitAmount((float) 0.0999);
         }
         
         public SplitPane invSp() {
                 return invSp;
         }
         
-        //Update the player's stats to the new values
-        public void updateStats( int atk, int def )
-        {
-                equipAtk.setText(Integer.toString(atk));
-                equipDef.setText(Integer.toString(def));
-        }
-        
         //Update the inventory list based on the itemsList List
         /*This should happen after the list reads the player's inventory,
         which should happen once the menu is opened*/
         //Also adds "equip" button functionality for each item in the list
-        public void updateItems()
+        public final void updateItems()
         {
                 Table imgTable;
                 Table txtTable;
@@ -102,60 +71,61 @@ public class MenuInventory extends SubMenu {
                 TextButton equip;
                 TextButton drop;
 
-                int atk = 5;
-                int def = 4;
                 invItemsTable.clearChildren();
                 invItemsTable.right();
                 for (int i = 0; i < itemsList.size(); i++) {
+			//Get String values from item for labels
                         final String name = itemsList.get(i).name;
 			String desc = itemsList.get(i).description;
                         String type = itemsList.get(i).type;
-			String hitChance = itemsList.get(i).hitChance.toString();
-			String critChance = itemsList.get(i).critChance.toString();
-			String critMult = itemsList.get(i).critMultiplier.toString();
-			String range = itemsList.get(i).range.toString();
-			String damage = itemsList.get(i).damage.toString();
-//                        img = getIcon(type);
+			String hitChance = itemsList.get(i).hitChance
+				.toString();
+			String critChance = itemsList.get(i).critChance
+				.toString();
+			String critMult = itemsList.get(i).critMultiplier
+				.toString();
+			String range = itemsList.get(i).range
+				.toString();
+			String damage = itemsList.get(i).damage
+				.toString();
 
-
-                        //Add Image
-//                        img.setScaling(Scaling.none);
+                        //Create nested tables
                         imgTable = new Table();
                         txtTable = new Table();
-//                        imgTable.add(img).row();
                         invItemsTable.add(imgTable).right();
-
+                        invItemsTable.add(txtTable).expandX().fillX();
 			
-//                        img = getIcon(type);
-//                        img.setScaling(Scaling.none);
-//                        imgTable.add(img).row();
-			
-			
+			//Add left-side padding to item descriptive table
                         txtTable.padLeft(20);
                         
                         //Add item name
                         txtTable.left().add(
-                                new Label( name, skin, "big" ) )
-                                .colspan(5).expand().fillX();
+                                new Label( name.replace("_", " "), skin, "big" ) )
+                                .colspan(5).expandX().fillX();
                         
+			//Setup Text Table
                         txtTable.row();
-                        txtTable.left().add(new Label(desc, skin)).colspan(5).fillX().expand().row();
-			addIcon("statHitChance", txtTable);
-                        txtTable.left().add(new Label(hitChance, skin)).fillX().expand();
-			addIcon("statCritChance", txtTable);
-                        txtTable.left().add(new Label(critChance, skin)).fillX().expand();
-			addIcon("statCritMult", txtTable);
-                        txtTable.left().add(new Label(critMult, skin)).fillX().expand().row();
-			addIcon("statRange", txtTable);
-                        txtTable.left().add(new Label(range, skin)).fillX().expand();
+                        txtTable.left().add(new Label(desc.replace("_", " "), skin))
+				.colspan(5).fillX().expandX().row();
 			addIcon("statDamage", txtTable);
-                        txtTable.left().add(new Label(damage, skin)).fillX().expand();
+                        txtTable.left().add(new Label(damage, skin))
+				.fillX().expandX();
+			addIcon("statHitChance", txtTable);
+                        txtTable.left().add(new Label(hitChance, skin))
+				.fillX().expandX();
+			addIcon("statRange", txtTable);
+                        txtTable.left().add(new Label(range, skin))
+				.fillX().expandX().row();
+			addIcon("statCritChance", txtTable);
+                        txtTable.left().add(new Label(critChance, skin))
+				.fillX().expandX();
+			addIcon("statCritMult", txtTable);
+                        txtTable.left().add(new Label(critMult, skin))
+				.fillX().expandX();
 
-                        //Add stat identifier
-                        invItemsTable.add(txtTable).expand().fillX();
-//                        invItemsTable.row();
 
-                        //Add use/equip button
+
+                        //Create use/equip button
                         if (
 				type.equals("armor") ||
 				type.equals("melee") ||
@@ -163,6 +133,8 @@ public class MenuInventory extends SubMenu {
                                 equip = new TextButton("Equip", skin, "exp");
                         else
                                 equip = new TextButton("Use", skin, "exp");
+			
+			//Add use/equip listener
                         equip.addListener( new ClickListener() {
                                 @Override
                                 public void clicked(
@@ -172,7 +144,10 @@ public class MenuInventory extends SubMenu {
                                 }
                         });
                         
+			//Create drop button
                         drop = new TextButton("Drop", skin, "exp");
+			
+			//Add drop listener
                         drop.addListener( new ClickListener() {
                            @Override
                            public void clicked(
@@ -184,36 +159,41 @@ public class MenuInventory extends SubMenu {
                            }     
                         });
 			
-
-//                        imgTable.add(drop).padBottom(5).fillX().expand().row();
-
+			//Add the type icon
                         img = getIcon(type);
                         img.setScaling(Scaling.none);
                         imgTable.add(img).row();
 
-//                        imgTable.add(equip).padTop(5).fillX().expand();
+			//Add the drop and equip buttons
+			txtTable.add(equip).width(65).expandX();
+			txtTable.add(drop).width(65).expandX();
 
-			txtTable.add(drop).fillX().expand();
-			txtTable.add(equip).fillX().expand();
-
-//                        invItemsTable.add(equip);
-//                        imgTable.add(equip);
-                        invItemsTable.add(new Label("", skin, "big"));
-//                        invItemsTable.add(drop).row();
-			txtTable.add(new Label("", skin));
-//                        txtTable.add(drop).fillX().expand().row();
+			//Add the dividing bar to the bottom of the item label
 			invItemsTable.row();
                         invItemsTable.add( getImage( "bar" ) ).colspan(3)
-				.fillX().expand().row();
+				.fillX().expandX().row();
                 }
         }
         
         
         private int dropItem( String n )
         {
+		Item item;
                 for (int i = 0; i < itemsList.size(); i++) {
                         if (itemsList.get(i).name.equals(n)) {
-                                itemsList.remove(i);
+				item = itemsList.get(i);
+                                itemsList.remove(item);
+				gm.areas.current.entities.add(new Item(
+					item.name,
+					item.description,
+					item.type,
+					item.damage,
+					item.hitChance,
+					item.critChance,
+					item.critMultiplier,
+					item.range,
+					gm.areas.current.player.pos()
+				));
                                 return 0;
                         }
                 }
@@ -248,7 +228,14 @@ public class MenuInventory extends SubMenu {
 	
 	public void getPlayerItems()
 	{
-		itemsList = GameManager.instance.areas.current.player.inventory.contents;
+		Inventory inv = GameManager.instance
+			.areas.current.player.inventory;
+		itemsList = inv.contents;
+		
+		maxCount = inv.maxSize;
+		
+		itemCount.setText("(" + Integer.toString(itemsList.size()) + "/"
+			+ Integer.toString(maxCount) + ") Items");
 	}
 	
 	private Image getIcon(String s)
@@ -275,6 +262,7 @@ public class MenuInventory extends SubMenu {
 
 		img = getImage(s);
 		img.setScaling(Scaling.none);
-		txtTable.left().add(img).fillX().expand();
+		txtTable.left().add(img).fillX().expandX().width(24);
 	}
+
 }

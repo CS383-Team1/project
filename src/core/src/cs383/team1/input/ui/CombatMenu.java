@@ -78,6 +78,9 @@ public class CombatMenu {
                 combat.setY((int)Gdx.graphics.getHeight()/(float)5.8);
                 combat.setWidth(Gdx.graphics.getWidth());
                 combat.setHeight((int)Gdx.graphics.getHeight()*(float)(4.8/5.8));
+		
+		//Ignoring selection menu (until more stuff is implemented)
+		changeMenu("ATTACK");
         }
         
         public SplitPane combat(){
@@ -109,48 +112,60 @@ public class CombatMenu {
                 TextButton atkButton;
                 attacks.clear();
                 attacks.addAll(player.moves);
+//		atkTable.top();
                 
                 atkTable.clearChildren();
+		
+//		atkTable.add( getImage( "bar" ) )
+//			.colspan(2).padBottom(5).fillX().expandX().row();
+//		atkTable.add( getImage( "bar" ) )
+//			.colspan(2).padBottom(5).fillX().expandX().row();
+			
                 for (int i = 0; i < attacks.size(); i++) {
                         final int index = i;
-                        final String atk = attacks.get(i).name;
-                        if (atk.equals("null"))
+                        final String atk = atkName(attacks.get(i).name);
+			
+                        if (atk.toLowerCase().equals("null"))
                                 continue;
                         String dmg = Double.toString(attacks.get(i)
                                 .getDamage());
                         String blk = Integer.toString(attacks.get(i)
                                 .getBlockPercent());
 
-                        atkButton = new TextButton( atk, skin, "exp" );
+                        atkButton = new TextButton( atk, skin, "expBig" );
+			if (atk.length() > 12)
+				atkButton.setText(atk.substring(0, 12) + "_");
+
                         atkButton.addListener(new ClickListener() {
                                 @Override
                                 public void clicked(
                                         InputEvent event, float x, float y ) {
                                         gm.combat.battles.get(0).turn();
                                         player.addAttack(attacks.get(index));
-                                        System.out.println(atk);
                                         gm.msg.add("Player uses: " + atk);
                                 }
                         });
-                        atkTable.add(atkButton).colspan(2).padBottom(10)
-                                .expand().fillX().row();
+                        atkTable.add(atkButton).colspan(2)
+                                .expandX().fillX().row();
 			
 			if (attacks.get(i).getDamage() > -1)
-				atkTable.add(new Label(dmg + " dmg", skin))
-					.left();
+				atkTable.add(new Label(dmg + " dmg", skin, "red"))
+					.padLeft(10).left().row();
 			else
 				atkTable.add(new Label("+" + dmg.substring(1) +
-					" health", skin, "smgreen")).left();				
+					" health", skin, "green")).padLeft(10).left().row();
 
-                        atkTable.add(new Label(blk + "% block", skin))
-                                .right().padBottom(5).row();
-
-                        atkTable.add( getImage( "bar" ) )
-                                .colspan(2).padBottom(5).fillX().expand().row();
+                        atkTable.add(new Label(blk + "% block", skin)).padLeft(10).padBottom(15)
+                                .left().row();
+			
                 }
         }
 	
 	public boolean visible() {
 		return combat.isVisible();
+	}
+	
+	private String atkName(String n) {
+		return n.substring(0, 1).toUpperCase().concat(n.substring(1));
 	}
 }

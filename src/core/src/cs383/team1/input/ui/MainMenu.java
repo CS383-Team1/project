@@ -74,6 +74,6 @@ public class MainMenu {
         public void updateStats(int hp, int atk, int def, int rep)
         {
                 menuC.updateStats(hp, atk, def, rep);
-                menuI.updateStats(atk, def);
+//                menuI.updateStats(atk, def);
         }
 }

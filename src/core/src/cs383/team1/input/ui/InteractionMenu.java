@@ -124,7 +124,7 @@ public class InteractionMenu {
                 if (target instanceof CoWorker) {
                         setTitle(((CoWorker) target).name());
                         listOptions.setItems(
-				"Talk", "Buy/Sell", "Examine", "Cancel");
+				"Talk", "Cancel");
                 } else if (target instanceof Item) {
                         setTitle(((Item) target).name);
                         listOptions.setItems(
