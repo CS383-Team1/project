@@ -162,23 +162,23 @@ public class MenuEquip extends SubMenu{
 		p = gm.areas.current.player;
 		Equipment e = p.inventory.equiped;
 
-		if (e.head!= null && !e.feet.name.equals("Unknown"))
+		if (e.head!= null && !e.head.name.equals("Unknown"))
 			headL.setText(e.head.name.replace("_", " "));
 		else headL.setText("EMPTY");
 
-		if (e.neck!= null && !e.feet.name.equals("Unknown"))
+		if (e.neck!= null && !e.neck.name.equals("Unknown"))
 			neckL.setText(e.neck.name.replace("_", " "));
 		else neckL.setText("EMPTY");
 		
-		if (e.chest!= null && !e.feet.name.equals("Unknown"))
+		if (e.chest!= null && !e.chest.name.equals("Unknown"))
 			bodyL.setText(e.chest.name.replace("_", " "));
 		else bodyL.setText("EMPTY");
 
-		if (e.hands!= null && !e.feet.name.equals("Unknown"))
+		if (e.hands!= null && !e.hands.name.equals("Unknown"))
 			handL.setText(e.hands.name.replace("_", " "));
 		else handL.setText("EMPTY");
 
-		if (e.legs!= null && !e.feet.name.equals("Unknown"))
+		if (e.legs!= null && !e.legs.name.equals("Unknown"))
 			legsL.setText(e.legs.name.replace("_", " "));
 		else legsL.setText("EMPTY");
 
@@ -186,14 +186,12 @@ public class MenuEquip extends SubMenu{
 			feetL.setText(e.feet.name.replace("_", " "));
 		else feetL.setText("EMPTY");
 		
-		if (e.leftWeapon!= null &&
-			!e.leftWeapon.name.equals("Unknown"))
+		if (e.leftWeapon!= null && !e.leftWeapon.name.equals("Unknown"))
 			itemL = e.leftWeapon;
 		else { itemL = new Item("EMPTY", "", "weapon"); }
 		itemLName.setText(itemL.name.replace("_", " "));
 		
-		if (e.rightWeapon!= null &&
-			!e.rightWeapon.name.equals("Unknown"))
+		if (e.rightWeapon!= null && !e.rightWeapon.name.equals("Unknown"))
 			itemR = e.rightWeapon;
 		else { itemR = new Item("EMPTY", "", "weapon"); }
 		itemRName.setText(itemR.name.replace("_", " "));
