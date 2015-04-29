@@ -190,8 +190,7 @@ public class MenuInventory extends SubMenu {
 			});
 			
 			//Add the type icon
-			if (!type.contains("weapon") ||
-				type.contains("two-handed"))
+			if (!type.contains("weapon"))
 				img = getIcon(type);
 			else img = getWepIcon(Double.parseDouble(range));
 			img.setScaling(Scaling.none);
@@ -202,7 +201,7 @@ public class MenuInventory extends SubMenu {
 			if (type.contains("consumable")) {
 				buttonT.add(equip).left().width(65).fillX().expandX();
 				buttonT.add(use).center().width(65).padLeft(15).expandX();
-			} else if (!type.contains("weapon"))
+			} else if (!type.contains("weapon") || type.contains("two-handed"))
 				buttonT.add(equip).left().width(65).fillX().expandX();
 			else
 				wepButtons(itm, buttonT);
