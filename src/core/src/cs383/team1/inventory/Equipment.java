@@ -119,12 +119,12 @@ public class Equipment {
     }
     
     public Item unequip(Item t){
-        Item ret = null;
-        if(head.equals(t)){ret = head; head = null;}else 
-        if(chest.equals(t)){ret = chest;chest = null;}else
-        if(legs.equals(t)){ret = legs;chest = null;}else
-        if(feet.equals(t)){ret = feet;feet = null;}else
-        if(neck.equals(t)){ret = neck;neck = null;}
+        Item ret = new Item();
+        if(head.equals(t)){ret = head; head = new Item();}else 
+        if(chest.equals(t)){ret = chest;chest = new Item();}else
+        if(legs.equals(t)){ret = legs;chest = new Item();}else
+        if(feet.equals(t)){ret = feet;feet = new Item();}else
+        if(neck.equals(t)){ret = neck;neck = new Item();}
         for(int i=0;i<rings.size();i++){
             if(rings.get(i).equals(t)){
                 ret = rings.get(i);
@@ -141,11 +141,11 @@ public class Equipment {
         }
         if(rightWeapon.equals(t)){
             ret = rightWeapon;
-            rightWeapon = null;
+            rightWeapon = new Item();
             return ret;
         }else if(leftWeapon.equals(t)){
             ret = leftWeapon;
-            leftWeapon = null;
+            leftWeapon = new Item();
             return ret;
         }
         return ret;

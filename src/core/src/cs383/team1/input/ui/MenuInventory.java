@@ -147,21 +147,25 @@ public class MenuInventory extends SubMenu {
 				
 
 //			//Create use/equip button
-//			if (!type.equals("consumable"))
 			equip = new TextButton("Equip", skin, "exp");
-//			else
-//				equip = new TextButton("Use", skin, "exp");
 			
 			//Add use/equip listener
-			equip.addListener( new ClickListener() {
-				@Override
-				public void clicked(
-					InputEvent event, float x, float y ) {
-					//TODO: Make this equip/use an item
-					System.out.println (name + " equip");
-					p.inventory.equiped.equip(itm);
-				}
-			});
+			if (!type.contains("two-handed"))
+				equip.addListener( new ClickListener() {
+					@Override
+					public void clicked(
+						InputEvent event, float x, float y ) {
+						p.inventory.equiped.equip(itm);
+					}
+				});
+			else
+				equip.addListener( new ClickListener() {
+					@Override
+					public void clicked(
+						InputEvent event, float x, float y ) {
+						p.inventory.equiped.equipWeapon(itm, "right");
+					}
+				});
 			
 			if (!type.equals("consumable")) {
 				use = new TextButton("Use", skin, "exp");
