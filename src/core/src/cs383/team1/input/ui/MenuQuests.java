@@ -17,63 +17,63 @@ import java.util.ArrayList;
  * @author Lance
  */
 public class MenuQuests extends SubMenu {
-        private ScrollPane questScroll;
-        private Table questTable;
-        private ArrayList<QuestLabel> questList;
-        private Skin skin;
+	private ScrollPane questScroll;
+	private Table questTable;
+	private ArrayList<QuestLabel> questList;
+	private Skin skin;
 
-        public MenuQuests(Skin sk)
-        {
-                skin = sk;
+	public MenuQuests(Skin sk)
+	{
+		skin = sk;
 
-                questList = new ArrayList();
-                questTable = new Table();
-                getDemoQuests();
-                updateQuests();
-                questScroll = new ScrollPane( questTable, skin );
-                questScroll.setFadeScrollBars(false);
-                questScroll.setOverscroll(false, false);
-        }
-        
-        public ScrollPane questScroll() {
-                return questScroll;
-        }
-        
-        private void updateQuests()
-        {
+		questList = new ArrayList();
+		questTable = new Table();
+		getDemoQuests();
+		updateQuests();
+		questScroll = new ScrollPane( questTable, skin );
+		questScroll.setFadeScrollBars(false);
+		questScroll.setOverscroll(false, false);
+	}
+	
+	public ScrollPane questScroll() {
+		return questScroll;
+	}
+	
+	private void updateQuests()
+	{
 		Table imgTable;
 		Table txtTable;
-                Image img;
-                TextButton abandon;
-                String details;
-                String icon;
+		Image img;
+		TextButton abandon;
+		String details;
+		String icon;
 		Label count;
-                int totCount;
-                int curCount;
+		int totCount;
+		int curCount;
 
-                questTable.clearChildren();
-                questTable.right();
-                for ( int i =0; i < questList.size(); i++ ) {
-                        final String name = questList.get(i).name();
-                        details = questList.get(i).details();
-                        icon = questList.get(i).icon();
-                        totCount = questList.get(i).totCount();
-                        curCount = questList.get(i).curCount();
+		questTable.clearChildren();
+		questTable.right();
+		for ( int i =0; i < questList.size(); i++ ) {
+			final String name = questList.get(i).name();
+			details = questList.get(i).details();
+			icon = questList.get(i).icon();
+			totCount = questList.get(i).totCount();
+			curCount = questList.get(i).curCount();
 			
 			imgTable = new Table();
 			txtTable = new Table();
 
-                        img = getImage("quest" + icon );
-                        img.setScaling(Scaling.none);
-                        imgTable.add(img).padTop(10).expand().row();
+			img = getImage("quest" + icon );
+			img.setScaling(Scaling.none);
+			imgTable.add(img).padTop(10).expand().row();
 
-                        txtTable.left().add( new Label( name, skin, "big" ) )
+			txtTable.left().add( new Label( name, skin, "big" ) )
 				.fillX().expand().row();
-                        txtTable.left().add( new Label( details, skin ) )
+			txtTable.left().add( new Label( details, skin ) )
 				.fillX().expand().row();
 			
 			
-//                        imgTable.left().add( new Label( (Integer.toString(curCount)
+//			imgTable.left().add( new Label( (Integer.toString(curCount)
 //				+ "/" + Integer.toString(totCount) ), skin ) ).row();
 			
 			count = new Label( (Integer.toString(curCount)
@@ -82,55 +82,55 @@ public class MenuQuests extends SubMenu {
 				count.setColor(Color.GREEN);
 			imgTable.left().add(count);
 
-                        abandon = new TextButton( "abandon" , skin, "exp");
-                        abandon.addListener( new ClickListener() {
-                                @Override
-                                public void clicked(
+			abandon = new TextButton( "abandon" , skin, "exp");
+			abandon.addListener( new ClickListener() {
+				@Override
+				public void clicked(
 					InputEvent event, float x, float y ) {
-                                        //TODO: Make this abandon a quest
-                                        System.out.println (name + " abandon");
-                                        abandonQuest( name );
-                                        updateQuests();
-                                }
-                        });
-                        txtTable.add( abandon ).right();
+					//TODO: Make this abandon a quest
+					System.out.println (name + " abandon");
+					abandonQuest( name );
+					updateQuests();
+				}
+			});
+			txtTable.add( abandon ).right();
 			questTable.add(imgTable).padRight(10);
 			questTable.add(txtTable).fillX().expand().row();
 
-                        questTable.add( getImage( "bar" ) ).colspan(2)
+			questTable.add( getImage( "bar" ) ).colspan(2)
 				.fillX().expand().row();
-                }
-        }
-        
-        private int abandonQuest( String n )
-        {
-                for (int i = 0; i < questList.size(); i++) {
-                        if (questList.get(i).name().equals(n)) {
-                                questList.remove(i);
-                                return 0;
-                        }
-                }
-                return -1;
-        }
-        
-        private void getDemoQuests()
-        {
-                questList.clear();
-                questList.add( new QuestLabel("Chair Murder",
+		}
+	}
+	
+	private int abandonQuest( String n )
+	{
+		for (int i = 0; i < questList.size(); i++) {
+			if (questList.get(i).name().equals(n)) {
+				questList.remove(i);
+				return 0;
+			}
+		}
+		return -1;
+	}
+	
+	private void getDemoQuests()
+	{
+		questList.clear();
+		questList.add( new QuestLabel("Chair Murder",
 			"Murder ALL the chairs!", "slay", 0, 20) );
-                questList.add( new QuestLabel("Talk to HR",
+		questList.add( new QuestLabel("Talk to HR",
 			"Hustle yo' butt to the HR rep.", "talk", 1, 1) );
-                questList.add( new QuestLabel("Go Outside",
+		questList.add( new QuestLabel("Go Outside",
 			"Take a peek into the great outdoors.", "talk", 0, 1) );
-                questList.add( new QuestLabel("Office Cleaner",
+		questList.add( new QuestLabel("Office Cleaner",
 			"Show the intruders the way out.", "slay", 0, 7) );
-                questList.add( new QuestLabel("VR Collector",
+		questList.add( new QuestLabel("VR Collector",
 			"Get the V.R. headsets from R&D.", "fetch", 10, 10) );
-                questList.add( new QuestLabel("Quest quest",
+		questList.add( new QuestLabel("Quest quest",
 			"Quest for the quest in the quest.", "talk", 0, 1) );
-                questList.add( new QuestLabel("Smack Down",
+		questList.add( new QuestLabel("Smack Down",
 			"Lay the hurt down, brother.", "fetch", 0, 18) );
-                questList.add( new QuestLabel("Office Slave",
+		questList.add( new QuestLabel("Office Slave",
 			"Clean up the loose paper.", "fetch", 0, 14) );
-        }
+	}
 }
