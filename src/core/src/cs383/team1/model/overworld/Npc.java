@@ -2,9 +2,9 @@ package cs383.team1.model.overworld;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import cs383.team1.combat.Move;
-import cs383.team1.inventory.Inventory;
-import cs383.team1.inventory.Item;
+import cs383.team1.model.combat.Move;
+import cs383.team1.model.inventory.Inventory;
+import cs383.team1.model.inventory.Item;
 import java.util.ArrayList;
 import java.util.Random;
 

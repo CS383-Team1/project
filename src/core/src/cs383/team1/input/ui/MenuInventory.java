@@ -115,21 +115,21 @@ public class MenuInventory extends SubMenu {
                                 .expand().fill().padLeft(20).padRight(50);
 
                         //Add stat identifier
-                        if (icon.equals("ranged") || icon.equals("melee"))
+                        if (icon.equals("Ranged") || icon.equals("Melee"))
                                 if (stat > atk) {
                                         invItemsTable.add( cmpItem( atk, stat, true ) );
                                 } else
                                         invItemsTable.add( cmpItem( atk, stat, false ) );
-                        if ( icon.equals("armor") && stat > def)
+                        if ( icon.equals("Armor") && stat > def)
                                 invItemsTable.add( cmpItem( def, stat, true ) );
-                        if ( icon.equals("armor") && stat <= def)
+                        if ( icon.equals("Armor") && stat <= def)
                                 invItemsTable.add( cmpItem( atk, stat, false ) );
-                        if (icon.equals("consumable"))
+                        if (icon.equals("Consumable"))
                                 invItemsTable.add( new Label( "x " + Integer.toString(stat), skin, "big" ) );
                         invItemsTable.row();
 
                         //Add use/equip button
-                        if (icon.equals("consumable"))
+                        if (icon.equals("Consumable"))
                                 equip = new TextButton("Use", skin);
                         else
                                 equip = new TextButton("Equip", skin);
@@ -187,24 +187,24 @@ public class MenuInventory extends SubMenu {
         private void getDemoItems()
         {
                 itemsList.clear();
-                itemsList.add( new ItemLabel("This", "ranged", 3) );
-                itemsList.add( new ItemLabel("That", "ranged", 5) );
-                itemsList.add( new ItemLabel("Laser Gun", "ranged", 7) );
-                itemsList.add( new ItemLabel("LaZer Gun", "ranged", 9) );
-                itemsList.add( new ItemLabel("LaZ0r G()n", "ranged", 11) );
-                itemsList.add( new ItemLabel("L@Z3R G()N", "ranged", 9001) );
-                itemsList.add( new ItemLabel("'Dis Armor", "armor", 3) );
-                itemsList.add( new ItemLabel("'Dat Armor", "armor", 1) );
-                itemsList.add( new ItemLabel("Good Armor", "armor", 9) );
-                itemsList.add( new ItemLabel("Bad Armor", "armor", 1) );
-                itemsList.add( new ItemLabel("Ugly Armor", "armor", 4) );
-                itemsList.add( new ItemLabel("Punting Stapler", "melee", 3) );
-                itemsList.add( new ItemLabel("Sturdy Briefase", "melee", 1) );
-                itemsList.add( new ItemLabel("Potion", "consumable", 6) );
-                itemsList.add( new ItemLabel("Bagel", "consumable", 4) );
-                itemsList.add( new ItemLabel("Staple", "consumable", 2) );
-                itemsList.add( new ItemLabel("Pushpin", "consumable", 6) );
-                itemsList.add( new ItemLabel("Donut", "consumable", 1) );
+                itemsList.add( new ItemLabel("This", "Ranged", 3) );
+                itemsList.add( new ItemLabel("That", "Ranged", 5) );
+                itemsList.add( new ItemLabel("Laser Gun", "Ranged", 7) );
+                itemsList.add( new ItemLabel("LaZer Gun", "Ranged", 9) );
+                itemsList.add( new ItemLabel("LaZ0r G()n", "Ranged", 11) );
+                itemsList.add( new ItemLabel("L@Z3R G()N", "Ranged", 9001) );
+                itemsList.add( new ItemLabel("'Dis Armor", "Armor", 3) );
+                itemsList.add( new ItemLabel("'Dat Armor", "Armor", 1) );
+                itemsList.add( new ItemLabel("Good Armor", "Armor", 9) );
+                itemsList.add( new ItemLabel("Bad Armor", "Armor", 1) );
+                itemsList.add( new ItemLabel("Ugly Armor", "Armor", 4) );
+                itemsList.add( new ItemLabel("Punting Stapler", "Melee", 3) );
+                itemsList.add( new ItemLabel("Sturdy Briefase", "Melee", 1) );
+                itemsList.add( new ItemLabel("Potion", "Consumable", 6) );
+                itemsList.add( new ItemLabel("Bagel", "Consumable", 4) );
+                itemsList.add( new ItemLabel("Staple", "Consumable", 2) );
+                itemsList.add( new ItemLabel("Pushpin", "Consumable", 6) );
+                itemsList.add( new ItemLabel("Donut", "Consumable", 1) );
                 
         }
         

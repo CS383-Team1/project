@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import cs383.team1.Main;
 import cs383.team1.input.ui.CombatMenu;
 import cs383.team1.input.ui.InteractionMenu;
 import cs383.team1.input.ui.MainMenu;
@@ -31,7 +32,7 @@ public class UIDisplay extends Display{
         CombatMenu combat;
         UIListener uiListen;
         
-        Player player = GameManager.instance.areas.current.player;
+/*      Player player = GameManager.instance.areas.current.player;
         final AreaManager areas = GameManager.instance.areas;
 
 
@@ -45,6 +46,21 @@ public class UIDisplay extends Display{
                         GameManager.instance.msg.remove(0);
                 }
                 if ( !player.roaming && !combat.visible())
+*/
+
+
+        Player player = null;
+        AreaManager areas = null;
+
+        @Override
+        public void render() {
+		if(player == null) player = Main.gm.currentArea().player;
+		if(areas == null) areas = Main.gm.areas();
+                //Read messages sent to the GameManager to the chat
+                msg.addMessage(Main.gm.getMessage(0));
+                Main.gm.removeMessage(0);
+
+                if ( !player.roaming )
                         combat.combat().setVisible(true);
                 else if ( player.roaming && combat.visible()) {
                         combat.combat().setVisible(false);

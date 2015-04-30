@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import cs383.team1.Main;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.AreaManager;
 import cs383.team1.model.overworld.Player;
@@ -20,7 +21,7 @@ public class UIListener extends InputListener{
         Player player;
         InteractionMenu interact;
         
-        final AreaManager areas = GameManager.instance.areas;
+        AreaManager areas = null;
 
         
         public UIListener(
@@ -97,7 +98,8 @@ public class UIListener extends InputListener{
         }
         
         private void useMenu(Position p)
-        {
+        { 
+		if (areas == null) areas = Main.gm.areas();
                 interact.useMenu(areas.findEntity(p), player.facing);
         }
 }

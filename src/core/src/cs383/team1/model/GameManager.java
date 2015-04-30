@@ -3,13 +3,14 @@ package cs383.team1.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.Input.Keys;
-import cs383.team1.combat.CombatManager;
 import com.badlogic.gdx.utils.Timer;
 import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
-import cs383.team1.inventory.Item;
+import cs383.team1.model.combat.CombatManager;
+import cs383.team1.model.inventory.Item;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
+import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.AreaManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
@@ -17,11 +18,13 @@ import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.StairsEntity;
 import cs383.team1.model.overworld.Tile;
+import java.util.List;
 import java.util.ArrayList;
 
-public final class GameManager {
+public final class GameManager implements GameManagerInterface {
 	public static final GameManager instance = new GameManager();
 
+/*
 	public AreaManager areas;
 	public StateManager states;
         DialogueBox dialogue;
@@ -38,6 +41,19 @@ public final class GameManager {
 //        public boolean parseInput = true;
 
         public ArrayList <String> msg;
+
+*/
+	private AreaManager areas;
+	private StateManager states;
+        private DialogueBox dialogue;
+        private CombatManager combat;
+        private Position tempPos;
+        private Position returnPos;
+        private Entity temp;
+        private DialogueBox chatBox = new DialogueBox();
+        private int keyPressed;
+        private List<String> msg;
+
 
         
 	private GameManager() {
@@ -162,15 +178,6 @@ public final class GameManager {
                             continue;
 			}
                                                
-/*
-	                //Interact with an NPC (nullifies last attempted move)
-                        if((npc = (Npc)areas.findEntity(next, 3)) != null) {
-                                keyPressed = 0;
-                                msg = npc.readNext();
-                                System.out.println("GameManager: NPC Interaction: " + msg);
-                                next = player.pos;
-                        }
-  */                      
                         //Try to use stairs entity on a stairs tile (well3112)
                         if (target.type() == 3){
                             areas.useStairs(next, player);
@@ -218,5 +225,37 @@ public final class GameManager {
                         }
                         
                 }
-        }
+	}
+
+	public void setKey(int k) {
+		keyPressed = k;
+	}
+
+	public int getKey() {
+		return keyPressed;
+	}
+
+	public AreaManager areas() {
+		return areas;
+	}
+
+	public CombatManager combat() {
+		return combat;
+	}
+
+	public Area currentArea() {
+		return areas.current;
+	}
+
+	public void addMessage(String m) {
+		msg.add(m);
+	}
+
+	public String getMessage(int m) {
+		return msg.size() > 0 ? msg.get(m) : "";
+	}
+
+	public void removeMessage(int m) {
+		if (msg.size() > 0) msg.remove(m);
+	}
 }

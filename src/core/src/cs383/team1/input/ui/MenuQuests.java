@@ -94,13 +94,13 @@ public class MenuQuests extends SubMenu {
         private void getDemoQuests()
         {
                 questList.clear();
-                questList.add( new QuestLabel("Chair Murder", "Murder ALL the chairs!", "slay", 0, 20) );
-                questList.add( new QuestLabel("Talk to HR", "Hustle yo' butt on over to the HR rep.", "talk", 0, 1) );
-                questList.add( new QuestLabel("Go Outside", "Take a peek into the great outdoors.", "talk", 0, 1) );
-                questList.add( new QuestLabel("Office Cleaner", "Show the intruders the way out.", "slay", 0, 7) );
-                questList.add( new QuestLabel("VR Collector", "Get the V.R. headsets from R&D.", "fetch", 0, 10) );
-                questList.add( new QuestLabel("Quest quest", "Quest for the quest in the quest.", "talk", 0, 1) );
-                questList.add( new QuestLabel("Smack Down", "Lay the hurt down, brother.", "fetch", 0, 18) );
-                questList.add( new QuestLabel("Office Slave", "Clean up the loose paper.", "fetch", 0, 14) );
+                questList.add( new QuestLabel("Chair Murder", "Murder ALL the chairs!", "Slay", 0, 20) );
+                questList.add( new QuestLabel("Talk to HR", "Hustle yo' butt on over to the HR rep.", "Talk", 0, 1) );
+                questList.add( new QuestLabel("Go Outside", "Take a peek into the great outdoors.", "Talk", 0, 1) );
+                questList.add( new QuestLabel("Office Cleaner", "Show the intruders the way out.", "Slay", 0, 7) );
+                questList.add( new QuestLabel("VR Collector", "Get the V.R. headsets from R&D.", "Fetch", 0, 10) );
+                questList.add( new QuestLabel("Quest quest", "Quest for the quest in the quest.", "Talk", 0, 1) );
+                questList.add( new QuestLabel("Smack Down", "Lay the hurt down, brother.", "Fetch", 0, 18) );
+                questList.add( new QuestLabel("Office Slave", "Clean up the loose paper.", "Fetch", 0, 14) );
         }
 }

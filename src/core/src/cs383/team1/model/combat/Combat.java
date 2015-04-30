@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package cs383.team1.combat;
+package cs383.team1.model.combat;
 
-import cs383.team1.inventory.Inventory;
-import cs383.team1.inventory.Item;
+import cs383.team1.model.inventory.Inventory;
+import cs383.team1.model.inventory.Item;
+import cs383.team1.Main;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
@@ -125,7 +121,8 @@ public class Combat {
                 }
         
              System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
-             GameManager.instance.msg.add("Player HP: " + player.hp + "; NPC HP: " + npc.hp);
+		Main.gm.addMessage("Player HP: " + player.hp + "; NPC HP: " + npc.hp);
+
         }else{
             player.roaming = true;
             //Add all items in reward inventory to player's inventory
