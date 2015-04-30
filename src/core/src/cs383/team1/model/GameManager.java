@@ -24,25 +24,6 @@ import java.util.ArrayList;
 public final class GameManager implements GameManagerInterface {
 	public static final GameManager instance = new GameManager();
 
-/*
-	public AreaManager areas;
-	public StateManager states;
-        DialogueBox dialogue;
-        public CombatManager combat;
-        Position tempPos;
-        Position returnPos;
-        Entity temp;
-        
-
-        public DialogueBox chatBox = new DialogueBox();
-        
-
-        public int keyPressed;
-//        public boolean parseInput = true;
-
-        public ArrayList <String> msg;
-
-*/
 	private AreaManager areas;
 	private StateManager states;
         private DialogueBox dialogue;
@@ -90,18 +71,7 @@ public final class GameManager implements GameManagerInterface {
                     areas.loadArea(fname);
 		}
 		areas.changeArea("demo");
-                
-                //Load battles
-                /*
-                areaDir = Gdx.files.internal("combat/");
-
-		for(FileHandle f : areaDir.list()) {
-			fname = new String("combat/" + f.name());
-			Gdx.app.debug("GameManager:load", "Loading combat " + fname);
-                        //combat.loadCombat(fname);
-		}
-                */
-	}
+        }
 
 	public void update(InputManager in) {
 		Player player;
