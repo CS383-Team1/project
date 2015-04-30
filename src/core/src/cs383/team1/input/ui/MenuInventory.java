@@ -21,6 +21,17 @@ import java.util.ArrayList;
  *
  * @author Lance
  */
+//TODO:
+/*
+- Make items display relative stats (+1, -2, etc.)
+- Make relative stat display work for BOTH hands for weapons (if 1h)
+- Make icons reflect 1-h or 2-h weapons
+- Make equipping an item remove it from the inventory
+- Make unequipping an item add it back to the inventory
+- (NOT HERE) Add unequip buttons to the character/equip menu
+- (NOT HERE) Add ring/consumable scrollpane in character/equip menu
+- (NOT HERE) Make Interaction Menu just display the option for the faced entity
+*/
 public class MenuInventory extends SubMenu {
 	private SplitPane invSp;
 	private ScrollPane invScroll;
@@ -116,7 +127,8 @@ public class MenuInventory extends SubMenu {
 		descL.setWrap(true);
 
 		//Add description
-		txtTable.left().add(descL).padBottom(5).colspan(6).fillX().expandX().row();
+		txtTable.left().add(descL).padBottom(5).colspan(6)
+			.fillX().expandX().row();
 
 		//Add stats
 		if (type.contains("weapon")) {
@@ -128,7 +140,6 @@ public class MenuInventory extends SubMenu {
 		} else {
 			txtTable.add(new Label("", skin)).padBottom(48).row();
 		}
-
 
 		//Create use/equip button
 		equip = new TextButton("Equip", skin, "exp");
@@ -161,7 +172,10 @@ public class MenuInventory extends SubMenu {
 		if (type.contains("consumable")) {
 			buttonT.add(equip).right().width(65).padLeft(5);
 			buttonT.add(use).right().width(65).padLeft(5);
-		} else if (!type.contains("weapon")||type.contains("two-handed"))
+		} else if (
+				!type.contains("weapon")||
+				type.contains("two-handed")
+			  )
 			buttonT.add(equip).right().width(65).padLeft(5);
 		else
 			wepButtons(itm, buttonT);
@@ -169,8 +183,10 @@ public class MenuInventory extends SubMenu {
 
 		//Add the dividing bar to the bottom of the item label
 		invItemsTable.row();
-		invItemsTable.add(buttonT).right().padTop(15).expandX().colspan(2).row();
-		invItemsTable.add(getImage("bar")).colspan(3).fillX().expandX().row();
+		invItemsTable.add(buttonT).right().padTop(15)
+			.expandX().colspan(2).row();
+		invItemsTable.add(getImage("bar")).colspan(3)
+			.fillX().expandX().row();
 	}
 	
 	private void addStat(Table t, String s, String stat)
@@ -179,8 +195,10 @@ public class MenuInventory extends SubMenu {
 		t.left().add(new Label(stat, skin)).left().fillX().expandX();
 	}
 	
-	//Drop an item from the inventory
-	//Dropped items end up on the floor in the current room
+	/*
+	Drop an item from the inventory
+	Dropped items end up on the floor in the current room
+	*/
 	private int dropItem( String n )
 	{
 		Item item;
@@ -275,12 +293,18 @@ public class MenuInventory extends SubMenu {
 			s.contains("rings"))
 			return getImage("itemArmor");
 		else if (s.contains("weapon")) {
-			if (itm.range > 1)
+			if (itm.range > 1 &&
+			   !itm.type.contains("two-handed"))
 				return getImage("itemRanged");
-			else
+			else if (itm.range > 1)
+				return getImage("itemRanged2h");
+			else if (itm.range <= 1 &&
+			        !itm.type.contains("two-handed"))
 				return getImage("itemMelee");
-		} else
-			return getImage("itemUnknown");
+			else if (itm.range <= 1)
+				return getImage("itemMelee2h");
+		}
+		return getImage("itemUnknown");
 	}
 	
 	private Image getWepIcon(Double r)
