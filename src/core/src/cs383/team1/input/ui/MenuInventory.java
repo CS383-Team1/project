@@ -66,17 +66,6 @@ public class MenuInventory extends SubMenu {
 	//Also adds "equip" button functionality for each item in the list
 	public final void updateItems()
 	{
-		Table imgTable;
-		Table txtTable;
-		Image img;
-		TextButton equip;
-		TextButton drop;
-		TextButton use = new TextButton("ERROR", skin);
-		
-		Table buttonT;
-		
-		Label descL;
-
 		invItemsTable.clearChildren();
 		invItemsTable.right();
 		
@@ -86,137 +75,108 @@ public class MenuInventory extends SubMenu {
 				.fillX().expandX().row();
 		
 		for (int i = 0; i < itemsList.size(); i++) {
-			//Get String values from item for labels
-			final String name = itemsList.get(i).name;
-			final Item itm = itemsList.get(i);
-			String desc = itemsList.get(i).description;
-			String type = itemsList.get(i).type;
-			String hitChance = itemsList.get(i).hitChance
-				.toString();
-			String critChance = itemsList.get(i).critChance
-				.toString();
-			String critMult = itemsList.get(i).critMultiplier
-				.toString();
-			String range = itemsList.get(i).range
-				.toString();
-			String damage = itemsList.get(i).damage
-				.toString();
-
-			//Create nested tables
-			imgTable = new Table();
-			txtTable = new Table();
-			invItemsTable.add(imgTable).right();
-			invItemsTable.add(txtTable).expandX().fillX();
-			
-			//Add left-side padding to item descriptive table
-			txtTable.padLeft(20);
-			
-			//Add item name
-			txtTable.left().add(
-				new Label( name.replace("_", " "), skin, "big"))
-				.colspan(5).expandX().fillX();
-			
-			//Setup Text Table
-			txtTable.row();
-			descL = new Label(desc.replace("_", " ") , skin);
-			descL.setWrap(true);
-
-			txtTable.left().add(descL)
-				.colspan(6).fillX().expandX().row();
-
-			if (type.contains("weapon")) {
-				addIcon("statDamage", txtTable);
-				txtTable.left().add(new Label(damage, skin))
-					.left().fillX().expandX();
-//				.left().fillX().expandX().width(24)
-				addIcon("statHitChance", txtTable);
-				txtTable.left().add(new Label(hitChance, skin))
-					.left().fillX().expandX();
-				addIcon("statRange", txtTable);
-				txtTable.left().add(new Label(range, skin))
-					.left().fillX().expandX().row();
-				addIcon("statCritChance", txtTable);
-				txtTable.left().add(new Label(critChance, skin))
-					.left().fillX().expandX();
-				addIcon("statCritMult", txtTable);
-				txtTable.left().add(new Label(critMult, skin))
-					.left().fillX().expandX().row();
-			} else {
-				txtTable.add(new Label("", skin)).padBottom(48).row();
-			}
-				
-
-//			//Create use/equip button
-			equip = new TextButton("Equip", skin, "exp");
-			
-			//Add use/equip listener
-			if (!type.contains("two-handed"))
-				equip.addListener( new ClickListener() {
-					@Override
-					public void clicked(
-						InputEvent event, float x, float y ) {
-						p.inventory.equiped.equip(itm);
-					}
-				});
-			else
-				equip.addListener( new ClickListener() {
-					@Override
-					public void clicked(
-						InputEvent event, float x, float y ) {
-						p.inventory.equiped.equipWeapon(itm, "right");
-					}
-				});
-			
-			if (!type.equals("consumable")) {
-				use = new TextButton("Use", skin, "exp");
-				use.addListener( new ClickListener() {
-					@Override
-					public void clicked(
-						InputEvent event,
-						float x,
-						float y ) {
-						System.out.println (name + " use");
-					}
-				});
-			}
-			
-			//Create drop button
-			drop = new TextButton("Drop", skin, "exp");
-			
-			//Add drop listener
-			drop.addListener( new ClickListener() {
-			   @Override
-			   public void clicked(
-				   InputEvent event, float x, float y ) {
-				   dropItem( name );
-				   updateItems();
-			   }     
-			});
-			
-			//Add the type icon
-			if (!type.contains("weapon"))
-				img = getIcon(type);
-			else img = getWepIcon(Double.parseDouble(range));
-			img.setScaling(Scaling.none);
-			imgTable.add(img).row();
-
-			//Add the button table
-			buttonT = new Table();
-			if (type.contains("consumable")) {
-				buttonT.add(equip).left().width(65).fillX().expandX();
-				buttonT.add(use).center().width(65).padLeft(15).expandX();
-			} else if (!type.contains("weapon") || type.contains("two-handed"))
-				buttonT.add(equip).left().width(65).fillX().expandX();
-			else
-				wepButtons(itm, buttonT);
-			buttonT.add(drop).right().width(65).fillX().expandX();
-
-			//Add the dividing bar to the bottom of the item label
-			invItemsTable.row();
-			invItemsTable.add(buttonT).fillX().expandX().colspan(3).row();
-			invItemsTable.add( getImage( "bar" ) ).colspan(3)
-				.fillX().expandX().row();
+			addItem(itemsList.get(i));
 		}
+	}
+	/*
+	Add an item and its button components to the end of the inventory table
+	*/
+	private void addItem(final Item itm)
+	{
+		//Get String values from item for labels
+		final String name	= itm.name;
+		String desc		= itm.description;
+		String type		= itm.type;
+		String hitChance	= itm.hitChance.toString();
+		String critChance	= itm.critChance.toString();
+		String critMult		= itm.critMultiplier.toString();
+		String range		= itm.range.toString();
+		String damage		= itm.damage.toString();
+
+		//Create nested tables
+		Table imgTable = new Table();
+		Table txtTable = new Table();
+		Table buttonT = new Table();
+		Label descL = new Label(desc.replace("_", " ") , skin);
+
+		TextButton equip;
+		TextButton drop;
+		TextButton use = new TextButton("ERROR", skin);
+		Image img;
+
+		invItemsTable.add(imgTable).right();
+		invItemsTable.add(txtTable).expandX().fillX();
+		txtTable.padLeft(20);
+
+		//Add item name
+		txtTable.left().add(
+			new Label( name.replace("_", " "), skin, "big"))
+			.colspan(5).expandX().fillX();
+		txtTable.row();
+		descL.setWrap(true);
+
+		//Add description
+		txtTable.left().add(descL).padBottom(5).colspan(6).fillX().expandX().row();
+
+		//Add stats
+		if (type.contains("weapon")) {
+			addStat(txtTable, "statDamage", damage);
+			addStat(txtTable, "stathitChance", hitChance);
+			addStat(txtTable, "statRange", range);
+			addStat(txtTable, "statCritChance", critChance);
+			addStat(txtTable, "statCritMult", critMult);
+		} else {
+			txtTable.add(new Label("", skin)).padBottom(48).row();
+		}
+
+
+		//Create use/equip button
+		equip = new TextButton("Equip", skin, "exp");
+		if (!type.contains("two-handed"))
+			equip.addListener( new InvListener("equip", p, itm));
+		else
+			equip.addListener( new InvListener("equipR", p, itm));
+		if (type.contains("consumable")) {
+			use = new TextButton("Use", skin, "exp");
+			use.addListener(new InvListener("use", p, itm));
+		}
+		
+		//Create drop button
+		drop = new TextButton("Drop", skin, "exp");
+		drop.addListener( new ClickListener() {
+		   @Override
+		   public void clicked(
+			   InputEvent event, float x, float y ) {
+			   dropItem( name );
+			   updateItems();
+		   }     
+		});
+
+		//Add the type icon
+		img = getIcon(itm);
+		img.setScaling(Scaling.none);
+		imgTable.add(img).row();
+
+		//Add the button table
+		if (type.contains("consumable")) {
+			buttonT.add(equip).right().width(65).padLeft(5);
+			buttonT.add(use).right().width(65).padLeft(5);
+		} else if (!type.contains("weapon")||type.contains("two-handed"))
+			buttonT.add(equip).right().width(65).padLeft(5);
+		else
+			wepButtons(itm, buttonT);
+		buttonT.add(drop).right().width(65).padLeft(5);
+
+		//Add the dividing bar to the bottom of the item label
+		invItemsTable.row();
+		invItemsTable.add(buttonT).right().padTop(15).expandX().colspan(2).row();
+		invItemsTable.add(getImage("bar")).colspan(3).fillX().expandX().row();
+	}
+	
+	private void addStat(Table t, String s, String stat)
+	{
+		addIcon(s, t);
+		t.left().add(new Label(stat, skin)).left().fillX().expandX();
 	}
 	
 	//Drop an item from the inventory
@@ -299,8 +259,9 @@ public class MenuInventory extends SubMenu {
 	}
 	
 	//Get the item's overall type icon
-	private Image getIcon(String s)
+	private Image getIcon(Item itm)
 	{
+		String s = itm.type;
 		if (
 			s.equals("consumable"))
 			return getImage("item" + s);
@@ -313,7 +274,12 @@ public class MenuInventory extends SubMenu {
 			s.contains("feet") ||
 			s.contains("rings"))
 			return getImage("itemArmor");
-		else
+		else if (s.contains("weapon")) {
+			if (itm.range > 1)
+				return getImage("itemRanged");
+			else
+				return getImage("itemMelee");
+		} else
 			return getImage("itemUnknown");
 	}
 	
@@ -343,25 +309,10 @@ public class MenuInventory extends SubMenu {
 		l = new TextButton("Equip L", skin, "exp");
 		r = new TextButton("Equip R", skin, "exp");
 		
-		l.addListener(new ClickListener() {
-			@Override
-			public void clicked(
-				InputEvent event, float x, float y ) {
-				System.out.println(itm.name + "L hand");
-				p.inventory.equiped.equipWeapon(itm, "left");
-			}
-		});
+		l.addListener(new InvListener("equipL", p, itm));
+		r.addListener(new InvListener("equipR", p, itm));
 		
-		r.addListener(new ClickListener() {
-			@Override
-			public void clicked(
-				InputEvent event, float x, float y ) {
-				System.out.println(itm.name + "R hand");
-				p.inventory.equiped.equipWeapon(itm, "right");
-			}
-		});
-		
-		t.add(l).left().width(65).fillX().expandX().colspan(2);
-		t.add(r).center().width(65).fillX().expandX().colspan(2);
+		t.add(l).right().width(65);
+		t.add(r).right().width(65).padLeft(5);
 	}
 }
