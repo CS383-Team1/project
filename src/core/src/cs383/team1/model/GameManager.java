@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public final class GameManager implements GameManagerInterface {
 	public static final GameManager instance = new GameManager();
 
-	private AreaManager areas;
+	public AreaManager areas;
 	private StateManager states;
         private DialogueBox dialogue;
         private CombatManager combat;
@@ -32,7 +32,7 @@ public final class GameManager implements GameManagerInterface {
         private Position returnPos;
         private Entity temp;
         private DialogueBox chatBox = new DialogueBox();
-        private int keyPressed;
+        public int keyPressed;
         private List<String> msg;
 
 
