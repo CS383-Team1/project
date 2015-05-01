@@ -23,14 +23,7 @@ import java.util.ArrayList;
  *
  * @author Lance
  */
-//TODO:
-/*
-- Make equipping an item remove it from the inventory
-- Make unequipping an item add it back to the inventory
-- (NOT HERE) Add unequip buttons to the character/equip menu
-- (NOT HERE) Add ring/consumable scrollpane in character/equip menu
-- (NOT HERE) Make Interaction Menu just display the option for the faced entity
-*/
+
 public class MenuInventory extends SubMenu {
 	private SplitPane invSp;
 	private ScrollPane invScroll;

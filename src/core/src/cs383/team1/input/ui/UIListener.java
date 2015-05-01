@@ -19,22 +19,23 @@ public class UIListener extends InputListener{
 	MessageBox msg;
 	Player player;
 	InteractionMenu interact;
-	
-	final AreaManager areas = GameManager.instance.areas;
+	Interaction interaction;
 
+	final AreaManager areas = GameManager.instance.areas;
 	
 	public UIListener(
 		Stage s,
 		Player p,
 		MainMenu m,
 		MessageBox mb,
-		InteractionMenu i)
+		Interaction inter)
 	{
 		stage = s;
 		menu = m;
 		msg = mb;
 		player = p;
-		interact = i;
+//		interact = i;
+		interaction = inter;
 	}
 	
 	@Override
@@ -56,9 +57,10 @@ public class UIListener extends InputListener{
 			}
 			break;
 		case (Input.Keys.ESCAPE) :
-			if (menu.menu.isVisible())
+			interaction.setVisible(false);
+			if (menu.menu.isVisible()) {
 				menu.menu().setVisible(false);
-			else {
+			} else {
 				menu.menu().setVisible(true);
 				menu.menuI.getPlayerItems();
 				menu.menuI.updateItems();
@@ -85,23 +87,53 @@ public class UIListener extends InputListener{
 				} return true;
 			}
 			break;
-		case (Input.Keys.DOWN) :
-			interact.getNext();
-			return (interact.interact.isVisible());
-		case (Input.Keys.UP) :
-			interact.getPrevious();
-			return (interact.interact.isVisible());
-		case (Input.Keys.LEFT)  :
-		case (Input.Keys.RIGHT) :
-			return (interact.interact.isVisible());
+//		case (Input.Keys.DOWN) :
+//			checkEntity(player.pos.x, player.pos.y-2);
+//			break;
+////			interact.getNext();
+////			return (interact.interact.isVisible());
+//		case (Input.Keys.UP) :
+//			checkEntity(player.pos.x, player.pos.y+2);
+//			break;
+////			interact.getPrevious();
+////			return (interact.interact.isVisible());
+//		case (Input.Keys.LEFT)  :
+//			checkEntity(player.pos.x-2, player.pos.y);
+//			break;
+//		case (Input.Keys.RIGHT) :
+//			checkEntity(player.pos.x+2, player.pos.y);
+//			break;
+////			return (interact.interact.isVisible());
+////			interaction
+////			interaction.areas.findEntity(pos)
 		default:
 			return false;
 		}
 		return false;
 	}
 	
-	private void useMenu(Position p)
+	private void useMenu(Position pos)
 	{
-		interact.useMenu(areas.findEntity(p), player.facing);
+//		interact.useMenu(areas.findEntity(pos), player.facing);
+		interaction.interact();
+	}
+	
+	public void checkEntity(int facing) {
+		int x = player.pos.x;
+		int y = player.pos.y;
+
+		switch (facing){
+		case 0: y+=1; break;
+		case 1: x+=1; break;
+		case 2: y-=1; break;
+		case 3: x-=1; break;
+		}
+
+		Position pos = new Position(x,  y);
+		Object o = areas.findEntity(pos);
+		if ((o!=null))
+			interaction.setupInteract(o, player.facing);
+		else
+			interaction.w.setVisible(false);
 	}
 }
