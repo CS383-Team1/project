@@ -133,7 +133,7 @@ public class UIListener extends InputListener{
 		Object o = areas.findEntity(pos);
 		if ((o!=null))
 			interaction.setupInteract(o, player.facing);
-		else
+                else if (interaction.w.isVisible())
 			interaction.w.setVisible(false);
 	}
 }

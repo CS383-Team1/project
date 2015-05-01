@@ -46,7 +46,6 @@ public class UIDisplay extends Display{
 			combat.updateAttacks();
 		} else if ( player.roaming && combat.visible()) {
 			combat.combat().setVisible(false);
-//			combat.changeMenu("MAIN");
 		}
 		if (player.zeroFloat())
 			uiListen.checkEntity(player.facing);
