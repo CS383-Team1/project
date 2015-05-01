@@ -13,11 +13,13 @@ public class InvListener extends ClickListener{
 	
 	private Player p;
 	private Item itm;
-	String type;
+	private MenuInventory menu;
+	private String type;
 	
-	public InvListener(String s, Player player, Item i) {
+	public InvListener(MenuInventory m, String s, Player player, Item i) {
 		p = player;
 		itm = i;
+		menu = m;
 		if (s.contains("equip")||s.contains("use"))
 			type = s;
 		else
@@ -26,15 +28,22 @@ public class InvListener extends ClickListener{
 	
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		if (type.equals("equip"))
+		if (type.equals("equip")) {
 			p.inventory.equiped.equip(itm);
-		else if (type.equals("equipL"))
+			menu.updateItems();
+		}
+		else if (type.equals("equipL")) {
 			p.inventory.equiped.equipWeapon(itm, "left");
-		else if (type.equals("equipR"))
+			menu.updateItems();
+		}
+		else if (type.equals("equipR")) {
 			p.inventory.equiped.equipWeapon(itm, "right");
-		else if (type.equals("use"))
+			menu.updateItems();
+		}
+		else if (type.equals("use")) {
 			System.out.println("USE ITEM");
-		else
+			menu.updateItems();
+		} else
 			System.out.println("NOT SUPPORTED BUTTON");
 	}
 	

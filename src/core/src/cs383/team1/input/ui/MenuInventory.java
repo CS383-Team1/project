@@ -1,5 +1,6 @@
 package cs383.team1.input.ui;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -10,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Scaling;
+import cs383.team1.inventory.Equipment;
 import cs383.team1.inventory.Inventory;
 import cs383.team1.inventory.Item;
 import cs383.team1.model.GameManager;
@@ -23,9 +25,6 @@ import java.util.ArrayList;
  */
 //TODO:
 /*
-- Make items display relative stats (+1, -2, etc.)
-- Make relative stat display work for BOTH hands for weapons (if 1h)
-- Make icons reflect 1-h or 2-h weapons
 - Make equipping an item remove it from the inventory
 - Make unequipping an item add it back to the inventory
 - (NOT HERE) Add unequip buttons to the character/equip menu
@@ -114,6 +113,10 @@ public class MenuInventory extends SubMenu {
 		TextButton drop;
 		TextButton use = new TextButton("ERROR", skin);
 		Image img;
+		
+		Item e1;
+		Item e2;
+		
 
 		invItemsTable.add(imgTable).right();
 		invItemsTable.add(txtTable).expandX().fillX();
@@ -122,34 +125,30 @@ public class MenuInventory extends SubMenu {
 		//Add item name
 		txtTable.left().add(
 			new Label( name.replace("_", " "), skin, "big"))
-			.colspan(5).expandX().fillX();
+			.colspan(10).expandX().fillX();
 		txtTable.row();
 		descL.setWrap(true);
 
 		//Add description
-		txtTable.left().add(descL).padBottom(5).colspan(6)
+		txtTable.left().add(descL).padBottom(5).colspan(10)
 			.fillX().expandX().row();
 
 		//Add stats
 		if (type.contains("weapon")) {
-			addStat(txtTable, "statDamage", damage);
-			addStat(txtTable, "stathitChance", hitChance);
-			addStat(txtTable, "statRange", range);
-			addStat(txtTable, "statCritChance", critChance);
-			addStat(txtTable, "statCritMult", critMult);
-		} else {
+			statWpn(txtTable, itm);
+			txtTable.row();
+		} else
 			txtTable.add(new Label("", skin)).padBottom(48).row();
-		}
 
 		//Create use/equip button
 		equip = new TextButton("Equip", skin, "exp");
 		if (!type.contains("two-handed"))
-			equip.addListener( new InvListener("equip", p, itm));
+			equip.addListener( new InvListener(this, "equip", p, itm));
 		else
-			equip.addListener( new InvListener("equipR", p, itm));
+			equip.addListener( new InvListener(this, "equipR", p, itm));
 		if (type.contains("consumable")) {
 			use = new TextButton("Use", skin, "exp");
-			use.addListener(new InvListener("use", p, itm));
+			use.addListener(new InvListener(this, "use", p, itm));
 		}
 		
 		//Create drop button
@@ -189,10 +188,58 @@ public class MenuInventory extends SubMenu {
 			.fillX().expandX().row();
 	}
 	
-	private void addStat(Table t, String s, String stat)
+	/*
+	Adds the stat icons, numbers, and comparisons to the given table t
+	*/
+	private void statWpn(Table t, Item itm)
 	{
-		addIcon(s, t);
-		t.left().add(new Label(stat, skin)).left().fillX().expandX();
+		Table sub;
+		
+		Item e1 = p.inventory.equiped.leftWeapon;
+		Item e2 = p.inventory.equiped.rightWeapon;
+		
+		sub = new Table();
+		sub.add(new Label("L: ", skin)).bottom().row();
+		sub.add(new Label("R: ", skin)).bottom().row();
+		t.add(sub).bottom();
+		
+		t.add(statWpnComp("statDamage", itm.damage, e1.damage, e2.damage))
+			.fillX().expandX();
+		
+		t.add(statWpnComp("statHitChance", itm.hitChance, e1.hitChance, e2.hitChance))
+			.fillX().expandX();
+		
+		t.add(statWpnComp("statRange", itm.range, e1.range, e2.range))
+			.fillX().expandX();
+		
+		t.add(statWpnComp("statCritChance", itm.critChance, e1.critChance, e2.critChance))
+			.fillX().expandX();
+		
+		t.add(statWpnComp(
+			"statCritMult",
+			itm.critMultiplier,
+			e1.critMultiplier,
+			e2.critMultiplier)).fillX().expandX();
+	}
+	
+	/* 
+	Adds the stat and its comparative stats to the given table t
+	*/
+	private Table statWpnComp(String icn, Double i, double e1, double e2)
+	{
+		Table t;
+		t = new Table();
+
+		addIcon(icn, t);
+		t.left().add(new Label(i.toString(), skin))
+			.left().fillX().expandX().row();
+		t.add(cmpStat(e1, i)).colspan(2).right().expandX();
+		t.row();
+		t.add(cmpStat(e2, i)).colspan(2).right().expandX();
+		
+		t.padRight(15);
+		
+		return t;
 	}
 	
 	/*
@@ -235,19 +282,20 @@ public class MenuInventory extends SubMenu {
 		return -1;
 	}
 	
-	/*Currently deprecated, but still here for potential, Frankensteined
-	re-implementation*/
-	private Label cmpItem( int stat, int item, boolean positive )
-	{
-		if (positive)
-			return ( new Label(
-				( "+" + Integer.toString( item - stat ) ),
-				skin,
-				"green" ) );
-		return ( new Label(
-			( "-" + Integer.toString( stat - item ) ),
-			skin,
-			"red" ) );
+	private Label cmpStat(Double d1, Double d2) {
+		Double diff = d2 - d1;
+		String out = Double.toString(diff);
+		Color c;
+		if (diff < 0) {
+			c = new Color(1, 0, 0, 1);
+		} else if (diff > 0) {
+			c = new Color(0, 1, 0, 1);
+			out = "+".concat(out);
+		} else {
+			c = new Color(1, 1, 1, 1);
+			out = "+".concat(out);
+		}
+		return new Label(out, skin, "default-font", c);
 	}
 
 	//Copy the list of items from some source
@@ -307,22 +355,14 @@ public class MenuInventory extends SubMenu {
 		return getImage("itemUnknown");
 	}
 	
-	private Image getWepIcon(Double r)
-	{
-		if (r > 1)
-			return getImage("itemRanged");
-		else
-			return getImage("itemMelee");
-	}
-	
 	//Add the stat icon to the current item;  Used for line shortening
-	private void addIcon(String s, Table txtTable)
+	private void addIcon(String s, Table t)
 	{
 		Image img;
 
 		img = getImage(s);
 		img.setScaling(Scaling.none);
-		txtTable.add(img).left().fillX().expandX().width(24);
+		t.add(img).left().fillX().expandX().width(24);
 	}
 
 	private void wepButtons(final Item itm, Table t)
@@ -333,8 +373,8 @@ public class MenuInventory extends SubMenu {
 		l = new TextButton("Equip L", skin, "exp");
 		r = new TextButton("Equip R", skin, "exp");
 		
-		l.addListener(new InvListener("equipL", p, itm));
-		r.addListener(new InvListener("equipR", p, itm));
+		l.addListener(new InvListener(this, "equipL", p, itm));
+		r.addListener(new InvListener(this, "equipR", p, itm));
 		
 		t.add(l).right().width(65);
 		t.add(r).right().width(65).padLeft(5);
