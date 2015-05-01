@@ -120,9 +120,10 @@ public class Equipment {
     
     public Item unequip(Item t){
         Item ret = new Item();
-        if(head.equals(t)){ret = head; head = new Item();}else 
+        if(head.equals(t)){ret = head;head = new Item();}else 
         if(chest.equals(t)){ret = chest;chest = new Item();}else
-        if(legs.equals(t)){ret = legs;chest = new Item();}else
+        if(legs.equals(t)){ret = legs;legs = new Item();}else
+        if(hands.equals(t)){ret = hands;hands = new Item();}else
         if(feet.equals(t)){ret = feet;feet = new Item();}else
         if(neck.equals(t)){ret = neck;neck = new Item();}
         for(int i=0;i<rings.size();i++){

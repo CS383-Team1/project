@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Scaling;
 import cs383.team1.inventory.Equipment;
 import cs383.team1.inventory.Item;
@@ -74,6 +75,7 @@ public class MenuEquip extends SubMenu{
 		items = new Table();
 		
 		getPlayer();
+		Equipment e = p.inventory.equiped;
 		
 		//Generate display table
 		Image img = getImage("equip");
@@ -81,23 +83,12 @@ public class MenuEquip extends SubMenu{
 		displayT.add(img).fill().expand().left();
 		
 		//Generate armor table
-		armorT.add(new Label("HEAD: ", skin, "big")).padBottom(15);
-		armorT.add(headL).width(30).expandX().left().padBottom(15).row();
-		
-		armorT.add(new Label("NECK: ", skin, "big")).padBottom(15);
-		armorT.add(neckL).width(30).expandX().left().padBottom(15).row();
-		
-		armorT.add(new Label("BODY: ", skin, "big")).padBottom(15);
-		armorT.add(bodyL).width(30).expandX().left().padBottom(15).row();
-		
-		armorT.add(new Label("HAND: ", skin, "big")).padBottom(15);
-		armorT.add(handL).width(30).expandX().left().padBottom(15).row();
-		
-		armorT.add(new Label("LEGS: ", skin, "big")).padBottom(15);
-		armorT.add(legsL).width(30).expandX().left().padBottom(15).row();
-		
-		armorT.add(new Label("FEET: ", skin, "big")).padBottom(15);
-		armorT.add(feetL).width(30).expandX().left().padBottom(15).row();
+		addArmor("HEAD: ", headL);
+		addArmor("NECK: ", neckL);
+		addArmor("BODY: ", bodyL);
+		addArmor("HAND: ", handL);
+		addArmor("LEGS: ", legsL);
+		addArmor("FEET: ", feetL);
 
 		//Generate stat table
 		updateStats();
@@ -147,10 +138,18 @@ public class MenuEquip extends SubMenu{
 		equipT.add(armorT).left().fillX().expand().row();
 		equipT.add(getImage("bar")).colspan(2).fillX().expandX().row();
 		equipT.add(items).fillX().expandX().colspan(2);
-//		equipT.add(itemLT).fillX().expandX().left();
-//		equipT.add(itemRT).fillX().expandX().right();
 	}
 	
+	private void addArmor(String s, Label l)
+	{
+		TextButton b = new TextButton("UNEQUIP", skin, "exp");
+
+		armorT.add(new Label(s, skin, "big"));
+		armorT.add(l).width(30).expandX().left().row();
+		armorT.add(b).padBottom(2).left().row();
+		b.addListener(new EquipListener(this, 
+			s.substring(0, 4).toLowerCase(), p));
+	}
 	
 	public Table equipT(){
 		return equipT;
@@ -169,14 +168,17 @@ public class MenuEquip extends SubMenu{
 		if (e.neck!= null && !e.neck.name.equals("Unknown"))
 			neckL.setText(e.neck.name.replace("_", " "));
 		else neckL.setText("EMPTY");
+
 		
 		if (e.chest!= null && !e.chest.name.equals("Unknown"))
 			bodyL.setText(e.chest.name.replace("_", " "));
 		else bodyL.setText("EMPTY");
 
+
 		if (e.hands!= null && !e.hands.name.equals("Unknown"))
 			handL.setText(e.hands.name.replace("_", " "));
 		else handL.setText("EMPTY");
+
 
 		if (e.legs!= null && !e.legs.name.equals("Unknown"))
 			legsL.setText(e.legs.name.replace("_", " "));
@@ -195,6 +197,8 @@ public class MenuEquip extends SubMenu{
 			itemR = e.rightWeapon;
 		else { itemR = new Item("EMPTY", "", "weapon"); }
 		itemRName.setText(itemR.name.replace("_", " "));
+
+//		updateButtons();
 	}
 	
 	private void updateStats(){
@@ -202,6 +206,16 @@ public class MenuEquip extends SubMenu{
 		mpL.setText(Integer.toString(p.mp));
 		apL.setText(Integer.toString(p.ap));
 	}
+	
+//	private void updateButtons(){
+//		Equipment e = p.inventory.equiped;
+//		((EquipListener) bHead.getListeners().get(0)).setItem(e.head);
+//		((EquipListener) bNeck.getListeners().get(0)).setItem(e.neck);
+//		((EquipListener) bBody.getListeners().get(0)).setItem(e.chest);
+//		((EquipListener) bHand.getListeners().get(0)).setItem(e.hands);
+//		((EquipListener) bLegs.getListeners().get(0)).setItem(e.legs);
+//		((EquipListener) bFeet.getListeners().get(0)).setItem(e.feet);
+//	}
 	
 	public void update() {
 		getPlayer();

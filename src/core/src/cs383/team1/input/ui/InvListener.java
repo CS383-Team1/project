@@ -31,16 +31,13 @@ public class InvListener extends ClickListener{
 		if (type.equals("equip")) {
 			p.inventory.equiped.equip(itm);
 			menu.updateItems();
-		}
-		else if (type.equals("equipL")) {
+		} else if (type.equals("equipL")) {
 			p.inventory.equiped.equipWeapon(itm, "left");
 			menu.updateItems();
-		}
-		else if (type.equals("equipR")) {
+		} else if (type.equals("equipR")) {
 			p.inventory.equiped.equipWeapon(itm, "right");
 			menu.updateItems();
-		}
-		else if (type.equals("use")) {
+		} else if (type.equals("use")) {
 			System.out.println("USE ITEM");
 			menu.updateItems();
 		} else
