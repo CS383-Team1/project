@@ -161,33 +161,13 @@ public class MenuEquip extends SubMenu{
 		p = gm.areas.current.player;
 		Equipment e = p.inventory.equiped;
 
-		if (e.head!= null && !e.head.name.equals("Unknown"))
-			headL.setText(e.head.name.replace("_", " "));
-		else headL.setText("EMPTY");
+		checkNullItem(e.head,  headL);
+		checkNullItem(e.neck,  neckL);
+		checkNullItem(e.chest, bodyL);
+		checkNullItem(e.hands, handL);
+		checkNullItem(e.legs,  legsL);
+		checkNullItem(e.feet,  feetL);
 
-		if (e.neck!= null && !e.neck.name.equals("Unknown"))
-			neckL.setText(e.neck.name.replace("_", " "));
-		else neckL.setText("EMPTY");
-
-		
-		if (e.chest!= null && !e.chest.name.equals("Unknown"))
-			bodyL.setText(e.chest.name.replace("_", " "));
-		else bodyL.setText("EMPTY");
-
-
-		if (e.hands!= null && !e.hands.name.equals("Unknown"))
-			handL.setText(e.hands.name.replace("_", " "));
-		else handL.setText("EMPTY");
-
-
-		if (e.legs!= null && !e.legs.name.equals("Unknown"))
-			legsL.setText(e.legs.name.replace("_", " "));
-		else legsL.setText("EMPTY");
-
-		if (e.feet!= null && !e.feet.name.equals("Unknown"))
-			feetL.setText(e.feet.name.replace("_", " "));
-		else feetL.setText("EMPTY");
-		
 		if (e.leftWeapon!= null && !e.leftWeapon.name.equals("Unknown"))
 			itemL = e.leftWeapon;
 		else { itemL = new Item("EMPTY", "", "weapon"); }
@@ -197,8 +177,12 @@ public class MenuEquip extends SubMenu{
 			itemR = e.rightWeapon;
 		else { itemR = new Item("EMPTY", "", "weapon"); }
 		itemRName.setText(itemR.name.replace("_", " "));
-
-//		updateButtons();
+	}
+	
+	private void checkNullItem(Item itm, Label l){
+		if (itm!= null && !itm.name.equals("Unknown"))
+			l.setText(itm.name.replace("_", " "));
+		else l.setText("EMPTY");
 	}
 	
 	private void updateStats(){
@@ -206,16 +190,6 @@ public class MenuEquip extends SubMenu{
 		mpL.setText(Integer.toString(p.mp));
 		apL.setText(Integer.toString(p.ap));
 	}
-	
-//	private void updateButtons(){
-//		Equipment e = p.inventory.equiped;
-//		((EquipListener) bHead.getListeners().get(0)).setItem(e.head);
-//		((EquipListener) bNeck.getListeners().get(0)).setItem(e.neck);
-//		((EquipListener) bBody.getListeners().get(0)).setItem(e.chest);
-//		((EquipListener) bHand.getListeners().get(0)).setItem(e.hands);
-//		((EquipListener) bLegs.getListeners().get(0)).setItem(e.legs);
-//		((EquipListener) bFeet.getListeners().get(0)).setItem(e.feet);
-//	}
 	
 	public void update() {
 		getPlayer();
