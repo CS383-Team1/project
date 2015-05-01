@@ -193,23 +193,32 @@ public class MenuInventory extends SubMenu {
 		sub.add(new Label("R: ", skin)).bottom().row();
 		t.add(sub).bottom();
 		
-		t.add(statWpnComp("statDamage", itm.damage, e1.damage, e2.damage))
+		t.add(statWpnComp("statDamage",
+			itm.damage,
+			e1.damage,
+			e2.damage))
 			.fillX().expandX();
-		
-		t.add(statWpnComp("statHitChance", itm.hitChance, e1.hitChance, e2.hitChance))
+		t.add(statWpnComp("statHitChance",
+			itm.hitChance,
+			e1.hitChance,
+			e2.hitChance))
 			.fillX().expandX();
-		
-		t.add(statWpnComp("statRange", itm.range, e1.range, e2.range))
+		t.add(statWpnComp("statRange",
+			itm.range,
+			e1.range,
+			e2.range))
 			.fillX().expandX();
-		
-		t.add(statWpnComp("statCritChance", itm.critChance, e1.critChance, e2.critChance))
+		t.add(statWpnComp("statCritChance",
+			itm.critChance,
+			e1.critChance,
+			e2.critChance))
 			.fillX().expandX();
-		
 		t.add(statWpnComp(
 			"statCritMult",
 			itm.critMultiplier,
 			e1.critMultiplier,
-			e2.critMultiplier)).fillX().expandX();
+			e2.critMultiplier))
+			.fillX().expandX();
 	}
 	
 	/* 

@@ -109,21 +109,27 @@ public class CombatMenu {
 			Gdx.app.error("Menu changeMenu", "NYI option: " + s);
 	}
 	
+	/*
+	Update the attack UI to reflect current move list
+	*/
 	public void updateAttacks() {
-		TextButton atkButton;
 		attacks.clear();
 		attacks.addAll(p.moves);
-		
+
 		atkTable.clearChildren();
-		
+
 		atkTable.add(getImage("bar")).colspan(2).padBottom(10)
 			.fillX().expandX().row();
+
 		for (int i = 0; i < attacks.size(); i++) {
 			if (!attacks.get(i).name.toLowerCase().equals("null"))
 				addMove(attacks.get(i));
 		}
 	}
 	
+	/*
+	Add a move to the end of the attack list menu
+	*/
 	private void addMove(final Move move) {
 		final String atk = atkName(move.name);
 		String dmg  = Double.toString(move.getDamage());
@@ -133,32 +139,38 @@ public class CombatMenu {
 
 		TextButton atkButton = new TextButton("SELECT", skin, "exp");
 		Label name = new Label(atk, skin, "big");
-		Label result = new Label(dmg, skin, "big");
+		Label effect = new Label(dmg, skin, "big");
 		
+		//Add move type icon
 		img = getImage("move" + type);
 		img.setScaling(Scaling.none);
 		atkTable.add(img).left().fillX().expandX();
 		atkTable.add(name).left().fillX().expandX().row();
 
+		//Cut move names to 12 characters
 		if (atk.length() > 12)
 			name.setText(atk.subSequence(0, 12));
 
-		atkTable.add(result).colspan(2).padLeft(15).left().row();
+		//Add the effects of the move as a label (X.X damage, etc.)
+		atkTable.add(effect).colspan(2).padLeft(15).left().row();
+		//Change the name scheme/color to reflect move effect
 		if (move.getDamage() > 0){
-			result.setColor(1, 0, 0, 1);
-			result.setText(dmg + " damage");
+			effect.setColor(1, 0, 0, 1);
+			effect.setText(dmg + " damage");
 		} else if (move.getDamage() < 0) {
-			result.setColor(0, 1, 0, 1);
-			result.setText("+" + dmg.substring(1) + " health");
+			effect.setColor(0, 1, 0, 1);
+			effect.setText("+" + dmg.substring(1) + " health");
 		} else if (move.getDamage() == 0) {
-			result.setText("");
+			effect.setText("");
 			atkTable.add(new Label("", skin)).colspan(2)
 				.padBottom(32).row();
 		}
 		
+		//Add the block chance
 		atkTable.add(new Label(blk + "% block chance", skin))
 			.colspan(2).padLeft(10).padBottom(15).left().row();
 
+		//Create the atkButton listener - selects the specified move
 		atkButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(
@@ -169,10 +181,14 @@ public class CombatMenu {
 			}
 		});
 		
+		//Adds the "SELECT" button to the UI
 		atkTable.add(atkButton).colspan(2).padBottom(10)
 			.fillX().expandX().row();
 	}
 	
+	/*
+	Get the current move type. For use with move icon type
+	*/
 	private String moveType(Move m)
 	{
 		Double d = m.getDamage();
