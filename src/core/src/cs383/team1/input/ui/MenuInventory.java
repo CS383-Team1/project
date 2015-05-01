@@ -84,9 +84,8 @@ public class MenuInventory extends SubMenu {
 			invItemsTable.add( getImage( "bar" ) ).colspan(3)
 				.fillX().expandX().row();
 		
-		for (int i = 0; i < itemsList.size(); i++) {
+		for (int i = 0; i < itemsList.size(); i++)
 			addItem(itemsList.get(i));
-		}
 	}
 	/*
 	Add an item and its button components to the end of the inventory table
@@ -97,11 +96,6 @@ public class MenuInventory extends SubMenu {
 		final String name	= itm.name;
 		String desc		= itm.description;
 		String type		= itm.type;
-		String hitChance	= itm.hitChance.toString();
-		String critChance	= itm.critChance.toString();
-		String critMult		= itm.critMultiplier.toString();
-		String range		= itm.range.toString();
-		String damage		= itm.damage.toString();
 
 		//Create nested tables
 		Table imgTable = new Table();
@@ -114,10 +108,7 @@ public class MenuInventory extends SubMenu {
 		TextButton use = new TextButton("ERROR", skin);
 		Image img;
 		
-		Item e1;
-		Item e2;
-		
-
+		//Add the image and text tables to the main table
 		invItemsTable.add(imgTable).right();
 		invItemsTable.add(txtTable).expandX().fillX();
 		txtTable.padLeft(20);
@@ -143,9 +134,9 @@ public class MenuInventory extends SubMenu {
 		//Create use/equip button
 		equip = new TextButton("Equip", skin, "exp");
 		if (!type.contains("two-handed"))
-			equip.addListener( new InvListener(this, "equip", p, itm));
+			equip.addListener(new InvListener(this,"equip" ,p,itm));
 		else
-			equip.addListener( new InvListener(this, "equipR", p, itm));
+			equip.addListener(new InvListener(this,"equipR",p,itm));
 		if (type.contains("consumable")) {
 			use = new TextButton("Use", skin, "exp");
 			use.addListener(new InvListener(this, "use", p, itm));
@@ -171,13 +162,12 @@ public class MenuInventory extends SubMenu {
 		if (type.contains("consumable")) {
 			buttonT.add(equip).right().width(65).padLeft(5);
 			buttonT.add(use).right().width(65).padLeft(5);
-		} else if (
-				!type.contains("weapon")||
-				type.contains("two-handed")
-			  )
+		} else if (!type.contains("weapon")||
+			    type.contains("two-handed"))
 			buttonT.add(equip).right().width(65).padLeft(5);
 		else
 			wepButtons(itm, buttonT);
+
 		buttonT.add(drop).right().width(65).padLeft(5);
 
 		//Add the dividing bar to the bottom of the item label

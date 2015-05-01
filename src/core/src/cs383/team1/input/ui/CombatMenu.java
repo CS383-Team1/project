@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Scaling;
 import cs383.team1.combat.Move;
 import static cs383.team1.input.ui.SubMenu.getImage;
 import cs383.team1.model.GameManager;
@@ -37,7 +39,7 @@ public class CombatMenu {
 	
 	Skin skin;
 	
-	Player player = GameManager.instance.areas.current.player;
+	Player p = GameManager.instance.areas.current.player;
 	
 	GameManager gm = GameManager.instance;
 	
@@ -100,7 +102,6 @@ public class CombatMenu {
 		if (s.equals("MAIN"))
 			cmdScroll.setWidget(cmdGroup);
 		else if (s.equals("ATTACK")) {
-//			combat.setSecondWidget(atkTable);
 			cmdScroll.setWidget(atkTable);
 			updateAttacks();
 		}
@@ -111,48 +112,77 @@ public class CombatMenu {
 	public void updateAttacks() {
 		TextButton atkButton;
 		attacks.clear();
-		attacks.addAll(player.moves);
+		attacks.addAll(p.moves);
 		
 		atkTable.clearChildren();
 		
+		atkTable.add(getImage("bar")).colspan(2).padBottom(10)
+			.fillX().expandX().row();
 		for (int i = 0; i < attacks.size(); i++) {
-			final int index = i;
-			final String atk = atkName(attacks.get(i).name);
-			
-			if (atk.toLowerCase().equals("null"))
-				continue;
-			String dmg = Double.toString(attacks.get(i)
-				.getDamage());
-			String blk = Integer.toString(attacks.get(i)
-				.getBlockPercent());
-
-			atkButton = new TextButton( atk, skin, "expBig" );
-			if (atk.length() > 12)
-				atkButton.setText(atk.substring(0, 12) + "_");
-
-			atkButton.addListener(new ClickListener() {
-				@Override
-				public void clicked(
-					InputEvent event, float x, float y ) {
-					gm.combat.battles.get(0).turn();
-					player.addAttack(attacks.get(index));
-					gm.msg.add("Player uses: " + atk);
-				}
-			});
-			atkTable.add(atkButton).colspan(2)
-				.expandX().fillX().row();
-			
-			if (attacks.get(i).getDamage() > -1)
-				atkTable.add(new Label(dmg + " dmg", skin, "red"))
-					.padLeft(10).left().row();
-			else
-				atkTable.add(new Label("+" + dmg.substring(1) +
-					" health", skin, "green")).padLeft(10).left().row();
-
-			atkTable.add(new Label(blk + "% block", skin)).padLeft(10).padBottom(15)
-				.left().row();
-			
+			if (!attacks.get(i).name.toLowerCase().equals("null"))
+				addMove(attacks.get(i));
 		}
+	}
+	
+	private void addMove(final Move move) {
+		final String atk = atkName(move.name);
+		String dmg  = Double.toString(move.getDamage());
+		String blk  = Double.toString(move.getBlockPercent());
+		String type = moveType(move);
+		Image img;
+
+		TextButton atkButton = new TextButton("SELECT", skin, "exp");
+		Label name = new Label(atk, skin, "big");
+		Label result = new Label(dmg, skin, "big");
+		
+		img = getImage("move" + type);
+		img.setScaling(Scaling.none);
+		atkTable.add(img).left().fillX().expandX();
+		atkTable.add(name).left().fillX().expandX().row();
+
+		if (atk.length() > 12)
+			name.setText(atk.subSequence(0, 12));
+
+		atkTable.add(result).colspan(2).padLeft(15).left().row();
+		if (move.getDamage() > 0){
+			result.setColor(1, 0, 0, 1);
+			result.setText(dmg + " damage");
+		} else if (move.getDamage() < 0) {
+			result.setColor(0, 1, 0, 1);
+			result.setText("+" + dmg.substring(1) + " health");
+		} else if (move.getDamage() == 0) {
+			result.setText("");
+			atkTable.add(new Label("", skin)).colspan(2)
+				.padBottom(32).row();
+		}
+		
+		atkTable.add(new Label(blk + "% block chance", skin))
+			.colspan(2).padLeft(10).padBottom(15).left().row();
+
+		atkButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(
+			InputEvent event, float x, float y ) {
+				gm.combat.battles.get(0).turn();
+				p.addAttack(move);
+				gm.msg.add("Player uses:" + atk);
+			}
+		});
+		
+		atkTable.add(atkButton).colspan(2).padBottom(10)
+			.fillX().expandX().row();
+	}
+	
+	private String moveType(Move m)
+	{
+		Double d = m.getDamage();
+		int i = m.getBlockPercent();
+		if (d < 0)
+			return ("Heal");
+		else if (d == 0 || i >= 50)
+			return ("Block");
+		else
+			return ("Attack");
 	}
 	
 	public boolean visible() {
