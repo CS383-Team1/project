@@ -33,7 +33,6 @@ public class UIListener extends InputListener{
 		menu = m;
 		msg = mb;
 		player = p;
-//		interact = i;
 		interaction = inter;
 	}
 	
@@ -100,7 +99,6 @@ public class UIListener extends InputListener{
 	
 	private void useMenu(Position pos)
 	{
-//		interact.useMenu(areas.findEntity(pos), player.facing);
 		interaction.interact();
 	}
 	

@@ -89,7 +89,6 @@ public class Interaction {
 			gm.msg.add(((CoWorker)target).readNext());
 		} else if (target instanceof Item) {
 			p.inventory.pickUp((Item) target);
-//			p.addMove((Item) target);
 			gm.msg.add("Picked up " + ((Item) target).name);
 			gm.areas.current.entities.remove((Entity)target);
 		}

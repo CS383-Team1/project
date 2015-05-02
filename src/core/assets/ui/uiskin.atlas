@@ -294,3 +294,18 @@ custom-round-down
   orig: 12, 20
   offset: 0, 0
   index: -1
+custom-barBefore
+  rotate: false
+  xy: 78, 15
+  size: 9, 12
+  split: 1, 1, 1, 1
+  orig: 9, 12
+  offset: 0, 0
+  index: -1
+heart-knob
+  rotate: false
+  xy: 207, 20
+  size: 22, 21
+  orig: 22, 21
+  offset: 0, 0
+  index: -1

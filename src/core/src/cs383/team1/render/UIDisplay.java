@@ -54,6 +54,7 @@ public class UIDisplay extends Display{
 		stage.draw();
 		if (msg.toBottom())
 			msg.scrollBottom();
+		combat.incProgress();
 	}
 	
 	public void dispose()

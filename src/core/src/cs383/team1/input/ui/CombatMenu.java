@@ -67,7 +67,7 @@ public class CombatMenu {
 		cmdScroll.setScrollingDisabled(true, false);
 		cmdScroll.setFadeScrollBars(false);
 
-		countdown = new ProgressBar(0, 100, 1, false, skin);
+		countdown = new ProgressBar(0, 100, 1, false, skin, "custom-horizontal");
 		hud = new Table();
 		hud.add(countdown).left().top().fillX().expand();
 		hud.setX(0);
@@ -82,6 +82,7 @@ public class CombatMenu {
 		combat.setHeight((int)Gdx.graphics.getHeight()*(float)(4.8/5.8));
 		
 		//Ignoring selection menu (until more stuff is implemented)
+		countdown.setVisible(false);
 		changeMenu("ATTACK");
 	}
 	
@@ -207,5 +208,9 @@ public class CombatMenu {
 	
 	private String atkName(String n) {
 		return n.substring(0, 1).toUpperCase().concat(n.substring(1));
+	}
+	
+	public void incProgress() {
+		countdown.setValue(countdown.getValue()+1);
 	}
 }
