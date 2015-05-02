@@ -20,7 +20,7 @@ import cs383.team1.model.overworld.Tile;
  */
 public class Interaction {
 	Skin skin;
-	Table w;
+	public Table w;
 	Label l;
 	public Object target;
 	GameManager gm;
@@ -91,7 +91,7 @@ public class Interaction {
 			p.inventory.pickUp((Item) target);
 			p.addMove((Item) target);
 			gm.msg.add("Picked up " + ((Item) target).name);
-			gm.areas.current.entities.remove(target);
+			gm.areas.current.entities.remove((Entity)target);
 		}
 		target = null;
 	}

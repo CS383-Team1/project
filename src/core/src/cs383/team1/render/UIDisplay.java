@@ -49,6 +49,8 @@ public class UIDisplay extends Display{
 		}
 		if (player.zeroFloat())
 			uiListen.checkEntity(player.facing);
+		else if (interaction.w.isVisible())
+			interaction.w.setVisible(false);
 		stage.act();
 		stage.draw();
 		if (msg.toBottom())
@@ -66,7 +68,6 @@ public class UIDisplay extends Display{
 		stage = s;
 		msg = new MessageBox(skin);
 		menu = new MainMenu(skin);
-//		interact = new InteractionMenu(skin);
 		combat = new CombatMenu(skin);
 		interaction = new Interaction(skin, player);
 		
@@ -74,12 +75,10 @@ public class UIDisplay extends Display{
 
 		stage.addActor(msg.msg());
 		stage.addActor(menu.menu());
-//		stage.addActor(interact.interact());
 		stage.addActor(combat.combat());
 		stage.addActor(interaction.interaction());
 
 		menu.menu().setVisible(false);
-//		interact.interact().setVisible(false);
 		combat.combat().setVisible(false);
 		
 		stage.addListener(uiListen);

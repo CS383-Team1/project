@@ -87,25 +87,12 @@ public class UIListener extends InputListener{
 				} return true;
 			}
 			break;
-//		case (Input.Keys.DOWN) :
-//			checkEntity(player.pos.x, player.pos.y-2);
-//			break;
-////			interact.getNext();
-////			return (interact.interact.isVisible());
-//		case (Input.Keys.UP) :
-//			checkEntity(player.pos.x, player.pos.y+2);
-//			break;
-////			interact.getPrevious();
-////			return (interact.interact.isVisible());
-//		case (Input.Keys.LEFT)  :
-//			checkEntity(player.pos.x-2, player.pos.y);
-//			break;
-//		case (Input.Keys.RIGHT) :
-//			checkEntity(player.pos.x+2, player.pos.y);
-//			break;
-////			return (interact.interact.isVisible());
-////			interaction
-////			interaction.areas.findEntity(pos)
+		case (Input.Keys.DOWN) :
+		case (Input.Keys.UP) :
+		case (Input.Keys.LEFT)  :
+		case (Input.Keys.RIGHT) :
+			interaction.setVisible(false);
+			return false;
 		default:
 			return false;
 		}
