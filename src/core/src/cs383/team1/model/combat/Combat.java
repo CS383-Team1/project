@@ -71,7 +71,8 @@ public class Combat {
             }
         }
         
-        if(((allies.members.size() + enemies.members.size()) > 1) && (player.hp > 0) && npc.hp > 0){
+        if(((allies.members.size() + enemies.members.size()) > 1) 
+                && (player.hp > 0) && npc.hp > 0){
             playerBlockPercent = 1;
             for(Entity e : allies.members){
                 
@@ -84,14 +85,16 @@ public class Combat {
                     playerMove = player.attacks.get(0);
                     lastPlayerMove = player.attacks.indexOf(playerMove);
                     playerBlockPercent = playerMove.getBlockPercent();
-                    //If damage attribute in move instance is positive, then deal to npc hp, else add to player hp
+                    //If damage attribute in move instance is positive, 
+                    //then deal to npc hp, else add to player hp
                     if(player.attacks.get(0).getDamage() >= 0){
                         npc.hp -= player.attacks.get(0).getDamage() / npcBlockPercent;
                     }
                     else{
                         player.hp -= player.attacks.get(0).getDamage();
                     }
-                        System.out.println("Player attacking with move " + player.attacks.get(0).name);
+                        System.out.println("Player attacking with move " 
+                                + player.attacks.get(0).name);
                         player.removeAttack();
                     }
                     
@@ -103,36 +106,42 @@ public class Combat {
                     if(npc.consumableAttack()){
                         npcMove = npc.attacks.get(0);
                         npcBlockPercent = npcMove.getBlockPercent();
-                        System.out.println("Printing lastPlayerDamage: " + lastPlayerDamage);
+                        System.out.println("Printing lastPlayerDamage: " 
+                                + lastPlayerDamage);
                         lastPlayerDamage = npc.attacks.get(0).getDamage();
                         //Picking random player to attack
                         random = selectionGen.nextInt(allies.members.size());
                         player = (Player)allies.members.get(random);
-                        //If damage attribute in move instance is positive, then deal to player hp, else add to npc hp
+                        //If damage attribute in move instance is positive, 
+                        //then deal to player hp, else add to npc hp
                         if(npc.attacks.get(0).getDamage() >= 0){
                             player.hp -= damage / playerBlockPercent;
                         }else{
                             npc.hp -= player.attacks.get(0).getDamage();
                         }
                 
-                        System.out.println("NPC attacking with move " + npc.attacks.get(0).name);
+                        System.out.println("NPC attacking with move " 
+                                + npc.attacks.get(0).name);
                         npc.removeAttack();
                     }
                 }
         
-             System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
-		Main.gm.addMessage("Player HP: " + player.hp + "; NPC HP: " + npc.hp);
+             System.out.println("Printing player.hp : npc.hp : " 
+                     + player.hp + " " + npc.hp);
+		Main.gm.addMessage("Player HP: " 
+                        + player.hp + "; NPC HP: " + npc.hp);
 
         }else{
             player.roaming = true;
             //Add all items in reward inventory to player's inventory
             //if player wins
             if(npc.hp <= 0){
+                
                 for(Item i : reward.contents){
                     System.out.println("Giving reward: " + i.name);
                     player.inventory.pickUp(i);
                     player.addMove(i);
-                    npc.inventory.drop(i);
+                    //npc.inventory.drop(i);
                 }
             }
             
@@ -146,5 +155,4 @@ public class Combat {
         }
      return 0;   
     }
-    
 }

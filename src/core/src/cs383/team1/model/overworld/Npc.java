@@ -8,7 +8,7 @@ import cs383.team1.model.inventory.Item;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Npc implements Entity{
+public final class Npc implements Entity{
 	public static final int TYPE = 3;
         public boolean roaming = true;
         public int hp;
@@ -39,13 +39,13 @@ public class Npc implements Entity{
                 addMove("staple", 5, 1);
                 addMove("throw coffee in face", 3, 1);
                 addMove("drink coffee", -5, 1);
-                addMove(inventory.contents.get(0).name, inventory.contents.get(0).damage, 1);
+                //addMove(inventory.contents.get(0).name, 
+                   //     inventory.contents.get(0).damage, 1);
 	}
 
         //Basic Constructor for NPC
         //Takes a position and a dialogue text file name to use as a "script"
-	public Npc(Position p, String f)
-        {
+	public Npc(Position p, String f){
                 String [] lines;
                 String fileContents;
                 String quests;
@@ -73,13 +73,14 @@ public class Npc implements Entity{
                 }
                 //Add items to inventory of NPC: used later to give to player
                 //after defeat in battle
-                
+                /*
                 items = f.substring(f.indexOf("{name:"));//, f.indexOf("}"));
                 Item winnableItem = new Item(pos, items);
                 inventory.contents.add(winnableItem);
                 //Add move based on NPC's item read in from file
-                addMove(inventory.contents.get(0).name, inventory.contents.get(0).damage, 1);
-              
+                addMove(inventory.contents.get(0).name, 
+                        inventory.contents.get(0).damage, 1);
+              */
         }
 
         @Override
@@ -218,10 +219,6 @@ public class Npc implements Entity{
             moves.add(move);
         }
         
-        public void addMove(Move move){
-            moves.add(move);
-        }
-        
         public void removeMove(int index){
             moves.remove(index);
         }
@@ -231,7 +228,8 @@ public class Npc implements Entity{
             attacks.add(move);
         }
         
-        //Removes first move in list of attacks waiting to be processed by CombatManager
+        //Removes first move in list of attacks waiting 
+        //to be processed by CombatManager
         public void removeAttack(){
             attacks.remove(0);
         }

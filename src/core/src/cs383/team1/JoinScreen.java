@@ -1,6 +1,7 @@
 package cs383.team1;
 
 import com.badlogic.gdx.Application;
+import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
@@ -20,6 +21,7 @@ import com.esotericsoftware.minlog.Log;
 import cs383.team1.Main;
 import cs383.team1.MenuScreen;
 import cs383.team1.input.InputManager;
+import cs383.team1.model.GameManager;
 import cs383.team1.model.GameManagerInterface;
 import cs383.team1.net.Network;
 import cs383.team1.net.GameClient;
@@ -27,12 +29,12 @@ import cs383.team1.render.DemoDisplay;
 import cs383.team1.render.UIDisplay;
 import java.io.IOException;
 
-public class JoinScreen implements Screen, InputProcessor {
+public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	private boolean clientFail;
 	private DemoDisplay screen;
 	private GameClient client;
 	private GameManagerInterface gm;
-	private InputManager inputManager;
+	public InputManager inputManager;
 	private Main game;
 	private OrthographicCamera camera;
 	private Stage stage;
@@ -40,8 +42,7 @@ public class JoinScreen implements Screen, InputProcessor {
 
 	public JoinScreen(Main m) {
 		InputMultiplexer im;
-
-		Gdx.app.log("JoinScreen:JoinScreen", "Initializing");
+         	Gdx.app.log("JoinScreen:JoinScreen", "Initializing");
 
 		game = m;
 
@@ -67,7 +68,8 @@ public class JoinScreen implements Screen, InputProcessor {
 		inputManager = new InputManager();
 		im = new InputMultiplexer(stage, this);
 		Gdx.input.setInputProcessor(im);
-	}
+
+        }
 
 	@Override
 	public void render(float delta) {
@@ -166,4 +168,16 @@ public class JoinScreen implements Screen, InputProcessor {
 	public void dispose() {
 		screen.dispose();
 	}
+
+    @Override
+    public void create() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void render() {
+        update();
+	draw();
+    }
+    
 }
