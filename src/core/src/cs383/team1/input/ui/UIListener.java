@@ -18,7 +18,6 @@ public class UIListener extends InputListener{
 	MainMenu menu;
 	MessageBox msg;
 	Player player;
-	InteractionMenu interact;
 	Interaction interaction;
 
 	final AreaManager areas = GameManager.instance.areas;

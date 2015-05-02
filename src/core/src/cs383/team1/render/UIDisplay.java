@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import cs383.team1.input.ui.CombatMenu;
 import cs383.team1.input.ui.Interaction;
-import cs383.team1.input.ui.InteractionMenu;
 import cs383.team1.input.ui.MainMenu;
 import cs383.team1.input.ui.MessageBox;
 import cs383.team1.input.ui.UIListener;

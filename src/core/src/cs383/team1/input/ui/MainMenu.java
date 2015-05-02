@@ -19,7 +19,6 @@ public class MainMenu {
 	SplitPane menuSp;
 	List<String> menuList;
 
-	MenuCharacter	menuC;
 	MenuInventory	menuI;
 	MenuQuests	menuQ;
 	MenuEquip	menuE;
@@ -43,7 +42,6 @@ public class MainMenu {
 			}
 		});
 		
-		menuC = new MenuCharacter(skin);
 		menuI = new MenuInventory(skin);
 		menuQ = new MenuQuests(skin);
 		menuE = new MenuEquip(skin);
@@ -72,11 +70,5 @@ public class MainMenu {
 			menuSp.setSecondWidget(menuQ.questScroll());
 		else
 			Gdx.app.error("Menu changeMenu", "NYI option: " + s);
-	}
-	
-	public void updateStats(int hp, int atk, int def, int rep)
-	{
-		menuC.updateStats(hp, atk, def, rep);
-//		menuI.updateStats(atk, def);
 	}
 }
