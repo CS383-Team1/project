@@ -94,6 +94,13 @@ public final class Player implements Entity {
         public void removeMove(int index){
             moves.remove(index);
         }
+	
+        public void removeMove(Item itm){
+		for (int i = 0; i < moves.size(); i++) {
+			if (moves.get(i).name.equals(itm.name))
+				moves.remove(i);
+		}
+        }
         
         public void addAttack(Move move){
             attacks.add(move);
@@ -148,57 +155,27 @@ public final class Player implements Entity {
                 
                 if (floatPos.x == 0 && floatPos.y == 0) {
                         switch (facing) {
-                        case 0:
-                                aType = 5;
-                                break;
-                        case 1:
-                                aType = 7;
-                                break;
-                        case 2:
-                                aType = 4;
-                                break;
-                        case 3:
-                                aType = 6;
-                                break;
-                        default:
-                                aType = 4;
-                                break;
+                        case 0: aType = 5; break;
+                        case 1: aType = 7; break;
+                        case 2: aType = 4; break;
+                        case 3: aType = 6; break;
+                        default: aType = 4; break;
                         }
                 } else if (anim == 0) {
                         switch (facing) {
-                        case 0:
-                                aType = 9;
-                                break;
-                        case 1:
-                                aType = 11;
-                                break;
-                        case 2:
-                                aType = 8;
-                                break;
-                        case 3:
-                                aType = 10;
-                                break;
-                        default:
-                                aType = 8;
-                                break;
+                        case 0: aType = 9; break;
+                        case 1: aType = 11; break;
+                        case 2: aType = 8; break;
+                        case 3: aType = 10; break;
+                        default: aType = 8; break;
                         }
                 } else if (anim == 1) {
                         switch (facing) {
-                        case 0:
-                                aType = 13;
-                                break;
-                        case 1:
-                                aType = 15;
-                                break;
-                        case 2:
-                                aType = 12;
-                                break;
-                        case 3:
-                                aType = 14;
-                                break;
-                        default:
-                                aType = 12;
-                                break;
+                        case 0: aType = 13; break;
+                        case 1: aType = 15; break;
+                        case 2: aType = 12; break;
+                        case 3: aType = 14; break;
+                        default: aType = 12; break;
                         }
                 }
 

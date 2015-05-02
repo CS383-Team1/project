@@ -23,16 +23,6 @@ public class Equipment {
     public ArrayList<Item> quickSlots ; // maybe max 4?
     
     public Equipment(){
-//        head = null;
-//        chest = null;
-//        legs = null;
-//        hands = null;
-//        rings = new ArrayList();
-//        feet = null;
-//        neck = null;
-//	rightWeapon = null;
-//	leftWeapon = null;
-
         head = new Item();
         chest = new Item();
         legs = new Item();
