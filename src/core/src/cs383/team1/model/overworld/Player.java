@@ -9,7 +9,7 @@ import cs383.team1.model.overworld.Position;
 import java.util.ArrayList;
 
 
-public final class Player implements Entity {
+public final class Player implements PlayerInterface {
 	public static final int TYPE = 1;
         public static int aType = 4;
         public int facing = 2;
@@ -201,4 +201,11 @@ public final class Player implements Entity {
                 }
 
         }
+
+	@Override
+	public void setPos(int x, int y, int fx, int fy, int f) {
+		pos = new Position(x, y);
+		setFloatPos(new Position(fx, fy));
+		facing = f;
+	}
 }

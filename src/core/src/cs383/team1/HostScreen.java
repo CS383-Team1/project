@@ -70,10 +70,7 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 	}
 
 	void update() {
-		
-		if (inputManager.consumable()) {
-			gm.update(inputManager);
-		}
+		gm.update(inputManager);
 
 		if (gm.currentArea().player.zeroFloat() 
 			&& gm.currentArea().player.roaming == true) {

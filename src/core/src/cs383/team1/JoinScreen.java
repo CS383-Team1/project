@@ -23,6 +23,9 @@ import cs383.team1.MenuScreen;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.GameManagerInterface;
+import cs383.team1.model.overworld.Entity;
+import cs383.team1.model.overworld.Player;
+import cs383.team1.model.overworld.PlayerInterface;
 import cs383.team1.net.Network;
 import cs383.team1.net.GameClient;
 import cs383.team1.render.DemoDisplay;
@@ -34,11 +37,14 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	private DemoDisplay screen;
 	private GameClient client;
 	private GameManagerInterface gm;
+	private PlayerInterface p;
 	public InputManager inputManager;
 	private Main game;
 	private OrthographicCamera camera;
 	private Stage stage;
 	private UIDisplay ui;
+	
+	GameManager g = GameManager.instance;
 
 	public JoinScreen(Main m) {
 		InputMultiplexer im;
@@ -58,6 +64,8 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 
 		gm = ObjectSpace.getRemoteObject(client.client, Network.GM_ID,
 			GameManagerInterface.class);
+		p = ObjectSpace.getRemoteObject(client.client, Network.P_ID,
+			PlayerInterface.class);
 
 		screen = new DemoDisplay();
 
@@ -78,19 +86,22 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	}
 
 	void update() {
+		Player player = g.areas.current.player;
 		if (clientFail) {
 			Gdx.app.log("JoinScreen:update", "Client failure");
 			game.setScreen(new MenuScreen(game));
 		}
+//		g.areas().current.player = gm.areas().current.player;
 
 		if (inputManager.consumable()) {
-			gm.update(inputManager);
+			g.update(inputManager);
 		}
 
-		if (gm.currentArea().player.zeroFloat() 
-			&& gm.currentArea().player.roaming == true) {
-			inputManager.keys.add(gm.getKey());
+		if (g.currentArea().player.zeroFloat() 
+			&& g.currentArea().player.roaming == true) {
+			inputManager.keys.add(g.getKey());
 		}
+		p.setPos(player.pos.x, player.pos.y, player.floatPos.x, player.floatPos.y, player.facing);
 	}
 
 	void draw() {
@@ -104,15 +115,20 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 
 	@Override
 	public boolean keyDown (int key) {
-		inputManager.keys.add(key);
-		gm.setKey(key);
+//		inputManager.keys.add(key);
+//		gm.setKey(key);
+		g.setKey(key);
 		return false;
 	}
 
 	@Override
 	public boolean keyUp (int key) {
-		if (key == gm.getKey()) {
-			gm.setKey(0);
+//		if (key == gm.getKey()) {
+//			gm.setKey(0);
+//		}
+		
+		if (key == g.getKey()) {
+			g.setKey(0);
 		}
 		return true;
 	}

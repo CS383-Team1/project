@@ -28,6 +28,12 @@ public class GameServer{
 					GameManager.instance);
                         }
 		});
+		server.addListener(new Listener() {
+			public void connected(Connection c) {
+				new ObjectSpace(c).register(Network.P_ID,
+					GameManager.instance.areas.current.player);
+                        }
+		});
                 server.bind(Network.port);
 		server.start();
 

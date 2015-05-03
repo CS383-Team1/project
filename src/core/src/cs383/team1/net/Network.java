@@ -25,6 +25,7 @@ import cs383.team1.model.overworld.LeftDesk;
 import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.OutsideWall;
 import cs383.team1.model.overworld.Player;
+import cs383.team1.model.overworld.PlayerInterface;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.ReturnEntity;
 import cs383.team1.model.overworld.RightDesk;
@@ -40,6 +41,7 @@ public class Network {
 	static public final int port = 13370;
 
 	static public final short GM_ID = 100;
+	static public final short P_ID = 107;
 
 	static public void registerKryo (EndPoint endPoint) {
 		Kryo kryo = endPoint.getKryo();
@@ -67,6 +69,7 @@ public class Network {
 		kryo.register(Npc.class);
 		kryo.register(OutsideWall.class);
 		kryo.register(Player.class);
+		kryo.register(PlayerInterface.class);
 		kryo.register(Position.class);
 		kryo.register(ReturnEntity.class);
 		kryo.register(RightDesk.class);
@@ -86,5 +89,6 @@ public class Network {
 		os.register(104, Integer.class);
 		os.register(105, InputManager.class);
 		os.register(106, String.class);
+		os.register(107, PlayerInterface.class);
 	}
 }
