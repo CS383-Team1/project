@@ -82,10 +82,10 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 		Player player = Player.ownPlayer;
 		g.update(inputManager);
 
-//		if (g.currentArea().player.zeroFloat() 
-//			&& g.currentArea().player.roaming == true) {
+		if (player.zeroFloat() 
+			&& player.roaming == true) {
 			inputManager.keys.add(gm.getKey());
-//		}
+		}
 		
 		if (g.keyPressed != 0) {
 			player.setPos(player.pos.x,

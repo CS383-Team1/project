@@ -87,7 +87,7 @@ public final class GameManager implements GameManagerInterface {
                 //Input system for overworld walking using arrow keys
                 in.limitList();
 		while(
-                        player.hp > 0 &&
+//                        player.hp > 0 &&
                         in.consumable() &&
                         player.roaming == true &&
                         player.zeroFloat()) {
