@@ -38,7 +38,7 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	private DemoDisplay screen;
 	private GameClient client;
 	private GameManagerInterface gm;
-	private PlayerInterface p;
+//	private PlayerInterface p;
 	public InputManager inputManager;
 	private Main game;
 	private OrthographicCamera camera;
@@ -65,8 +65,8 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 
 		gm = ObjectSpace.getRemoteObject(client.client, Network.GM_ID,
 			GameManagerInterface.class);
-		p = ObjectSpace.getRemoteObject(client.client, Network.P_ID,
-			PlayerInterface.class);
+//		p = ObjectSpace.getRemoteObject(client.client, Network.P_ID,
+//			PlayerInterface.class);
 		
 		screen = new DemoDisplay();
 
@@ -97,18 +97,13 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 
 		g.update(inputManager);
 
-//		if (g.currentArea().player.zeroFloat() 
-//			&& g.currentArea().player.roaming == true) {
+		if (player.zeroFloat() 
+			&& player.roaming == true) {
 			inputManager.keys.add(g.getKey());
-//		}
+		}
 
-		if (g.keyPressed != 0) {
-			p.setPos(player.pos.x,
-				player.pos.y,
-				player.floatPos.x,
-				player.floatPos.y,
-				player.facing);
-		} else 	client.sendRequest();
+		if (g.keyPressed == 0)
+			client.sendRequest();
 	}
 
 	void draw() {
@@ -122,17 +117,17 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 
 	@Override
 	public boolean keyDown (int key) {
-//		inputManager.keys.add(key);
-//		gm.setKey(key);
-//		g.setKey(key);
+		inputManager.keys.add(key);
+		gm.setKey(key);
+		g.setKey(key);
 		return false;
 	}
 
 	@Override
 	public boolean keyUp (int key) {
-//		if (key == gm.getKey()) {
-//			gm.setKey(0);
-//		}
+		if (key == gm.getKey()) {
+			gm.setKey(0);
+		}
 		
 		if (key == g.getKey()) {
 			g.setKey(0);
