@@ -75,7 +75,6 @@ public class GameClient {
 			public void received (Connection connection, Object object) {
 				if (object instanceof PosResponse) {
 					PosResponse pr = (PosResponse)object;
-//					System.out.println("Pos:" + pr.pos.x + " "+ pr.pos.y);
 					Player p = GameManager.instance.areas.current.players.get(0);
 					p.pos = pr.pos;
 					p.floatPos = pr.floatPos;
@@ -87,8 +86,6 @@ public class GameClient {
 	}
         
         public void sendRequest() {
-		
-//		String string = "playerpos";
 		PosRequest r = new PosRequest();
 		r.pos = Player.ownPlayer.pos;
 		r.floatPos = Player.ownPlayer.floatPos;

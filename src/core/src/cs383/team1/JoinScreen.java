@@ -101,8 +101,7 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 			inputManager.keys.add(g.getKey());
 		}
 
-		if (g.keyPressed == 0)
-			client.sendRequest();
+		client.sendRequest();
 	}
 
 	void draw() {
@@ -117,17 +116,12 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	@Override
 	public boolean keyDown (int key) {
 		inputManager.keys.add(key);
-		gm.setKey(key);
 		g.setKey(key);
 		return false;
 	}
 
 	@Override
 	public boolean keyUp (int key) {
-		if (key == gm.getKey()) {
-			gm.setKey(0);
-		}
-		
 		if (key == g.getKey()) {
 			g.setKey(0);
 		}

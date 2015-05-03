@@ -206,12 +206,11 @@ public class DemoDisplay extends Display {
 			sprite = new Sprite(getEntityTexture(p.aType()));
 			sprite.setPosition(p.pos().x * Tile.WIDTH + (int) p.floatPos().x,
 				(p.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) p.floatPos().y);
+			p.setImage();
 			sprite.draw(batch);
 	}
 
-		//player = GameManager.instance.areas.current.player;
 		player = Player.ownPlayer;
-//                chatBox = GameManager.instance.chatBox;
 
 		sprite = new Sprite(getEntityTexture(player.aType()));
 		sprite.setPosition(

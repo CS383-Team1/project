@@ -40,7 +40,10 @@ public class GameServer{
 			public void received (Connection connection, Object object) {
 				if (object instanceof PosRequest) {
 					PosRequest r = (PosRequest)object;
-					GameManager.instance.areas.current.players.get(0).setPos(r.pos.x, r.pos.y, r.floatPos.x, r.floatPos.y, r.facing);
+					Player p = GameManager.instance.areas.current.players.get(0);
+					p.pos = r.pos;
+					p.floatPos = r.floatPos;
+					p.facing = r.facing;
 //					System.out.println(r.s);
 
 					PosResponse pr = new PosResponse();
