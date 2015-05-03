@@ -33,7 +33,7 @@ public class GameServer{
 		server.addListener(new Listener() {
 			public void connected(Connection c) {
 				new ObjectSpace(c).register(Network.P_ID,
-					GameManager.instance.areas.current.player);
+					GameManager.instance.areas.current.players);
                         }
 		});
 		server.addListener(new Listener() {

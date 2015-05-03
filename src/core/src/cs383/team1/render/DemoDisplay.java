@@ -201,6 +201,13 @@ public class DemoDisplay extends Display {
 			sprite.draw(batch);
                         
 		}
+		
+		for(Player p : area.players) {
+			sprite = new Sprite(getEntityTexture(p.aType()));
+			sprite.setPosition(p.pos().x * Tile.WIDTH + (int) p.floatPos().x,
+				(p.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) p.floatPos().y);
+			sprite.draw(batch);
+	}
 
 		//player = GameManager.instance.areas.current.player;
 		player = Player.ownPlayer;
