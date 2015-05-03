@@ -38,9 +38,10 @@ public class GameServer{
 		});
 		server.addListener(new Listener() {
 			public void received (Connection connection, Object object) {
-				if (object instanceof Request) {
-					Request r = (Request)object;
-					System.out.println(r.s);
+				if (object instanceof PosRequest) {
+					PosRequest r = (PosRequest)object;
+					GameManager.instance.areas.current.players.get(0).setPos(r.pos.x, r.pos.y, r.floatPos.x, r.floatPos.y, r.facing);
+//					System.out.println(r.s);
 
 					PosResponse pr = new PosResponse();
 					pr.pos = Player.ownPlayer.pos;

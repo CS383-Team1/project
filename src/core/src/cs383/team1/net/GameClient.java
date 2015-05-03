@@ -76,9 +76,10 @@ public class GameClient {
 				if (object instanceof PosResponse) {
 					PosResponse pr = (PosResponse)object;
 //					System.out.println("Pos:" + pr.pos.x + " "+ pr.pos.y);
-					Player.ownPlayer.pos = pr.pos;
-					Player.ownPlayer.floatPos = pr.floatPos;
-					Player.ownPlayer.facing = pr.facing;
+					Player p = GameManager.instance.areas.current.players.get(0);
+					p.pos = pr.pos;
+					p.floatPos = pr.floatPos;
+					p.facing = pr.facing;
 				}
 			}
 		});
@@ -87,17 +88,11 @@ public class GameClient {
         
         public void sendRequest() {
 		
-//		    Client client = new Client();
-//    client.start();
-//    client.connect(5000, "192.168.0.4", 54555, 54777);
-//
-//    SomeRequest request = new SomeRequest();
-//    request.text = "Here is the request";
-//    client.sendTCP(request);
-		String string = "playerpos";
-		Request r = new Request();
-		r.s = string;
-//		System.out.println("SENDING REQUEST: " + string);
+//		String string = "playerpos";
+		PosRequest r = new PosRequest();
+		r.pos = Player.ownPlayer.pos;
+		r.floatPos = Player.ownPlayer.floatPos;
+		r.facing = Player.ownPlayer.facing;
 		client.sendTCP(r);
 	}
         

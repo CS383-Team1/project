@@ -71,6 +71,7 @@ public class Network {
 		kryo.register(Player.class);
 		kryo.register(PlayerInterface.class);
 		kryo.register(Position.class);
+		kryo.register(PosRequest.class);
 		kryo.register(PosResponse.class);
 		kryo.register(ReturnEntity.class);
 		kryo.register(Request.class);
