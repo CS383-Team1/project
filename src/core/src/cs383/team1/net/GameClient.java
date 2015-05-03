@@ -4,7 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.esotericsoftware.kryonet.rmi.ObjectSpace;
 import com.esotericsoftware.minlog.Log;
+import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.Player;
 import cs383.team1.net.Network;
 import java.io.IOException;
 
@@ -27,8 +30,16 @@ public class GameClient {
 
 		client = new Client(BUFFER_SIZE, BUFFER_SIZE);
 		client.start();
-
+		
 		Network.registerKryo(client);
+		
+		client.addListener(new Listener() {
+			public void received (Connection connection, Object object) {
+				if (object instanceof Player) {
+					System.out.println(((Player)object).pos.x);
+				}
+			}
+		});
 	}
 
 	public void listen(Listener l) {
@@ -59,9 +70,35 @@ public class GameClient {
 				}
 			}
 		}.start();
-
+		
+		client.addListener(new Listener() {
+			public void received (Connection connection, Object object) {
+				if (object instanceof PosResponse) {
+					PosResponse pr = (PosResponse)object;
+//					System.out.println("Pos:" + pr.pos.x + " "+ pr.pos.y);
+					GameManager.instance.areas.current.player.pos = pr.pos;
+					GameManager.instance.areas.current.player.floatPos = pr.floatPos;
+					GameManager.instance.areas.current.player.facing = pr.facing;
+				}
+			}
+		});
 		return true;
 	}
         
+        public void sendRequest() {
+		
+//		    Client client = new Client();
+//    client.start();
+//    client.connect(5000, "192.168.0.4", 54555, 54777);
+//
+//    SomeRequest request = new SomeRequest();
+//    request.text = "Here is the request";
+//    client.sendTCP(request);
+		String string = "playerpos";
+		Request r = new Request();
+		r.s = string;
+//		System.out.println("SENDING REQUEST: " + string);
+		client.sendTCP(r);
+	}
         
 }

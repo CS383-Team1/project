@@ -19,6 +19,8 @@ import cs383.team1.Main;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.GameManagerInterface;
+import cs383.team1.model.overworld.Player;
+import cs383.team1.model.overworld.PlayerInterface;
 import cs383.team1.net.GameClient;
 import cs383.team1.net.Network;
 import cs383.team1.net.GameServer;
@@ -32,10 +34,13 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
         private DemoDisplay screen;
 	private GameClient client;
 	private GameManagerInterface gm;
+	private PlayerInterface p;
 	private InputManager inputManager;
 	private OrthographicCamera camera;
 	private Stage stage;
 	private UIDisplay ui;
+	
+	GameManager g = GameManager.instance;
 
 	public HostScreen(Main m) {
 		Log.set(Log.LEVEL_DEBUG);
@@ -51,6 +56,10 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 				"Unable to start server");
 			Gdx.app.exit();
 		}
+		
+		if (client!= null)
+			p = ObjectSpace.getRemoteObject(client.client, Network.P_ID,
+				PlayerInterface.class);
                 
                 screen = new DemoDisplay();
 
@@ -70,12 +79,21 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 	}
 
 	void update() {
-		gm.update(inputManager);
+		Player player = g.areas.current.player;
+		g.update(inputManager);
 
-		if (gm.currentArea().player.zeroFloat() 
-			&& gm.currentArea().player.roaming == true) {
+		if (g.currentArea().player.zeroFloat() 
+			&& g.currentArea().player.roaming == true) {
 			inputManager.keys.add(gm.getKey());
 		}
+		
+//		if (g.keyPressed != 0) {
+//			player.setPos(player.pos.x,
+//				player.pos.y,
+//				player.floatPos.x,
+//				player.floatPos.y,
+//				player.facing);
+//		}
 	}
 
 	void draw() {

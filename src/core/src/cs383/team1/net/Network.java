@@ -71,7 +71,9 @@ public class Network {
 		kryo.register(Player.class);
 		kryo.register(PlayerInterface.class);
 		kryo.register(Position.class);
+		kryo.register(PosResponse.class);
 		kryo.register(ReturnEntity.class);
+		kryo.register(Request.class);
 		kryo.register(RightDesk.class);
 		kryo.register(Stairs.class);
 		kryo.register(StairsEntity.class);
@@ -90,5 +92,6 @@ public class Network {
 		os.register(105, InputManager.class);
 		os.register(106, String.class);
 		os.register(107, PlayerInterface.class);
+		os.register(108, Request.class);
 	}
 }

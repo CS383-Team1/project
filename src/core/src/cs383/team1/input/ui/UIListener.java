@@ -62,26 +62,26 @@ public class UIListener extends InputListener{
                         else
                                 menu.menu().setVisible(true);
                         return true;
-                case (Input.Keys.SPACE) :
-                        if (stage.getKeyboardFocus() != msg.input){
-                                x = player.pos.x;
-                                y = player.pos.y;
-                                switch (player.facing) {
-                                case (0) :
-                                        useMenu(new Position(x, y + 1));
-                                        break;
-                                case (1) :
-                                        useMenu(new Position(x + 1, y));
-                                        break;
-                                case (2) :
-                                        useMenu(new Position(x, y - 1));
-                                        break;
-                                case (3) :
-                                        useMenu(new Position(x - 1, y ));
-                                        break;
-                                } return true;
-                        }
-                        break;
+//                case (Input.Keys.SPACE) :
+//                        if (stage.getKeyboardFocus() != msg.input){
+//                                x = player.pos.x;
+//                                y = player.pos.y;
+//                                switch (player.facing) {
+//                                case (0) :
+//                                        useMenu(new Position(x, y + 1));
+//                                        break;
+//                                case (1) :
+//                                        useMenu(new Position(x + 1, y));
+//                                        break;
+//                                case (2) :
+//                                        useMenu(new Position(x, y - 1));
+//                                        break;
+//                                case (3) :
+//                                        useMenu(new Position(x - 1, y ));
+//                                        break;
+//                                } return true;
+//                        }
+//                        break;
                 case (Input.Keys.DOWN) :
                         interact.getNext();
                         return (interact.interact.isVisible());

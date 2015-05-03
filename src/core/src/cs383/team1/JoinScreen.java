@@ -31,6 +31,7 @@ import cs383.team1.net.GameClient;
 import cs383.team1.render.DemoDisplay;
 import cs383.team1.render.UIDisplay;
 import java.io.IOException;
+import java.rmi.server.RemoteObject;
 
 public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	private boolean clientFail;
@@ -66,7 +67,7 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 			GameManagerInterface.class);
 		p = ObjectSpace.getRemoteObject(client.client, Network.P_ID,
 			PlayerInterface.class);
-
+		
 		screen = new DemoDisplay();
 
 		stage = new Stage(new ScreenViewport());
@@ -87,21 +88,27 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 
 	void update() {
 		Player player = g.areas.current.player;
+
 		if (clientFail) {
 			Gdx.app.log("JoinScreen:update", "Client failure");
 			game.setScreen(new MenuScreen(game));
 		}
 //		g.areas().current.player = gm.areas().current.player;
 
-		if (inputManager.consumable()) {
-			g.update(inputManager);
-		}
+		g.update(inputManager);
 
 		if (g.currentArea().player.zeroFloat() 
 			&& g.currentArea().player.roaming == true) {
 			inputManager.keys.add(g.getKey());
 		}
-		p.setPos(player.pos.x, player.pos.y, player.floatPos.x, player.floatPos.y, player.facing);
+
+		if (g.keyPressed != 0) {
+			p.setPos(player.pos.x,
+				player.pos.y,
+				player.floatPos.x,
+				player.floatPos.y,
+				player.facing);
+		} else 	client.sendRequest();
 	}
 
 	void draw() {
