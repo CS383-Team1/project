@@ -8,7 +8,7 @@ import cs383.team1.model.GameManager;
 import cs383.team1.model.GameManagerInterface;
 
 public class Main extends Game {
-	public static GameManagerInterface gm;
+	public static GameManager gm;
 
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_INFO);

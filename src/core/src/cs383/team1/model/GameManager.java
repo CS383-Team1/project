@@ -33,7 +33,7 @@ public final class GameManager implements GameManagerInterface {
         private Entity temp;
         private DialogueBox chatBox = new DialogueBox();
         public int keyPressed;
-        private List<String> msg;
+        public List<String> msg;
 
 
         
@@ -222,7 +222,7 @@ public final class GameManager implements GameManagerInterface {
 	}
 
 	public String getMessage(int m) {
-		return msg.size() > 0 ? msg.get(m) : "";
+		return msg.get(0);
 	}
 
 	public void removeMessage(int m) {
