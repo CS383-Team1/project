@@ -7,7 +7,7 @@ import com.badlogic.gdx.Gdx;
 public class Area {
 	public List<Tile> tiles;
 	public List<Entity> entities;
-        public Player player;
+        public List<Player> player;
         
 	public Area() {
             this(new ArrayList<Tile>(), new ArrayList<Entity>(), new Player());
@@ -17,7 +17,8 @@ public class Area {
 		Gdx.app.debug("Area:Area", "instantiating class");
 		tiles = tileList;
 		entities = entityList;
-                player = p;
+		player = new ArrayList();
+                player.add(p);
                 
 	}
         

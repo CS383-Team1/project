@@ -103,7 +103,7 @@ public class CombatMenu {
         }
         
         public void updateAttacks() {
-        	if(player == null) player = Main.gm.currentArea().player;
+        	if(player == null) player = Player.ownPlayer;
                 TextButton atkButton;
                 attacks.clear();
                 attacks.addAll(player.moves);

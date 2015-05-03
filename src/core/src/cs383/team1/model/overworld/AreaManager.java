@@ -254,9 +254,9 @@ public final class AreaManager {
             May need to change this to take a player parameter as well (well3112)*/
             
             if(changeArea(s) == 0) {
-                p.pos.x = pos.x;
-                p.pos.y = pos.y;
-                areas.get("area/".concat(s.concat(".txt"))).player = p;
+                Player.ownPlayer.pos.x = pos.x;
+                Player.ownPlayer.pos.y = pos.y;
+//                areas.get("area/".concat(s.concat(".txt"))).player = p;
                 return 0;
             }
             return -1;

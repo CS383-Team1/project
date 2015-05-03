@@ -76,9 +76,9 @@ public class GameClient {
 				if (object instanceof PosResponse) {
 					PosResponse pr = (PosResponse)object;
 //					System.out.println("Pos:" + pr.pos.x + " "+ pr.pos.y);
-					GameManager.instance.areas.current.player.pos = pr.pos;
-					GameManager.instance.areas.current.player.floatPos = pr.floatPos;
-					GameManager.instance.areas.current.player.facing = pr.facing;
+					Player.ownPlayer.pos = pr.pos;
+					Player.ownPlayer.floatPos = pr.floatPos;
+					Player.ownPlayer.facing = pr.facing;
 				}
 			}
 		});

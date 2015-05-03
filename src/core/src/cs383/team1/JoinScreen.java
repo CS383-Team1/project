@@ -87,7 +87,7 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	}
 
 	void update() {
-		Player player = g.areas.current.player;
+		Player player = Player.ownPlayer;
 
 		if (clientFail) {
 			Gdx.app.log("JoinScreen:update", "Client failure");
@@ -97,10 +97,10 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 
 		g.update(inputManager);
 
-		if (g.currentArea().player.zeroFloat() 
-			&& g.currentArea().player.roaming == true) {
+//		if (g.currentArea().player.zeroFloat() 
+//			&& g.currentArea().player.roaming == true) {
 			inputManager.keys.add(g.getKey());
-		}
+//		}
 
 		if (g.keyPressed != 0) {
 			p.setPos(player.pos.x,
@@ -124,7 +124,7 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	public boolean keyDown (int key) {
 //		inputManager.keys.add(key);
 //		gm.setKey(key);
-		g.setKey(key);
+//		g.setKey(key);
 		return false;
 	}
 

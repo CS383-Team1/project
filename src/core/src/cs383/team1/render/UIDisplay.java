@@ -54,7 +54,7 @@ public class UIDisplay extends Display{
 
         @Override
         public void render() {
-		if(player == null) player = Main.gm.currentArea().player;
+		if(player == null) player = Player.ownPlayer;
 		if(areas == null) areas = Main.gm.areas();
                 //Read messages sent to the GameManager to the chat
                 msg.addMessage(Main.gm.getMessage(0));

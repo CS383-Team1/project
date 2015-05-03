@@ -1,6 +1,7 @@
 package cs383.team1.model.overworld;
 
 import com.badlogic.gdx.Gdx;
+import cs383.team1.model.GameManager;
 import cs383.team1.model.combat.Move;
 import cs383.team1.model.inventory.Inventory;
 import cs383.team1.model.inventory.Item;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 
 
 public final class Player implements PlayerInterface {
+	public static final Player ownPlayer = new Player();
+	
 	public static final int TYPE = 1;
         public static int aType = 4;
         public int facing = 2;
@@ -25,9 +28,10 @@ public final class Player implements PlayerInterface {
         public ArrayList<Move> attacks = new ArrayList<Move>();
         public Inventory inventory;
 
+	
         
 	public Player() {
-		this(new Position(0, 0), 0, 0, 0);
+		this(new Position(1, 1), 0, 0, 0);
 	}
 
 	public Player(Position p, int hp_0, int mp_0, int ap_0) {

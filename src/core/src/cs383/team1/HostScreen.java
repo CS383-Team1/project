@@ -79,21 +79,21 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 	}
 
 	void update() {
-		Player player = g.areas.current.player;
+		Player player = Player.ownPlayer;
 		g.update(inputManager);
 
-		if (g.currentArea().player.zeroFloat() 
-			&& g.currentArea().player.roaming == true) {
+//		if (g.currentArea().player.zeroFloat() 
+//			&& g.currentArea().player.roaming == true) {
 			inputManager.keys.add(gm.getKey());
-		}
-		
-//		if (g.keyPressed != 0) {
-//			player.setPos(player.pos.x,
-//				player.pos.y,
-//				player.floatPos.x,
-//				player.floatPos.y,
-//				player.facing);
 //		}
+		
+		if (g.keyPressed != 0) {
+			player.setPos(player.pos.x,
+				player.pos.y,
+				player.floatPos.x,
+				player.floatPos.y,
+				player.facing);
+		}
 	}
 
 	void draw() {

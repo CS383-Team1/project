@@ -79,7 +79,7 @@ public final class GameManager implements GameManagerInterface {
 		Tile target;
                 Npc npc;
                 Item item;
-                player = areas.current.player;
+                player = Player.ownPlayer;
                 
                 int x = player.pos.x;
                 int y = player.pos.y;
@@ -191,7 +191,7 @@ public final class GameManager implements GameManagerInterface {
                                     }
                                 }
                                 areas.getCombatArea(player.pos(), player, npc);
-                                combat.encounter(areas.current.player, npc);
+                                combat.encounter(Player.ownPlayer, npc);
                         }
                         
                 }

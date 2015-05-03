@@ -203,7 +203,7 @@ public class DemoDisplay extends Display {
 		}
 
 		//player = GameManager.instance.areas.current.player;
-		player = area.player;
+		player = Player.ownPlayer;
 //                chatBox = GameManager.instance.chatBox;
 
 		sprite = new Sprite(getEntityTexture(player.aType()));

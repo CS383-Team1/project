@@ -7,6 +7,7 @@ import com.esotericsoftware.kryonet.rmi.ObjectSpace;
 import com.esotericsoftware.minlog.Log;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.GameManagerInterface;
+import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
 import java.io.IOException;
 
@@ -42,9 +43,9 @@ public class GameServer{
 					System.out.println(r.s);
 
 					PosResponse pr = new PosResponse();
-					pr.pos = GameManager.instance.areas.current.player.pos;
-					pr.floatPos = GameManager.instance.areas.current.player.floatPos;
-					pr.facing = GameManager.instance.areas.current.player.facing;
+					pr.pos = Player.ownPlayer.pos;
+					pr.floatPos = Player.ownPlayer.floatPos;
+					pr.facing = Player.ownPlayer.facing;
 					
 					connection.sendTCP(pr);
 				}
