@@ -26,5 +26,6 @@ public class Area {
 		Gdx.app.debug("Area:Area", "instantiating class");
 		tiles = tileList;
 		entities = entityList;
+		players = new ArrayList();
 	}
 }

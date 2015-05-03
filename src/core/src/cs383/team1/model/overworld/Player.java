@@ -141,6 +141,8 @@ public final class Player implements PlayerInterface {
         }
         
         public void setImage() {
+
+
                 final int animDiv = 28;
                 int anim;
                 if ((Math.max(Math.abs(floatPos.x), Math.abs(floatPos.y)) % animDiv) >= Math.ceil(animDiv / 2))
@@ -203,7 +205,6 @@ public final class Player implements PlayerInterface {
                                 break;
                         }
                 }
-
         }
 
 	@Override

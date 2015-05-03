@@ -203,21 +203,21 @@ public class DemoDisplay extends Display {
 		}
 		
 		for(Player p : area.players) {
+			p.setImage();
 			sprite = new Sprite(getEntityTexture(p.aType()));
 			sprite.setPosition(p.pos().x * Tile.WIDTH + (int) p.floatPos().x,
 				(p.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) p.floatPos().y);
-			p.setImage();
 			sprite.draw(batch);
-	}
+		}
 
 		player = Player.ownPlayer;
 
+                player.decFloatPos(2);
 		sprite = new Sprite(getEntityTexture(player.aType()));
 		sprite.setPosition(
                         player.pos().x * Tile.WIDTH + (int) player.floatPos().x,
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) player.floatPos().y);
 
-                player.decFloatPos(2);
                 camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
                 camera.setToOrtho(false);
                 camera.position.set(sprite.getX(), sprite.getY(), 0);

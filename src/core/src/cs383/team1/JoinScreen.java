@@ -93,7 +93,6 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 			Gdx.app.log("JoinScreen:update", "Client failure");
 			game.setScreen(new MenuScreen(game));
 		}
-//		g.areas().current.player = gm.areas().current.player;
 
 		g.update(inputManager);
 
