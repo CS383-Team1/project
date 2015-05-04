@@ -61,14 +61,16 @@ public class MainMenu {
 	//Change the "submenu" to the one specified by 's'
 	private void changeMenu( String s )
 	{
-		if (s.equals("INVENTORY"))
+		if (s.equals("INVENTORY")) {
 			menuSp.setSecondWidget(menuI.invSp());
-		else if (s.equals("CHARACTER")) {
+			menuI.updateItems();
+		} else if (s.equals("CHARACTER")) {
 			menuSp.setSecondWidget(menuE.equipT());
 			menuE.update();
-		} else if (s.equals("QUESTS"))
+		} else if (s.equals("QUESTS")) {
 			menuSp.setSecondWidget(menuQ.questScroll());
-		else
+			//update quest menu
+		} else
 			Gdx.app.error("Menu changeMenu", "NYI option: " + s);
 	}
 }

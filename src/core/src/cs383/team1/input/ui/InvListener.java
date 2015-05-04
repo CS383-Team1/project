@@ -15,40 +15,53 @@ public class InvListener extends ClickListener{
 	private Player p;
 	private Item itm;
 	private MenuInventory menu;
-	private String type;
+	private String buttonType;
 	
 	public InvListener(MenuInventory m, String s, Player player, Item i) {
 		p = player;
 		itm = i;
 		menu = m;
 		if (s.contains("equip")||s.contains("use"))
-			type = s;
+			buttonType = s;
 		else
-			type = "use";
+			buttonType = "use";
 	}
 	
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		Equipment e = p.inventory.equiped;
+		p.inventory.contents.remove(itm);
 
-		if (type.equals("equip")) {
-			if (itm.type.contains("two-handed")) {
+		if (buttonType.equals("equip")) {
+			System.out.println("EQUIP");
+			if (itm.type.contains("two")) {
+				p.inventory.pickUp(e.leftWeapon);
+				p.inventory.pickUp(e.rightWeapon);
+				e.equipWeapon(itm, "right");
 				p.removeMove(e.leftWeapon);
 				p.removeMove(e.rightWeapon);
 				p.addMove(itm);              }
-			e.equip(itm);
+			else e.equip(itm);
 			menu.updateItems();
-		} else if (type.equals("equipL")) {
+		} else if (buttonType.equals("equipL")) {
+			System.out.println("EQUIPL");
+			if (e.rightWeapon.type.contains("two-handed")) {
+				p.inventory.pickUp(e.rightWeapon);
+				e.unequip(e.rightWeapon);
+			}
+			p.inventory.pickUp(e.leftWeapon);
 			p.removeMove(e.leftWeapon);
 			p.addMove(itm);
 			e.equipWeapon(itm, "left");
 			menu.updateItems();
-		} else if (type.equals("equipR")) {
+		} else if (buttonType.equals("equipR")) {
+			System.out.println("EQUIPR");
+			p.inventory.pickUp(e.rightWeapon);
 			p.removeMove(e.rightWeapon);
 			p.addMove(itm);
 			e.equipWeapon(itm, "right");
 			menu.updateItems();
-		} else if (type.equals("use")) {
+		} else if (buttonType.equals("use")) {
 			System.out.println("USE ITEM");
 			menu.updateItems();
 		} else

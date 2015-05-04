@@ -121,12 +121,21 @@ public class MenuInventory extends SubMenu {
 		if (type.contains("weapon")) {
 			statWpn(txtTable, itm);
 			txtTable.row();
+		} else if (
+			type.contains("head") ||
+			type.contains("neck") ||
+			type.contains("chest") ||
+			type.contains("hands") ||
+			type.contains("legs") ||
+			type.contains("feet")){
+			statArm(txtTable, itm);
+			txtTable.row();
 		} else
 			txtTable.add(new Label("", skin)).padBottom(48).row();
 
 		//Create use/equip button
 		equip = new TextButton("Equip", skin, "exp");
-		if (!type.contains("two-handed"))
+		if (type.contains("two-handed"))
 			equip.addListener(new InvListener(this,"equip" ,p,itm));
 		else
 			equip.addListener(new InvListener(this,"equipR",p,itm));
@@ -186,27 +195,27 @@ public class MenuInventory extends SubMenu {
 		sub.add(new Label("R: ", skin)).bottom().row();
 		t.add(sub).bottom();
 		
-		t.add(statWpnComp("statDamage",
+		t.add(statComp("statDamage",
 			itm.damage,
 			e1.damage,
 			e2.damage))
 			.fillX().expandX();
-		t.add(statWpnComp("statHitChance",
+		t.add(statComp("statHitChance",
 			itm.hitChance,
 			e1.hitChance,
 			e2.hitChance))
 			.fillX().expandX();
-		t.add(statWpnComp("statRange",
+		t.add(statComp("statRange",
 			itm.range,
 			e1.range,
 			e2.range))
 			.fillX().expandX();
-		t.add(statWpnComp("statCritChance",
+		t.add(statComp("statCritChance",
 			itm.critChance,
 			e1.critChance,
 			e2.critChance))
 			.fillX().expandX();
-		t.add(statWpnComp(
+		t.add(statComp(
 			"statCritMult",
 			itm.critMultiplier,
 			e1.critMultiplier,
@@ -214,10 +223,34 @@ public class MenuInventory extends SubMenu {
 			.fillX().expandX();
 	}
 	
+	private void statArm(Table t, Item itm)
+	{
+		Item a;
+		
+		if (itm.type.equals("head"))
+			a = p.inventory.equiped.head;
+		else if (itm.type.equals("neck"))
+			a = p.inventory.equiped.neck;
+		else if (itm.type.equals("chest"))
+			a = p.inventory.equiped.chest;
+		else if (itm.type.equals("hands"))
+			a = p.inventory.equiped.hands;
+		else if (itm.type.equals("legs"))
+			a = p.inventory.equiped.legs;
+		else if (itm.type.equals("feet"))
+			a = p.inventory.equiped.feet;
+		else
+			a = new Item();
+		
+		t.add(statComp("statHp", itm.hp, a.hp)).fillX().expandX();
+		t.add(statComp("statMp", itm.mp, a.mp)).fillX().expandX();
+		t.add(statComp("statMp", itm.ap, a.ap)).fillX().expandX();
+	}
+	
 	/* 
 	Adds the stat and its comparative stats to the given table t
 	*/
-	private Table statWpnComp(String icn, Double i, double e1, double e2)
+	private Table statComp(String icn, Double i, double e1, double e2)
 	{
 		Table t;
 		t = new Table();
@@ -228,6 +261,21 @@ public class MenuInventory extends SubMenu {
 		t.add(cmpStat(e1, i)).colspan(2).right().expandX();
 		t.row();
 		t.add(cmpStat(e2, i)).colspan(2).right().expandX();
+		
+		t.padRight(15);
+		
+		return t;
+	}
+	
+	private Table statComp(String icn, Double i, double e1)
+	{
+		Table t;
+		t = new Table();
+
+		addIcon(icn, t);
+		t.left().add(new Label(i.toString(), skin))
+			.left().fillX().expandX().row();
+		t.add(cmpStat(e1, i)).colspan(2).right().expandX();
 		
 		t.padRight(15);
 		

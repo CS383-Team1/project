@@ -24,6 +24,7 @@ public class Item implements Entity {
     private Position pos;
     public Double hp;
     public Double mp;
+    public Double ap;
     
     public Item(){
         this.name = "Unknown";
@@ -36,6 +37,7 @@ public class Item implements Entity {
         this.range = 0.0;
 	this.hp = 0.0;
 	this.mp = 0.0;
+	this.ap = 0.0;
         this.requiredMove = new Move(name, damage.intValue(), 1);
         pos = new Position();
         System.out.println("Made unnamed Item");
@@ -51,6 +53,7 @@ public class Item implements Entity {
         this.range = 0.0;
 	this.hp = 0.0;
 	this.mp = 0.0;
+	this.ap = 0.0;
         
         System.out.println("Made Item named " + n);
     }
@@ -64,6 +67,9 @@ public class Item implements Entity {
         this.critMultiplier = 0.0;
         this.damage = 0.0;
         this.range = 0.0;
+	this.hp = 0.0;
+	this.mp = 0.0;
+	this.ap = 0.0;
         pos = p;
         System.out.println("Made Item named " + n);
     }
@@ -79,7 +85,7 @@ public class Item implements Entity {
         this.description = s.substring(s.indexOf(",desc:")+6, 
                                        s.indexOf(",type:"));
         this.type = s.substring(s.indexOf(",type:")+6, 
-                                s.indexOf(",fields:"));
+                                s.indexOf(",stats:{"));
 	
 	if (type.contains("weapon") || type.contains("ring")) {
 		this.hitChance = readStat(s, ",hit:");
@@ -90,6 +96,7 @@ public class Item implements Entity {
 	} else {
 		this.hp = readStat(s, ",hp:");
 		this.mp = readStat(s, ",mp:");
+		this.ap = readStat(s, ",ap:");
 	}
         pos = p;
         System.out.println("Printing pos in item: " + pos.x + " " + pos.y);
@@ -108,6 +115,8 @@ public class Item implements Entity {
 		    start = s.indexOf(p)+p.length();
 
 	    if (s.substring(start).contains(",")) end = s.indexOf(",", start);
+	    else if (s.substring(start).contains("}"))
+		    end = s.indexOf("}",start);
 	    else end = s.length()-1;
 
 	    if (s.substring(start, end).matches("[0-9]+\\.?[0-9]+"))

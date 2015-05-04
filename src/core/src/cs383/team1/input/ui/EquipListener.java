@@ -34,22 +34,28 @@ public class EquipListener extends ClickListener{
 	public void clicked(InputEvent event, float x, float y) {
 		Equipment e = p.inventory.equiped;
 		if (type.equals("head")) {
-			p.inventory.equiped.unequip(e.head);
+			p.inventory.pickUp(
+				p.inventory.equiped.unequip(e.head));
 			menu.update();
 		} else if (type.equals("neck")) {
-			p.inventory.equiped.unequip(e.neck);
+			p.inventory.pickUp(
+				p.inventory.equiped.unequip(e.neck));
 			menu.update();
 		} else if (type.equals("body")) {
-			p.inventory.equiped.unequip(e.chest);
+			p.inventory.pickUp(
+				p.inventory.equiped.unequip(e.chest));
 			menu.update();
 		} else if (type.equals("hand")) {
-			p.inventory.equiped.unequip(e.hands);
+			p.inventory.pickUp(
+				p.inventory.equiped.unequip(e.hands));
 			menu.update();
 		} else if (type.equals("legs")) {
-			p.inventory.equiped.unequip(e.legs);
+			p.inventory.pickUp(
+				p.inventory.equiped.unequip(e.legs));
 			menu.update();
 		} else if (type.equals("feet")) {
-			p.inventory.equiped.unequip(e.feet);
+			p.inventory.pickUp(
+				p.inventory.equiped.unequip(e.feet));
 			menu.update();
 		} else
 			System.out.println("NOT SUPPORTED BUTTON");
