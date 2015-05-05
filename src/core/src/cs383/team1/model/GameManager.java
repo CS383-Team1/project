@@ -28,13 +28,14 @@ public final class GameManager implements GameManagerInterface {
 	public AreaManager areas;
 	private StateManager states;
         private DialogueBox dialogue;
-        private CombatManager combat;
+        public CombatManager combat;
         private Position tempPos;
         private Position returnPos;
         private Entity temp;
         private DialogueBox chatBox = new DialogueBox();
         public int keyPressed;
         public List<String> msg;
+        Player player;
 
 
         
@@ -54,6 +55,8 @@ public final class GameManager implements GameManagerInterface {
                 combat = new CombatManager();
                 tempPos = new Position();
                 returnPos = new Position();
+                player = Player.ownPlayer;
+                player.hp = 100;
 
 		load();
 	}
@@ -75,12 +78,11 @@ public final class GameManager implements GameManagerInterface {
         }
 
 	public void update(InputManager in) {
-		Player player;
 		Position next;
 		Tile target;
                 Npc npc;
                 Item item;
-                player = Player.ownPlayer;
+                
                 
                 int x = player.pos.x;
                 int y = player.pos.y;

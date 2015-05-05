@@ -39,8 +39,8 @@ public final class Npc implements Entity{
                 addMove("staple", 5, 1);
                 addMove("throw coffee in face", 3, 1);
                 addMove("drink coffee", -5, 1);
-                //addMove(inventory.contents.get(0).name, 
-                   //     inventory.contents.get(0).damage, 1);
+                addMove(inventory.contents.get(0).name, 
+                        inventory.contents.get(0).damage, 1);
 	}
 
         //Basic Constructor for NPC
@@ -73,14 +73,14 @@ public final class Npc implements Entity{
                 }
                 //Add items to inventory of NPC: used later to give to player
                 //after defeat in battle
-                /*
+                
                 items = f.substring(f.indexOf("{name:"));//, f.indexOf("}"));
                 Item winnableItem = new Item(pos, items);
                 inventory.contents.add(winnableItem);
                 //Add move based on NPC's item read in from file
                 addMove(inventory.contents.get(0).name, 
                         inventory.contents.get(0).damage, 1);
-              */
+              
         }
 
         @Override

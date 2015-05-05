@@ -72,6 +72,7 @@ public class Combat {
         if(enemies.members.size() > 0){
                 npc = (Npc)enemies.members.get(0);
         }
+        System.out.println("Printing player and NPC health: " + player.hp + " : " + npc.hp);
         
         if(((allies.members.size() + enemies.members.size()) > 1) 
                 && (player.hp > 0) && npc.hp > 0){

@@ -6,8 +6,11 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.rmi.ObjectSpace;
 import com.esotericsoftware.minlog.Log;
+import cs383.team1.Main;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
+import cs383.team1.model.overworld.Position;
 import cs383.team1.net.Network;
 import java.io.IOException;
 
@@ -18,12 +21,15 @@ public class GameClient {
 	private static final int STATE_CONNECTED = 3;
 	private static final int STATE_DISCONNECTED = 4;
 	private static final int BUFFER_SIZE = 1024 * 8;
+        Position tempPos;
+        Npc npc;
 
 	public Client client;
 	private int state;
 
 	public GameClient() {
 		Log.set(Log.LEVEL_DEBUG);
+                tempPos  = new Position();
 
 		/* state = STATE_NEW; */
 		state = STATE_READY;
@@ -80,11 +86,19 @@ public class GameClient {
 					p.floatPos = pr.floatPos;
 					p.facing = pr.facing;
                                         if(pr.roaming != true){
+                                            tempPos = pr.pos;
+                                            tempPos.x--;
+                                            
+                                            if ((npc = (Npc)Main.gm.areas.findCombatant(
+                                            pr.pos, 3)) != null){
+                                            
                                             Player.ownPlayer.roaming = false;
                                             Player.ownPlayer.pos.x = pr.pos.x - 1;
                                             Player.ownPlayer.pos.x = pr.pos.x;
                                             Player.ownPlayer.pos.y = pr.pos.y;
                                             Player.ownPlayer.pos.y = pr.pos.y - 1;
+                                            Main.gm.combat.encounter(Player.ownPlayer, npc, Main.gm.areas.current.players);
+                                            }
                                         }else{
                                             //Player.ownPlayer.roaming = true;
                                         }
