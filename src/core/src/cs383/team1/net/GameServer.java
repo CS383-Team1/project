@@ -40,7 +40,9 @@ public class GameServer{
 			public void received (Connection connection, Object object) {
 				if (object instanceof PosRequest) {
 					PosRequest r = (PosRequest)object;
-					Player p = GameManager.instance.areas.current.players.get(0);
+                                        //areas.current.player is a map, so get returns the value of the specified key
+                                        //First player is "0", so look for "1"
+					Player p = GameManager.instance.areas.current.players.get(1);
 					p.pos = r.pos;
 					p.floatPos = r.floatPos;
 					p.facing = r.facing;
@@ -50,6 +52,7 @@ public class GameServer{
 					pr.pos = Player.ownPlayer.pos;
 					pr.floatPos = Player.ownPlayer.floatPos;
 					pr.facing = Player.ownPlayer.facing;
+                                        pr.roaming = Player.ownPlayer.roaming;
 					
 					connection.sendTCP(pr);
 				}

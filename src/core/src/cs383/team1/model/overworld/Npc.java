@@ -21,7 +21,7 @@ public final class Npc implements Entity{
         public Inventory inventory = new Inventory("NPC");
         
 
-	private Position pos;
+	public Position pos;
         private final ArrayList<String> talk = new ArrayList();
         public ArrayList<Move> moves = new ArrayList<Move>();
         public ArrayList<Move> attacks = new ArrayList<Move>();

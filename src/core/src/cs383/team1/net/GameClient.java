@@ -75,10 +75,19 @@ public class GameClient {
 			public void received (Connection connection, Object object) {
 				if (object instanceof PosResponse) {
 					PosResponse pr = (PosResponse)object;
-					Player p = GameManager.instance.areas.current.players.get(0);
+					Player p = GameManager.instance.areas.current.players.get(1);
 					p.pos = pr.pos;
 					p.floatPos = pr.floatPos;
 					p.facing = pr.facing;
+                                        if(pr.roaming != true){
+                                            Player.ownPlayer.roaming = false;
+                                            Player.ownPlayer.pos.x = pr.pos.x - 1;
+                                            Player.ownPlayer.pos.x = pr.pos.x;
+                                            Player.ownPlayer.pos.y = pr.pos.y;
+                                            Player.ownPlayer.pos.y = pr.pos.y - 1;
+                                        }else{
+                                            //Player.ownPlayer.roaming = true;
+                                        }
 				}
 			}
 		});

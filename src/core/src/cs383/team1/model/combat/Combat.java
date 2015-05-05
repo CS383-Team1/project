@@ -7,6 +7,7 @@ import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -61,24 +62,25 @@ public class Combat {
         double damage;
         //Implement this when muliplayer is added
         //for(Entity e : allies.members){
-                    
+        if(allies.members.size() > 0)            
             player = (Player)allies.members.get(0);
+        else
+            return 0;
                 
         //}
-        for(Entity e : enemies.members){
-            if(e.type() == 3){
-                npc = (Npc)e;
-            }
+      
+        if(enemies.members.size() > 0){
+                npc = (Npc)enemies.members.get(0);
         }
         
         if(((allies.members.size() + enemies.members.size()) > 1) 
                 && (player.hp > 0) && npc.hp > 0){
             playerBlockPercent = 1;
-            for(Entity e : allies.members){
+            for(Map.Entry<Integer, Entity> e : allies.members.entrySet()){
                 
-                    player = (Player)e;
+                    player = (Player)e.getValue();
                     //Choose random Npc to attack
-                    random = selectionGen.nextInt(allies.members.size());
+                    random = selectionGen.nextInt(enemies.members.size());
                     npc = (Npc)enemies.members.get(random);
                     
                     if(player.consumableAttack()){
@@ -99,9 +101,9 @@ public class Combat {
                     }
                     
             }
-            for(Entity e : enemies.members){
+            for(Map.Entry<Integer, Entity> e : enemies.members.entrySet()){
                     
-                    npc = (Npc)e;
+                    npc = (Npc)e.getValue();
                     damage = npc.combatAI(lastPlayerDamage, lastPlayerMove);
                     if(npc.consumableAttack()){
                         npcMove = npc.attacks.get(0);
@@ -132,7 +134,6 @@ public class Combat {
                         + player.hp + "; NPC HP: " + npc.hp);
 
         }else{
-            player.roaming = true;
             //Add all items in reward inventory to player's inventory
             //if player wins
             if(npc.hp <= 0){
@@ -146,10 +147,24 @@ public class Combat {
             }
             
             //Will need to iterate over this list to remove all allies
-                allies.removeCombatants(player);
-            
+            player.roaming = true;
+            // Reove player from combat using key 0
+            //for(Map.Entry<Integer, Entity> e : allies.members.entrySet()){
+                //allies.removeCombatants(allies.members.get(1));
+            //}
+            allies.members.remove(1);
+            int count = 0;
+                while(allies.members.size() > 1){
+                    allies.members.remove(count);
+                    count++;
+                }
+                
             //Will need to iterate over this list to remove all enemies
-                enemies.removeCombatants(npc);
+            //for(Map.Entry<Integer, Entity> e : enemies.members.entrySet()){
+                //enemies.removeCombatants(e.getKey());
+            //}
+            //NPC is at key value 0
+            enemies.members.remove(0);
             
             return 0;
         }

@@ -7,25 +7,28 @@ package cs383.team1.model.combat;
 
 import cs383.team1.model.overworld.Entity;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author Casey
  */
 public class Combatants {
-    public ArrayList<Entity> members = new ArrayList<Entity>();
+    public Map<Integer, Entity> members = new HashMap<Integer, Entity>();
     
     public void Combatants(){
         
     }
     
-    
+    /*
     public void addCombatants(Entity e){
-        members.add(e);
+        members.put(e);
     }
+    */
     
-    public void removeCombatants(Entity e){
-        members.remove(e);
+    public void removeCombatants(Integer key){
+        members.remove(key);
     }
     
 }

@@ -201,12 +201,12 @@ public class DemoDisplay extends Display {
 			sprite.draw(batch);
                         
 		}
-		
-		for(Player p : area.players) {
-			p.setImage();
-			sprite = new Sprite(getEntityTexture(p.aType()));
-			sprite.setPosition(p.pos().x * Tile.WIDTH + (int) p.floatPos().x,
-				(p.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) p.floatPos().y);
+		for(Map.Entry<Integer, Player> p : area.players.entrySet()){
+		//for(Player p : area.players) {
+			p.getValue().setImage();
+			sprite = new Sprite(getEntityTexture(p.getValue().aType()));
+			sprite.setPosition(p.getValue().pos().x * Tile.WIDTH + (int) p.getValue().floatPos().x,
+				(p.getValue().pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) p.getValue().floatPos().y);
 			sprite.draw(batch);
 		}
 

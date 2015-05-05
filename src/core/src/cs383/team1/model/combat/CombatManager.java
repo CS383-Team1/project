@@ -10,6 +10,9 @@ import com.badlogic.gdx.files.FileHandle;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Npc;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -18,7 +21,7 @@ import java.util.ArrayList;
  */
 public class CombatManager {
     Combat currentBattle;
-    ArrayList<Player> participants = new ArrayList<Player>();
+    Map<Integer, Player> participants = new HashMap<Integer, Player>();
     
     public ArrayList<Combat> battles = new ArrayList<Combat>();
     
@@ -26,12 +29,15 @@ public class CombatManager {
         //battles.add(new Combat());
     }
     
-    public void encounter(Player player, Npc npc){
+    public void encounter(Player player, Npc npc, Map<Integer, Player> otherPlayers){
         battles.add(new Combat());
         battles.get(0).reward = npc.inventory;
-        participants.add(player);
-        battles.get(0).allies.members.add(player);
-        battles.get(0).enemies.members.add(npc);
+        //Put first player and his allies into battle
+        battles.get(0).allies.members.put(0, player);
+        for(Map.Entry<Integer, Player> e : otherPlayers.entrySet()){
+            battles.get(0).allies.members.put(e.getKey(), e.getValue());
+        }
+        battles.get(0).enemies.members.put(0, npc);
     }
     
     /*
