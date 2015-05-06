@@ -35,28 +35,28 @@ public class InvListener extends ClickListener{
 		if (buttonType.equals("equip")) {
 			System.out.println("EQUIP");
 			if (itm.type.contains("two")) {
-				p.inventory.pickUp(e.leftWeapon);
-				p.inventory.pickUp(e.rightWeapon);
-				e.equipWeapon(itm, "right");
+				getItem(e.leftWeapon);
+				getItem(e.rightWeapon);
 				p.removeMove(e.leftWeapon);
 				p.removeMove(e.rightWeapon);
+                                e.equipWeapon(itm, "right");
 				p.addMove(itm);              }
 			else e.equip(itm);
 			menu.updateItems();
 		} else if (buttonType.equals("equipL")) {
 			System.out.println("EQUIPL");
 			if (e.rightWeapon.type.contains("two-handed")) {
-				p.inventory.pickUp(e.rightWeapon);
+				getItem(e.rightWeapon);
 				e.unequip(e.rightWeapon);
 			}
-			p.inventory.pickUp(e.leftWeapon);
+			getItem(e.leftWeapon);
 			p.removeMove(e.leftWeapon);
 			p.addMove(itm);
 			e.equipWeapon(itm, "left");
 			menu.updateItems();
 		} else if (buttonType.equals("equipR")) {
 			System.out.println("EQUIPR");
-			p.inventory.pickUp(e.rightWeapon);
+			getItem(e.rightWeapon);
 			p.removeMove(e.rightWeapon);
 			p.addMove(itm);
 			e.equipWeapon(itm, "right");
@@ -68,5 +68,10 @@ public class InvListener extends ClickListener{
 			System.out.println("NOT SUPPORTED BUTTON");
 
 	}
-	
+	private void getItem(Item itm)
+        {
+                if (itm!= null && !itm.name.equals("Unknown")) {
+                        p.inventory.contents.add(itm);
+                }
+        }
 }
