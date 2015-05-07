@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import cs383.team1.input.ui.CombatMenu;
 import cs383.team1.input.ui.Interaction;
 import cs383.team1.input.ui.MainMenu;
+import cs383.team1.input.ui.MenuKey;
 import cs383.team1.input.ui.MessageBox;
 import cs383.team1.input.ui.UIListener;
 import cs383.team1.model.GameManager;
@@ -22,10 +23,10 @@ public class UIDisplay extends Display{
 	Skin skin;
 	MessageBox msg;
 	MainMenu menu;
-//	InteractionMenu interact;
 	Interaction interaction;
 	CombatMenu combat;
 	UIListener uiListen;
+        MenuKey mKey;
 	
 	Player player = GameManager.instance.areas.current.player;
 	final AreaManager areas = GameManager.instance.areas;
@@ -70,13 +71,15 @@ public class UIDisplay extends Display{
 		menu = new MainMenu(skin);
 		combat = new CombatMenu(skin);
 		interaction = new Interaction(skin, player);
+                mKey = new MenuKey(skin, "Inventory", "[ESC]");
 		
-		uiListen = new UIListener(stage, player, menu, msg, interaction);
+		uiListen = new UIListener(stage, player, menu, msg, interaction, mKey);
 
 		stage.addActor(msg.msg());
 		stage.addActor(menu.menu());
 		stage.addActor(combat.combat());
 		stage.addActor(interaction.interaction());
+                stage.addActor(mKey.w());
 
 		menu.menu().setVisible(false);
 		combat.combat().setVisible(false);

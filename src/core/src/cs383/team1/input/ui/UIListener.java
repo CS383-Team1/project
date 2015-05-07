@@ -19,6 +19,7 @@ public class UIListener extends InputListener{
 	MessageBox msg;
 	Player player;
 	Interaction interaction;
+        MenuKey mKey;
 
 	final AreaManager areas = GameManager.instance.areas;
 	
@@ -27,13 +28,15 @@ public class UIListener extends InputListener{
 		Player p,
 		MainMenu m,
 		MessageBox mb,
-		Interaction inter)
+		Interaction inter,
+                MenuKey mK)
 	{
 		stage = s;
 		menu = m;
 		msg = mb;
 		player = p;
 		interaction = inter;
+                mKey = mK;
 	}
 	
 	@Override
@@ -65,6 +68,8 @@ public class UIListener extends InputListener{
 				menu.menuI.updateItems();
 				menu.menuE.update();
 			}
+                        if (mKey.w().isVisible())
+                                mKey.setVisible(false);
 			return true;
 		case (Input.Keys.SPACE) :
 			if (stage.getKeyboardFocus() != msg.input){
