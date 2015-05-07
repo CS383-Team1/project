@@ -1,5 +1,7 @@
 
 package cs383.team1.inventory;
+import cs383.team1.combat.Move;
+import cs383.team1.model.GameManager;
 import java.util.ArrayList;
 /**
  *
@@ -63,6 +65,7 @@ public class Equipment {
                 rings.add(n);
             }else{
                 ret = rings.get(0);
+		removeMove(ret);
                 rings.remove(0);
                 rings.add(n);
             }
@@ -72,6 +75,7 @@ public class Equipment {
                 quickSlots.add(n);
             }else{
                 ret = quickSlots.get(0);
+		removeMove(ret);
                 quickSlots.remove(0);
                 quickSlots.add(n);
             }
@@ -119,6 +123,7 @@ public class Equipment {
         for(int i=0;i<rings.size();i++){
             if(rings.get(i).equals(t)){
                 ret = rings.get(i);
+		removeMove(ret);
                 rings.remove(i);
                 return ret;
             }
@@ -126,6 +131,7 @@ public class Equipment {
         for(int i=0;i<quickSlots.size();i++){
             if(quickSlots.get(i).equals(t)){
                 ret = quickSlots.get(i);
+		removeMove(ret);
                 quickSlots.remove(i);
                 return ret;
             }
@@ -140,6 +146,18 @@ public class Equipment {
             return ret;
         }
         return ret;
+    }
+    
+    public int useQuickslot(Move move)
+    {
+	    for (int i = 0; i < quickSlots.size(); i++) {
+		    if (quickSlots.get(i).name.equals(move.name)) {
+			    removeMove(quickSlots.get(i));
+			    quickSlots.remove(i);
+			    return 0;
+		    }
+	    }
+	    return -1;
     }
     
     public String listEquipment(){
@@ -164,5 +182,9 @@ public class Equipment {
         }
         System.out.println("equipment consists of: " + ret);
         return ret;
+    }
+    
+    private void removeMove(Item itm){
+	    GameManager.instance.areas.current.player.removeMove(itm);
     }
 }

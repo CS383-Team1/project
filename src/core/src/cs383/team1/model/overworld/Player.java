@@ -10,32 +10,32 @@ import cs383.team1.inventory.Item;
 
 
 public final class Player implements Entity {
-public static final int TYPE = 1;
-public static int aType = 4;
-public int facing = 2;
-public Position pos;
-public boolean roaming = true;
-public Position floatPos = new Position(0, 0);
-public int hp;
-public int mp;
-public int ap;
-public ArrayList<String> possibleQuests = new ArrayList<String>();
-public ArrayList<String> acceptedQuests = new ArrayList<String>();
-public ArrayList<Move> moves = new ArrayList<Move>();
-public ArrayList<Move> attacks = new ArrayList<Move>();
-public Inventory inventory;
+	public static final int TYPE = 1;
+        public static int aType = 4;
+        public int facing = 2;
+	public Position pos;
+        public boolean roaming = true;
+        public Position floatPos = new Position(0, 0);
+	public int hp;
+	public int mp;
+	public int ap;
+        public ArrayList<String> possibleQuests = new ArrayList<String>();
+        public ArrayList<String> acceptedQuests = new ArrayList<String>();
+        public ArrayList<Move> moves = new ArrayList<Move>();
+        public ArrayList<Move> attacks = new ArrayList<Move>();
+        public Inventory inventory;
 
         
-public Player() {
-this(new Position(0, 0), 0, 0, 0);
-}
+	public Player() {
+		this(new Position(0, 0), 0, 0, 0);
+	}
 
-public Player(Position p, int hp_0, int mp_0, int ap_0) {
-Gdx.app.debug("Player:Player", "instantiating class");
-pos = p;
-hp = hp_0 > 0 ? hp_0 : 0;
-mp = mp_0 > 0 ? mp_0 : 0;
-ap = ap_0 > 0 ? ap_0 : 0;
+	public Player(Position p, int hp_0, int mp_0, int ap_0) {
+		Gdx.app.debug("Player:Player", "instantiating class");
+		pos = p;
+		hp = hp_0 > 0 ? hp_0 : 0;
+		mp = mp_0 > 0 ? mp_0 : 0;
+		ap = ap_0 > 0 ? ap_0 : 0;
                 addMove("block", 0, 50);
                 //addMove("staple", 10, 1);
                 addMove("throw coffee in face", 5, 1);
@@ -45,19 +45,19 @@ ap = ap_0 > 0 ? ap_0 : 0;
                 }
                 inventory = new Inventory("me");
                 
-}
+	}
 
-public int type() {
-return TYPE;
-}
+	public int type() {
+		return TYPE;
+	}
         
         public int aType() {
-return aType;
-}
+		return aType;
+	}
 
-public Position pos() {
-return pos;
-}
+	public Position pos() {
+		return pos;
+	}
         
         public String getQuest(){
             return acceptedQuests.get(0);
@@ -94,15 +94,17 @@ return pos;
         public void removeMove(int index){
             moves.remove(index);
         }
+	
         public void removeMove(Item itm){
-        	for (int i = 0; i < moves.size(); i++) {
-        		if (moves.get(i).name.equals(itm.name))
-        			moves.remove(i);
-        	}
+		for (int i = 0; i < moves.size(); i++) {
+			if (moves.get(i).name.equals(itm.name))
+				moves.remove(i);
+		}
         }
         
         public void addAttack(Move move){
             attacks.add(move);
+	    inventory.equiped.useQuickslot(move);
         }
         
         public void removeAttack(){
@@ -180,4 +182,3 @@ return pos;
 
         }
 }
-

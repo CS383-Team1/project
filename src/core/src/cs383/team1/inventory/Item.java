@@ -87,7 +87,10 @@ public class Item implements Entity {
         this.type = s.substring(s.indexOf(",type:")+6, 
                                 s.indexOf(",stats:{"));
 	
-	if (type.contains("weapon") || type.contains("ring")) {
+	if (	type.contains("weapon") ||
+		type.contains("ring") ||
+		type.contains("consumable")) {
+
 		this.hitChance = readStat(s, ",hit:");
 		this.critChance = readStat(s, ",critC:");
 		this.critMultiplier = readStat(s, ",critM:");

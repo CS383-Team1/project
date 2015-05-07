@@ -1,8 +1,8 @@
 package cs383.team1.input.ui;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -15,15 +15,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.SplitPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Scaling;
-
 import cs383.team1.combat.Move;
 import static cs383.team1.input.ui.SubMenu.getImage;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Player;
-
 import java.util.ArrayList;
 
 /**
@@ -34,8 +31,6 @@ public class CombatMenu {
 	Sound block = Gdx.audio.newSound(Gdx.files.internal("sound/block.wav"));
 	Sound heal = Gdx.audio.newSound(Gdx.files.internal("sound/drink.wav"));
 	Sound attack = Gdx.audio.newSound(Gdx.files.internal("sound/punch.wav"));
-
-
 	SplitPane combat;
 	ScrollPane cmdScroll;
 	Table cmdGroup;
@@ -190,13 +185,14 @@ public class CombatMenu {
 				if(moveType(move) == "Block"){
 					block.play();
 				}
+				if(moveType(move) == "Attack"){
+					attack.play();
+				}
 				if(moveType(move) == "Heal"){
 					heal.play();
 				}
-				if(moveType(move) == "Attack"){
-					attack.play(.75f);
-				}
-				gm.msg.add("Player uses:" + atk);
+				gm.msg.add("Player uses: " + atk);
+				updateAttacks();
 			}
 		});
 		

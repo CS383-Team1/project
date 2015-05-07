@@ -98,7 +98,7 @@ public class MenuInventory extends SubMenu {
 
 		TextButton equip;
 		TextButton drop;
-		TextButton use = new TextButton("ERROR", skin);
+//		TextButton use = new TextButton("ERROR", skin);
 		Image img;
 		
 		//Add the image and text tables to the main table
@@ -121,6 +121,9 @@ public class MenuInventory extends SubMenu {
 		if (type.contains("weapon")) {
 			statWpn(txtTable, itm);
 			txtTable.row();
+		} else if (type.contains("consumable") || type.contains("ring")) {
+			statCsm(txtTable, itm);
+			txtTable.row();
 		} else if (
 			type.contains("head") ||
 			type.contains("neck") ||
@@ -137,12 +140,14 @@ public class MenuInventory extends SubMenu {
 		equip = new TextButton("Equip", skin, "exp");
 		if (type.contains("two-handed"))
 			equip.addListener(new InvListener(this,"equip" ,p,itm));
-		else
+		else if (type.contains("weapon"))
 			equip.addListener(new InvListener(this,"equipR",p,itm));
-		if (type.contains("consumable")) {
-			use = new TextButton("Use", skin, "exp");
-			use.addListener(new InvListener(this, "use", p, itm));
-		}
+		else
+			equip.addListener(new InvListener(this,"equip",p,itm));
+//		if (type.contains("consumable")) {
+//			use = new TextButton("Use", skin, "exp");
+//			use.addListener(new InvListener(this, "use", p, itm));
+//		}
 		
 		//Create drop button
 		drop = new TextButton("Drop", skin, "exp");
@@ -163,7 +168,7 @@ public class MenuInventory extends SubMenu {
 		//Add the button table
 		if (type.contains("consumable")) {
 			buttonT.add(equip).right().width(65).padLeft(5);
-			buttonT.add(use).right().width(65).padLeft(5);
+//			buttonT.add(use).right().width(65).padLeft(5);
 		} else if (!type.contains("weapon")||
 			    type.contains("two-handed"))
 			buttonT.add(equip).right().width(65).padLeft(5);
@@ -223,6 +228,25 @@ public class MenuInventory extends SubMenu {
 			.fillX().expandX();
 	}
 	
+	private void statCsm(Table t, Item itm)
+	{
+		Table sub;
+		
+		sub = new Table();
+		t.add(sub).bottom();
+		
+		t.add(statComp("statDamage", itm.damage))
+			.fillX().expandX();
+		t.add(statComp("statHitChance",itm.hitChance))
+			.fillX().expandX();
+		t.add(statComp("statRange",itm.range))
+			.fillX().expandX();
+		t.add(statComp("statCritChance",itm.critChance))
+			.fillX().expandX();
+		t.add(statComp("statCritMult",itm.critMultiplier))
+			.fillX().expandX();
+	}
+	
 	private void statArm(Table t, Item itm)
 	{
 		Item a;
@@ -277,6 +301,20 @@ public class MenuInventory extends SubMenu {
 			.left().fillX().expandX().row();
 		t.add(cmpStat(e1, i)).colspan(2).right().expandX();
 		
+		t.padRight(15);
+		
+		return t;
+	}
+	
+	private Table statComp(String icn, Double i)
+	{
+		Table t;
+		t = new Table();
+
+		addIcon(icn, t);
+		t.left().add(new Label(i.toString(), skin))
+			.left().fillX().expandX().row();
+
 		t.padRight(15);
 		
 		return t;
