@@ -177,43 +177,52 @@ public final class GameManager implements GameManagerInterface {
                                             t.passable() == true){
                                         player.pos.x = tempPos.x + 2;
                                         player.pos.y = tempPos.y;
+                                        /*
                                         for(Map.Entry<Integer, Player> e : areas.current.players.entrySet()){
                                             e.getValue().roaming = false;
                                             e.getValue().pos.x = npc.pos.x + 2;
                                             e.getValue().pos.y = npc.pos.y;
                                         }
+                                                */
                                     }else if((t.pos().x == (npc.pos().x - 2)) && 
                                             (t.pos().y == npc.pos().y) && 
                                             t.passable() == true){
                                         player.pos.x = (tempPos.x - 2);
                                         player.pos.y = tempPos.y;
+                                        /*
                                         for(Map.Entry<Integer, Player> e : areas.current.players.entrySet()){
                                             e.getValue().roaming = false;
                                             e.getValue().pos.x = npc.pos.x - 2;
                                             e.getValue().pos.y = npc.pos.y;
                                         }
+                                                */
                                     }else if((t.pos().x == npc.pos().x) && 
                                             (t.pos().y == (npc.pos().y + 2)) && 
                                             t.passable() == true){
                                         player.pos.x = tempPos.x;
                                         player.pos.y = tempPos.y + 2;
+                                        /*
                                         for(Map.Entry<Integer, Player> e : areas.current.players.entrySet()){
                                             e.getValue().roaming = false;
                                             e.getValue().pos.x = npc.pos.x;
                                             e.getValue().pos.y = npc.pos.y + 2;
                                         }
+                                                */
                                     }else if((t.pos().x == npc.pos().x) && 
                                             (t.pos().y == (npc.pos().y - 2)) && 
                                             t.passable() == true){
                                         player.pos.x = tempPos.x ;
                                         player.pos.y = tempPos.y - 2;
+                                        /*
                                         for(Map.Entry<Integer, Player> e : areas.current.players.entrySet()){
                                             e.getValue().roaming = false;
                                             e.getValue().pos.x = npc.pos.x;
                                             e.getValue().pos.y = npc.pos.y - 2;
                                         }
+                                                */
                                     }
                                 }
+                                System.out.println("Printing npc position: " + npc.pos().x + " : " + npc.pos().y);
                                 areas.getCombatArea(player.pos(), player, npc);
                                 combat.encounter(Player.ownPlayer, npc, areas.current.players);
                         }

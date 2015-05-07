@@ -33,10 +33,12 @@ public class CombatManager {
         battles.add(new Combat());
         battles.get(0).reward = npc.inventory;
         //Put first player and his allies into battle
-        battles.get(0).allies.members.put(0, player);
-        for(Map.Entry<Integer, Player> e : otherPlayers.entrySet()){
-            battles.get(0).allies.members.put(e.getKey(), e.getValue());
-        }
+        battles.get(0).allies.members.put(player.playerID, player);
+        //for(Map.Entry<Integer, Player> e : otherPlayers.entrySet()){
+          //  battles.get(0).allies.members.put(e.getKey(), e.getValue());
+        //}
         battles.get(0).enemies.members.put(0, npc);
+        System.out.println("Inside CombatManager.encounter()");
+               
     }
    }

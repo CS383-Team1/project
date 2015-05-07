@@ -62,9 +62,11 @@ public class Combat {
         double damage;
         //Implement this when muliplayer is added
         //for(Entity e : allies.members){
-        if(allies.members.size() > 0)            
-            player = (Player)allies.members.get(0);
-        else
+        if(allies.members.size() > 0){            
+            for(Integer i : allies.members.keySet()){
+                player = (Player)allies.members.get(i);
+            }
+        }else
             return 0;
                 
         //}
@@ -114,7 +116,7 @@ public class Combat {
                         lastPlayerDamage = npc.attacks.get(0).getDamage();
                         //Picking random player to attack
                         random = selectionGen.nextInt(allies.members.size());
-                        player = (Player)allies.members.get(random);
+                        //player = (Player)allies.members.get(random);
                         //If damage attribute in move instance is positive, 
                         //then deal to player hp, else add to npc hp
                         if(npc.attacks.get(0).getDamage() >= 0){
@@ -147,12 +149,8 @@ public class Combat {
                 }
             }
             
-            //Will need to iterate over this list to remove all allies
             player.roaming = true;
-            // Reove player from combat using key 0
-            //for(Map.Entry<Integer, Entity> e : allies.members.entrySet()){
-                //allies.removeCombatants(allies.members.get(1));
-            //}
+         
             allies.members.remove(1);
             int count = 0;
                 while(allies.members.size() > 1){
@@ -160,13 +158,8 @@ public class Combat {
                     count++;
                 }
                 
-            //Will need to iterate over this list to remove all enemies
-            //for(Map.Entry<Integer, Entity> e : enemies.members.entrySet()){
-                //enemies.removeCombatants(e.getKey());
-            //}
             //NPC is at key value 0
             enemies.members.remove(0);
-            
             return 0;
         }
      return 0;   

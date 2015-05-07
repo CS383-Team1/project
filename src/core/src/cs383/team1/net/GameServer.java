@@ -98,7 +98,7 @@ public class GameServer{
                                             
                                                 if(r.roaming != true){
                                                     tempPos = r.pos;
-                                                    tempPos.x--;
+                                                    //tempPos.x--;
                                                     
                                                     if ((npc = (Npc)Main.gm.areas.findCombatant(
                                                         r.pos, 3)) != null){
