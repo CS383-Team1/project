@@ -77,6 +77,7 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 		inputManager = new InputManager();
 		im = new InputMultiplexer(stage, this);
 		Gdx.input.setInputProcessor(im);
+                client.sendConnectionRequest();
 
         }
 

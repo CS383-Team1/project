@@ -1,6 +1,8 @@
 package cs383.team1.net;
 
 import cs383.team1.model.overworld.Position;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -12,6 +14,9 @@ public class PosRequest {
 	public int facing;
         public boolean roaming;
         String areaName;
+        int playerID;
+        public Map<Integer, Position> otherPlayerPositions 
+                = new HashMap<Integer, Position>();
 	
 	public PosRequest(){
 	}

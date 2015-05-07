@@ -38,13 +38,17 @@ import cs383.team1.model.overworld.Wall;
 import java.util.ArrayList;
 
 public class Network {
-	static public final int port = 13370;
+	static public final int port = 7777;
 
 	static public final short GM_ID = 100;
 	static public final short P_ID = 107;
 
 	static public void registerKryo (EndPoint endPoint) {
 		Kryo kryo = endPoint.getKryo();
+                kryo.register(ConnectRequest.class);
+                kryo.register(ConnectResponse.class);
+                kryo.register(java.util.HashMap.class);
+                kryo.register(java.util.HashSet.class);
 		kryo.register(CraftedItemFactory.class);
 		kryo.register(Equipment.class);
 		kryo.register(Inventory.class);

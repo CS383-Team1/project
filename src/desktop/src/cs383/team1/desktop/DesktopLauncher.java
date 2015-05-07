@@ -7,7 +7,7 @@ import cs383.team1.Main;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
             LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-            config.title = "Client";
+            config.title = "Office Space Adventure";
             new LwjglApplication(new Main(), config);
 	}
 }
