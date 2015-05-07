@@ -8,6 +8,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
@@ -19,6 +20,7 @@ import cs383.team1.render.UIDisplay;
 
 public class Main implements ApplicationListener, InputProcessor {
 	public InputManager inputManager;
+	public Music song;
 	public GameManager gm;
 	public DemoDisplay screen;
         public UIDisplay ui;
@@ -49,6 +51,10 @@ public class Main implements ApplicationListener, InputProcessor {
 
                 
                 Gdx.input.setInputProcessor(im);
+            song = Gdx.audio.newMusic(Gdx.files.internal("sound/song.ogg"));
+            song.setLooping(true);
+            song.play();
+            song.setVolume(0.2f);
 	}
 
 

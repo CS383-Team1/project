@@ -10,34 +10,32 @@ import cs383.team1.inventory.Item;
 
 
 public final class Player implements Entity {
-    public static final int TYPE = 1;
-    public static int aType = 4;
-    public int facing = 2;
-	public Position pos;
-    public boolean roaming = true;
-    public Position floatPos = new Position(0, 0);
-	public int hp;
-	public int mp;
-	public int ap;
-    public ArrayList<String> possibleQuests = new ArrayList<String>();
-    public ArrayList<String> acceptedQuests = new ArrayList<String>();
-    public ArrayList<Move> moves = new ArrayList<Move>();
-    public ArrayList<Move> attacks = new ArrayList<Move>();
-    public Inventory inventory;
-
-
+public static final int TYPE = 1;
+public static int aType = 4;
+public int facing = 2;
+public Position pos;
+public boolean roaming = true;
+public Position floatPos = new Position(0, 0);
+public int hp;
+public int mp;
+public int ap;
+public ArrayList<String> possibleQuests = new ArrayList<String>();
+public ArrayList<String> acceptedQuests = new ArrayList<String>();
+public ArrayList<Move> moves = new ArrayList<Move>();
+public ArrayList<Move> attacks = new ArrayList<Move>();
+public Inventory inventory;
 
         
-	public Player() {
-		this(new Position(0, 0), 0, 0, 0);
-	}
+public Player() {
+this(new Position(0, 0), 0, 0, 0);
+}
 
-	public Player(Position p, int hp_0, int mp_0, int ap_0) {
-		Gdx.app.debug("Player:Player", "instantiating class");
-		pos = p;
-		hp = hp_0 > 0 ? hp_0 : 0;
-		mp = mp_0 > 0 ? mp_0 : 0;
-		ap = ap_0 > 0 ? ap_0 : 0;
+public Player(Position p, int hp_0, int mp_0, int ap_0) {
+Gdx.app.debug("Player:Player", "instantiating class");
+pos = p;
+hp = hp_0 > 0 ? hp_0 : 0;
+mp = mp_0 > 0 ? mp_0 : 0;
+ap = ap_0 > 0 ? ap_0 : 0;
                 addMove("block", 0, 50);
                 //addMove("staple", 10, 1);
                 addMove("throw coffee in face", 5, 1);
@@ -47,72 +45,78 @@ public final class Player implements Entity {
                 }
                 inventory = new Inventory("me");
                 
-	}
+}
 
-	public int type() {
-		return TYPE;
-	}
+public int type() {
+return TYPE;
+}
         
-    public int aType() {
-		return aType;
-	}
+        public int aType() {
+return aType;
+}
 
-	public Position pos() {
-		return pos;
-	}
+public Position pos() {
+return pos;
+}
         
-    public String getQuest(){
+        public String getQuest(){
             return acceptedQuests.get(0);
         }
         
-    public void addMove(String name, double damage, int blockPercent){
-        Move move = new Move(name, damage, blockPercent);
-        for(Move m : this.moves){
-            if("null".equals(m.name)){
-                int index = moves.indexOf(m);
-                moves.set(index, move);
-                return;
+        public void addMove(String name, double damage, int blockPercent){
+            Move move = new Move(name, damage, blockPercent);
+             for(Move m : this.moves){
+                if("null".equals(m.name)){
+                    int index = moves.indexOf(m);
+                    moves.set(index, move);
+                    return;
+                }
             }
-        }
-        moves.add(move);
-    }
-        
-    public void addMove(Move move){
             moves.add(move);
         }
-
-    public void addMove(Item i){
-        Move move = new Move(i.name, i.damage, 1);
-        for(Move m : this.moves){
-            if("null".equals(m.name)){
-                int index = moves.indexOf(m);
-                moves.set(index, move);
-                return;
-            }
-        }
-        moves.add(move);
-    }
         
-    public void removeMove(int index){
+        public void addMove(Move move){
+            moves.add(move);
+        }
+        
+        public void addMove(Item i){
+            Move move = new Move(i.name, i.damage, 1);
+            for(Move m : this.moves){
+                if("null".equals(m.name)){
+                    int index = moves.indexOf(m);
+                    moves.set(index, move);
+                    return;
+                }
+            }
+            moves.add(move);
+        }
+        
+        public void removeMove(int index){
             moves.remove(index);
         }
-
-    public void addAttack(Move move){
+        public void removeMove(Item itm){
+        	for (int i = 0; i < moves.size(); i++) {
+        		if (moves.get(i).name.equals(itm.name))
+        			moves.remove(i);
+        	}
+        }
+        
+        public void addAttack(Move move){
             attacks.add(move);
         }
-
-    public void removeAttack(){
+        
+        public void removeAttack(){
             attacks.remove(0);
         }
-    public boolean consumableAttack(){
+        public boolean consumableAttack(){
             return !attacks.isEmpty();
         }
-
-    public Position floatPos() {
+        
+        public Position floatPos() {
                 return floatPos;
         }
-
-    public void setFloatPos(Position p) {
+        
+        public void setFloatPos(Position p) {
                 floatPos = p;
         }
         
@@ -150,59 +154,30 @@ public final class Player implements Entity {
                 
                 if (floatPos.x == 0 && floatPos.y == 0) {
                         switch (facing) {
-                        case 0:
-                                aType = 5;
-                                break;
-                        case 1:
-                                aType = 7;
-                                break;
-                        case 2:
-                                aType = 4;
-                                break;
-                        case 3:
-                                aType = 6;
-                                break;
-                        default:
-                                aType = 4;
-                                break;
+                        case 0: aType = 5; break;
+                        case 1: aType = 7; break;
+                        case 2: aType = 4; break;
+                        case 3: aType = 6; break;
+                        default: aType = 4; break;
                         }
                 } else if (anim == 0) {
                         switch (facing) {
-                        case 0:
-                                aType = 9;
-                                break;
-                        case 1:
-                                aType = 11;
-                                break;
-                        case 2:
-                                aType = 8;
-                                break;
-                        case 3:
-                                aType = 10;
-                                break;
-                        default:
-                                aType = 8;
-                                break;
+                        case 0: aType = 9; break;
+                        case 1: aType = 11; break;
+                        case 2: aType = 8; break;
+                        case 3: aType = 10; break;
+                        default: aType = 8; break;
                         }
                 } else if (anim == 1) {
                         switch (facing) {
-                        case 0:
-                                aType = 13;
-                                break;
-                        case 1:
-                                aType = 15;
-                                break;
-                        case 2:
-                                aType = 12;
-                                break;
-                        case 3:
-                                aType = 14;
-                                break;
-                        default:
-                                aType = 12;
-                                break;
+                        case 0: aType = 13; break;
+                        case 1: aType = 15; break;
+                        case 2: aType = 12; break;
+                        case 3: aType = 14; break;
+                        default: aType = 12; break;
                         }
                 }
 
         }
 }
+

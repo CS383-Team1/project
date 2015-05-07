@@ -22,7 +22,9 @@ public class Item implements Entity {
     public Double damage;
     public Move requiredMove;
     private Position pos;
-    
+    public Double hp;
+    public Double mp;
+    public Double ap;
     
     public Item(){
         this.name = "Unknown";
@@ -33,6 +35,9 @@ public class Item implements Entity {
         this.critMultiplier = 0.0;
         this.damage = 0.0;
         this.range = 0.0;
+	this.hp = 0.0;
+	this.mp = 0.0;
+	this.ap = 0.0;
         this.requiredMove = new Move(name, damage.intValue(), 1);
         pos = new Position();
         System.out.println("Made unnamed Item");
@@ -46,6 +51,9 @@ public class Item implements Entity {
         this.critMultiplier = 0.0;
         this.damage = 0.0;
         this.range = 0.0;
+	this.hp = 0.0;
+	this.mp = 0.0;
+	this.ap = 0.0;
         
         System.out.println("Made Item named " + n);
     }
@@ -59,41 +67,63 @@ public class Item implements Entity {
         this.critMultiplier = 0.0;
         this.damage = 0.0;
         this.range = 0.0;
+	this.hp = 0.0;
+	this.mp = 0.0;
+	this.ap = 0.0;
         pos = p;
         System.out.println("Made Item named " + n);
     }
     
     //Constructor that uses string scanning
     public Item(Position p, String s){
+//	    String [] fields = s.split("[a-zA-Z]+:");
+//	    for (int i = 0; i < fields.length; i++) {
+//		    System.out.println(fields[i]);
+//	    }
        
         this.name  = s.substring(6, s.indexOf(",desc:"));
         this.description = s.substring(s.indexOf(",desc:")+6, 
                                        s.indexOf(",type:"));
-        System.out.println("Printing description: " + description);
         this.type = s.substring(s.indexOf(",type:")+6, 
-                                s.indexOf(",hit:"));
-        System.out.println("Printing type: " + type);
-        this.hitChance = Double.parseDouble(s.substring(
-                                s.indexOf(",hit:")+5,
-                                s.indexOf(",critC:")));
-        System.out.println("Printing hitChance: " + hitChance);
-        this.critChance = Double.parseDouble(s.substring(
-                                s.indexOf(",critC:")+7,
-                                s.indexOf(",critM:")));                
-        this.critMultiplier = Double.parseDouble(s.substring(
-                                s.indexOf(",critM:")+7,
-                                s.indexOf(",d:")));        
-        this.damage = Double.parseDouble(s.substring(
-                                s.indexOf(",d:")+3,
-                                s.indexOf(",r")));
-        this.range = Double.parseDouble(s.substring(
-                                s.indexOf(",r:")+3,
-                                s.indexOf("}")));
+                                s.indexOf(",stats:{"));
+	
+	if (type.contains("weapon") || type.contains("ring")) {
+		this.hitChance = readStat(s, ",hit:");
+		this.critChance = readStat(s, ",critC:");
+		this.critMultiplier = readStat(s, ",critM:");
+		this.damage = readStat(s, ",d:");
+		this.range = readStat(s, ",r:");
+	} else {
+		this.hp = readStat(s, ",hp:");
+		this.mp = readStat(s, ",mp:");
+		this.ap = readStat(s, ",ap:");
+	}
         pos = p;
         System.out.println("Printing pos in item: " + pos.x + " " + pos.y);
         System.out.println("Made Item named " + this.name);
             
     }
+    
+    /*
+    Read a stat from a string serialization
+    */
+    private Double readStat(String s, String p) {
+	    int start = 0;
+	    int end;
+	    
+	    if (s.contains("p"))
+		    start = s.indexOf(p)+p.length();
+
+	    if (s.substring(start).contains(",")) end = s.indexOf(",", start);
+	    else if (s.substring(start).contains("}"))
+		    end = s.indexOf("}",start);
+	    else end = s.length()-1;
+
+	    if (s.substring(start, end).matches("[0-9]+\\.?[0-9]+"))
+		    return Double.parseDouble(s.substring(start, end));
+	    else return 0.0;
+    }
+    
     public Item(String n, String desc,String t,Double d,Double hit,Double crit,
             Double critM, Double r, Position p){
         this.name = n;

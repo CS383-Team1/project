@@ -149,7 +149,7 @@ public class DemoDisplay extends Display {
 
 	public DemoDisplay() {
             
-		Gdx.app.debug("DemoDisplay:DemoDisplay", "instantiating class");
+		Gdx.app.debug("DemoDisplay:DemoDisplay", "intantiating class");
 		batch = new SpriteBatch();
                 font = new BitmapFont();
 		tileSprites = new HashMap<Integer, String>();

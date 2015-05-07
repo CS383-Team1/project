@@ -30,7 +30,7 @@ public class Inventory {
     }
     
     public boolean pickUp(Item n){
-        if (contents.size() + equiped.size() < maxSize){
+        if (n != null && contents.size() + equiped.size() < maxSize && !n.name.equals("Unknown")){
             contents.add(n);
             System.out.println("picked up " + n.name);
             return true;

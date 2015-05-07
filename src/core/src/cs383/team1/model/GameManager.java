@@ -162,8 +162,6 @@ public final class GameManager {
 	                //Interact with an NPC (nullifies last attempted move)
                         if((coworker = (CoWorker)areas.findEntity(next, 17)) != null) {
                                 keyPressed = 0;
-                                msg.add(coworker.readNext());
-                                System.out.println("GameManager: NPC Interaction: " + msg);
                                 next = player.pos;
                         }
 			
