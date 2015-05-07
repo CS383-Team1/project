@@ -167,6 +167,8 @@ public final class AreaManager {
 
 			pos = new Position(x, y);
                         
+			System.out.println(entityData);
+			
 			switch(type) {
 				case DemoEntity.TYPE:
 					Gdx.app.debug("AreaManager:loadArea", "Loading DemoEntity");
@@ -185,7 +187,10 @@ public final class AreaManager {
                                         System.out.println("Printing entitydata: " + entityData);
                                         entities.add(new Item(pos,entityData));
                                         break;
-                                           
+                                case CoWorker.TYPE:
+                                        Gdx.app.debug("AreaManager:loadArea", "Loading CoWorkerEntity");
+                                        entities.add(new CoWorker(pos,entityData));
+                                        break;
 				default:
 					Gdx.app.error("AreaManager:loadArea",
 					  "invalid entity type " + vals[i + 2]);
