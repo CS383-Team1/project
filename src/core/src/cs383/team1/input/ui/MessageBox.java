@@ -31,7 +31,7 @@ public class MessageBox {
 		text = new ArrayList();
 		mTable = new Table(sk);
 		mText = new Label("",sk);
-		input = new TextField("", sk);
+		input = new TextField("Press [ENTER] to chat", sk);
 		
 		//Create the "Chat History" section
 		mScroll = new ScrollPane(mTable, sk, "chat");
