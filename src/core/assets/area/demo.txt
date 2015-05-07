@@ -2079,12 +2079,10 @@
 64 29 2
 64 30 2
 64 31 2
-20
+19
 1 31 2 {destination:aa,destinationX:29,destinationY:1}
 63 31 2 {destination:cyber,destinationX:29,destinationY:29}
-
 8 8 3 {quests:dialogue/npc1.txt}
-15 8 17 {quests:dialogue/bigtastee.txt,name:Big_Tastee}
 22 8 17 {quests:dialogue/iago.txt,name:Iago}
 27 8 3 {quests:dialogue/npc1.txt}
 10 10 16 {name:Stapler,desc:A_stapler,_how_inventive!,type:weapon,stats:{hit:20.0,critC:2.0,critM:1.0,d:10.0,r:2.0}}
