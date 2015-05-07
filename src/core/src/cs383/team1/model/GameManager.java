@@ -154,8 +154,8 @@ public final class GameManager implements GameManagerInterface {
                         //Try to use stairs entity on a stairs tile (well3112)
                         if (target.type() == 3){
                             areas.useStairs(next, player);
-                        }
-			if(target.passable()) {
+                            next = Player.ownPlayer.pos;
+                        } else if(target.passable()) {
                                 player.floatPos = new Position((x-next.x) *
                                         Tile.WIDTH, (y-next.y) * Tile.HEIGHT);
 				player.pos = next;
