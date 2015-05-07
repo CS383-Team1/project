@@ -10,6 +10,8 @@ public class PosRequest {
 	public Position pos;
 	public Position floatPos;
 	public int facing;
+        public boolean roaming;
+        String areaName;
 	
 	public PosRequest(){
 	}

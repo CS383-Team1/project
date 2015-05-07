@@ -27,6 +27,7 @@ public final class Player implements PlayerInterface {
         public ArrayList<Move> moves = new ArrayList<Move>();
         public ArrayList<Move> attacks = new ArrayList<Move>();
         public Inventory inventory;
+        public String currentArea = new String();
 
 	
         

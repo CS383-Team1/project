@@ -39,39 +39,4 @@ public class CombatManager {
         }
         battles.get(0).enemies.members.put(0, npc);
     }
-    
-    /*
-    public void loadCombat(String fname){
-        String fcontents;
-                String entityData;
-		
-		Player player;
-		String[] vals;
-		FileHandle fin;
-		int numBattles;
-                int i;
-		int offset = 0;
-                String first;
-                String second;
-                String third;
-		
-		Gdx.app.log("AreaManager:loadCombat", "Loading " + fname);
-
-		fin = Gdx.files.internal(fname);
-		fcontents = fin.readString();
-		vals = fcontents.trim().split("\\s+");
-
-		Gdx.app.debug("AreaManager:loadCombat", "Loading Npcs");
-                int k = 0;
-		numBattles = Integer.parseInt(vals[offset++]);
-		for(i = offset; i < offset + (numBattles * 3); i += 3) {
-			first = vals[i + 0];
-			second = vals[i + 1];
-			third = vals[i + 2];
-                        
-			Gdx.app.debug("CombatManager:loadCombat", "Loading NpcEntity");
-                        battles.get(k).enemies.addCombatants();
-                }
-    }
-    */
    }

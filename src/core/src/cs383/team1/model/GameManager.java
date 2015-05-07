@@ -86,6 +86,7 @@ public final class GameManager implements GameManagerInterface {
                 
                 int x = player.pos.x;
                 int y = player.pos.y;
+                player.currentArea = areas.current.name;
 		
                 //Input system for overworld walking using arrow keys
                 in.limitList();

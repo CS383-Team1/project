@@ -194,7 +194,8 @@ public final class AreaManager {
                         k++;
 		}
 		offset += numEntities * 4;
-                //On the first area, put a player.
+                //On the first area, put a player. Will need to invert logic
+                //and have first level b aa.txt for more than three levels.
                 if(areas.isEmpty() != true){
 
                     Gdx.app.debug("AreaManager:loadArea", "Loading Player");
@@ -207,9 +208,11 @@ public final class AreaManager {
                     pos = new Position(x, y);
                     player = new Player(pos, hp, mp, ap);
                     a = new Area(tiles, entities, player);
+                    a.name = fname;
                     areas.put(fname, a);
                 }else{
                     a = new Area(tiles, entities);
+                    a.name = fname;
                     areas.put(fname, a);
                 }
 
@@ -223,6 +226,9 @@ public final class AreaManager {
                         changeArea(se.destination(),se.destinationPos(), player);
                         return 0;
                 }
+                System.out.println("Changing to area : " + se.destination());
+                player.currentArea = se.destination() + ".txt";
+                System.out.println("new player area: " + player.currentArea);
                 return -1;
         }
         
@@ -256,6 +262,7 @@ public final class AreaManager {
             if(changeArea(s) == 0) {
                 Player.ownPlayer.pos.x = pos.x;
                 Player.ownPlayer.pos.y = pos.y;
+                System.out.println("Printing destination position: " + pos.x  + " : " + pos.y);
 //                areas.get("area/".concat(s.concat(".txt"))).player = p;
                 return 0;
             }

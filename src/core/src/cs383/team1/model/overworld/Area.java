@@ -11,6 +11,7 @@ public class Area {
 	public List<Entity> entities;
         //public List<Player> players;
         public Map<Integer, Player> players;
+        public String name;
         
 	public Area() {
             this(new ArrayList<Tile>(), new ArrayList<Entity>(), new Player());
@@ -33,5 +34,7 @@ public class Area {
 		entities = entityList;
 		//players = new ArrayList();
                 players = new HashMap<Integer, Player>();
+                Player p = new Player();
+                players.put(1, p);
 	}
 }

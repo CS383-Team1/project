@@ -85,21 +85,23 @@ public class GameClient {
 					p.pos = pr.pos;
 					p.floatPos = pr.floatPos;
 					p.facing = pr.facing;
+                                        p.currentArea = pr.areaName;
+                                        
                                         if(pr.roaming != true){
                                             tempPos = pr.pos;
                                             tempPos.x--;
                                             
                                             if ((npc = (Npc)Main.gm.areas.findCombatant(
-                                            pr.pos, 3)) != null){
+                                                pr.pos, 3)) != null){
                                             
-                                            Player.ownPlayer.roaming = false;
-                                            Player.ownPlayer.pos.x = pr.pos.x - 1;
-                                            Player.ownPlayer.pos.x = pr.pos.x;
-                                            Player.ownPlayer.pos.y = pr.pos.y;
-                                            Player.ownPlayer.pos.y = pr.pos.y - 1;
-                                            Main.gm.combat.encounter(Player.ownPlayer, npc, Main.gm.areas.current.players);
+                                                Player.ownPlayer.roaming = false;
+                                                //Player.ownPlayer.pos.x = pr.pos.x - 1;
+                                                Player.ownPlayer.pos.x = pr.pos.x;
+                                                Player.ownPlayer.pos.y = pr.pos.y;
+                                                Player.ownPlayer.pos.y = pr.pos.y - 1;
+                                                Main.gm.combat.encounter(Player.ownPlayer, npc, Main.gm.areas.current.players);
                                             }
-                                        }else{
+                                        }else {
                                             //Player.ownPlayer.roaming = true;
                                         }
 				}
@@ -113,6 +115,8 @@ public class GameClient {
 		r.pos = Player.ownPlayer.pos;
 		r.floatPos = Player.ownPlayer.floatPos;
 		r.facing = Player.ownPlayer.facing;
+                r.roaming = Player.ownPlayer.roaming;
+                r.areaName = Player.ownPlayer.currentArea;
 		client.sendTCP(r);
 	}
         

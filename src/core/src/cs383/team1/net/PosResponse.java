@@ -11,6 +11,7 @@ public class PosResponse {
 	public Position floatPos;
 	public int facing;
         public boolean roaming;
+        String areaName;
 	
 	public PosResponse(){
 	}
