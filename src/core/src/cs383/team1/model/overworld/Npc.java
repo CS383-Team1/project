@@ -30,7 +30,7 @@ public final class Npc implements Entity{
         
 	public Npc(){
                 pos = new Position();
-                hp = 100;
+                hp = 20;
                 lastPlayerMove = 0;
                 fitness = 1.0;
                 mutatedFitness = 0.0;
@@ -74,14 +74,18 @@ public final class Npc implements Entity{
                 //Add items to inventory of NPC: used later to give to player
                 //after defeat in battle
                 
-                items = f.substring(f.indexOf("{name:"));//, f.indexOf("}"));
-                Item winnableItem = new Item(pos, items);
-                inventory.contents.add(winnableItem);
-                //Add move based on NPC's item read in from file
-                addMove(inventory.contents.get(0).name, 
-                        inventory.contents.get(0).damage, 1);
-              
-        }
+                Gdx.app.debug("StairsEntity:StairsEntity", "instantiating class");
+		pos = p;
+
+                hp = 20;
+                lastPlayerMove = 0;
+                fitness = 1.0;
+                mutatedFitness = 0.0;
+                addMove("block", 0, 50);
+                addMove("staple", 10, 1);
+                addMove("throw coffee in face", 5, 1);
+                
+	}
 
         @Override
 	public int type(){

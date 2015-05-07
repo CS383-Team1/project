@@ -12,6 +12,7 @@ import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.CoWorker;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
@@ -80,7 +81,8 @@ public final class GameManager implements GameManagerInterface {
 	public void update(InputManager in) {
 		Position next;
 		Tile target;
-                Npc npc;
+                CoWorker coworker;
+		Npc npc;
                 Item item;
                 
                 
@@ -152,6 +154,12 @@ public final class GameManager implements GameManagerInterface {
                             continue;
 			}
                                                
+	                //Interact with an NPC (nullifies last attempted move)
+                        if((coworker = (CoWorker)areas.findEntity(next, 17)) != null) {
+                                keyPressed = 0;
+                                next = player.pos;
+                        }
+			
                         //Try to use stairs entity on a stairs tile (well3112)
                         if (target.type() == 3){
                             areas.useStairs(next, player);

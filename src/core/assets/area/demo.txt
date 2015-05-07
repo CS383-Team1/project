@@ -1023,8 +1023,24 @@
 31 29 2
 31 30 2
 31 31 2
-3
+19
 30 31 2 {destination:aa,destinationX:29,destinationY:1}
-8 8 3 {quests:dialogue/npc1.txt}{name:stapler,desc:stapler,type:stapler,hit:20.0,critC:2.0,critM:1.0,d:15.0,r:2.0}
-10 10 16 {name:stapler,desc:stapler,type:stapler,hit:20.0,critC:2.0,critM:1.0,d:10.0,r:2.0}
+8 8 3 {quests:dialogue/npc1.txt}
+15 8 17 {quests:dialogue/bigtastee.txt,name:Big_Tastee}
+22 8 17 {quests:dialogue/iago.txt,name:Iago}
+27 8 3 {quests:dialogue/npc1.txt}
+10 10 16 {name:Stapler,desc:A_stapler,_how_inventive!,type:weapon,stats:{hit:20.0,critC:2.0,critM:1.0,d:10.0,r:2.0}}
+10 10 16 {name:Bashing_Stapler,desc:A_stapler_for_hitting_things...lots_of_things.,type:weapon,stats:{hit:20.0,critC:2.0,critM:1.0,d:10.0,r:1.0}}
+10 10 16 {name:Nice_Stapler,desc:An_even_better_stapler,_neat!,type:weapon,stats:{hit:25.0,critC:2.0,critM:1.0,d:11.0,r:2.0}}
+10 10 16 {name:Polka_Stapler,desc:A_stapler_from_the_native_folklands.,type:weapon,stats:{hit:20.0,critC:2.0,critM:1.0,d:10.0,r:1.0}}
+10 10 16 {name:Hammer_Stapler,desc:Dang,_that's_a_big_stapler..,type:two-handedweapon,stats:{hit:20.0,critC:2.0,critM:1.0,d:15.0,r:1.0}}
+10 10 16 {name:Edible_Stapler,desc:How...delicious?,type:consumable,stats:{hp:20.0,mp:0.0}}
+10 10 16 {name:Stapler_Hat,desc:Decorative...,type:head,stats:{hp:10.0,mp:0.0}}
+10 10 16 {name:Stapler_Shirt,desc:It_reads,_"I_<3_STAPLERS.",type:chest,stats:{hp:15.0,mp:0.0}}
+10 10 16 {name:Stapler_Scarf,desc:These_staplers_are_making_me_thirsty...I_mean_cold.,type:neck,stats:{hp:5.0,mp:0.0}}
+10 10 16 {name:Stapler_Mittens,desc:Umm...ouch?,type:hands,stats:{hp:5.0,mp:0.0}}
+10 10 16 {name:Regular_old_pants,desc:Just_kidding...there_are_staplers_in_the_pockets.,type:legs,stats:{hp:10.0,mp:0.0}}
+10 10 16 {name:Stapler_shoes,desc:Better_or_worse_than_LEGOs?,type:feet,stats:{hp:5.0,mp:0.0}}
+10 10 16 {name:Stapler_ring,desc:Glam_dat_finger_up_gurrrrl.,type:rings,stats:{hit:20.0,critC:2.0,critM:1.0,d:10.0,r:2.0}}
+10 10 16 {name:Stapler_band,desc:To_let_everyone_know_about_your_lifelong_commitment_to_staplers.,type:rings,stats:{hit:20.0,critC:2.0,critM:1.0,d:10.0,r:2.0}}
 8 7 100 10 1

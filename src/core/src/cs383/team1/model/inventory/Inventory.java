@@ -34,7 +34,10 @@ public class Inventory {
     }
     
     public boolean pickUp(Item n){
-        if (contents.size() + equiped.size() < maxSize){
+        if (       n != null
+		&& contents.size() + equiped.size() < maxSize
+		&& !n.name.equals("Unknown")){
+
             contents.add(n);
             Gdx.app.debug("Inventory:pickUp", "picked up " + n.name);
             return true;
@@ -42,5 +45,14 @@ public class Inventory {
             Gdx.app.debug("Inventory:pickUp", "Inventory full: could not pick up " + n.name);
             return false;
         }
+    }
+    
+    public boolean addItem(Item n)
+    {
+	    if (n != null && !n.name.equals("Unknown")){
+		    contents.add(n);
+		    System.out.println("picked up " + n.name);
+		    return true;
+	    } else return false;
     }
 }
