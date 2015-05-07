@@ -1,42 +1,58 @@
 package cs383.team1.render;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+
+import cs383.team1.input.DialogueBox;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Entity;
-import cs383.team1.model.overworld.Tile;
-import cs383.team1.model.overworld.DemoEntity;
+import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
-import cs383.team1.render.Display;
+import cs383.team1.model.overworld.Tile;
 
 public class DemoDisplay extends Display {
 	private static final String FNAME = "img/demo.png";
 
 	private SpriteBatch batch;
 	private Sprite sprite;
+
 	private Map<Integer, String> tileSprites;
 	private Map<Integer, Texture> tileTextures;
 	private Map<Integer, String> entitySprites;
 	private Map<Integer, Texture> entityTextures;
+	DialogueBox chatBox;
+	String fileName;
+	private FreeTypeFontGenerator fontGen;
+	BitmapFont font;
+	private int counter; // counter to how many steps 
+	private boolean counterStatus; // if it is true counter ++ or --.
+
+	// Stage stage;
+	// Skin skin;
+	// Window notice;
+	public OrthographicCamera camera;
 
 	private Texture getTileTexture(int i) {
 		String fname;
 
-		if(tileTextures.get(i) == null) {
-			if((fname = tileSprites.get(i)) == null) {
-				Gdx.app.error("DemoDisplay:getTileTexture",
-				  "invalid id " + i);
+		if (tileTextures.get(i) == null) {
+			if ((fname = tileSprites.get(i)) == null) {
+				Gdx.app.error("DemoDisplay:getTileTexture", "invalid id " + i);
 				throw new IndexOutOfBoundsException();
 			}
 
-			Gdx.app.log("DemoDisplay:getTileTexture",
-			  "loading texture " + fname);
+			Gdx.app.log("DemoDisplay:getTileTexture", "loading texture "
+					+ fname);
 			tileTextures.put(i, new Texture(Gdx.files.internal(fname)));
 		}
 
@@ -46,15 +62,14 @@ public class DemoDisplay extends Display {
 	private Texture getEntityTexture(int i) {
 		String fname;
 
-		if(entityTextures.get(i) == null) {
-			if((fname = entitySprites.get(i)) == null) {
-				Gdx.app.error("DemoDisplay:getEntityTexture",
-				  "invalid id " + i);
+		if (entityTextures.get(i) == null) {
+			if ((fname = entitySprites.get(i)) == null) {
+				Gdx.app.error("DemoDisplay:getEntityTexture", "invalid id " + i);
 				throw new IndexOutOfBoundsException();
 			}
 
-			Gdx.app.log("DemoDisplay:getEntityTexture",
-			  "loading texture " + fname);
+			Gdx.app.log("DemoDisplay:getEntityTexture", "loading texture "
+					+ fname);
 			entityTextures.put(i, new Texture(Gdx.files.internal(fname)));
 		}
 
@@ -82,7 +97,7 @@ public class DemoDisplay extends Display {
 		vals = fcontents.trim().split("\\s+");
 
 		numEntities = Integer.parseInt(vals[offset++]);
-		for(i = offset; i < offset + (numEntities * 2); i += 2) {
+		for (i = offset; i < offset + (numEntities * 2); i += 2) {
 			index = Integer.parseInt(vals[i + 0]);
 			sprite = vals[i + 1];
 
@@ -112,7 +127,7 @@ public class DemoDisplay extends Display {
 		vals = fcontents.trim().split("\\s+");
 
 		numEntities = Integer.parseInt(vals[offset++]);
-		for(i = offset; i < offset + (numEntities * 2); i += 2) {
+		for (i = offset; i < offset + (numEntities * 2); i += 2) {
 			index = Integer.parseInt(vals[i + 0]);
 			sprite = vals[i + 1];
 
@@ -127,58 +142,140 @@ public class DemoDisplay extends Display {
 	}
 
 	public DemoDisplay() {
+
 		Gdx.app.debug("DemoDisplay:DemoDisplay", "intantiating class");
 		batch = new SpriteBatch();
+		font = new BitmapFont();
 		tileSprites = new HashMap<Integer, String>();
 		tileTextures = new HashMap<Integer, Texture>();
 		entitySprites = new HashMap<Integer, String>();
 		entityTextures = new HashMap<Integer, Texture>();
-                
+		fileName = "fonts/VCR_OSD_MONO_1.001.ttf";
+		fontGen = new FreeTypeFontGenerator(Gdx.files.internal(fileName));
+		font = fontGen.generateFont(20);
+		chatBox = new DialogueBox();
 		loadSpriteMaps();
+		counter = 0;
+		counterStatus = true;
 	}
 
 	public void dispose() {
 		Gdx.app.debug("DemoDisplay:dispose", "disposing textures");
 
-		for(Map.Entry item : tileTextures.entrySet()) {
+		for (Map.Entry item : tileTextures.entrySet()) {
 			((Texture) item.getValue()).dispose();
 		}
 
-		for(Map.Entry item : entityTextures.entrySet()) {
+		for (Map.Entry item : entityTextures.entrySet()) {
 			((Texture) item.getValue()).dispose();
 		}
 	}
 
 	public void render() {
 		Player player;
+		Npc movingCoWorker;
 
 		Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 		batch.enableBlending();
 		batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
 		batch.begin();
 
-		for(Entity e : GameManager.instance.areas.current.tiles) {
+		for (Entity e : GameManager.instance.areas.current.tiles) {
 			sprite = new Sprite(getTileTexture(e.type()));
 			sprite.setPosition(e.pos().x * Tile.WIDTH, e.pos().y * Tile.HEIGHT);
 			sprite.draw(batch);
 		}
 
-		for(Entity e : GameManager.instance.areas.current.entities) {
-			sprite = new Sprite(getEntityTexture(e.type()));
-			sprite.setPosition(e.pos().x * Tile.WIDTH,
-			  (e.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
-			sprite.draw(batch);
+		for (Entity e : GameManager.instance.areas.current.entities) {
+			if (e.type() != 3) {
+				sprite = new Sprite(getEntityTexture(e.type()));
+				sprite.setPosition(e.pos().x * Tile.WIDTH,
+						(e.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
+				sprite.draw(batch);
+			}
+
+		}
+ 
+		// check which entity we want to move.
+		//
+		for (Entity e : GameManager.instance.areas.current.entities) {
+			if (e.type() == 3) { // If it is enemy
+				movingCoWorker = (Npc) e;
+				sprite = new Sprite(getEntityTexture(e.type()));
+				
+				//Logic to move.
+				if (counterStatus) {
+					counter++;
+				} else {
+					counter--;
+				}
+
+				// look like 5 stpes.
+				if (counter == 500) {
+					counterStatus = false;
+				} else if (counter == 0.00) {
+					counterStatus = true;
+				}
+				
+				// here i need to set the facing before setPosition.
+				sprite.setPosition((float)(movingCoWorker.pos().x * Tile.WIDTH),
+						(float)(((float)movingCoWorker.pos().y + ((float)counter*0.01)) * Tile.HEIGHT));
+
+				sprite.draw(batch);
+				/*Gdx.app.log("DemoDisplay:render", "Value of Enemy is "+
+				 movingCoWorker.pos().y+" Counter is "+counter);*/
+			}
 		}
 
 		player = GameManager.instance.areas.current.player;
-		sprite = new Sprite(getEntityTexture(player.type()));
-		sprite.setPosition(player.pos().x * Tile.WIDTH,
-		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
+		// chatBox = GameManager.instance.chatBox;
+		sprite = new Sprite(getEntityTexture(player.aType()));
+		sprite.setPosition(
+				player.pos().x * Tile.WIDTH + (int) player.floatPos().x,
+				(player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT)
+						+ (int) player.floatPos().y);
+
+		player.decFloatPos(2);
+
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
+				Gdx.graphics.getHeight());
+		camera.setToOrtho(false);
+		camera.position.set(sprite.getX(), sprite.getY(), 0);
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
+
+		drawChatBox(chatBox);
+
 		sprite.draw(batch);
 
 		batch.end();
+
+	}
+
+	public void drawChatBox(DialogueBox db) {
+		// Draw dialogue text on to screen
+		if (db.consumable()) {
+			for (int i = 0; i < db.messages.size(); i++) {
+				/*
+				 * The math below adjusts the chatBox to the player's relative
+				 * position so that it is drawn consistently in the lower
+				 * left-hand corner of the screen (well3112)
+				 */
+				font.draw(
+						batch,
+						db.messages.get(i),
+						(sprite.getX() - (Gdx.graphics.getWidth() / 2))
+								+ (1 * Tile.WIDTH),
+						(sprite.getY() - (Gdx.graphics.getHeight() / 2))
+								+ (1 * Tile.HEIGHT + (18 * (db.messages.size() - i))));
+
+				// If more than 10 messages, delete oldest one
+				if (chatBox.messages.size() > 10) {
+					db.removeMessage();
+				}
+			}
+		}
 	}
 }
