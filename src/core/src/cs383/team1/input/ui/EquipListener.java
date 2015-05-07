@@ -14,51 +14,43 @@ public class EquipListener extends ClickListener{
 	
 	private Player p;
 	private MenuEquip menu;
-	private String type;
+	private Item item;
 	
-	public EquipListener(MenuEquip m, String s, Player player) {
+	public EquipListener(MenuEquip m, Item itm, Player player) {
 		p = player;
 		menu = m;
-		if (	s.contains("head") || 
-			s.contains("neck") || 
-			s.contains("body") || 
-			s.contains("hand") || 
-			s.contains("legs") || 
-			s.contains("feet")  )
-			type = s;
-		else
-			type = "UNSUPPORTED";
+		if (itm == null) {
+			itm = new Item();
+			item = new Item();
+			System.out.println("THIS");
+		}
 	}
 	
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		Equipment e = p.inventory.equiped;
-		if (type.equals("head")) {
-			p.inventory.pickUp(
-				p.inventory.equiped.unequip(e.head));
-			menu.update();
-		} else if (type.equals("neck")) {
-			p.inventory.pickUp(
-				p.inventory.equiped.unequip(e.neck));
-			menu.update();
-		} else if (type.equals("body")) {
-			p.inventory.pickUp(
-				p.inventory.equiped.unequip(e.chest));
-			menu.update();
-		} else if (type.equals("hand")) {
-			p.inventory.pickUp(
-				p.inventory.equiped.unequip(e.hands));
-			menu.update();
-		} else if (type.equals("legs")) {
-			p.inventory.pickUp(
-				p.inventory.equiped.unequip(e.legs));
-			menu.update();
-		} else if (type.equals("feet")) {
-			p.inventory.pickUp(
-				p.inventory.equiped.unequip(e.feet));
-			menu.update();
-		} else
-			System.out.println("NOT SUPPORTED BUTTON");
+		String type;
+		if (!getEquipped(item))
+			System.out.println("NOT SUPPORTED OR EMPTY");
 	}
 	
+	private boolean getEquipped(Item itm){
+		boolean gotten;
+		Item ret;
+		Equipment e = p.inventory.equiped;
+
+		if (itm != null) {
+			     if (itm.type.contains("head"))  ret = e.head;
+			else if (itm.type.contains("neck"))  ret = e.neck;
+			else if (itm.type.contains("chest")) ret = e.chest;
+			else if (itm.type.contains("hands")) ret = e.hands;
+			else if (itm.type.contains("legs"))  ret = e.legs;
+			else if (itm.type.contains("feet"))  ret = e.feet;
+			else ret = itm;
+		} else ret = new Item();
+
+		gotten = p.inventory.addItem(p.inventory.equiped.unequip(ret));
+		menu.update();
+		return gotten;
+	}
 }

@@ -137,8 +137,10 @@ public class MenuInventory extends SubMenu {
 		equip = new TextButton("Equip", skin, "exp");
 		if (type.contains("two-handed"))
 			equip.addListener(new InvListener(this,"equip" ,p,itm));
-		else
+		else if (type.contains("weapon"))
 			equip.addListener(new InvListener(this,"equipR",p,itm));
+		else
+			equip.addListener(new InvListener(this,"equip",p,itm));
 		if (type.contains("consumable")) {
 			use = new TextButton("Use", skin, "exp");
 			use.addListener(new InvListener(this, "use", p, itm));

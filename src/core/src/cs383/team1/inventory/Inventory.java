@@ -39,4 +39,13 @@ public class Inventory {
             return false;
         }
     }
+    
+    public boolean addItem(Item n)
+    {
+	    if (n != null && !n.name.equals("Unknown")){
+		    contents.add(n);
+		    System.out.println("picked up " + n.name);
+		    return true;
+	    } else return false;
+    }
 }

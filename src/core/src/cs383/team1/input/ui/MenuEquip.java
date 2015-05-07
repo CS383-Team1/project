@@ -30,7 +30,8 @@ public class MenuEquip extends SubMenu{
 	private Label legsL;
 	private Label feetL;
 	
-	private Table items;
+//	private Table items;
+	private SubEquip items;
 	private Item itemL;
 	private Label itemLName;
 	private Item itemR;
@@ -72,7 +73,8 @@ public class MenuEquip extends SubMenu{
 		itemLName = new Label("", skin, "big");
 		itemRName = new Label("", skin, "big");
 		
-		items = new Table();
+//		items = new Table();
+		items = new SubEquip(skin, this);
 		
 		getPlayer();
 		Equipment e = p.inventory.equiped;
@@ -83,12 +85,12 @@ public class MenuEquip extends SubMenu{
 		displayT.add(img).fill().expand().left();
 		
 		//Generate armor table
-		addArmor("HEAD: ", headL);
-		addArmor("NECK: ", neckL);
-		addArmor("BODY: ", bodyL);
-		addArmor("HAND: ", handL);
-		addArmor("LEGS: ", legsL);
-		addArmor("FEET: ", feetL);
+		addArmor("HEAD: ", e.head,  headL);
+		addArmor("NECK: ", e.neck,  neckL);
+		addArmor("BODY: ", e.chest, bodyL);
+		addArmor("HAND: ", e.hands, handL);
+		addArmor("LEGS: ", e.legs,  legsL);
+		addArmor("FEET: ", e.feet,  feetL);
 
 		//Generate stat table
 		updateStats();
@@ -128,27 +130,22 @@ public class MenuEquip extends SubMenu{
 		itemRT.add(img).left().fillX().expandX();
 		itemRT.add(itemRName).left().fillX().expandX();
 		
-		//Generate items table
-		items.add(itemLT).fillX().expandX().left();
-		items.add(itemRT).fillX().expandX().right();
-		
 		//Generate overall table
 		equipT.add(statT).colspan(2).fillX().expandX().row();
 		equipT.add(displayT).left().padRight(20);
 		equipT.add(armorT).left().fillX().expand().row();
 		equipT.add(getImage("bar")).colspan(2).fillX().expandX().row();
-		equipT.add(items).fillX().expandX().colspan(2);
+		equipT.add(items.subSP).fillX().expandX().height(120).colspan(2);
 	}
 	
-	private void addArmor(String s, Label l)
+	private void addArmor(String s, Item item, Label l)
 	{
 		TextButton b = new TextButton("UNEQUIP", skin, "exp");
 
 		armorT.add(new Label(s, skin, "big"));
 		armorT.add(l).width(30).expandX().left().row();
 		armorT.add(b).padBottom(2).left().row();
-		b.addListener(new EquipListener(this, 
-			s.substring(0, 4).toLowerCase(), p));
+		b.addListener(new EquipListener(this, item, p));
 	}
 	
 	public Table equipT(){
@@ -194,5 +191,6 @@ public class MenuEquip extends SubMenu{
 	public void update() {
 		getPlayer();
 		updateStats();
+		items.updateItems();
 	}
 }
