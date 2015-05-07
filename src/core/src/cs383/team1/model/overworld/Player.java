@@ -104,6 +104,7 @@ public final class Player implements Entity {
         
         public void addAttack(Move move){
             attacks.add(move);
+	    inventory.equiped.useQuickslot(move);
         }
         
         public void removeAttack(){

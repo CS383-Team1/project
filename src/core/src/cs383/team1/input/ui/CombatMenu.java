@@ -178,7 +178,8 @@ public class CombatMenu {
 			InputEvent event, float x, float y ) {
 				gm.combat.battles.get(0).turn();
 				p.addAttack(move);
-				gm.msg.add("Player uses:" + atk);
+				gm.msg.add("Player uses: " + atk);
+				updateAttacks();
 			}
 		});
 		

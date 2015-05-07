@@ -1,5 +1,6 @@
 
 package cs383.team1.inventory;
+import cs383.team1.combat.Move;
 import cs383.team1.model.GameManager;
 import java.util.ArrayList;
 /**
@@ -145,6 +146,18 @@ public class Equipment {
             return ret;
         }
         return ret;
+    }
+    
+    public int useQuickslot(Move move)
+    {
+	    for (int i = 0; i < quickSlots.size(); i++) {
+		    if (quickSlots.get(i).name.equals(move.name)) {
+			    removeMove(quickSlots.get(i));
+			    quickSlots.remove(i);
+			    return 0;
+		    }
+	    }
+	    return -1;
     }
     
     public String listEquipment(){
