@@ -40,7 +40,11 @@ public class InvListener extends ClickListener{
 				p.removeMove(e.leftWeapon);
 				p.removeMove(e.rightWeapon);
                                 e.equipWeapon(itm, "right");
-				p.addMove(itm);              }
+				p.addMove(itm);
+			} else if (itm.type.contains("consumable") || itm.type.contains("ring")) {
+				e.equip(itm);
+				p.addMove(itm);
+			}
 			else e.equip(itm);
 			menu.updateItems();
 		} else if (buttonType.equals("equipL")) {

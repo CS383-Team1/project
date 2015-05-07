@@ -15,42 +15,67 @@ public class EquipListener extends ClickListener{
 	private Player p;
 	private MenuEquip menu;
 	private Item item;
+	private String type;
 	
 	public EquipListener(MenuEquip m, Item itm, Player player) {
 		p = player;
 		menu = m;
+		type = "else";
 		if (itm == null) {
 			itm = new Item();
 			item = new Item();
-			System.out.println("THIS");
-		}
+		} else item = itm;
+	}
+	
+	public EquipListener(String s, MenuEquip m, Item itm, Player player) {
+		p = player;
+		menu = m;
+		type = s;
+		if (itm == null) {
+			itm = new Item();
+			item = new Item();
+		} else item = itm;
 	}
 	
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		Equipment e = p.inventory.equiped;
-		String type;
 		if (!getEquipped(item))
 			System.out.println("NOT SUPPORTED OR EMPTY");
 	}
 	
 	private boolean getEquipped(Item itm){
-		boolean gotten;
+		boolean gotten = false;
 		Item ret;
 		Equipment e = p.inventory.equiped;
 
-		if (itm != null) {
-			     if (itm.type.contains("head"))  ret = e.head;
-			else if (itm.type.contains("neck"))  ret = e.neck;
-			else if (itm.type.contains("chest")) ret = e.chest;
-			else if (itm.type.contains("hands")) ret = e.hands;
-			else if (itm.type.contains("legs"))  ret = e.legs;
-			else if (itm.type.contains("feet"))  ret = e.feet;
-			else ret = itm;
-		} else ret = new Item();
-
-		gotten = p.inventory.addItem(p.inventory.equiped.unequip(ret));
+		     if (type.contains("head"))
+			{ret = e.unequip(e.head)       ; p.removeMove(itm);}
+		else if (type.contains("neck"))
+			{ret = e.unequip(e.neck)       ; p.removeMove(itm);}
+		else if (type.contains("body"))
+			{ret = e.unequip(e.chest)      ; p.removeMove(itm);}
+		else if (type.contains("hand"))
+			{ret = e.unequip(e.hands)      ; p.removeMove(itm);}
+		else if (type.contains("legs"))
+			{ret = e.unequip(e.legs)       ; p.removeMove(itm);}
+		else if (type.contains("feet"))
+			{ret = e.unequip(e.feet)       ; p.removeMove(itm);}
+		else if (type.contains("left"))
+			{ret = e.unequip(e.leftWeapon) ; p.removeMove(itm);}
+		else if (type.contains("rite"))
+			{ret = e.unequip(e.rightWeapon); p.removeMove(itm);}
+		else {
+			if (itm == null) {
+				item = new Item();
+			} else {
+				gotten = p.inventory.addItem(
+					p.inventory.equiped.unequip(item));
+			}
+			menu.update();
+			return gotten;
+		}
+		p.inventory.addItem(ret);
 		menu.update();
-		return gotten;
+		return true;
 	}
 }

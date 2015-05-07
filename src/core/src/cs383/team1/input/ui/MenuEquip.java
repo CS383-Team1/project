@@ -135,7 +135,7 @@ public class MenuEquip extends SubMenu{
 		equipT.add(displayT).left().padRight(20);
 		equipT.add(armorT).left().fillX().expand().row();
 		equipT.add(getImage("bar")).colspan(2).fillX().expandX().row();
-		equipT.add(items.subSP).fillX().expandX().height(120).colspan(2);
+		equipT.add(items.subSP).fillX().expandX().height(135).colspan(2);
 	}
 	
 	private void addArmor(String s, Item item, Label l)
@@ -145,7 +145,8 @@ public class MenuEquip extends SubMenu{
 		armorT.add(new Label(s, skin, "big"));
 		armorT.add(l).width(30).expandX().left().row();
 		armorT.add(b).padBottom(2).left().row();
-		b.addListener(new EquipListener(this, item, p));
+		b.addListener(new EquipListener(s.substring(0,4).toLowerCase(),
+			this, item, p));
 	}
 	
 	public Table equipT(){

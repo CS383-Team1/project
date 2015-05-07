@@ -37,6 +37,9 @@ public class SubEquip extends ItemsExtension {
 		menu = m;
 		
 		subSP = new ScrollPane(subT, skin);
+		subSP.setFadeScrollBars(false);
+		subSP.setScrollingDisabled(true, false);
+		subSP.setOverscroll(false, false);
 		
 		updateItems();
 	}
@@ -47,10 +50,10 @@ public class SubEquip extends ItemsExtension {
 		p = GameManager.instance.areas.current.player;
 		e = p.inventory.equiped;
 		
-		if (e.leftWeapon!=null)   {
+		if (e.leftWeapon!=null && !e.leftWeapon.name.equals("Unknown")){
 			subT.add(addItem(e.leftWeapon, "left")).fillX().expandX().row();
 		}
-		if (e.rightWeapon!= null) {
+		if (e.rightWeapon != null&& !e.rightWeapon.name.equals("Unknown")){
 			subT.add(addItem(e.rightWeapon, "right")).fillX().expandX().row();
 		}
 		for (int i = 0; i < e.rings.size(); i++)      {
@@ -69,13 +72,14 @@ public class SubEquip extends ItemsExtension {
 		t = new Table();
 		addTypeIcon(t, itm);
 		
-		t.add(new Label(itm.name, skin, "big")).left().fillX().expandX().row();
+		t.add(new Label(itm.name, skin, "big")).left().expandX().row();
 		if (s.equals("left"))
-			b.addListener(new EquipListener(menu, itm, p));
+			b.addListener(new EquipListener("left", menu, itm, p));
 		else if (s.equals("right"))
-			b.addListener(new EquipListener(menu, itm, p));
+			b.addListener(new EquipListener("rite", menu, itm, p));
 		else
 			b.addListener(new EquipListener(menu, itm, p));
+		t.add(b).left().expandX().colspan(2).row();
 		t.add(getImage("bar")).expandX().fillX().colspan(2);
 		
 		return t;
@@ -107,7 +111,7 @@ public class SubEquip extends ItemsExtension {
 			img = getImage("itemArmor");
 
 		img.setScaling(Scaling.none);
-		t.add(img).left().fillX().expandX();
+		t.add(img).left().expandX();
 	}
 	
 	public Table subT() {
