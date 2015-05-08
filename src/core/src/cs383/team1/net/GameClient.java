@@ -51,23 +51,7 @@ public class GameClient {
 			}
 		});
         
-                /*
-              	client.addListener(new Listener() {
-			public void received (Connection connection, Object object) {
-				if (object instanceof ConnectResponse) {
-					ConnectResponse c = (ConnectResponse)object;
-                                        Integer count = 0;
-                                        for(Integer i : c.currentPlayers){
-                                            count++;
-                                        }
-                                        count++;
-                                        Player.ownPlayer.playerID = count;
-                                        System.out.println("Printing playerID in GameClient: " + Player.ownPlayer.playerID);
-                                        connection.sendTCP(c);
-				}
-			}
-		});
-                        */
+               
         
 	}
         
@@ -109,14 +93,7 @@ public class GameClient {
                                         
                                         CPlayer.ownPlayer.playerID = c.assignedID;
                                         Player p = new Player();
-                                        
-                                            for(Map.Entry<String, Area> a : Main.gm.areas.areas.entrySet()){
-                                                if(!Main.gm.areas.current.players.containsKey(c.playerAmount)){
-                                                    Main.gm.areas.current.players.put(c.playerAmount, p);
-                                                }
-                                            }
-                                        
-                                       System.out.println("Printing playerID in GameClient: " + CPlayer.ownPlayer.playerID);
+                                        System.out.println("Printing playerID in GameClient: " + CPlayer.ownPlayer.playerID);
                                         //connection.sendTCP(conRequest);
                                         
 				}
@@ -127,12 +104,7 @@ public class GameClient {
 			public void received (Connection connection, Object object) {
 				if (object instanceof PosResponse) {
 					PosResponse pr = (PosResponse)object;
-                                        if(!Main.gm.areas.current.players.containsKey(pr.playerID)){
-                                            Player x = new Player();
-                                            for(Map.Entry<String, Area> a : Main.gm.areas.areas.entrySet()){
-                                                Main.gm.areas.current.players.put(pr.playerID, x);
-                                            }
-                                        }
+                                      
                                         
 					Player p = GameManager.instance.areas.current.players.get(pr.playerID);
                                         //for(Map.Entry<Integer, Player> otherPlayer : Main.gm.areas.current.players.entrySet()){
