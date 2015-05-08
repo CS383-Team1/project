@@ -250,6 +250,7 @@ public final class GameManager implements GameManagerInterface {
 
 	public int getKey() {
 		return keyPressed;
+        }
 	public AreaManager areas() {
 		return areas;
 	}
@@ -273,5 +274,5 @@ public final class GameManager implements GameManagerInterface {
 	public void removeMessage(int m) {
 		if (msg.size() > 0) msg.remove(m);
 	}
-	}
+	
 }

@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import cs383.team1.inventory.Item;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.inventory.Item;
 import cs383.team1.model.overworld.Area;

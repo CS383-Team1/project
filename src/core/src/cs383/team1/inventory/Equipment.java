@@ -2,7 +2,9 @@
 package cs383.team1.inventory;
 import cs383.team1.combat.Move;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.CPlayer;
 import java.util.ArrayList;
+import cs383.team1.model.inventory.Item;
 /**
  *
  * @author Tessa
@@ -185,6 +187,6 @@ public class Equipment {
     }
     
     private void removeMove(Item itm){
-	    GameManager.instance.areas.current.player.removeMove(itm);
+	    CPlayer.ownPlayer.removeMove(itm);
     }
 }
