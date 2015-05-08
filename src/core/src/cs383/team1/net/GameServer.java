@@ -78,54 +78,6 @@ public class GameServer{
                                         Player p = GameManager.instance.areas.current.players.get(r.playerID);
                                         Npc npc;
                                         if(!GameManager.instance.areas.current.players.containsKey(r.playerID)){
-<<<<<<< HEAD
-                                            return;
-                                        }
-                                            
-                                        //areas.current.player is a map, so get returns the value of the specified key
-                                        //First player is "0", so look for "1"
-                                        
-                                                p.pos = r.pos;
-                                                p.floatPos = r.floatPos;
-                                                p.facing = r.facing;
-                                                p.currentArea = r.areaName;
-    //                                          System.out.println(r.s);
-                                            
-                                                if(r.roaming != true){
-                                                    tempPos = r.pos;
-                                                    //tempPos.x--;
-                                                    
-                                                    if ((npc = (Npc)Main.gm.areas.findCombatant(
-                                                        r.pos, 3)) != null){
-                                            
-                                                        CPlayer.ownPlayer.roaming = false;
-                                                        //Player.ownPlayer.pos.x = r.pos.x - 1;
-                                                        CPlayer.ownPlayer.pos.x = r.pos.x;
-                                                        CPlayer.ownPlayer.pos.y = r.pos.y;
-                                                        CPlayer.ownPlayer.pos.y = r.pos.y - 1;
-                                                        Main.gm.combat.encounter(CPlayer.ownPlayer, npc, Main.gm.areas.current.players);
-                                                    }
-                                                }
-
-                                                PosResponse pr = new PosResponse();
-                                                //First send server's position information. Then send other player's position info
-                                                 pr.pos = CPlayer.ownPlayer.pos;
-                                                    pr.floatPos = CPlayer.ownPlayer.floatPos;
-                                                    pr.facing = CPlayer.ownPlayer.facing;
-                                                    pr.roaming = CPlayer.ownPlayer.roaming;
-                                                    pr.areaName = CPlayer.ownPlayer.currentArea;
-                                                    pr.playerID = CPlayer.ownPlayer.playerID;
-                                                    connection.sendTCP(pr);
-                                                    
-                                                for(Map.Entry<Integer, Player> otherPlayers : Main.gm.areas.current.players.entrySet()){
-                                                    if(otherPlayers.getKey() < connectCount 
-                                                            && otherPlayers.getValue().currentArea.equals(CPlayer.ownPlayer.currentArea)
-                                                            && otherPlayers.getValue().playerID != CPlayer.ownPlayer.playerID){
-                                                        pr.pos = otherPlayers.getValue().pos;//Player.ownPlayer.pos;
-                                                        pr.floatPos = otherPlayers.getValue().floatPos;
-                                                        pr.facing = otherPlayers.getValue().facing;
-                                                        pr.roaming = otherPlayers.getValue().roaming;
-=======
 						return;
 					}
 					p.pos = r.pos;
@@ -160,7 +112,6 @@ public class GameServer{
 							pr.floatPos = otherPlayers.getValue().floatPos;
 							pr.facing = otherPlayers.getValue().facing;
 							pr.roaming = otherPlayers.getValue().roaming;
->>>>>>> origin/well-temp
                                                         pr.areaName = otherPlayers.getValue().currentArea;
                                                         pr.playerID = otherPlayers.getValue().playerID;
 							connection.sendTCP(pr);
