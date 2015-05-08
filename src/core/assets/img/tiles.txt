@@ -3,11 +3,11 @@
 2 img/wall.png
 3 img/stairs.png
 4 img/field.png
-5 img/walkway.png
-6 img/outsidewall.png
+8 img/walkway.png
+9 img/outsidewall.png
 7 img/desk.png
-8 img/firepit.png
-9 img/giant.png
+5 img/firepit.png
+6 img/giant.png
 10 img/tree.png
 11 img/flower1.png
 12 img/flower2.png

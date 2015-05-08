@@ -7,6 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -45,6 +46,7 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	private OrthographicCamera camera;
 	private Stage stage;
 	private UIDisplay ui;
+        public Music song;
 	
 	GameManager g = GameManager.instance;
 
@@ -80,6 +82,10 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 		Gdx.input.setInputProcessor(im);
                 client.sendConnectionRequest();
 
+                song = Gdx.audio.newMusic(Gdx.files.internal("sound/song.ogg"));
+                song.setLooping(true);
+                song.play();
+                song.setVolume(0.2f);
         }
 
 	@Override
