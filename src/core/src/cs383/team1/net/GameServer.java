@@ -96,7 +96,7 @@ public class GameServer{
 						}
 					}
 					PosResponse pr = new PosResponse();
-//First send server's position information. Then send other player's position info
+                                        //First send server's position information. Then send other player's position info
 					pr.pos = CPlayer.ownPlayer.pos;
 					pr.floatPos = CPlayer.ownPlayer.floatPos;
 					pr.facing = CPlayer.ownPlayer.facing;
