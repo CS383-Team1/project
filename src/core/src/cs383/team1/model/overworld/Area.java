@@ -16,20 +16,20 @@ public class Area {
         public String name;
         
 	public Area() {
-            this(new ArrayList<Tile>(), new ArrayList<Entity>(), new Player());
+            this(new ArrayList<Tile>(), new ArrayList<Entity>());
 	}
 
-	public Area(List<Tile> tileList, List<Entity> entityList, Player p) {
-		Gdx.app.debug("Area:Area", "instantiating class");
-		tiles = tileList;
-		entities = entityList;
-//players = new ArrayList();
-                players = new HashMap<Integer, Player>();
-                //players.add(p);
-                for(int i = 0; i < 27; i++){
-                  players.put(i, p);
-                }
-	}
+//	public Area(List<Tile> tileList, List<Entity> entityList, Player p) {
+//		Gdx.app.debug("Area:Area", "instantiating class");
+//		tiles = tileList;
+//		entities = entityList;
+////players = new ArrayList();
+//                players = new HashMap<Integer, Player>();
+//                //players.add(p);
+//                for(int i = 0; i < 27; i++){
+//                  players.put(i, p);
+//                }
+//	}
         
         public Area(List<Tile> tileList, List<Entity> entityList) {
 		Gdx.app.debug("Area:Area", "instantiating class");
@@ -37,10 +37,10 @@ public class Area {
 		entities = entityList;
 		//players = new ArrayList();
                 players = new HashMap<Integer, Player>();
-                Player p = new Player();
-                for(int i = 0; i < 27; i++){
-                    players.put(i, p);
-                }
+//                Player p = new Player();
+//                for(int i = 1; i < 27; i++){
+//                    players.put(i, p);
+//                }
 
 	}
 }
