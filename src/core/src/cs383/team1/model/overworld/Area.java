@@ -26,9 +26,9 @@ public class Area {
 //players = new ArrayList();
                 players = new HashMap<Integer, Player>();
                 //players.add(p);
-                for(int i = 0; i < 27; i++){
-                  players.put(i, p);
-                }
+                //for(int i = 0; i < 27; i++){
+                  //players.put(i, p);
+                //}
 	}
         
         public Area(List<Tile> tileList, List<Entity> entityList) {
@@ -37,10 +37,10 @@ public class Area {
 		entities = entityList;
 		//players = new ArrayList();
                 players = new HashMap<Integer, Player>();
-                Player p = new Player();
-                for(int i = 0; i < 27; i++){
-                    players.put(i, p);
-                }
+                //Player p = new Player();
+                //for(int i = 0; i < 27; i++){
+                  //  players.put(i, p);
+                //}
 
 	}
 }

@@ -30,7 +30,7 @@ public class MainMenu {
 		menu.setFillParent(true);
 
 		menuList = new List(skin, "big");
-		menuList.setItems("CHARACTER", "INVENTORY", "QUESTS");
+		menuList.setItems("CHARACTER", "INVENTORY");
 
 		//Add a listener for changing submenus
 		menuList.addListener(new ClickListener(){
