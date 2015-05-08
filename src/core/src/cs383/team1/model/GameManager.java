@@ -179,6 +179,7 @@ public final class GameManager implements GameManagerInterface {
                         //Start combat with an NPC if they are next to player
                         if ((npc = (Npc)areas.findCombatant(
                         player.pos(), 3)) != null){
+                            if(npc.hp<=0){return;}
                                 System.out.println("Starting combat");
                                 tempPos = npc.pos();
                                 returnPos = player.pos();
