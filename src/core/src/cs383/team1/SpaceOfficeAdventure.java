@@ -15,6 +15,7 @@ public class SpaceOfficeAdventure extends ApplicationAdapter  {
     int mousex;
     int mousey;
     static int STATE=0;
+    static int subState=0;
 
     boolean stay=false;
     Main m;
@@ -76,8 +77,14 @@ public class SpaceOfficeAdventure extends ApplicationAdapter  {
 
         }else if(STATE==4){
            // setScreen(new JoinScreen(m));
-            STATE=0;
+            //STATE=0;
             //Gdx.app.exit();
+            
+            Splash.displayAbout();
+            if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+                subState++;
+                if(subState>3){STATE=1; subState=0;}
+            }
         }else if(STATE==5){
             //setScreen(new JoinScreen());
             Gdx.app.exit();

@@ -28,6 +28,8 @@ public class MainMenu {
     static Texture quote1 = new Texture(Gdx.files.internal("MainMenu/quote1.png"));
     static Texture quote2 = new Texture(Gdx.files.internal("MainMenu/quote2.png"));
     static Texture quote4 = new Texture(Gdx.files.internal("MainMenu/quote4.png"));
+    static Texture quote5 = new Texture(Gdx.files.internal("MainMenu/quote5.png"));
+
 
     static float buttonW = (float)(hostButton.getWidth()*0.5);
     static float buttonH = (float)(hostButton.getHeight()*0.5);
