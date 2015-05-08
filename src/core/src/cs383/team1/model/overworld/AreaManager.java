@@ -358,7 +358,7 @@ public final class AreaManager {
                     ap = Integer.parseInt(vals[offset++]);
                     pos = new Position(x, y);
                     player = new Player(pos, hp, mp, ap);
-                    a = new Area(tiles, entities, player);
+                    a = new Area(tiles, entities);
                     a.name = fname;
                     areas.put(fname, a);
                 }else{
