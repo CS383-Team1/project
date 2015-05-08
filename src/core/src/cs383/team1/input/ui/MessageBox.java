@@ -21,6 +21,8 @@ public class MessageBox {
 	private final SplitPane mHistory;
 	private final Table bar;
 	
+        public boolean hasFocus;
+        
 	private final SplitPane msg;
 	public TextField input;
 	
@@ -28,6 +30,7 @@ public class MessageBox {
 	
 	public MessageBox(Skin sk)
 	{
+                hasFocus = false;
 		text = new ArrayList();
 		mTable = new Table(sk);
 		mText = new Label("",sk);
@@ -77,11 +80,12 @@ public class MessageBox {
 	public void addMessage(String s)
 	{
 		if (s.equals("?") || s.toLowerCase().equals("help")) {
-		     text.add("Pickup item: E");
 		     text.add("Move: Arrow Keys");
 		     text.add("Main Menu: ESC");
 		     text.add("Chat: Enter");
-		} else text.add(s);
+		} else {
+                        text.add(s);
+                }
 		updateMessages();
 	}
 	

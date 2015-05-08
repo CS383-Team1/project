@@ -122,6 +122,10 @@ public class GameClient {
                                                     }
                                             
                                                 }
+                                            } else if (object instanceof MsgResponse) {
+                                                    MsgResponse mr = (MsgResponse)object;
+                                                    
+                                                    GameManager.instance.msg.add(mr.msg);
                                             }
                         }
 		});
@@ -139,6 +143,13 @@ public class GameClient {
 		client.sendTCP(r);
                 
 	}
+        
+        public void sendMsg(String s){
+                MsgRequest m = new MsgRequest();
+                m.msg = s;
+                
+                client.sendTCP(m);
+        }
         public void sendConnectionRequest(){
             
                 ConnectRequest conRequest = new ConnectRequest();

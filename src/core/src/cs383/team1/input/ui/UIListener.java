@@ -46,10 +46,13 @@ public class UIListener extends InputListener{
 		case (Input.Keys.ENTER) :
 			if (
 				stage.getKeyboardFocus() == msg.input) {
-				if (!msg.input.getText().equals(""))
-					msg.addMessage(msg.input.getText());
+				if (!msg.input.getText().equals("")) {
+//					msg.addMessage(msg.input.getText());
+                                        GameManager.instance.sendMsg = msg.input.getText();
+                                }
 				msg.input.setText("Press [ENTER] to chat");
 				stage.setKeyboardFocus(null);
+                                msg.hasFocus = false;
 				return true;
 			} else {
 				msg.input.setText("");

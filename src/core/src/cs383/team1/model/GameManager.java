@@ -37,11 +37,13 @@ public final class GameManager implements GameManagerInterface {
         private DialogueBox chatBox = new DialogueBox();
         public int keyPressed;
         public List<String> msg;
+        public String sendMsg;
         Player player;
 
 
         
 	private GameManager() {
+                this.sendMsg = "";
                 this.keyPressed = 0;
                 this.msg = new ArrayList();
 		if(instance != null) {

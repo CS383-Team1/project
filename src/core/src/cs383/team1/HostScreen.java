@@ -87,6 +87,12 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 			&& player.roaming == true) {
 			inputManager.keys.add(gm.getKey());
 		}
+                
+                if (g.sendMsg.length() > 0) {
+                        server.sendMsg(g.sendMsg);
+                        g.msg.add(g.sendMsg);
+                        g.sendMsg = "";
+                }
 	}
 
 	void draw() {

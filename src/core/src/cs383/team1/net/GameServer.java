@@ -58,8 +58,15 @@ public class GameServer{
                                 conResponse.playerAmount = Main.gm.areas.current.players.size();
                                 conResponse.assignedID = connectCount;
                                 connection.sendTCP(conResponse);
+                            } else if (object instanceof MsgRequest) {
+                                    MsgRequest mr = (MsgRequest)object;
+                                    
+                                    MsgResponse ms = new MsgResponse();
+                                    ms.msg = mr.msg;
+                                    GameManager.instance.msg.add(mr.msg);
+                                    
+                                    server.sendToAllTCP(ms);
                             }
-                            
                         }
 
                 });
@@ -137,4 +144,11 @@ public class GameServer{
 	public void listen(Listener l) {
 		server.addListener(l);
 	}
+        
+        public void sendMsg(String s){
+                MsgResponse m = new MsgResponse();
+                m.msg = s;
+                
+                server.sendToAllTCP(m);
+        }
 }

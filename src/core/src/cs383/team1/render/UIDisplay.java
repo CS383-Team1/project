@@ -51,6 +51,10 @@ public class UIDisplay extends Display{
 			uiListen.checkEntity(player.facing);
 		else if (interaction.w.isVisible())
 			interaction.w.setVisible(false);
+                if (msg.input == stage.getKeyboardFocus() && !msg.hasFocus) {
+                        msg.input.setText("");
+                        msg.hasFocus = true;
+                }
 		stage.act();
 		stage.draw();
 		if (msg.toBottom())

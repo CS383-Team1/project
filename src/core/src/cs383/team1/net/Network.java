@@ -70,6 +70,8 @@ public class Network {
 		kryo.register(Integer.class);
 		kryo.register(InteractableEntity.class);
 		kryo.register(LeftDesk.class);
+                kryo.register(MsgRequest.class);
+                kryo.register(MsgResponse.class);
 		kryo.register(Npc.class);
 		kryo.register(OutsideWall.class);
 		kryo.register(Player.class);

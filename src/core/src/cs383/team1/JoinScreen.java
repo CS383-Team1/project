@@ -101,6 +101,11 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 		if (player.zeroFloat() && player.roaming == true) {
 			inputManager.keys.add(g.getKey());
 		}
+                
+                if (g.sendMsg.length() > 0) {
+                        client.sendMsg(g.sendMsg);
+                        g.sendMsg = "";
+                }
 
 		client.sendRequest();
 	}
