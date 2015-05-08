@@ -38,7 +38,7 @@ public class Equipment {
 	leftWeapon = new Item();
 	    
         quickSlots = new ArrayList();
-        System.out.println("made Equipment");
+//        System.out.println("made Equipment");
     }
     
     public int size(){

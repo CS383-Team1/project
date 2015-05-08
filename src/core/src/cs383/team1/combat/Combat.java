@@ -4,6 +4,7 @@ import cs383.team1.model.inventory.Inventory;
 import cs383.team1.model.inventory.Item;
 import cs383.team1.Main;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
@@ -89,11 +90,13 @@ public class Combat {
                     //If damage attribute in move instance is positive, 
                     //then deal to npc hp, else add to player hp
                     if(player.attacks.get(0).getDamage() >= 0){
-                        npc.hp -= player.attacks.get(0).getDamage() / npcBlockPercent;
+			    npc.hp -= player.attacks.get(0).getDamage() / npcBlockPercent;
                     }
                     else{
                         player.hp -= player.attacks.get(0).getDamage();
                     }
+		    GameManager.instance.npcHp = Integer.toString(npc.hp);
+
                         System.out.println("Player attacking with move " 
                                 + player.attacks.get(0).name);
                         player.removeAttack();
@@ -127,6 +130,9 @@ public class Combat {
                     }
                 }
         
+//	    if (npc.hp < 0)
+//		    npc.hp = 0;
+
              System.out.println("Printing player.hp : npc.hp : " 
                      + player.hp + " " + npc.hp);
 		Main.gm.addMessage("Player HP: " 
@@ -159,5 +165,16 @@ public class Combat {
             return 0;
         }
      return 0;   
+    }
+    
+    public void setNpcHp(String s) {
+	    int ihp;
+	    if (s.matches("-?[0-9]+")) {
+		    npc = (Npc)enemies.members.get(0);
+		    ihp = Integer.parseInt(s);
+		    npc.hp = ihp;
+		    if (ihp <= 0)
+			    CPlayer.ownPlayer.roaming = true;
+	    }
     }
 }

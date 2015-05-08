@@ -49,10 +49,7 @@ public class GameServer{
                 server.addListener(new Listener() {
 			public void received (Connection connection, Object object) {
                             if (object instanceof ConnectRequest) {
-                                ConnectRequest conRequest = (ConnectRequest)object;
-                                
                                 ConnectResponse conResponse = new ConnectResponse();
-//                                connectCount++;
                                 Player p = new Player();
 				p.playerID = connection.getID();
 				GameManager.instance.areas.current.players.put(connection.getID(), p);
@@ -117,6 +114,15 @@ public class GameServer{
 							connection.sendTCP(pr);
 						}
 					}
+				} else if (object instanceof AtkRequest) {
+					AtkRequest ar = (AtkRequest)object;
+					Player p = CPlayer.ownPlayer;
+//					System.out.println("ATKREQUEST: " + ar.npchp);
+					GameManager.instance.combat.battles.get(0).setNpcHp(ar.npchp);
+					if (ar.pid!=p.playerID)
+						Main.gm.addMessage("Player " + ar.pid + " attacks!");
+					Main.gm.addMessage("Player HP: " + p.hp + "; NPC HP: " + ar.npchp);
+					sendAtk(ar.npchp, ar.pid);
 				}
 			}
 		});
@@ -136,4 +142,20 @@ public class GameServer{
                 
                 server.sendToAllTCP(m);
         }
+	
+	public void sendAtk(String s){
+		AtkResponse a = new AtkResponse();
+		a.npchp = s;
+		a.pid = CPlayer.ownPlayer.playerID;
+		
+		server.sendToAllTCP(a);
+	}
+	
+	public void sendAtk(String s, int pid){
+		AtkResponse a = new AtkResponse();
+		a.npchp = s;
+		a.pid = pid;
+		
+		server.sendToAllTCP(a);
+	}
 }

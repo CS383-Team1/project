@@ -38,7 +38,7 @@ public class CombatManager {
           //  battles.get(0).allies.members.put(e.getKey(), e.getValue());
         //}
         battles.get(0).enemies.members.put(0, npc);
-        System.out.println("Inside CombatManager.encounter()");
+//        System.out.println("Inside CombatManager.encounter()");
                
     }
    }

@@ -110,6 +110,12 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
                         client.sendMsg(g.sendMsg);
                         g.sendMsg = "";
                 }
+		
+		if (g.npcHp.length() > 0) {
+//			System.out.println("NPCHP: " + g.npcHp);
+			client.sendAtk(g.npcHp);
+			g.npcHp = "";
+		}
 
 		client.sendRequest();
 	}

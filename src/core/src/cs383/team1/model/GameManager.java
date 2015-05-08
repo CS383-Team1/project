@@ -39,11 +39,13 @@ public final class GameManager implements GameManagerInterface {
         public int keyPressed;
         public List<String> msg;
         public String sendMsg;
+	public String npcHp;
         Player player;
 
         
 	private GameManager() {
                 this.sendMsg = "";
+		this.npcHp = "";
                 this.keyPressed = 0;
                 this.msg = new ArrayList();
 		if(instance != null) {

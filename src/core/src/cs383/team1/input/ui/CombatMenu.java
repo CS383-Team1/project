@@ -186,8 +186,8 @@ public class CombatMenu {
 			@Override
 			public void clicked(
 			InputEvent event, float x, float y ) {
-				gm.combat.battles.get(0).turn();
 				p.addAttack(move);
+				gm.combat.battles.get(0).turn();
 				if(moveType(move) == "Block"){
 					block.play();
 				}

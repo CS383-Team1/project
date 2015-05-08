@@ -45,6 +45,8 @@ public class Network {
 
 	static public void registerKryo (EndPoint endPoint) {
 		Kryo kryo = endPoint.getKryo();
+		kryo.register(AtkRequest.class);
+		kryo.register(AtkResponse.class);
                 kryo.register(ConnectRequest.class);
                 kryo.register(ConnectResponse.class);
                 kryo.register(java.util.HashMap.class);

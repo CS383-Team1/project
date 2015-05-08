@@ -40,7 +40,7 @@ public class Item implements Entity {
 	this.ap = 0.0;
         this.requiredMove = new Move(name, damage.intValue(), 1);
         pos = new Position();
-        System.out.println("Made unnamed Item");
+//        System.out.println("Made unnamed Item");
     }
     public Item(String n, String desc, String t){
         this.name = n;

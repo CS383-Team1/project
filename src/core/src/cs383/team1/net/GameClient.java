@@ -132,6 +132,12 @@ public class GameClient {
 				} else if (object instanceof MsgResponse) {
 					MsgResponse mr = (MsgResponse)object;
 					GameManager.instance.msg.add(mr.msg);
+				} else if (object instanceof AtkResponse) {
+					Player p = CPlayer.ownPlayer;
+					AtkResponse ar = (AtkResponse) object;
+					GameManager.instance.combat.battles.get(0).setNpcHp(ar.npchp);
+					Main.gm.addMessage("Player " + ar.pid + " attacks!");
+					Main.gm.addMessage("Player HP: " + p.hp + "; NPC HP: " + ar.npchp);
 				}
 			}
 		});
@@ -148,12 +154,22 @@ public class GameClient {
                 r.playerID = CPlayer.ownPlayer.playerID;
 		client.sendTCP(r);
 	}
+	
         public void sendMsg(String s){
                 MsgRequest m = new MsgRequest();
                 m.msg = s;
                 
                 client.sendTCP(m);
         }
+	
+	public void sendAtk(String s){
+		AtkRequest a = new AtkRequest();
+		a.npchp = s;
+		a.pid = CPlayer.ownPlayer.playerID;
+		
+		client.sendTCP(a);
+	}
+	
         public void sendConnectionRequest(){
             
                 ConnectRequest conRequest = new ConnectRequest();

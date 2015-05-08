@@ -99,6 +99,13 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
                         g.msg.add(g.sendMsg);
                         g.sendMsg = "";
                 }
+		
+		if (g.npcHp.length() > 0) {
+//			System.out.println("NPCHP: " + g.npcHp);
+			server.sendAtk(g.npcHp);
+			g.combat.battles.get(0).setNpcHp(g.npcHp);
+			g.npcHp = "";
+		}
 	}
 
 	void draw() {
