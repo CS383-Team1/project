@@ -14,7 +14,8 @@ public class Main extends Game {
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_INFO);
 		gm = GameManager.instance;
-		setScreen(new MenuScreen(this));
+		//setScreen(new MenuScreen(this));
+        setScreen(new MenuScreen(this));
 	}
 
 	public void render () {

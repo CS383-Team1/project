@@ -61,16 +61,12 @@ public class Combat {
                 
         double damage;
         //Implement this when muliplayer is added
-        //for(Entity e : allies.members){
-        if(allies.members.size() > 0){            
+         if(allies.members.size() > 0){            
             for(Integer i : allies.members.keySet()){
                 player = (Player)allies.members.get(i);
             }
         }else
             return 0;
-                
-        //}
-      
         if(enemies.members.size() > 0){
                 npc = (Npc)enemies.members.get(0);
         }

@@ -32,7 +32,7 @@ import java.io.IOException;
 public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 	public Main game;
 	public GameServer server;
-        private DemoDisplay screen;
+	private DemoDisplay screen;
 	private GameClient client;
 	private GameManagerInterface gm;
 	private PlayerInterface p;
@@ -43,12 +43,12 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 	
 	GameManager g = GameManager.instance;
 
-	public HostScreen(Main m) {
+	public HostScreen() {
 		Log.set(Log.LEVEL_DEBUG);
                 InputMultiplexer im;
+       // game = m;
+        gm = GameManager.instance;
 
-		game = m;
-                gm = GameManager.instance;
 		Gdx.app.debug("HostScreen:HostScreen", "Launching server");
 		try {
 			server = new GameServer(gm);
@@ -78,6 +78,12 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 		update();
 		draw();
 	}
+
+    void display(){
+        update();
+        screen.render();
+        ui.render();
+    }
 
 	void update() {
 		Player player = CPlayer.ownPlayer;

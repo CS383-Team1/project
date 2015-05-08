@@ -207,6 +207,7 @@ public class DemoDisplay extends Display {
                     //If player's area is the same as the other players' area, then draw the other players
                     if(p.getValue().currentArea.equals(CPlayer.ownPlayer.currentArea) 
                             && p.getValue().playerID != CPlayer.ownPlayer.playerID){
+
                         p.getValue().setImage();
 			sprite = new Sprite(getEntityTexture(p.getValue().aType()));
 			sprite.setPosition(p.getValue().pos().x * Tile.WIDTH + (int) p.getValue().floatPos().x,

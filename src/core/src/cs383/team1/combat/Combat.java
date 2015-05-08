@@ -112,9 +112,21 @@ public class Combat {
         
              System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
              GameManager.instance.msg.add("Player HP: " + player.hp + "; NPC HP: " + npc.hp);
+
+
+            //Arthur ADDED
+            if(npc.hp<=0){
+                player.roaming=true;
+                //Will need to iterate over this list to remove all allies
+                allies.removeCombatants(player);
+
+                //Will need to iterate over this list to remove all enemies
+                enemies.removeCombatants(npc);
+                return 0;
+            }
         }else{
             player.roaming = true;
-            
+
             //Will need to iterate over this list to remove all allies
                 allies.removeCombatants(player);
             

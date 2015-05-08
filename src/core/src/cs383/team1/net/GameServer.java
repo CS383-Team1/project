@@ -54,7 +54,7 @@ public class GameServer{
                                 ConnectResponse conResponse = new ConnectResponse();
                                 connectCount++;
                                 Player p = new Player();
-                                
+
                                 conResponse.playerAmount = Main.gm.areas.current.players.size();
                                 conResponse.assignedID = connectCount;
                                 connection.sendTCP(conResponse);
@@ -74,6 +74,7 @@ public class GameServer{
                                             return;
                                         }
                                             
+
                                                 p.pos = r.pos;
                                                 p.floatPos = r.floatPos;
                                                 p.facing = r.facing;
@@ -110,6 +111,7 @@ public class GameServer{
                                                     if(otherPlayers.getKey() < connectCount
                                                             && otherPlayers.getValue().currentArea.equals(CPlayer.ownPlayer.currentArea)
                                                             && otherPlayers.getValue().playerID != CPlayer.ownPlayer.playerID){
+
                                                         pr.pos = otherPlayers.getValue().pos;//Player.ownPlayer.pos;
                                                         pr.floatPos = otherPlayers.getValue().floatPos;
                                                         pr.facing = otherPlayers.getValue().facing;
@@ -122,6 +124,7 @@ public class GameServer{
                                         
                                             }
                         }
+
 		});
                 server.bind(Network.port);
 		server.start();

@@ -66,11 +66,11 @@ public class MenuScreen extends ScreenAdapter {
 			guiCam.unproject(clickPos);
 
 			if (hostBounds.contains(clickPos.x, clickPos.y)) {
-				game.setScreen(new HostScreen(game));
+				//game.setScreen(new HostScreen(game));
 			}
 
 			if (joinBounds.contains(clickPos.x, clickPos.y)) {
-				game.setScreen(new JoinScreen(game));
+				//game.setScreen(new JoinScreen(game));
 			}
 
 			if (exitBounds.contains(clickPos.x, clickPos.y)) {

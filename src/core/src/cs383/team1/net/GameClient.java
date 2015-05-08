@@ -51,8 +51,6 @@ public class GameClient {
 			}
 		});
         
-               
-        
 	}
         
 
@@ -94,6 +92,7 @@ public class GameClient {
                                         CPlayer.ownPlayer.playerID = c.assignedID;
                                         Player p = new Player();
                                         System.out.println("Printing playerID in GameClient: " + CPlayer.ownPlayer.playerID);
+
                                         //connection.sendTCP(conRequest);
                                         
 				}
@@ -104,7 +103,7 @@ public class GameClient {
 			public void received (Connection connection, Object object) {
 				if (object instanceof PosResponse) {
 					PosResponse pr = (PosResponse)object;
-                                      
+
                                         
 					Player p = GameManager.instance.areas.current.players.get(pr.playerID);
                                         //for(Map.Entry<Integer, Player> otherPlayer : Main.gm.areas.current.players.entrySet()){

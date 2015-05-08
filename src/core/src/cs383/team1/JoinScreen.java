@@ -48,11 +48,11 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	
 	GameManager g = GameManager.instance;
 
-	public JoinScreen(Main m) {
+	public JoinScreen() {
 		InputMultiplexer im;
          	Gdx.app.log("JoinScreen:JoinScreen", "Initializing");
 
-		game = m;
+		//game = m;
 
 		client = new GameClient();
 		clientFail = !client.connect("127.0.0.1", Network.port);
@@ -87,6 +87,10 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 		update();
 		draw();
 	}
+    void display(){
+        update();
+       draw();
+    }
 
 	void update() {
 		Player player = CPlayer.ownPlayer;
