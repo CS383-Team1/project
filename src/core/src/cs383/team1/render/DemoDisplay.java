@@ -211,6 +211,15 @@ public class DemoDisplay extends Display {
 			sprite.setPosition(p.getValue().pos().x * Tile.WIDTH + (int) p.getValue().floatPos().x,
 				(p.getValue().pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) p.getValue().floatPos().y);
 			sprite.draw(batch);
+                        if (p.getValue().playerID!=CPlayer.ownPlayer.playerID)
+                                font.draw(batch, Integer.toString(p.getValue().playerID), sprite.getX(), sprite.getY());
+//                        sprite.draw(batch);
+//                        sprite = new S
+//                        font.draw(batch, db.messages.get(i), 
+//                                (sprite.getX()-(Gdx.graphics.getWidth()/2)) +
+//                                        (1 * Tile.WIDTH),
+//                                (sprite.getY()-(Gdx.graphics.getHeight()/2)) +
+//                                        (1 * Tile.HEIGHT + (18 * (db.messages.size() - i))));
                     }
 		}
 
@@ -257,4 +266,5 @@ public class DemoDisplay extends Display {
                     }
                 }
         }
+        
 }
