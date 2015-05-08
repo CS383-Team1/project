@@ -11,10 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Scaling;
-import cs383.team1.inventory.Equipment;
-import cs383.team1.inventory.Inventory;
-import cs383.team1.inventory.Item;
+import cs383.team1.model.inventory.Equipment;
+import cs383.team1.model.inventory.Inventory;
+import cs383.team1.model.inventory.Item;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
 import java.util.ArrayList;
@@ -121,7 +122,8 @@ public class MenuInventory extends SubMenu {
 		if (type.contains("weapon")) {
 			statWpn(txtTable, itm);
 			txtTable.row();
-		} else if (type.contains("consumable") || type.contains("ring")) {
+
+		} else if (type.contains("Consumable") || type.contains("ring")) {
 			statCsm(txtTable, itm);
 			txtTable.row();
 		} else if (
@@ -144,7 +146,7 @@ public class MenuInventory extends SubMenu {
 			equip.addListener(new InvListener(this,"equipR",p,itm));
 		else
 			equip.addListener(new InvListener(this,"equip",p,itm));
-//		if (type.contains("consumable")) {
+//		if (type.contains("Consumable")) {
 //			use = new TextButton("Use", skin, "exp");
 //			use.addListener(new InvListener(this, "use", p, itm));
 //		}
@@ -166,7 +168,8 @@ public class MenuInventory extends SubMenu {
 		imgTable.add(img).row();
 
 		//Add the button table
-		if (type.contains("consumable")) {
+
+		if (type.contains("Consumable")) {
 			buttonT.add(equip).right().width(65).padLeft(5);
 //			buttonT.add(use).right().width(65).padLeft(5);
 		} else if (!type.contains("weapon")||
@@ -345,7 +348,8 @@ public class MenuInventory extends SubMenu {
 					item.critChance,
 					item.critMultiplier,
 					item.range,
-					gm.areas.current.player.pos()
+
+					CPlayer.ownPlayer.pos()
 				));
 				
 				//Update the item count label
@@ -392,7 +396,8 @@ public class MenuInventory extends SubMenu {
 	//Get the list of items and the inventory size from the player
 	public void getPlayerItems()
 	{
-		p = gm.areas.current.player;
+
+		p = CPlayer.ownPlayer;
 		Inventory inv = p.inventory;
 		itemsList = inv.contents;
 		
@@ -407,7 +412,7 @@ public class MenuInventory extends SubMenu {
 	{
 		String s = itm.type;
 		if (
-			s.equals("consumable"))
+			s.equals("Consumable"))
 			return getImage("item" + s);
 		else if (
 			s.contains("head") ||
@@ -457,4 +462,5 @@ public class MenuInventory extends SubMenu {
 		t.add(l).right().width(65);
 		t.add(r).right().width(65).padLeft(5);
 	}
+
 }

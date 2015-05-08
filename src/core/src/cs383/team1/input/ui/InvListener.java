@@ -2,8 +2,8 @@ package cs383.team1.input.ui;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import cs383.team1.inventory.Equipment;
-import cs383.team1.inventory.Item;
+import cs383.team1.model.inventory.Equipment;
+import cs383.team1.model.inventory.Item;
 import cs383.team1.model.overworld.Player;
 
 /**

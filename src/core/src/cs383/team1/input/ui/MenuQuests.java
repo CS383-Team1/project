@@ -132,5 +132,6 @@ public class MenuQuests extends SubMenu {
 			"Lay the hurt down, brother.", "fetch", 0, 18) );
 		questList.add( new QuestLabel("Office Slave",
 			"Clean up the loose paper.", "fetch", 0, 14) );
+
 	}
 }

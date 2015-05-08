@@ -2,11 +2,13 @@ package cs383.team1.model.overworld;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import cs383.team1.combat.Move;
+import cs383.team1.model.combat.Move;
+import cs383.team1.model.inventory.Inventory;
+import cs383.team1.model.inventory.Item;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Npc implements Entity{
+public final class Npc implements Entity{
 	public static final int TYPE = 3;
         public boolean roaming = true;
         public int hp;
@@ -16,9 +18,10 @@ public class Npc implements Entity{
         double fitness;
         double mutatedFitness;
         String name;
+        public Inventory inventory = new Inventory("NPC");
         
 
-	private Position pos;
+	public Position pos;
         private final ArrayList<String> talk = new ArrayList();
         public ArrayList<Move> moves = new ArrayList<Move>();
         public ArrayList<Move> attacks = new ArrayList<Move>();
@@ -33,21 +36,34 @@ public class Npc implements Entity{
                 mutatedFitness = 0.0;
                 name = new String();
                 addMove("block", 0, 50);
-                addMove("staple", 10, 1);
-                addMove("throw coffee in face", 5, 1);
+                addMove("staple", 5, 1);
+                addMove("throw coffee in face", 3, 1);
                 addMove("drink coffee", -5, 1);
+                addMove(inventory.contents.get(0).name, 
+                        inventory.contents.get(0).damage, 1);
 	}
 
         //Basic Constructor for NPC
         //Takes a position and a dialogue text file name to use as a "script"
-	public Npc(Position p, String f)
-        {
+
+	public Npc(Position p, String f){
                 String [] lines;
                 String fileContents;
+                String quests;
+                String items = new String();
+                  Gdx.app.debug("NPC:NPC", "instantiating class");
+		pos = p;
+                hp = 100;
+                lastPlayerMove = 0;
+                fitness = 1.0;
+                mutatedFitness = 0.0;
+                addMove("block", 0, 50);
+                addMove("staple", 10, 1);
+                addMove("throw coffee in face", 5, 1);
                 
-                f = f.substring(f.indexOf("quests:")+7, f.indexOf("}"));
-                
-		FileHandle fin = Gdx.files.internal(f);
+                quests = f.substring(f.indexOf("quests:")+7, f.indexOf("}"));
+                System.out.println("Printing string in npc: " + f);
+		FileHandle fin = Gdx.files.internal(quests);
                 if (!fin.exists()) {
                         Gdx.app.error("Npc:", "Invalid Dialogue Filename");
                         talk.add("IAMERROR");
@@ -56,6 +72,8 @@ public class Npc implements Entity{
                         lines = fileContents.trim().split("\n");
                         for (String line : lines) talk.add(line.trim());
                 }
+                //Add items to inventory of NPC: used later to give to player
+                //after defeat in battle
                 
                 Gdx.app.debug("StairsEntity:StairsEntity", "instantiating class");
 		pos = p;
@@ -70,24 +88,18 @@ public class Npc implements Entity{
                 
 	}
 
-        
-
-
         @Override
-	public int type()
-        {
+	public int type(){
 		return TYPE;
 	}
 
         @Override
-	public Position pos()
-        {
+	public Position pos(){
 		return pos;
 	}
         
         //Reads the entire script into System.out
-        public ArrayList readScript() 
-        {
+        public ArrayList readScript() {
                 for (String talk1 : talk) {
                         System.out.println(talk1);
                 }
@@ -95,16 +107,14 @@ public class Npc implements Entity{
         }
         
         //Reads the line specified by 'i'
-        public String readLine(int i)
-        {
+        public String readLine(int i){
                 if (talk.size() > i)
                         return talk.get(i);
                 return talk.get(talk.size()-1);
         }
         
         //Reads the line after the last one just read
-        public String readNext()
-        {
+        public String readNext(){
                 nextLine++;
                 return readLine(nextLine);
         }
@@ -209,15 +219,12 @@ public class Npc implements Entity{
         }
         
         //Adds move to list of available moves
-        public void addMove(String name, int damage, int blockPercent){
+        public void addMove(String name, double damage, int blockPercent){
             Move move = new Move(name, damage, blockPercent);
             moves.add(move);
         }
         
-        public void addMove(Move move){
-            moves.add(move);
-        }
-        
+
         public void removeMove(int index){
             moves.remove(index);
         }
@@ -227,7 +234,9 @@ public class Npc implements Entity{
             attacks.add(move);
         }
         
-        //Removes first move in list of attacks waiting to be processed by CombatManager
+
+        //Removes first move in list of attacks waiting 
+        //to be processed by CombatManager
         public void removeAttack(){
             attacks.remove(0);
         }

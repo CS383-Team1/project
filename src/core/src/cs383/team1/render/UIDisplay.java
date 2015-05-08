@@ -3,6 +3,7 @@ package cs383.team1.render;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import cs383.team1.Main;
 import cs383.team1.input.ui.CombatMenu;
 import cs383.team1.input.ui.Interaction;
 import cs383.team1.input.ui.MainMenu;
@@ -10,6 +11,7 @@ import cs383.team1.input.ui.MessageBox;
 import cs383.team1.input.ui.UIListener;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 
 /**
@@ -17,7 +19,6 @@ import cs383.team1.model.overworld.Player;
  * @author Lance
  */
 public class UIDisplay extends Display{
-	
 	Stage stage;
 	Skin skin;
 	MessageBox msg;
@@ -27,13 +28,13 @@ public class UIDisplay extends Display{
 	CombatMenu combat;
 	UIListener uiListen;
 	
-	Player player = GameManager.instance.areas.current.player;
+	Player player = CPlayer.ownPlayer;
 	final AreaManager areas = GameManager.instance.areas;
 
 
 	@Override
 	public void render() {
-		player = GameManager.instance.areas.current.player;
+		player = CPlayer.ownPlayer;
 		//Read messages sent to the GameManager to the chat
 		if ( GameManager.instance.msg != null &&
 			GameManager.instance.msg.size()>0) {

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import cs383.team1.inventory.Item;
+import cs383.team1.model.inventory.Item;
 import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.DemoEntity;
 import cs383.team1.model.overworld.Entity;
@@ -41,7 +41,11 @@ import cs383.team1.model.overworld.Bigtree1;
 import cs383.team1.model.overworld.Bigtree2;
 import cs383.team1.model.overworld.Bigtree3;
 import cs383.team1.model.overworld.Bigtree4;
-
+import cs383.team1.model.overworld.Table;
+import cs383.team1.model.overworld.LeftDesk;
+import cs383.team1.model.overworld.RightDesk;
+import cs383.team1.model.overworld.WalkWay;
+import cs383.team1.model.overworld.OutsideWall;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -85,7 +89,8 @@ public final class AreaManager {
 		int offset;
 		Area a;
 		String fcontents;
-        String entityData = new String();
+
+                String entityData = new String();
 		Position pos;
 		Player player;
 		String[] vals;
@@ -275,6 +280,7 @@ public final class AreaManager {
                 Gdx.app.debug("AreaManager:loadArea",
                         "Loading Bigtree4 (" + vals[i] + "," + vals[i + 1] + ")");
                 tiles.add(new Bigtree4(pos));
+
                 break;
 			default:
 				Gdx.app.error("AreaManager:loadArea",
@@ -294,6 +300,7 @@ public final class AreaManager {
                 System.out.println("Printing quest: " + readInQuests[0]);
                 
 
+                //Load entities from level file
 		Gdx.app.debug("AreaManager:loadArea", "Loading entities");
                 int k = 0;
 		numEntities = Integer.parseInt(vals[offset++]);
@@ -302,6 +309,7 @@ public final class AreaManager {
 			y = Integer.parseInt(vals[i + 1]);
 			type = Integer.parseInt(vals[i + 2]);
                         entityData = vals[i+3];
+                        System.out.println("Printing entity data: " + entityData);
 
 			pos = new Position(x, y);
                         
@@ -337,29 +345,42 @@ public final class AreaManager {
 		}
 		offset += numEntities * 4;
 
-		Gdx.app.debug("AreaManager:loadArea", "Loading Player");
+                //On the first area, put a player. Will need to invert logic
+                //and have first level b aa.txt for more than three levels.
+                if(areas.isEmpty() != true){
 
-		x = Integer.parseInt(vals[offset++]);
-		y = Integer.parseInt(vals[offset++]);
-		hp = Integer.parseInt(vals[offset++]);
-		mp = Integer.parseInt(vals[offset++]);
-		ap = Integer.parseInt(vals[offset++]);
-		pos = new Position(x, y);
-		player = new Player(pos, hp, mp, ap);
-
-		a = new Area(tiles, entities, player);
-		areas.put(fname, a);
+                    Gdx.app.debug("AreaManager:loadArea", "Loading Player");
+                
+                    x = Integer.parseInt(vals[offset++]);
+                    y = Integer.parseInt(vals[offset++]);
+                    hp = Integer.parseInt(vals[offset++]);
+                    mp = Integer.parseInt(vals[offset++]);
+                    ap = Integer.parseInt(vals[offset++]);
+                    pos = new Position(x, y);
+                    player = new Player(pos, hp, mp, ap);
+                    a = new Area(tiles, entities, player);
+                    a.name = fname;
+                    areas.put(fname, a);
+                }else{
+                    a = new Area(tiles, entities);
+                    a.name = fname;
+                    areas.put(fname, a);
+                }
 
 		return a;
 	}
         
-        public int useStairs(Position p)
+
+        public int useStairs(Position p, Player player)
         {
                 StairsEntity se;
                 if ((se = (StairsEntity)findEntity(p, 2)) !=null) {
-                        changeArea(se.destination(),se.destinationPos());
+                        changeArea(se.destination(),se.destinationPos(), player);
                         return 0;
                 }
+                System.out.println("Changing to area : " + se.destination());
+                player.currentArea = se.destination() + ".txt";
+                System.out.println("new player area: " + player.currentArea);
                 return -1;
         }
         
@@ -384,15 +405,20 @@ public final class AreaManager {
         }
         
         //Method to change the current area and set the future position (well3112)
-        public int changeArea(String s, Position pos)
+
+        public int changeArea(String s, Position pos, Player p)
         {
             /*Need support/major changes for multiplayer?
             Each level currently uses baked-in character data
             May need to change this to take a player parameter as well (well3112)*/
             
             if(changeArea(s) == 0) {
-                    areas.get("area/".concat(s.concat(".txt"))).player.pos = pos;
-                    return 0;
+
+                CPlayer.ownPlayer.pos.x = pos.x;
+                CPlayer.ownPlayer.pos.y = pos.y;
+                System.out.println("Printing destination position: " + pos.x  + " : " + pos.y);
+//                areas.get("area/".concat(s.concat(".txt"))).player = p;
+                return 0;
             }
             return -1;
         }
@@ -409,6 +435,8 @@ public final class AreaManager {
             return -1;
         }
         
+
+        //Create combat area based on current area (makes copy of current area tiles)
         public void getCombatArea(Position p, Player player, Npc npc){
             
             player.roaming = false;
@@ -426,6 +454,7 @@ public final class AreaManager {
             }
         }
         
+        //Return player and npc to original area
         public int endCombat(Player player){
             for(Entity e : current.entities){
                 if(e.type() == 1){
@@ -439,7 +468,7 @@ public final class AreaManager {
             return 0;    
         }
         
-        
+        //Find fight-able NPC one tile away from player. 
         public Entity findCombatant(Position p, int t){
                 for (Entity e : current.entities) {
                         if(e.pos().x  == (p.x + 1) && e.pos().y == p.y && e.type() == t)
@@ -454,6 +483,7 @@ public final class AreaManager {
                 return null;
         }
         
+        //Finds item "t" on tile away from player if present
         public Entity findItem(Position p, int t){
                 for (Entity e : current.entities) {
                         if(e.pos().x  == (p.x + 1) && e.pos().y == p.y && e.type() == t)

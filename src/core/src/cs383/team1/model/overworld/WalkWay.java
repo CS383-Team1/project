@@ -5,7 +5,8 @@ import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
 public class WalkWay implements Tile {
-    public static final int TYPE = 5;
+
+    public static final int TYPE = 8;
     public static final boolean PASSABLE = true;
 
 

@@ -15,7 +15,7 @@ public class StairsEntity implements Entity {
         //Default constructor, should never let the default name pass through, 
         //will cause errors (well3112)
 	public StairsEntity() {
-		this(new Position(0, 0), "null");
+		this(new Position(0, 0), "");
 	}
 
 	public StairsEntity(Position p, String s) {
@@ -23,17 +23,22 @@ public class StairsEntity implements Entity {
 		pos = p;
                 //Get the destination that exists between the two strings (well3112)
                 //Indexes are used to allow for varying name and variable lengths (well3112)
-                dest  = s.substring(13, s.indexOf(",destinationX:"));
-                
-                //Get the position data by analyzing the string (well3112)
-                destPos = new Position(
-                        Integer.parseInt(s.substring(
-                                s.indexOf("destinationX:")+13, 
-                                s.indexOf(",destinationY:"))),
-                        Integer.parseInt(s.substring(
-                                s.indexOf("destinationY:")+13, 
-                                s.indexOf("}")))
-                );
+
+
+		if (s != "") {
+                	dest  = s.substring(13, s.indexOf(",destinationX:"));
+	                destPos = new Position(
+	                        Integer.parseInt(s.substring(
+	                                s.indexOf("destinationX:")+13, 
+	                                s.indexOf(",destinationY:"))),
+	                        Integer.parseInt(s.substring(
+	                                s.indexOf("destinationY:")+13, 
+	                                s.indexOf("}")))
+	                );
+		} else {
+			dest = "";
+			destPos = new Position(0,0);
+		}
 	}
 
 	public int type() {
@@ -44,11 +49,12 @@ public class StairsEntity implements Entity {
 		return pos;
 	}
         
+
     public String destination(){
                 return dest;
         }
         
-    public Position destinationPos(){
+        public Position destinationPos(){
                 return destPos;
         }
 }

@@ -5,7 +5,7 @@ import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 
 public class OutsideWall implements Tile {
-    public static final int TYPE = 6;
+    public static final int TYPE = 9;
     public static final boolean PASSABLE = false;
 
     private Position pos;

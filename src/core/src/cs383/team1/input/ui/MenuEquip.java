@@ -6,9 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Scaling;
-import cs383.team1.inventory.Equipment;
-import cs383.team1.inventory.Item;
+import cs383.team1.model.inventory.Equipment;
+import cs383.team1.model.inventory.Item;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 
 /**
@@ -156,7 +157,8 @@ public class MenuEquip extends SubMenu{
 	private void getPlayer()
 	{
 		//Should be spelled "equiPPed"
-		p = gm.areas.current.player;
+
+		p = CPlayer.ownPlayer;
 		Equipment e = p.inventory.equiped;
 
 		checkNullItem(e.head,  headL);

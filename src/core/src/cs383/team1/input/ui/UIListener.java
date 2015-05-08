@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import cs383.team1.Main;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.AreaManager;
 import cs383.team1.model.overworld.Player;
@@ -52,10 +53,11 @@ public class UIListener extends InputListener{
 				click.play();
 				if (!msg.input.getText().equals(""))
 					msg.addMessage(msg.input.getText());
-				msg.input.setText("");
+				msg.input.setText("Press [ENTER] to chat");
 				stage.setKeyboardFocus(null);
 				return true;
 			} else {
+				msg.input.setText("");
 				stage.setKeyboardFocus(msg.input);
 			}
 			break;
@@ -66,6 +68,7 @@ public class UIListener extends InputListener{
 				menu.menu().setVisible(false);
 			} else {
 				mainmenubeep.play();
+
 				menu.menu().setVisible(true);
 				menu.menuI.getPlayerItems();
 				menu.menuI.updateItems();
