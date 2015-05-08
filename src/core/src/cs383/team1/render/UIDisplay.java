@@ -11,6 +11,7 @@ import cs383.team1.input.ui.MessageBox;
 import cs383.team1.input.ui.UIListener;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 
 /**
@@ -27,13 +28,13 @@ public class UIDisplay extends Display{
 	CombatMenu combat;
 	UIListener uiListen;
 	
-	Player player = Player.ownPlayer;
+	Player player = CPlayer.ownPlayer;
 	final AreaManager areas = GameManager.instance.areas;
 
 
 	@Override
 	public void render() {
-		player = Player.ownPlayer;
+		player = CPlayer.ownPlayer;
 		//Read messages sent to the GameManager to the chat
 		if ( GameManager.instance.msg != null &&
 			GameManager.instance.msg.size()>0) {

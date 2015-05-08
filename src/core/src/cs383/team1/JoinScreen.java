@@ -23,6 +23,7 @@ import cs383.team1.MenuScreen;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.GameManagerInterface;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.PlayerInterface;
@@ -88,7 +89,7 @@ public class JoinScreen implements Screen, InputProcessor, ApplicationListener{
 	}
 
 	void update() {
-		Player player = Player.ownPlayer;
+		Player player = CPlayer.ownPlayer;
 
 		if (clientFail) {
 			Gdx.app.log("JoinScreen:update", "Client failure");

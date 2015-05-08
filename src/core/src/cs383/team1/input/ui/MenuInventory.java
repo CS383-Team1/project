@@ -15,6 +15,7 @@ import cs383.team1.model.inventory.Equipment;
 import cs383.team1.model.inventory.Inventory;
 import cs383.team1.model.inventory.Item;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
 import java.util.ArrayList;
@@ -345,7 +346,7 @@ public class MenuInventory extends SubMenu {
 					item.critChance,
 					item.critMultiplier,
 					item.range,
-					Player.ownPlayer.pos()
+					CPlayer.ownPlayer.pos()
 				));
 				
 				//Update the item count label
@@ -392,7 +393,7 @@ public class MenuInventory extends SubMenu {
 	//Get the list of items and the inventory size from the player
 	public void getPlayerItems()
 	{
-		p = Player.ownPlayer;
+		p = CPlayer.ownPlayer;
 		Inventory inv = p.inventory;
 		itemsList = inv.contents;
 		

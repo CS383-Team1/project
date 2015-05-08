@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Scaling;
 import static cs383.team1.input.ui.SubMenu.getImage;
 import cs383.team1.model.inventory.Item;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 
 /**
@@ -27,7 +28,7 @@ public class ItemsExtension {
 	*/
 	private void statWpn(Table t, Item itm)
 	{
-		Player p = Player.ownPlayer;
+		Player p = CPlayer.ownPlayer;
 		Table sub;
 		
 		Item e1 = p.inventory.equiped.leftWeapon;
@@ -68,7 +69,7 @@ public class ItemsExtension {
 	
 	private void statArm(Table t, Item itm)
 	{
-		Player p = Player.ownPlayer;
+		Player p = CPlayer.ownPlayer;
 		Item a;
 		
 		if (itm.type.equals("head"))

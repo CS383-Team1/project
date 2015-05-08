@@ -9,6 +9,7 @@ import cs383.team1.Main;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.GameManagerInterface;
 import cs383.team1.model.overworld.Area;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
@@ -29,7 +30,7 @@ public class GameServer{
                 stairs = new StairsEntity();
 		server = new Server();
                 tempPos  = new Position();
-                Player.ownPlayer.playerID = 1;
+                CPlayer.ownPlayer.playerID = 1;
                 
 		Network.registerKryo(server);
 
@@ -103,12 +104,12 @@ public class GameServer{
                                                     if ((npc = (Npc)Main.gm.areas.findCombatant(
                                                         r.pos, 3)) != null){
                                             
-                                                        Player.ownPlayer.roaming = false;
+                                                        CPlayer.ownPlayer.roaming = false;
                                                         //Player.ownPlayer.pos.x = r.pos.x - 1;
-                                                        Player.ownPlayer.pos.x = r.pos.x;
-                                                        Player.ownPlayer.pos.y = r.pos.y;
-                                                        Player.ownPlayer.pos.y = r.pos.y - 1;
-                                                        Main.gm.combat.encounter(Player.ownPlayer, npc, Main.gm.areas.current.players);
+                                                        CPlayer.ownPlayer.pos.x = r.pos.x;
+                                                        CPlayer.ownPlayer.pos.y = r.pos.y;
+                                                        CPlayer.ownPlayer.pos.y = r.pos.y - 1;
+                                                        Main.gm.combat.encounter(CPlayer.ownPlayer, npc, Main.gm.areas.current.players);
                                                     }
                                                 }
 
@@ -118,12 +119,12 @@ public class GameServer{
                                                 //}
                                                 
                                                 //First send server's position information. Then send other player's position info
-                                                 pr.pos = Player.ownPlayer.pos;
-                                                    pr.floatPos = Player.ownPlayer.floatPos;
-                                                    pr.facing = Player.ownPlayer.facing;
-                                                    pr.roaming = Player.ownPlayer.roaming;
-                                                    pr.areaName = Player.ownPlayer.currentArea;
-                                                    pr.playerID = Player.ownPlayer.playerID;
+                                                 pr.pos = CPlayer.ownPlayer.pos;
+                                                    pr.floatPos = CPlayer.ownPlayer.floatPos;
+                                                    pr.facing = CPlayer.ownPlayer.facing;
+                                                    pr.roaming = CPlayer.ownPlayer.roaming;
+                                                    pr.areaName = CPlayer.ownPlayer.currentArea;
+                                                    pr.playerID = CPlayer.ownPlayer.playerID;
                                                     connection.sendTCP(pr);
                                                     
                                                 for(Map.Entry<Integer, Player> otherPlayers : Main.gm.areas.current.players.entrySet()){

@@ -19,6 +19,7 @@ import cs383.team1.Main;
 import cs383.team1.input.InputManager;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.GameManagerInterface;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.PlayerInterface;
 import cs383.team1.net.GameClient;
@@ -79,7 +80,7 @@ public class HostScreen implements Screen, InputProcessor, ApplicationListener {
 	}
 
 	void update() {
-		Player player = Player.ownPlayer;
+		Player player = CPlayer.ownPlayer;
 		g.update(inputManager);
 
 		if (player.zeroFloat() 

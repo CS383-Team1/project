@@ -12,6 +12,7 @@ import cs383.team1.model.State;
 import cs383.team1.model.StateManager;
 import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.AreaManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.CoWorker;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
@@ -56,7 +57,7 @@ public final class GameManager implements GameManagerInterface {
                 combat = new CombatManager();
                 tempPos = new Position();
                 returnPos = new Position();
-                player = Player.ownPlayer;
+                player = CPlayer.ownPlayer;
                 player.hp = 100;
 
 		load();
@@ -163,7 +164,7 @@ public final class GameManager implements GameManagerInterface {
                         //Try to use stairs entity on a stairs tile (well3112)
                         if (target.type() == 3){
                             areas.useStairs(next, player);
-                            next = Player.ownPlayer.pos;
+                            next = CPlayer.ownPlayer.pos;
                         } else if(target.passable()) {
                                 player.floatPos = new Position((x-next.x) *
                                         Tile.WIDTH, (y-next.y) * Tile.HEIGHT);
@@ -232,7 +233,7 @@ public final class GameManager implements GameManagerInterface {
                                 }
                                 System.out.println("Printing npc position: " + npc.pos().x + " : " + npc.pos().y);
                                 areas.getCombatArea(player.pos(), player, npc);
-                                combat.encounter(Player.ownPlayer, npc, areas.current.players);
+                                combat.encounter(CPlayer.ownPlayer, npc, areas.current.players);
                         }
                         
                 }

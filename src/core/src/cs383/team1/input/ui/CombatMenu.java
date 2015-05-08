@@ -20,6 +20,7 @@ import cs383.team1.Main;
 import cs383.team1.model.combat.Move;
 import static cs383.team1.input.ui.SubMenu.getImage;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class CombatMenu {
 	
 	Skin skin;
 	
-	Player p = Player.ownPlayer;
+	Player p = CPlayer.ownPlayer;
 	
 	GameManager gm = GameManager.instance;
 	

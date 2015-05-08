@@ -10,32 +10,15 @@ import cs383.team1.model.overworld.Position;
 import java.util.ArrayList;
 
 
-public class Player implements Entity{
-	public static final int TYPE = 1;
-        public static int aType = 4;
-        public static Object ownPlayer;
-        public int facing = 2;
-	public Position pos;
-        public boolean roaming = true;
-        public Position floatPos = new Position(0, 0);
-	public int hp;
-	public int mp;
-	public int ap;
-        public ArrayList<String> possibleQuests = new ArrayList<String>();
-        public ArrayList<String> acceptedQuests = new ArrayList<String>();
-        public ArrayList<Move> moves = new ArrayList<Move>();
-        public ArrayList<Move> attacks = new ArrayList<Move>();
-        public Inventory inventory;
-        public String currentArea = new String();
-        public int playerID;
-
-	
+public final class CPlayer extends Player {
         
-	public Player() {
+        public static final CPlayer ownPlayer = new CPlayer();
+        
+	public CPlayer() {
 		this(new Position(1, 1), 0, 0, 0);
 	}
 
-	public Player(Position p, int hp_0, int mp_0, int ap_0) {
+	public CPlayer(Position p, int hp_0, int mp_0, int ap_0) {
 		Gdx.app.debug("Player:Player", "instantiating class");
 		pos = p;
 		hp = hp_0 > 0 ? hp_0 : 0;
@@ -186,6 +169,7 @@ public class Player implements Entity{
                 }
         }
 
+	@Override
 	public void setPos(int x, int y, int fx, int fy, int f) {
 		pos = new Position(x, y);
 		setFloatPos(new Position(fx, fy));

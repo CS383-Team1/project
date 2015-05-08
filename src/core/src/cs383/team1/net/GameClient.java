@@ -9,6 +9,7 @@ import com.esotericsoftware.minlog.Log;
 import cs383.team1.Main;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.Area;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
 import cs383.team1.model.overworld.Position;
@@ -106,7 +107,7 @@ public class GameClient {
                                         
                                         ConnectResponse c = (ConnectResponse)object;
                                         
-                                        Player.ownPlayer.playerID = c.assignedID;
+                                        CPlayer.ownPlayer.playerID = c.assignedID;
                                         Player p = new Player();
                                         
                                             for(Map.Entry<String, Area> a : Main.gm.areas.areas.entrySet()){
@@ -115,7 +116,7 @@ public class GameClient {
                                                 }
                                             }
                                         
-                                       System.out.println("Printing playerID in GameClient: " + Player.ownPlayer.playerID);
+                                       System.out.println("Printing playerID in GameClient: " + CPlayer.ownPlayer.playerID);
                                         //connection.sendTCP(conRequest);
                                         
 				}
@@ -147,12 +148,12 @@ public class GameClient {
                                                     if ((npc = (Npc)Main.gm.areas.findCombatant(
                                                         pr.pos, 3)) != null){
                                             
-                                                        Player.ownPlayer.roaming = false;
+                                                        CPlayer.ownPlayer.roaming = false;
                                                         //Player.ownPlayer.pos.x = pr.pos.x - 1;
-                                                        Player.ownPlayer.pos.x = pr.pos.x;
-                                                        Player.ownPlayer.pos.y = pr.pos.y;
-                                                        Player.ownPlayer.pos.y = pr.pos.y - 1;
-                                                        Main.gm.combat.encounter(Player.ownPlayer, npc, Main.gm.areas.current.players);
+                                                        CPlayer.ownPlayer.pos.x = pr.pos.x;
+                                                        CPlayer.ownPlayer.pos.y = pr.pos.y;
+                                                        CPlayer.ownPlayer.pos.y = pr.pos.y - 1;
+                                                        Main.gm.combat.encounter(CPlayer.ownPlayer, npc, Main.gm.areas.current.players);
                                                     }
                                             
                                                 }
@@ -166,12 +167,12 @@ public class GameClient {
         
         public void sendRequest() {
 		PosRequest r = new PosRequest();
-		r.pos = Player.ownPlayer.pos;
-		r.floatPos = Player.ownPlayer.floatPos;
-		r.facing = Player.ownPlayer.facing;
-                r.roaming = Player.ownPlayer.roaming;
-                r.areaName = Player.ownPlayer.currentArea;
-                r.playerID = Player.ownPlayer.playerID;
+		r.pos = CPlayer.ownPlayer.pos;
+		r.floatPos = CPlayer.ownPlayer.floatPos;
+		r.facing = CPlayer.ownPlayer.facing;
+                r.roaming = CPlayer.ownPlayer.roaming;
+                r.areaName = CPlayer.ownPlayer.currentArea;
+                r.playerID = CPlayer.ownPlayer.playerID;
 		client.sendTCP(r);
                 
 	}

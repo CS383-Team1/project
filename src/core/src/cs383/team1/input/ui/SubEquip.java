@@ -16,6 +16,7 @@ import static cs383.team1.input.ui.SubMenu.getImage;
 import cs383.team1.model.inventory.Equipment;
 import cs383.team1.model.inventory.Item;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 
 /**
@@ -47,7 +48,7 @@ public class SubEquip extends ItemsExtension {
 	public void updateItems()
 	{
 		subT.clearChildren();
-		p = Player.ownPlayer;
+		p = CPlayer.ownPlayer;
 		e = p.inventory.equiped;
 		
 		if (e.leftWeapon!=null && !e.leftWeapon.name.equals("Unknown")){
