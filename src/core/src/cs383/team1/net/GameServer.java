@@ -55,11 +55,6 @@ public class GameServer{
                                 connectCount++;
                                 Player p = new Player();
                                 
-                                for(Map.Entry<String, Area> a : Main.gm.areas.areas.entrySet()){
-                                    Main.gm.areas.current.players.put(connectCount, p);
-                                }
-                                
-                                
                                 conResponse.playerAmount = Main.gm.areas.current.players.size();
                                 conResponse.assignedID = connectCount;
                                 connection.sendTCP(conResponse);
@@ -81,16 +76,7 @@ public class GameServer{
                                             
                                         //areas.current.player is a map, so get returns the value of the specified key
                                         //First player is "0", so look for "1"
-                                        if(!Main.gm.areas.current.players.containsKey(r.playerID)){
-                                            Player addedPlayer = new Player();
-                                            for(Map.Entry<String, Area> a : Main.gm.areas.areas.entrySet()){
-                                                Main.gm.areas.current.players.put(r.playerID, addedPlayer);
-                                            }
-                                        }
                                         
-                                        //for(Map.Entry<Integer, Player> otherPlayers : Main.gm.areas.current.players.entrySet()){
-                                            //if(otherPlayers.getValue().playerID == r.playerID){
-                                                //p = otherPlayers.getValue();
                                                 p.pos = r.pos;
                                                 p.floatPos = r.floatPos;
                                                 p.facing = r.facing;
@@ -114,10 +100,6 @@ public class GameServer{
                                                 }
 
                                                 PosResponse pr = new PosResponse();
-                                                //for(Map.Entry<Integer, Player> otherPlayers : Main.gm.areas.current.players.entrySet()){
-                                                  //  pr.otherPlayerPositions.put(otherPlayers.getKey(), otherPlayers.getValue().pos);
-                                                //}
-                                                
                                                 //First send server's position information. Then send other player's position info
                                                  pr.pos = CPlayer.ownPlayer.pos;
                                                     pr.floatPos = CPlayer.ownPlayer.floatPos;
@@ -128,7 +110,9 @@ public class GameServer{
                                                     connection.sendTCP(pr);
                                                     
                                                 for(Map.Entry<Integer, Player> otherPlayers : Main.gm.areas.current.players.entrySet()){
-                                                    if(otherPlayers.getKey() < connectCount){
+                                                    if(otherPlayers.getKey() < connectCount 
+                                                            && otherPlayers.getValue().currentArea.equals(CPlayer.ownPlayer.currentArea)
+                                                            && otherPlayers.getValue().playerID != CPlayer.ownPlayer.playerID){
                                                         pr.pos = otherPlayers.getValue().pos;//Player.ownPlayer.pos;
                                                         pr.floatPos = otherPlayers.getValue().floatPos;
                                                         pr.facing = otherPlayers.getValue().facing;

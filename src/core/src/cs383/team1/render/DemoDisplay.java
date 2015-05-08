@@ -204,13 +204,13 @@ public class DemoDisplay extends Display {
 		}
 		for(Map.Entry<Integer, Player> p : area.players.entrySet()){
                     //If player's area is the same as the other players' area, then draw the other players
-//                    if(p.getValue().currentArea.equals(CPlayer.ownPlayer.currentArea)){
+                    if(p.getValue().currentArea.equals(CPlayer.ownPlayer.currentArea)){
                         p.getValue().setImage();
 			sprite = new Sprite(getEntityTexture(p.getValue().aType()));
 			sprite.setPosition(p.getValue().pos().x * Tile.WIDTH + (int) p.getValue().floatPos().x,
 				(p.getValue().pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) p.getValue().floatPos().y);
 			sprite.draw(batch);
-//                    }
+                    }
 		}
 
 		player = CPlayer.ownPlayer;
