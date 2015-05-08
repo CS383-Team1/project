@@ -124,7 +124,7 @@ public class GameClient {
 								CPlayer.ownPlayer.roaming = false;
 								CPlayer.ownPlayer.pos.x = pr.pos.x;
 								CPlayer.ownPlayer.pos.y = pr.pos.y;
-								CPlayer.ownPlayer.pos.y = pr.pos.y - 1;
+								CPlayer.ownPlayer.pos.y = pr.pos.y - CPlayer.ownPlayer.playerID;
 								Main.gm.combat.encounter(CPlayer.ownPlayer, npc, Main.gm.areas.current.players);
 							}
 						}
