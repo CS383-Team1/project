@@ -1,7 +1,7 @@
 package cs383.team1.model;
 
 import cs383.team1.input.InputManager;
-import cs383.team1.model.combat.CombatManager;
+import cs383.team1.combat.CombatManager;
 import cs383.team1.model.overworld.Area;
 import cs383.team1.model.overworld.AreaManager;
 

@@ -1,7 +1,7 @@
 
 package cs383.team1.model.inventory;
 
-import cs383.team1.model.combat.Move;
+import cs383.team1.combat.Move;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 

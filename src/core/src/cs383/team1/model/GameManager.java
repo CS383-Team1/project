@@ -6,7 +6,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.utils.Timer;
 import cs383.team1.input.DialogueBox;
 import cs383.team1.input.InputManager;
-import cs383.team1.model.combat.CombatManager;
+import cs383.team1.combat.CombatManager;
 import cs383.team1.model.inventory.Item;
 import cs383.team1.model.State;
 import cs383.team1.model.StateManager;

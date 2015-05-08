@@ -1,6 +1,6 @@
 package cs383.team1.model.inventory;
 import cs383.team1.model.GameManager;
-import cs383.team1.model.combat.Move;
+import cs383.team1.combat.Move;
 import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
 import java.util.ArrayList;

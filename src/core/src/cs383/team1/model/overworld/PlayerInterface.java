@@ -1,7 +1,7 @@
 package cs383.team1.model.overworld;
 
 import com.badlogic.gdx.Gdx;
-import cs383.team1.model.combat.Move;
+import cs383.team1.combat.Move;
 import cs383.team1.model.inventory.Inventory;
 import cs383.team1.model.inventory.Item;
 import cs383.team1.model.overworld.Entity;
