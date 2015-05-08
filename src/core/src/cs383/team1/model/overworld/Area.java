@@ -9,6 +9,9 @@ import java.util.Map;
 public class Area {
 	public List<Tile> tiles;
 	public List<Entity> entities;
+        public Player player;
+        
+
         public Map<Integer, Player> players;
         public String name;
         
@@ -20,7 +23,7 @@ public class Area {
 		Gdx.app.debug("Area:Area", "instantiating class");
 		tiles = tileList;
 		entities = entityList;
-		//players = new ArrayList();
+//players = new ArrayList();
                 players = new HashMap<Integer, Player>();
                 //players.add(p);
                 for(int i = 0; i < 27; i++){
@@ -38,5 +41,6 @@ public class Area {
                 for(int i = 0; i < 27; i++){
                     players.put(i, p);
                 }
+
 	}
 }

@@ -42,6 +42,7 @@ public class Player implements Entity{
 		mp = mp_0 > 0 ? mp_0 : 0;
 		ap = ap_0 > 0 ? ap_0 : 0;
                 addMove("block", 0, 50);
+                addMove("drink coffee", -5, 1);
                 addMove("throw coffee in face", 5, 1);
                 for(int i = 3; i < 10; i++ ){
                     addMove(new Move());
@@ -150,8 +151,6 @@ public class Player implements Entity{
         }
         
         public void setImage() {
-
-
                 final int animDiv = 28;
                 int anim;
                 if ((Math.max(Math.abs(floatPos.x), Math.abs(floatPos.y)) % animDiv) >= Math.ceil(animDiv / 2))
@@ -184,7 +183,7 @@ public class Player implements Entity{
                         default: aType = 12; break;
                         }
                 }
-        }
+      }
 
 	public void setPos(int x, int y, int fx, int fy, int f) {
 		pos = new Position(x, y);

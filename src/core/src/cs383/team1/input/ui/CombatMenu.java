@@ -1,7 +1,8 @@
 package cs383.team1.input.ui;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
@@ -16,9 +17,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import cs383.team1.Main;
+import com.badlogic.gdx.utils.Scaling;
 import cs383.team1.model.combat.Move;
 import static cs383.team1.input.ui.SubMenu.getImage;
+import cs383.team1.model.GameManager;
+import cs383.team1.Main;
 import cs383.team1.model.GameManager;
 import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Player;
@@ -29,6 +32,10 @@ import java.util.ArrayList;
  * @author Lance
  */
 public class CombatMenu {
+	Sound block = Gdx.audio.newSound(Gdx.files.internal("sound/block.wav"));
+	Sound heal = Gdx.audio.newSound(Gdx.files.internal("sound/drink.wav"));
+	Sound attack = Gdx.audio.newSound(Gdx.files.internal("sound/punch.wav"));
+
 	SplitPane combat;
 	ScrollPane cmdScroll;
 	Table cmdGroup;
@@ -41,6 +48,7 @@ public class CombatMenu {
 	
 	Skin skin;
 	
+//Player p = GameManager.instance.areas.current.player;
 	Player p = CPlayer.ownPlayer;
 	
 	GameManager gm = GameManager.instance;
@@ -180,6 +188,16 @@ public class CombatMenu {
 			InputEvent event, float x, float y ) {
 				gm.combat.battles.get(0).turn();
 				p.addAttack(move);
+				if(moveType(move) == "Block"){
+					block.play();
+				}
+				if(moveType(move) == "Attack"){
+					attack.play();
+				}
+				if(moveType(move) == "Heal"){
+					heal.play();
+				}
+
 				gm.msg.add("Player uses: " + atk);
 				updateAttacks();
 			}
@@ -216,4 +234,5 @@ public class CombatMenu {
 	public void incProgress() {
 		countdown.setValue(countdown.getValue()+1);
 	}
+
 }

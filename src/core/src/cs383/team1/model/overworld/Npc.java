@@ -45,6 +45,7 @@ public final class Npc implements Entity{
 
         //Basic Constructor for NPC
         //Takes a position and a dialogue text file name to use as a "script"
+
 	public Npc(Position p, String f){
                 String [] lines;
                 String fileContents;
@@ -223,6 +224,7 @@ public final class Npc implements Entity{
             moves.add(move);
         }
         
+
         public void removeMove(int index){
             moves.remove(index);
         }
@@ -232,6 +234,7 @@ public final class Npc implements Entity{
             attacks.add(move);
         }
         
+
         //Removes first move in list of attacks waiting 
         //to be processed by CombatManager
         public void removeAttack(){

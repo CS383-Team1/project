@@ -48,6 +48,7 @@ public class SubEquip extends ItemsExtension {
 	public void updateItems()
 	{
 		subT.clearChildren();
+
 		p = CPlayer.ownPlayer;
 		e = p.inventory.equiped;
 		

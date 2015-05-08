@@ -157,6 +157,7 @@ public class MenuEquip extends SubMenu{
 	private void getPlayer()
 	{
 		//Should be spelled "equiPPed"
+
 		p = CPlayer.ownPlayer;
 		Equipment e = p.inventory.equiped;
 

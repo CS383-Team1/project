@@ -1,6 +1,8 @@
 package cs383.team1.input.ui;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -15,6 +17,8 @@ import cs383.team1.model.overworld.Position;
  * @author Lance
  */
 public class UIListener extends InputListener{
+	Sound click = Gdx.audio.newSound(Gdx.files.internal("sound/chatbeep.ogg"));
+	Sound mainmenubeep = Gdx.audio.newSound(Gdx.files.internal("sound/mainmenubeep.ogg"));
 	Stage stage;
 	MainMenu menu;
 	MessageBox msg;
@@ -46,10 +50,9 @@ public class UIListener extends InputListener{
 		case (Input.Keys.ENTER) :
 			if (
 				stage.getKeyboardFocus() == msg.input) {
-				if (!msg.input.getText().equals("")) {
-//					msg.addMessage(msg.input.getText());
-                                        GameManager.instance.sendMsg = msg.input.getText();
-                                }
+				click.play();
+				if (!msg.input.getText().equals(""))
+					GameManager.instance.sendMsg = msg.input.getText();
 				msg.input.setText("Press [ENTER] to chat");
 				stage.setKeyboardFocus(null);
                                 msg.hasFocus = false;
@@ -62,8 +65,11 @@ public class UIListener extends InputListener{
 		case (Input.Keys.ESCAPE) :
 			interaction.setVisible(false);
 			if (menu.menu.isVisible()) {
+				mainmenubeep.play();
 				menu.menu().setVisible(false);
 			} else {
+				mainmenubeep.play();
+
 				menu.menu().setVisible(true);
 				menu.menuI.getPlayerItems();
 				menu.menuI.updateItems();

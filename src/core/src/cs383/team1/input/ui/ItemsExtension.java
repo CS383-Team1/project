@@ -28,6 +28,7 @@ public class ItemsExtension {
 	*/
 	private void statWpn(Table t, Item itm)
 	{
+
 		Player p = CPlayer.ownPlayer;
 		Table sub;
 		

@@ -201,6 +201,7 @@ public class DemoDisplay extends Display {
 			  (e.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT));
 			sprite.draw(batch);
                         
+
 		}
 		for(Map.Entry<Integer, Player> p : area.players.entrySet()){
                     //If player's area is the same as the other players' area, then draw the other players
@@ -220,6 +221,7 @@ public class DemoDisplay extends Display {
 		sprite.setPosition(
                         player.pos().x * Tile.WIDTH + (int) player.floatPos().x,
 		  (player.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) player.floatPos().y);
+
 
                 camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
                 camera.setToOrtho(false);

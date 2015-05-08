@@ -24,6 +24,7 @@ public class StairsEntity implements Entity {
                 //Get the destination that exists between the two strings (well3112)
                 //Indexes are used to allow for varying name and variable lengths (well3112)
 
+
 		if (s != "") {
                 	dest  = s.substring(13, s.indexOf(",destinationX:"));
 	                destPos = new Position(
@@ -48,7 +49,8 @@ public class StairsEntity implements Entity {
 		return pos;
 	}
         
-        public String destination(){
+
+    public String destination(){
                 return dest;
         }
         

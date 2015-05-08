@@ -122,6 +122,7 @@ public class MenuInventory extends SubMenu {
 		if (type.contains("weapon")) {
 			statWpn(txtTable, itm);
 			txtTable.row();
+
 		} else if (type.contains("Consumable") || type.contains("ring")) {
 			statCsm(txtTable, itm);
 			txtTable.row();
@@ -167,6 +168,7 @@ public class MenuInventory extends SubMenu {
 		imgTable.add(img).row();
 
 		//Add the button table
+
 		if (type.contains("Consumable")) {
 			buttonT.add(equip).right().width(65).padLeft(5);
 //			buttonT.add(use).right().width(65).padLeft(5);
@@ -346,6 +348,7 @@ public class MenuInventory extends SubMenu {
 					item.critChance,
 					item.critMultiplier,
 					item.range,
+
 					CPlayer.ownPlayer.pos()
 				));
 				
@@ -393,6 +396,7 @@ public class MenuInventory extends SubMenu {
 	//Get the list of items and the inventory size from the player
 	public void getPlayerItems()
 	{
+
 		p = CPlayer.ownPlayer;
 		Inventory inv = p.inventory;
 		itemsList = inv.contents;
@@ -458,4 +462,5 @@ public class MenuInventory extends SubMenu {
 		t.add(l).right().width(65);
 		t.add(r).right().width(65).padLeft(5);
 	}
+
 }

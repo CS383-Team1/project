@@ -1,6 +1,7 @@
 package cs383.team1.input.ui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -19,6 +20,9 @@ import cs383.team1.model.overworld.Tile;
  * @author Lance
  */
 public class Interaction {
+	Sound speak = Gdx.audio.newSound(Gdx.files.internal("sound/talk.ogg"));
+	Sound pickup = Gdx.audio.newSound(Gdx.files.internal("sound/pickup.wav"));
+
 	Skin skin;
 	public Table w;
 	Label l;
@@ -86,8 +90,10 @@ public class Interaction {
 	
 	public void interact() {
 		if (target instanceof CoWorker) {
+			speak.play(3f);
 			gm.msg.add(((CoWorker)target).readNext());
 		} else if (target instanceof Item) {
+			pickup.play(.5f);
 			p.inventory.pickUp((Item) target);
 			gm.msg.add("Picked up " + ((Item) target).name);
 			gm.areas.current.entities.remove((Entity)target);

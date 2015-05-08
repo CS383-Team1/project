@@ -28,6 +28,7 @@ public final class GameManager implements GameManagerInterface {
 	public static final GameManager instance = new GameManager();
 
 	public AreaManager areas;
+
 	private StateManager states;
         private DialogueBox dialogue;
         public CombatManager combat;
@@ -39,7 +40,6 @@ public final class GameManager implements GameManagerInterface {
         public List<String> msg;
         public String sendMsg;
         Player player;
-
 
         
 	private GameManager() {
@@ -59,6 +59,7 @@ public final class GameManager implements GameManagerInterface {
                 combat = new CombatManager();
                 tempPos = new Position();
                 returnPos = new Position();
+
                 player = CPlayer.ownPlayer;
                 player.hp = 100;
 
@@ -74,6 +75,7 @@ public final class GameManager implements GameManagerInterface {
 		areaDir = Gdx.files.internal("area/");
 
 		for(FileHandle f : areaDir.list()) {
+
                     fname = new String("area/" + f.name());
                     Gdx.app.debug("GameManager:load", "Loading area " + fname);
                     areas.loadArea(fname);
@@ -87,7 +89,7 @@ public final class GameManager implements GameManagerInterface {
                 CoWorker coworker;
 		Npc npc;
                 Item item;
-                
+
                 
                 int x = player.pos.x;
                 int y = player.pos.y;
@@ -101,7 +103,7 @@ public final class GameManager implements GameManagerInterface {
                         player.roaming == true &&
                         player.zeroFloat()) {
 
-                        switch(in.keys.remove(0)) {
+                       switch(in.keys.remove(0)) {
 				case Keys.LEFT:
 					next = new Position(x - 1, y);
                                         player.facing = 3;
@@ -119,6 +121,7 @@ public final class GameManager implements GameManagerInterface {
                                         player.facing = 2;
 					break;
                                 case Keys.E:
+
                                         /*If E is pressed next to item, then
                                         item is picked up*/
                                         if((item = (Item)areas.findItem(
@@ -164,6 +167,7 @@ public final class GameManager implements GameManagerInterface {
                         }
 			
                         //Try to use stairs entity on a stairs tile (well3112)
+
                         if (target.type() == 3){
                             areas.useStairs(next, player);
                             next = CPlayer.ownPlayer.pos;
@@ -173,9 +177,11 @@ public final class GameManager implements GameManagerInterface {
 				player.pos = next;
 			}
                         
+
                         //Start combat with an NPC if they are next to player
                         if ((npc = (Npc)areas.findCombatant(
                         player.pos(), 3)) != null){
+                            if(npc.hp<=0){return;}
                                 System.out.println("Starting combat");
                                 tempPos = npc.pos();
                                 returnPos = player.pos();
@@ -247,8 +253,7 @@ public final class GameManager implements GameManagerInterface {
 
 	public int getKey() {
 		return keyPressed;
-	}
-
+        }
 	public AreaManager areas() {
 		return areas;
 	}
@@ -272,4 +277,5 @@ public final class GameManager implements GameManagerInterface {
 	public void removeMessage(int m) {
 		if (msg.size() > 0) msg.remove(m);
 	}
+	
 }
