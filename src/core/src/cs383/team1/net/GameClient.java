@@ -129,6 +129,9 @@ public class GameClient {
 							}
 						}
 					}
+				} else if (object instanceof MsgResponse) {
+					MsgResponse mr = (MsgResponse)object;
+					GameManager.instance.msg.add(mr.msg);
 				}
 			}
 		});
