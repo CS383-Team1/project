@@ -32,7 +32,7 @@ public class GameClient {
 	private int state;
 
 	public GameClient() {
-		Log.set(Log.LEVEL_DEBUG);
+		Log.set(Log.LEVEL_INFO);
                 tempPos  = new Position();
                 
 		/* state = STATE_NEW; */
@@ -88,13 +88,17 @@ public class GameClient {
 				if (object instanceof ConnectResponse) {
                                         
                                         ConnectResponse c = (ConnectResponse)object;
-                                        
-                                        CPlayer.ownPlayer.playerID = c.assignedID;
-                                        Player p = new Player();
-                                        System.out.println("Printing playerID in GameClient: " + CPlayer.ownPlayer.playerID);
+					Player p;
 
-                                        //connection.sendTCP(conRequest);
-                                        
+                                        CPlayer.ownPlayer.playerID = c.assignedID;
+					for (int i = 0; i < c.playerAmount; i++) {
+						if (i!=CPlayer.ownPlayer.playerID) {
+							p = new Player();
+							p.playerID = i;
+							GameManager.instance.areas.current.players.put(i, p);
+						}
+					}
+                                        System.out.println("Printing playerID in GameClient: " + CPlayer.ownPlayer.playerID);
 				}
 			}
 		});
@@ -103,34 +107,32 @@ public class GameClient {
 			public void received (Connection connection, Object object) {
 				if (object instanceof PosResponse) {
 					PosResponse pr = (PosResponse)object;
-
-                                        
-					Player p = GameManager.instance.areas.current.players.get(pr.playerID);
-                                        //for(Map.Entry<Integer, Player> otherPlayer : Main.gm.areas.current.players.entrySet()){
+					
+					if (GameManager.instance.areas.current.players.get(pr.playerID)==null){
+						Player p = new Player();
+						p.setPos(pr.pos.x, pr.pos.y, pr.floatPos.x, pr.floatPos.y, pr.facing);
+					} else {
+						Player p = GameManager.instance.areas.current.players.get(pr.playerID);
                                                 p.pos = pr.pos;
                                                 p.floatPos = pr.floatPos;
                                                 p.facing = pr.facing;
                                                 p.currentArea = pr.areaName;
+//						p.playerID = pr.playerID;
                                             
                                                 if(pr.roaming != true){
-                                                    tempPos = pr.pos;
-                                                    tempPos.x--;
-                                            
-                                                    if ((npc = (Npc)Main.gm.areas.findCombatant(
-                                                        pr.pos, 3)) != null){
-                                            
-                                                        CPlayer.ownPlayer.roaming = false;
-                                                        //Player.ownPlayer.pos.x = pr.pos.x - 1;
-                                                        CPlayer.ownPlayer.pos.x = pr.pos.x;
-                                                        CPlayer.ownPlayer.pos.y = pr.pos.y;
-                                                        CPlayer.ownPlayer.pos.y = pr.pos.y - 1;
-                                                        Main.gm.combat.encounter(CPlayer.ownPlayer, npc, Main.gm.areas.current.players);
-                                                    }
-                                            
-                                                }
-                                            }
-                                        //}
-                                //}
+							tempPos = pr.pos;
+							tempPos.x--;
+							if ((npc = (Npc)Main.gm.areas.findCombatant(
+								pr.pos, 3)) != null){
+								CPlayer.ownPlayer.roaming = false;
+								CPlayer.ownPlayer.pos.x = pr.pos.x;
+								CPlayer.ownPlayer.pos.y = pr.pos.y;
+								CPlayer.ownPlayer.pos.y = pr.pos.y - 1;
+								Main.gm.combat.encounter(CPlayer.ownPlayer, npc, Main.gm.areas.current.players);
+							}
+						}
+					}
+				}
 			}
 		});
 		return true;
@@ -145,8 +147,8 @@ public class GameClient {
                 r.areaName = CPlayer.ownPlayer.currentArea;
                 r.playerID = CPlayer.ownPlayer.playerID;
 		client.sendTCP(r);
-                
 	}
+
         public void sendConnectionRequest(){
             
                 ConnectRequest conRequest = new ConnectRequest();

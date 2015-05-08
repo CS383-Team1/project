@@ -203,17 +203,19 @@ public class DemoDisplay extends Display {
                         
 
 		}
-		for(Map.Entry<Integer, Player> p : area.players.entrySet()){
-                    //If player's area is the same as the other players' area, then draw the other players
-                    if(p.getValue().currentArea.equals(CPlayer.ownPlayer.currentArea) 
-                            && p.getValue().playerID != CPlayer.ownPlayer.playerID){
-
-                        p.getValue().setImage();
-			sprite = new Sprite(getEntityTexture(p.getValue().aType()));
-			sprite.setPosition(p.getValue().pos().x * Tile.WIDTH + (int) p.getValue().floatPos().x,
-				(p.getValue().pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) p.getValue().floatPos().y);
-			sprite.draw(batch);
-                    }
+//		for(Map.Entry<Integer, Player> p : area.players.entrySet()){
+		Player p;
+		for (int i = 0; i < area.players.entrySet().size(); i++) {
+			p = area.players.get(i);//If player's area is the same as the other players' area, then draw the other players
+			if(p.currentArea.equals(CPlayer.ownPlayer.currentArea) 
+				&& p.playerID != CPlayer.ownPlayer.playerID){
+//				System.out.println("PLAYERID: " + p.playerID + " POS: " + p.pos.x + " " + p.pos.y);
+				p.setImage();
+				sprite = new Sprite(getEntityTexture(p.aType()));
+				sprite.setPosition(p.pos().x * Tile.WIDTH + (int) p.floatPos().x,
+					(p.pos().y * Tile.HEIGHT) + (int) (0.33 * Tile.HEIGHT) + (int) p.floatPos().y);
+				sprite.draw(batch);
+			}
 		}
 
 		player = CPlayer.ownPlayer;

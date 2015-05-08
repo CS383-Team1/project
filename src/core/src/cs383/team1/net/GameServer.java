@@ -23,14 +23,14 @@ public class GameServer{
 	private boolean running;
         StairsEntity stairs;
         Position tempPos;
-        public Integer connectCount = 0;
+//        public Integer connectCount = 0;
         
         public GameServer(final GameManagerInterface gameManager) throws IOException {
-		Log.set(Log.LEVEL_DEBUG);
+		Log.set(Log.LEVEL_INFO);
                 stairs = new StairsEntity();
 		server = new Server();
                 tempPos  = new Position();
-                CPlayer.ownPlayer.playerID = 1;
+                CPlayer.ownPlayer.playerID = 0;
                 
 		Network.registerKryo(server);
 
@@ -52,16 +52,15 @@ public class GameServer{
                                 ConnectRequest conRequest = (ConnectRequest)object;
                                 
                                 ConnectResponse conResponse = new ConnectResponse();
-                                connectCount++;
+//                                connectCount++;
                                 Player p = new Player();
-
+				p.playerID = connection.getID();
+				GameManager.instance.areas.current.players.put(connection.getID(), p);
                                 conResponse.playerAmount = Main.gm.areas.current.players.size();
-                                conResponse.assignedID = connectCount;
+                                conResponse.assignedID = connection.getID();
                                 connection.sendTCP(conResponse);
                             }
-                            
                         }
-
                 });
 
                 server.addListener(new Listener() {
@@ -71,60 +70,47 @@ public class GameServer{
                                         Player p = GameManager.instance.areas.current.players.get(r.playerID);
                                         Npc npc;
                                         if(!GameManager.instance.areas.current.players.containsKey(r.playerID)){
-                                            return;
-                                        }
-                                            
-
-                                                p.pos = r.pos;
-                                                p.floatPos = r.floatPos;
-                                                p.facing = r.facing;
-                                                p.currentArea = r.areaName;
-    //                                          System.out.println(r.s);
-                                            
-                                                if(r.roaming != true){
-                                                    tempPos = r.pos;
-                                                    //tempPos.x--;
-                                                    
-                                                    if ((npc = (Npc)Main.gm.areas.findCombatant(
-                                                        r.pos, 3)) != null){
-                                            
-                                                        CPlayer.ownPlayer.roaming = false;
-                                                        //Player.ownPlayer.pos.x = r.pos.x - 1;
-                                                        CPlayer.ownPlayer.pos.x = r.pos.x;
-                                                        CPlayer.ownPlayer.pos.y = r.pos.y;
-                                                        CPlayer.ownPlayer.pos.y = r.pos.y - 1;
-                                                        Main.gm.combat.encounter(CPlayer.ownPlayer, npc, Main.gm.areas.current.players);
-                                                    }
-                                                }
-
-                                                PosResponse pr = new PosResponse();
-                                                //First send server's position information. Then send other player's position info
-                                                 pr.pos = CPlayer.ownPlayer.pos;
-                                                    pr.floatPos = CPlayer.ownPlayer.floatPos;
-                                                    pr.facing = CPlayer.ownPlayer.facing;
-                                                    pr.roaming = CPlayer.ownPlayer.roaming;
-                                                    pr.areaName = CPlayer.ownPlayer.currentArea;
-                                                    pr.playerID = CPlayer.ownPlayer.playerID;
-                                                    connection.sendTCP(pr);
-                                                    
-                                                for(Map.Entry<Integer, Player> otherPlayers : Main.gm.areas.current.players.entrySet()){
-                                                    if(otherPlayers.getKey() < connectCount
-                                                            && otherPlayers.getValue().currentArea.equals(CPlayer.ownPlayer.currentArea)
-                                                            && otherPlayers.getValue().playerID != CPlayer.ownPlayer.playerID){
-
-                                                        pr.pos = otherPlayers.getValue().pos;//Player.ownPlayer.pos;
-                                                        pr.floatPos = otherPlayers.getValue().floatPos;
-                                                        pr.facing = otherPlayers.getValue().facing;
-                                                        pr.roaming = otherPlayers.getValue().roaming;
+						return;
+					}
+					p.pos = r.pos;
+					p.floatPos = r.floatPos;
+					p.facing = r.facing;
+					p.currentArea = r.areaName;
+					if(r.roaming != true){
+						tempPos = r.pos;
+						if ((npc = (Npc)Main.gm.areas.findCombatant(
+							r.pos, 3)) != null){
+							CPlayer.ownPlayer.roaming = false;
+							CPlayer.ownPlayer.pos.x = r.pos.x;
+							CPlayer.ownPlayer.pos.y = r.pos.y;
+							CPlayer.ownPlayer.pos.y = r.pos.y - 1;
+							Main.gm.combat.encounter(CPlayer.ownPlayer, npc, Main.gm.areas.current.players);
+						}
+					}
+					PosResponse pr = new PosResponse();
+//First send server's position information. Then send other player's position info
+					pr.pos = CPlayer.ownPlayer.pos;
+					pr.floatPos = CPlayer.ownPlayer.floatPos;
+					pr.facing = CPlayer.ownPlayer.facing;
+					pr.roaming = CPlayer.ownPlayer.roaming;
+					pr.areaName = CPlayer.ownPlayer.currentArea;
+					pr.playerID = CPlayer.ownPlayer.playerID;
+					connection.sendTCP(pr);
+					for(Map.Entry<Integer, Player> otherPlayers : Main.gm.areas.current.players.entrySet()){
+						if(otherPlayers.getKey() < server.getConnections().length + 1
+							&& otherPlayers.getValue().currentArea.equals(CPlayer.ownPlayer.currentArea)
+							&& otherPlayers.getValue().playerID != CPlayer.ownPlayer.playerID){
+							pr.pos = otherPlayers.getValue().pos;//Player.ownPlayer.pos;
+							pr.floatPos = otherPlayers.getValue().floatPos;
+							pr.facing = otherPlayers.getValue().facing;
+							pr.roaming = otherPlayers.getValue().roaming;
                                                         pr.areaName = otherPlayers.getValue().currentArea;
                                                         pr.playerID = otherPlayers.getValue().playerID;
-                                                        connection.sendTCP(pr);
-                                                    }
-                                                }
-                                        
-                                            }
-                        }
-
+							connection.sendTCP(pr);
+						}
+					}
+				}
+			}
 		});
                 server.bind(Network.port);
 		server.start();
