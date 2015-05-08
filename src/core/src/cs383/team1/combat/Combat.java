@@ -11,6 +11,7 @@ import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
 import java.util.ArrayList;
 import java.util.Random;
+import cs383.team1.model.combat.Move;
 
 /**
  *

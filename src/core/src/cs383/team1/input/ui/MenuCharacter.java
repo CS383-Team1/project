@@ -37,25 +37,25 @@ public class MenuCharacter extends SubMenu {
                 
                 charStatTable = new Table()
                         .padTop(20);
-                charStatTable.add( getImage("statHpBig") )
+                charStatTable.add( getImage("statHp") )
                         .padBottom(20);
                 charStatTable.add( new Label( "HP:  ", skin, "big" ) )
                         .padLeft(10).padBottom(20);
                 charStatTable.add( statHp ).padBottom(20)
                         .row();
-                charStatTable.add( getImage("statDefBig") )
+                charStatTable.add( getImage("statDef") )
                         .padBottom(20);
                 charStatTable.add( new Label( "DEF:  ", skin, "big" ) )
                         .padLeft(10);
                 charStatTable.add( statDef ).padBottom(20)
                         .row();
-                charStatTable.add( getImage("statAtkBig") )
+                charStatTable.add( getImage("statAtk") )
                         .padBottom(20);
                 charStatTable.add( new Label( "ATK:  ", skin, "big" ) )
                         .padLeft(10).padBottom(20);
                 charStatTable.add( statAtk ).padBottom(20)
                         .row();
-                charStatTable.add( getImage("statRepBig") )
+                charStatTable.add( getImage("statRep") )
                         .padBottom(20);
                 charStatTable.add( new Label( "REP:  ", skin, "big" ) )
                         .padLeft(10).padBottom(20);
