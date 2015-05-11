@@ -93,7 +93,9 @@ public class GameClient {
 						if (i!=CPlayer.ownPlayer.playerID) {
 							p = new Player();
 							p.playerID = i;
-							GameManager.instance.areas.current.players.put(i, p);
+                                                        for(Map.Entry<String, Area> entry : GameManager.instance.areas.areas.entrySet()){
+                                                            entry.getValue().players.put(i, p);
+                                                        }
 						}
 					}
                                         System.out.println("Printing playerID in GameClient: " + CPlayer.ownPlayer.playerID);

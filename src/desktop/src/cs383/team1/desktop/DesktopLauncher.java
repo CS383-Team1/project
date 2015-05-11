@@ -14,7 +14,7 @@ public class DesktopLauncher {
         config.title = "Space Office Adventure";
         config.addIcon("MainMenu/icon32.png", Files.FileType.Internal);
         //config.fullscreen=true;
-        config.resizable=false;
+        //config.resizable=false;
 
         config.addIcon("MainMenu/icon256.png", Files.FileType.Internal);
         config.addIcon("MainMenu/icon128.png", Files.FileType.Internal);

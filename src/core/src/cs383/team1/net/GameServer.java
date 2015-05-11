@@ -52,7 +52,9 @@ public class GameServer{
                                 ConnectResponse conResponse = new ConnectResponse();
                                 Player p = new Player();
 				p.playerID = connection.getID();
-				GameManager.instance.areas.current.players.put(connection.getID(), p);
+                                for(Map.Entry<String, Area> entry : GameManager.instance.areas.areas.entrySet()){
+                                    entry.getValue().players.put(p.playerID, p);
+                                }
                                 conResponse.playerAmount = Main.gm.areas.current.players.size();
                                 conResponse.assignedID = connection.getID();
                                 connection.sendTCP(conResponse);
