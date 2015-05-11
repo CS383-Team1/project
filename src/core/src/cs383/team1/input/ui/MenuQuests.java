@@ -117,21 +117,21 @@ public class MenuQuests extends SubMenu {
 	{
 		questList.clear();
 		questList.add( new QuestLabel("Chair Murder",
-			"Murder ALL the chairs!", "slay", 0, 20) );
+			"Murder ALL the chairs!", "Slay", 0, 20) );
 		questList.add( new QuestLabel("Talk to HR",
-			"Hustle yo' butt to the HR rep.", "talk", 1, 1) );
+			"Hustle yo' butt to the HR rep.", "Talk", 1, 1) );
 		questList.add( new QuestLabel("Go Outside",
-			"Take a peek into the great outdoors.", "talk", 0, 1) );
+			"Take a peek into the great outdoors.", "Talk", 0, 1) );
 		questList.add( new QuestLabel("Office Cleaner",
-			"Show the intruders the way out.", "slay", 0, 7) );
+			"Show the intruders the way out.", "Slay", 0, 7) );
 		questList.add( new QuestLabel("VR Collector",
-			"Get the V.R. headsets from R&D.", "fetch", 10, 10) );
+			"Get the V.R. headsets from R&D.", "Fetch", 10, 10) );
 		questList.add( new QuestLabel("Quest quest",
-			"Quest for the quest in the quest.", "talk", 0, 1) );
+			"Quest for the quest in the quest.", "Talk", 0, 1) );
 		questList.add( new QuestLabel("Smack Down",
-			"Lay the hurt down, brother.", "fetch", 0, 18) );
+			"Lay the hurt down, brother.", "Fetch", 0, 18) );
 		questList.add( new QuestLabel("Office Slave",
-			"Clean up the loose paper.", "fetch", 0, 14) );
+			"Clean up the loose paper.", "Fetch", 0, 14) );
 
 	}
 }
