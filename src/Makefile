@@ -1,2 +1,2 @@
 run : 
-	./gradlew desktop:run
+	/bin/sh gradlew desktop:run
