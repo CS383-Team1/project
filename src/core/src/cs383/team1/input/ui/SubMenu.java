@@ -10,13 +10,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
  * @author Lance
  */
 public class SubMenu {
-        //Get an image from its filename
-        static public Image getImage( String s )
-        {
-                return (new Image(
-                        new TextureRegion(
-                                new Texture(
-                                        Gdx.files.internal(
-                                                "ui/" + s + ".png") ) ) ) );
-        }
+	//Get an image from its filename
+	static public Image getImage( String s )
+	{
+		return (new Image(
+			new TextureRegion(
+				new Texture(
+					Gdx.files.internal(
+						"ui/" + s + ".png") ) ) ) );
+	}
 }

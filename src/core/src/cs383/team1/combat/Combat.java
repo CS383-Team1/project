@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cs383.team1.combat;
 
+import cs383.team1.model.inventory.Inventory;
+import cs383.team1.model.inventory.Item;
+import cs383.team1.Main;
 import cs383.team1.model.GameManager;
+import cs383.team1.model.overworld.CPlayer;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Npc;
 import cs383.team1.model.overworld.Player;
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -30,7 +29,7 @@ public class Combat {
     Random selectionGen; 
     int random;
     
-    //Item reward;
+    public Inventory reward = new Inventory("Combat reward");
     
     public Combat(){
         allies = new Combatants();
@@ -42,87 +41,140 @@ public class Combat {
         playerBlockPercent = 1;
         npcBlockPercent = 1;
         selectionGen = new Random();
-        //reward = new Item();
+        //reward = new Inventory("NPC");
     }
+    
+    public Combat(Inventory inventory){
+        allies = new Combatants();
+        enemies = new Combatants();
+        lastPlayerDamage = 0.0;
+        playerMove = new Move();
+        npcMove = new Move();
+        lastPlayerMove = 0;
+        playerBlockPercent = 1;
+        npcBlockPercent = 1;
+        selectionGen = new Random();
+        reward = inventory;
+    }
+    
     
     public int turn(){
                 
         double damage;
         //Implement this when muliplayer is added
-        //for(Entity e : allies.members){
-                    
-                    player = (Player)allies.members.get(0);
-                
-        //}
-        for(Entity e : enemies.members){
-            if(e.type() == 3){
-                npc = (Npc)e;
+         if(allies.members.size() > 0){            
+            for(Integer i : allies.members.keySet()){
+                player = (Player)allies.members.get(i);
             }
+        }else
+            return 0;
+        if(enemies.members.size() > 0){
+                npc = (Npc)enemies.members.get(0);
         }
+        System.out.println("Printing player and NPC health: " + player.hp + " : " + npc.hp);
         
-        if(((allies.members.size() + enemies.members.size()) > 1) && (player.hp > 0) && npc.hp > 0){
+        if(((allies.members.size() + enemies.members.size()) > 1) 
+                && (player.hp > 0) && npc.hp > 0){
             playerBlockPercent = 1;
-            for(Entity e : allies.members){
+            for(Map.Entry<Integer, Entity> e : allies.members.entrySet()){
                 
-                    player = (Player)e;
+                    player = (Player)e.getValue();
                     //Choose random Npc to attack
-                    random = selectionGen.nextInt(allies.members.size());
+                    random = selectionGen.nextInt(enemies.members.size());
                     npc = (Npc)enemies.members.get(random);
                     
                     if(player.consumableAttack()){
                     playerMove = player.attacks.get(0);
                     lastPlayerMove = player.attacks.indexOf(playerMove);
                     playerBlockPercent = playerMove.getBlockPercent();
-                    //If damage attribute in move instance is positive, then deal to npc hp, else add to player hp
+                    //If damage attribute in move instance is positive, 
+                    //then deal to npc hp, else add to player hp
                     if(player.attacks.get(0).getDamage() >= 0){
-                        npc.hp -= player.attacks.get(0).getDamage() / npcBlockPercent;
+			    npc.hp -= player.attacks.get(0).getDamage() / npcBlockPercent;
                     }
                     else{
                         player.hp -= player.attacks.get(0).getDamage();
                     }
-                        System.out.println("Player attacking with move " + player.attacks.get(0).name);
+		    GameManager.instance.npcHp = Integer.toString(npc.hp);
+
+                        System.out.println("Player attacking with move " 
+                                + player.attacks.get(0).name);
                         player.removeAttack();
                     }
                     
             }
-            for(Entity e : enemies.members){
+            for(Map.Entry<Integer, Entity> e : enemies.members.entrySet()){
                     
-                    npc = (Npc)e;
+                    npc = (Npc)e.getValue();
                     damage = npc.combatAI(lastPlayerDamage, lastPlayerMove);
                     if(npc.consumableAttack()){
                         npcMove = npc.attacks.get(0);
                         npcBlockPercent = npcMove.getBlockPercent();
-                        System.out.println("Printing lastPlayerDamage: " + lastPlayerDamage);
+                        System.out.println("Printing lastPlayerDamage: " 
+                                + lastPlayerDamage);
                         lastPlayerDamage = npc.attacks.get(0).getDamage();
                         //Picking random player to attack
                         random = selectionGen.nextInt(allies.members.size());
-                        player = (Player)allies.members.get(random);
-                        //If damage attribute in move instance is positive, then deal to player hp, else add to npc hp
+                        //player = (Player)allies.members.get(random);
+                        //If damage attribute in move instance is positive, 
+                        //then deal to player hp, else add to npc hp
                         if(npc.attacks.get(0).getDamage() >= 0){
                             player.hp -= damage / playerBlockPercent;
                         }else{
                             npc.hp -= player.attacks.get(0).getDamage();
                         }
                 
-                        System.out.println("NPC attacking with move " + npc.attacks.get(0).name);
+                        System.out.println("NPC attacking with move " 
+                                + npc.attacks.get(0).name);
                         npc.removeAttack();
                     }
                 }
         
-             System.out.println("Printing player.hp : npc.hp : " + player.hp + " " + npc.hp);
-             GameManager.instance.msg.add("Player HP: " + player.hp + "; NPC HP: " + npc.hp);
+//	    if (npc.hp < 0)
+//		    npc.hp = 0;
+
+             System.out.println("Printing player.hp : npc.hp : " 
+                     + player.hp + " " + npc.hp);
+		Main.gm.addMessage("Player HP: " 
+                        + player.hp + "; NPC HP: " + npc.hp);
+
         }else{
+            //Add all items in reward inventory to player's inventory
+            //if player wins
+            if(npc.hp <= 0){
+                
+                for(Item i : reward.contents){
+                    System.out.println("Giving reward: " + i.name);
+                    player.inventory.pickUp(i);
+                    player.addMove(i);
+                    //npc.inventory.drop(i);
+                }
+            }
+            
             player.roaming = true;
-            
-            //Will need to iterate over this list to remove all allies
-                allies.removeCombatants(player);
-            
-            //Will need to iterate over this list to remove all enemies
-                enemies.removeCombatants(npc);
-            
+         
+            allies.members.remove(1);
+            int count = 0;
+                while(allies.members.size() > 1){
+                    allies.members.remove(count);
+                    count++;
+                }
+                
+            //NPC is at key value 0
+            enemies.members.remove(0);
             return 0;
         }
      return 0;   
     }
     
+    public void setNpcHp(String s) {
+	    int ihp;
+	    if (s.matches("-?[0-9]+")) {
+		    npc = (Npc)enemies.members.get(0);
+		    ihp = Integer.parseInt(s);
+		    npc.hp = ihp;
+		    if (ihp <= 0)
+			    CPlayer.ownPlayer.roaming = true;
+	    }
+    }
 }

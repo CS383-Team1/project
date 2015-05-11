@@ -13,67 +13,64 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
  * @author Lance
  */
 public class MainMenu {
-        Skin skin;
+	Skin skin;
 
-        Window menu;
-        SplitPane menuSp;
-        List<String> menuList;
+	Window menu;
+	SplitPane menuSp;
+	List<String> menuList;
 
-        MenuCharacter menuC;
-        MenuInventory menuI;
-        MenuQuests    menuQ;
+	MenuInventory	menuI;
+	MenuQuests	menuQ;
+	MenuEquip	menuE;
 
-        public MainMenu(Skin sk)
-        {
-                skin = sk;
-                menu = new Window("Menu", skin, "menu");
-                menu.setFillParent(true);
+	public MainMenu(Skin sk)
+	{
+		skin = sk;
+		menu = new Window("Menu", skin, "menu");
+		menu.setFillParent(true);
 
-                menuList = new List(skin, "big");
-                menuList.setItems("CHARACTER", "INVENTORY", "QUESTS");
+		menuList = new List(skin, "big");
+		menuList.setItems("CHARACTER", "INVENTORY");
 
-                //Add a listener for changing submenus
+		//Add a listener for changing submenus
 		menuList.addListener(new ClickListener(){
-                        @Override
+			@Override
 			public void clicked(InputEvent event, float x, float y)
-                        {
-                                changeMenu(menuList.getSelected());
+			{
+				changeMenu(menuList.getSelected());
 				super.clicked(event, x, y);
 			}
 		});
-                
-                menuC = new MenuCharacter(skin);
-                menuI = new MenuInventory(skin);
-                menuQ = new MenuQuests(skin);
+		
+		menuI = new MenuInventory(skin);
+		menuQ = new MenuQuests(skin);
+		menuE = new MenuEquip(skin);
 
-                menuSp = new SplitPane(menuList, menuC.charSp(), false, skin);
-                menuSp.setSplitAmount   ((float) 0.2500);
-                menuSp.setMaxSplitAmount((float) 0.2500);
-                menuSp.setMinSplitAmount((float) 0.2499);
+		menuSp = new SplitPane(menuList, menuE.equipT(), false, skin);
+		menuSp.setSplitAmount   ((float) 0.2500);
+		menuSp.setMaxSplitAmount((float) 0.2500);
+		menuSp.setMinSplitAmount((float) 0.2499);
 
-                menu.top().left().add(menuSp).fill().expand();
-        }
+		menu.top().left().add(menuSp).fill().expand();
+	}
 
-        public Window menu() {
-                return menu;
-        }
+	public Window menu() {
+		return menu;
+	}
 
-        //Change the "submenu" to the one specified by 's'
-        private void changeMenu( String s )
-        {
-                if (s.equals("INVENTORY"))
-                        menuSp.setSecondWidget(menuI.invSp());
-                else if (s.equals("CHARACTER"))
-                        menuSp.setSecondWidget(menuC.charSp());
-                else if (s.equals("QUESTS"))
-                        menuSp.setSecondWidget(menuQ.questScroll());
-                else
-                        Gdx.app.error("Menu changeMenu", "NYI option: " + s);
-        }
-        
-        public void updateStats(int hp, int atk, int def, int rep)
-        {
-                menuC.updateStats(hp, atk, def, rep);
-                menuI.updateStats(atk, def);
-        }
+	//Change the "submenu" to the one specified by 's'
+	private void changeMenu( String s )
+	{
+		if (s.equals("INVENTORY")) {
+			menuSp.setSecondWidget(menuI.invSp());
+			menuI.updateItems();
+		} else if (s.equals("CHARACTER")) {
+			menuSp.setSecondWidget(menuE.equipT());
+			menuE.update();
+		} else if (s.equals("QUESTS")) {
+			menuSp.setSecondWidget(menuQ.questScroll());
+			//update quest menu
+		} else
+			Gdx.app.error("Menu changeMenu", "NYI option: " + s);
+	}
 }

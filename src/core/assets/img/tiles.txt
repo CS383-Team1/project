@@ -1,10 +1,33 @@
-9
+32
 1 img/floor.png
 2 img/wall.png
 3 img/stairs.png
 4 img/field.png
-5 img/table.png
-6 img/leftdesk.png
-7 img/rightdesk.png
 8 img/walkway.png
 9 img/outsidewall.png
+7 img/desk.png
+5 img/firepit.png
+6 img/giant.png
+10 img/tree.png
+11 img/flower1.png
+12 img/flower2.png
+13 img/flower3.png
+14 img/flower4.png
+15 img/flower5.png
+16 img/flower6.png
+17 img/flower7.png
+18 img/bench1.png
+19 img/desk1.png
+20 img/desk2.png
+21 img/desk3.png
+22 img/desk4.png
+23 img/firepit1.png
+24 img/firepit2.png
+25 img/firepit3.png
+26 img/firepit4.png
+27 img/cybertile.png
+28 img/monitorportal.png
+29 img/bigtree1.png
+30 img/bigtree2.png
+31 img/bigtree3.png
+32 img/bigtree4.png

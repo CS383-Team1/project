@@ -10,8 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import cs383.team1.model.inventory.Item;
 import cs383.team1.model.GameManager;
-import cs383.team1.model.overworld.Npc;
+import cs383.team1.model.overworld.Area;
+import cs383.team1.model.overworld.CoWorker;
+import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
 import cs383.team1.model.overworld.Tile;
 
@@ -25,6 +28,7 @@ public class InteractionMenu {
         Table t;
         public List<String> listOptions;
         public Object target;
+	GameManager gm = GameManager.instance;
         
         public InteractionMenu(Skin sk) {
                 listOptions = new List(sk);
@@ -41,24 +45,16 @@ public class InteractionMenu {
                 menus there much more easily by reading the target & interact
                 option chosen in the list*/
 
-//                //Add a listener for changing submenus
-//		listOptions.addListener(new ClickListener(){
-//                        @Override
-//			public void clicked(InputEvent event, float x, float y)
-//                        {
-//                                changeMenu(menuList.getSelected());
-//				super.clicked(event, x, y);
-//			}
-//		});
                 listOptions.addListener(new InputListener() {
                         @Override
-                        public boolean keyDown( InputEvent event, int keyCode ) {
+                        public boolean keyDown( InputEvent event, int keyCode ){
+				int si = listOptions.getSelectedIndex();
                                 System.out.println("Test");
                                 if (keyCode == Keys.DOWN) {
-                                        listOptions.setSelectedIndex(listOptions.getSelectedIndex() - 1);
+                                        listOptions.setSelectedIndex(si - 1);
                                         return true;
                                 } else if (keyCode == Keys.UP) {
-                                        listOptions.setSelectedIndex(listOptions.getSelectedIndex() + 1);
+                                        listOptions.setSelectedIndex(si + 1);
                                         return true;
                                 } else if (keyCode == Keys.ENTER) {
                                         interact.setVisible(false);
@@ -83,10 +79,17 @@ public class InteractionMenu {
 
         public void useMenu(Object o, int facing) {
                 target = o;
+		Area a = gm.areas.current;
                 if (interact.isVisible()) {
+                        if (listOptions.getSelected().equals("Pickup")) {
+                                a.player.inventory.pickUp((Item) target);
+                                a.player.addMove((Item) target);
+                                gm.msg.add("Picked up " + ((Item) target).name);
+                                a.entities.remove(target);
+                        }
                         System.out.println(listOptions.getSelected());
                         interact.setVisible(false);
-                } else if (o instanceof Npc)
+                } else if (o instanceof Entity)
                         spawnMenu(facing);
         }
 
@@ -108,21 +111,27 @@ public class InteractionMenu {
                         interact.setY( centerY - ( Tile.HEIGHT / 2) );
                         break;
                 case 3:
-                        interact.setX( centerX - Tile.WIDTH - interact.getWidth() );
+                        interact.setX( centerX-Tile.WIDTH-interact.getWidth());
                         interact.setY( centerY + ( Tile.HEIGHT / 2) );
                         break;
                 default:
                         interact.setX( centerX );
                         interact.setY( centerY );
                         break;
-                };
+                }
                 listOptions.clear();
 
-                if (target instanceof Npc) {
-                        setTitle("NPC");
-                        listOptions.setItems("Talk", "Buy/Sell", "Examine");
+                if (target instanceof CoWorker) {
+                        setTitle(((CoWorker) target).name());
+                        listOptions.setItems(
+				"Talk", "Buy/Sell", "Examine", "Cancel");
+                } else if (target instanceof Item) {
+                        setTitle(((Item) target).name);
+                        listOptions.setItems(
+				"Pickup", "Cancel");
                 }
-                interact.setHeight(listOptions.getItems().size * 22);
+		int s = listOptions.getItems().size;
+                interact.setHeight(s*((float)(Tile.HEIGHT * 0.4))+Tile.HEIGHT);
                 interact.setVisible(true);
         }
         

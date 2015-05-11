@@ -1,17 +1,19 @@
 package cs383.team1.model.overworld;
 
 import com.badlogic.gdx.Gdx;
+import cs383.team1.model.GameManager;
+import cs383.team1.combat.Move;
+import cs383.team1.model.inventory.Inventory;
+import cs383.team1.model.inventory.Item;
 import cs383.team1.model.overworld.Entity;
 import cs383.team1.model.overworld.Position;
-import cs383.team1.combat.Move;
-import cs383.team1.inventory.Inventory;
 import java.util.ArrayList;
-import cs383.team1.inventory.Item;
 
 
-public final class Player implements Entity {
+public class Player implements Entity{
 	public static final int TYPE = 1;
         public static int aType = 4;
+        public static Object ownPlayer;
         public int facing = 2;
 	public Position pos;
         public boolean roaming = true;
@@ -24,10 +26,13 @@ public final class Player implements Entity {
         public ArrayList<Move> moves = new ArrayList<Move>();
         public ArrayList<Move> attacks = new ArrayList<Move>();
         public Inventory inventory;
+        public String currentArea = new String();
+        public int playerID;
 
+	
         
 	public Player() {
-		this(new Position(0, 0), 0, 0, 0);
+		this(new Position(1, 1), 0, 0, 0);
 	}
 
 	public Player(Position p, int hp_0, int mp_0, int ap_0) {
@@ -37,9 +42,8 @@ public final class Player implements Entity {
 		mp = mp_0 > 0 ? mp_0 : 0;
 		ap = ap_0 > 0 ? ap_0 : 0;
                 addMove("block", 0, 50);
-                //addMove("staple", 10, 1);
-                addMove("throw coffee in face", 5, 1);
                 addMove("drink coffee", -5, 1);
+                addMove("throw coffee in face", 5, 1);
                 for(int i = 3; i < 10; i++ ){
                     addMove(new Move());
                 }
@@ -94,9 +98,17 @@ public final class Player implements Entity {
         public void removeMove(int index){
             moves.remove(index);
         }
+	
+        public void removeMove(Item itm){
+		for (int i = 0; i < moves.size(); i++) {
+			if (moves.get(i).name.equals(itm.name))
+				moves.remove(i);
+		}
+        }
         
         public void addAttack(Move move){
             attacks.add(move);
+	    inventory.equiped.useQuickslot(move);
         }
         
         public void removeAttack(){
@@ -148,59 +160,34 @@ public final class Player implements Entity {
                 
                 if (floatPos.x == 0 && floatPos.y == 0) {
                         switch (facing) {
-                        case 0:
-                                aType = 5;
-                                break;
-                        case 1:
-                                aType = 7;
-                                break;
-                        case 2:
-                                aType = 4;
-                                break;
-                        case 3:
-                                aType = 6;
-                                break;
-                        default:
-                                aType = 4;
-                                break;
+                        case 0: aType = 5; break;
+                        case 1: aType = 7; break;
+                        case 2: aType = 4; break;
+                        case 3: aType = 6; break;
+                        default: aType = 4; break;
                         }
                 } else if (anim == 0) {
                         switch (facing) {
-                        case 0:
-                                aType = 9;
-                                break;
-                        case 1:
-                                aType = 11;
-                                break;
-                        case 2:
-                                aType = 8;
-                                break;
-                        case 3:
-                                aType = 10;
-                                break;
-                        default:
-                                aType = 8;
-                                break;
+                        case 0: aType = 9; break;
+                        case 1: aType = 11; break;
+                        case 2: aType = 8; break;
+                        case 3: aType = 10; break;
+                        default: aType = 8; break;
                         }
                 } else if (anim == 1) {
                         switch (facing) {
-                        case 0:
-                                aType = 13;
-                                break;
-                        case 1:
-                                aType = 15;
-                                break;
-                        case 2:
-                                aType = 12;
-                                break;
-                        case 3:
-                                aType = 14;
-                                break;
-                        default:
-                                aType = 12;
-                                break;
+                        case 0: aType = 13; break;
+                        case 1: aType = 15; break;
+                        case 2: aType = 12; break;
+                        case 3: aType = 14; break;
+                        default: aType = 12; break;
                         }
                 }
+      }
 
-        }
+	public void setPos(int x, int y, int fx, int fy, int f) {
+		pos = new Position(x, y);
+		setFloatPos(new Position(fx, fy));
+		facing = f;
+	}
 }
