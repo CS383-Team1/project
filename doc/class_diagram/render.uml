@@ -1,0 +1,38 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Render System Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: 
+
+	External Classes: DialogueBox
+endlegend
+
+abstract class Display {
+	void render()
+}
+
+class DemoDisplay {
+	DialogueBox chatBox
+	void dispose()
+	void drawChatBox(DialogueBox)
+	void loadSpriteMaps
+	void loadEntityMaps()
+	void loadTileMaps()
+	Texture getEntityTexture(int)
+	Texture getTileTexture(int)
+}
+DemoDisplay -up-|> Display
+
+class UIDisplay {
+	Stage stage
+	Skin skin
+	MainMenu menu
+	MessageBox msg
+	void dispose()
+}
+UIDisplay -up-|> Display
+
+@enduml
