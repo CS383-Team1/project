@@ -19,15 +19,39 @@ legend left
 endlegend
 
 interface ApplicationListener {
+	void create()
+	void dispose()
+	void pause()
+	void render()
+	void resize()
+	void resume()
 }
 
 interface InputProcessor {
+	boolean keyDown(int)
+	boolean keyUp(int)
+	boolean keyTyped(char)
+	boolean mouseMoved(int, int)
+	boolean scrolled(int)
+	boolean touchDown(int, int, int, int)
+	boolean touchUp(int, int, int int)
+	boolean touchDragged(int, int, int)
 }
 
 class Game {
+	void setScreen(Screen)
+	Screen getScreen()
 }
+Game -up-|> ApplicationListener
 
 interface Screen {
+	void dispose()
+	void hide()
+	void pause()
+	void render(float)
+	void resize(int, int)
+	void resume()
+	void show()
 }
 
 abstract class ScreenAdapter {
@@ -44,23 +68,39 @@ class Main {
 Main -up-|> Game
 
 class HostScreen {
+	Main game
+	GameClient client
+	GameServer server
+	Stage stage
+	InputManager inputManager
+	DemoDisplay screen
+	UIDisplay ui
 }
 HostScreen -up-|> ApplicationListener
 HostScreen -up-|> InputProcessor
 HostScreen -up-|> Screen
+HostScreen *-down- "1" Main
 HostScreen *-down- "1" GameMananger
 HostScreen *-down- "1" GameServer
 HostScreen *-down- "1" GameClient
-JoinScreen *-down- "1" Stage
+HostScreen *-down- "1" Stage
 HostScreen *-down- "1" InputManager
 HostScreen *-down- "1" UIDisplay
 HostScreen *-down- "1" DemoDisplay
 
 class JoinScreen {
+	boolean clientFail
+	Main game
+	GameClient client
+	Stage stage
+	InputMananger inputMananger
+	DemoDisplay screen
+	UIDisplay ui
 }
 JoinScreen -up-|> ApplicationListener
 JoinScreen -up-|> InputProcessor
 JoinScreen -up-|> Screen
+JoinScreen *-down- "1" Main
 JoinScreen *-down- "1" GameMananger
 JoinScreen *-down- "1" GameServer
 JoinScreen *-down- "1" GameClient
@@ -73,6 +113,7 @@ class MainMenu {
 }
 
 class MenuScreen {
+	Main game
 }
 MenuScreen -up-|> ScreenAdapter
 MenuScreen *-up- "1" Main
