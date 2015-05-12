@@ -7,6 +7,9 @@ legend left
 	Authored: Mason Fabel
 	Reviewed: 
 
+	External Classes: GameClient, GameServer, GameManager, InputMananger
+		DemoDisplay, UIDisplay
+
 	LibGDX Classes: ApplicationListener, Game, InputProcessor, Screen,
 		ScreenAdapter, Stage
 
@@ -49,7 +52,7 @@ HostScreen *-down- "1" GameMananger
 HostScreen *-down- "1" GameServer
 HostScreen *-down- "1" GameClient
 JoinScreen *-down- "1" Stage
-HostScreen *-down- "1" inputManager
+HostScreen *-down- "1" InputManager
 HostScreen *-down- "1" UIDisplay
 HostScreen *-down- "1" DemoDisplay
 
@@ -62,7 +65,7 @@ JoinScreen *-down- "1" GameMananger
 JoinScreen *-down- "1" GameServer
 JoinScreen *-down- "1" GameClient
 JoinScreen *-down- "1" Stage
-JoinScreen *-down- "1" inputManager
+JoinScreen *-down- "1" InputManager
 JoinScreen *-down- "1" UIDisplay
 JoinScreen *-down- "1" DemoDisplay
 
