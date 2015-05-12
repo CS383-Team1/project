@@ -1,0 +1,107 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Network System Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: 
+
+	External Classes: Entity, Move
+
+	Kryonet Classes: Client, Server
+
+	LibGDX Classes:
+
+	Note: Some classes are completely disconnected. This is because they
+	provide static methods to the networking system.
+
+	Note: The request and responce classes are passed across the network by
+	the kryonet library in GameServer and GameClient. In order to reduce
+	clutter no relationship is drawn between GameServer or GameClient and
+	the request and reponce classes, although GameClient and GameServer
+	create and pass around short-lived instances of these classes.
+endlegend
+
+class Network {
+	int port
+	void registerKryo(EndPoint)
+}
+
+class GameServer {
+	Server server
+	void listen(Listener)
+	void sendMsg(String)
+	void sendAtk(String)
+	void sendAtk(String, int)
+}
+GameServer *-down- "1" Server
+
+class GameClient {
+	Client client
+	void listen(Listener)
+	void sendRequest()
+	void sendConnectionRequest()
+	void sendMsg(String)
+	void sendAtk(String)
+	boolean connect(String, int)
+}
+GameClient *-down- "1" Client
+
+class AtkRequest {
+	String npchp
+	int pid
+}
+
+class AtkResponce {
+	String npchp
+	int pid
+}
+
+class ConnectRequest {
+	Set<Integer> currentPlayers
+}
+
+class ConnectResponce {
+	Integet assignedID
+	Integer playerAmount
+}
+
+class MsgRequest {
+	String msg
+}
+
+class MsgResponce {
+	String msg
+}
+
+class PlayerData {
+	Map<Integer, PosResponce> others
+	Map<Integer, PosRequests> responce
+}
+
+class PosRequest {
+	boolean roaming
+	int facing
+	int playerID
+	String areName
+	Position pos
+	Position floatPos
+	Map<Integer, Position> otherPLayerPositions
+}
+
+class PosResponce {
+	boolean roaming
+	int facing
+	int playerID
+	String areName
+	Position pos
+	Position floatPos
+	Map<Integer, Position> otherPLayerPositions
+}
+
+class Request {
+	String s
+}
+
+@enduml
