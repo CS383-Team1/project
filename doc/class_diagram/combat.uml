@@ -1,16 +1,13 @@
-
 @startuml
 skinparam monochrome true
 skinparam shadowing false
 
-title Overview Subsystem Class Diagram
+title Combat Subsystem Class Diagram
 legend left
 	Authored: Mason Fabel
 	Reviewed: 
 
 	External Classes: Entity, Inventory, Player
-
-	LibGDX Classes:
 endlegend
 
 class CombatManager {

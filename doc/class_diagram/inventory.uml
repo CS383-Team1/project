@@ -1,0 +1,66 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Inventory System Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: 
+
+	External Classes: Entity, Move
+
+	Note: Crafted items were cut from the final game.
+endlegend
+
+class Inventory {
+	Equipment equiped
+	List<Item> contents
+	boolean pickUp(Item)
+	boolean addItem(Item)
+	Item drop(Item)
+}
+Inventory *-right- "1" Equipment
+Inventory o-down- "0..*" Item
+
+class Equipment {
+	Item head
+	Item neck
+	Item chest
+	Item legs
+	Item hands
+	Item feet
+	List<Item> rings
+	void removeMove(Item)
+	boolen equipWeapon(Item, String)
+	int useQuickslot(Move)
+	String listEquipment()
+	Item equip(Item)
+	Item unequip(Item)
+}
+Equipment *-down- "6..*" Item
+
+class Item {
+	String name
+	String description
+	String type
+	double hp
+	double mp
+	double ap
+	double hitChance
+	double critChance
+	double critMultiplier
+	double range
+	double damage
+	Move requiredMove
+	Position pos
+	int type()
+	double readStat(String, String)
+	Position pos()
+}
+Item -right-|> Entity
+
+class CraftedItemFactory {
+	Item craft(List<Item>)
+}
+
+@enduml

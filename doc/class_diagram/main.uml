@@ -2,7 +2,7 @@
 skinparam monochrome true
 skinparam shadowing false
 
-title Overview Subsystem Class Diagram
+title Class Diagram Overview
 legend left
 	Authored: Mason Fabel
 	Reviewed: 
@@ -13,9 +13,9 @@ legend left
 	LibGDX Classes: ApplicationListener, Game, InputProcessor, Screen,
 		ScreenAdapter, Stage
 
-	Note that some classes are disconnected from the rest of the diagram.
-	These classes provide static methods, and thus are not instantiated
-	or otherwise linked to the other classes.
+	Note: Some classes are disconnected from the rest of the diagram. These
+	classes provide static methods, and thus are not instantiated or
+	otherwise linked to the other classes.
 endlegend
 
 interface ApplicationListener {
