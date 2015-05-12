@@ -1,0 +1,116 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Overworld System Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: 
+
+	External Classes: Inventory, Move
+
+	Note: There are a huge number of implementations of Entity and Tile,
+	which have been excluded from this diagram as they lack any interesting
+	or relevant properties.
+endlegend
+
+class AreaManager {
+	Area current
+	Map<String, Area> areas
+	void getCombatArea(Position, Player, Npc)
+	int changeArea(String)
+	int endCombat(Player)
+	int useStairs(Position, Player)
+	Area loadArea(String)
+	Entity findCombatant(Position int)
+	Entity findEntity(Position, int)
+	Entity findItem(Position, int)
+}
+AreaManager o-down- "0..*" Area
+
+class Area {
+	String name
+	Player player
+	List<Tile> tiles
+	List<Entity> entities
+	Map<Integer, Players> players
+}
+Area o-down- "0..*" Entity
+Area o-down- "0..*" Tile
+Area o-down- "1..*" Player
+
+Interface Entity {
+	int type()
+	Position pos()
+}
+
+interface PlayerInterface {
+	int aType()
+	void setImage()
+	void setPos(int, int, int, int, int)
+	void setFloatPos(Position)
+	void addMove(String, double, int)
+	void addMove(Move)
+	void addMove(Item)
+	void addAttack(Move)
+	void removeMove(int)
+	void removeAttack()
+	void decFloatPos(int)
+	boolean consumableAttack()
+	boolean zeroFloat()
+	String getQuest()
+	Position floatPos()
+}
+PlayerInterface -up-|> Entity
+
+class Player {
+	int TYPE
+	int hp
+	int mp
+	int ap
+	int playerID
+	String currentArea
+	Inventory inventory
+	List<String> possibleQuests
+	List<String> acceptedQuests
+	List<Move> moves
+	List<Move> attacks
+}
+Player -up-|> PlayerInterface
+Player *-down- "1" Inventory
+Player o-down- "0..*" Move
+
+interface Tile {
+	int WIDTH
+	int HEIGHT
+	boolean passable()
+}
+Tile -up-|> Entity
+
+class InteractableEntity {
+}
+InteractableEntity -left-|> Entity
+
+class Npc {
+	boolean roaming
+	int TYPE
+	int hp
+	int mp
+	int ap
+	String name
+	Inventory inventory
+	Position pos
+	List<String> talk
+	List<Move> moves
+	List<Move> attacks
+}
+Npc -up-|> Entity
+Npc *-down- "1" Position
+Npc o-down- "0..*" Move
+
+class Position {
+	int x
+	int y
+}
+
+@enduml

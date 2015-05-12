@@ -1,0 +1,55 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Model System Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: 
+
+	External Classes: AreaManager, Area, InputManager
+
+	Note: The state system was depreciated in favor of other methods.
+endlegend
+
+interface GameManagerInterface {
+	void load()
+	void update(InputManager)
+	void setKey(int)
+	void addMessage(String)
+	void removeMessage(int)
+	int getKey()
+	String getMessage(int)
+	Area currentArea()
+	AreaManager areas()
+	CombatMananger combat()
+}
+
+class GameManager {
+	AreaManager areas
+	CombatManager combat
+	StateMananger states
+}
+GameManager -up-|> GameManagerInterface
+GameManager *-down- "1" AreaManager
+GameManager *-down- "1" CombatManager
+GameManager *-down- "1" StateManager
+
+class StateManager {
+	StateManager instance
+	State current
+	Map<Integer, State> states
+	void transition()
+}
+StateManager o-down- "0..*" State
+
+abstract class State {
+	int act()
+}
+
+class DemoState {
+	int STATE_ID
+}
+DemoState -up-|> State
+
+@enduml
