@@ -1,0 +1,80 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+title Overview Subsystem Class Diagram
+legend left
+	Authored: Mason Fabel
+	Reviewed: 
+
+	LibGDX Classes: ApplicationListener, Game, InputProcessor, Screen,
+		ScreenAdapter, Stage
+
+	Note that some classes are disconnected from the rest of the diagram.
+	These classes provide static methods, and thus are not instantiated
+	or otherwise linked to the other classes.
+endlegend
+
+interface ApplicationListener {
+}
+
+interface InputProcessor {
+}
+
+class Game {
+}
+
+interface Screen {
+}
+
+abstract class ScreenAdapter {
+}
+ScreenAdapter -up-|> Screen
+
+class SpaceOfficeAdventure {
+}
+SpaceOfficeAdventure -up-|> ApplicationListener
+SpaceOfficeAdventure *-down- "1" GameMananger
+
+class Main {
+}
+Main -up-|> Game
+
+class HostScreen {
+}
+HostScreen -up-|> ApplicationListener
+HostScreen -up-|> InputProcessor
+HostScreen -up-|> Screen
+HostScreen *-down- "1" GameMananger
+HostScreen *-down- "1" GameServer
+HostScreen *-down- "1" GameClient
+JoinScreen *-down- "1" Stage
+HostScreen *-down- "1" inputManager
+HostScreen *-down- "1" UIDisplay
+HostScreen *-down- "1" DemoDisplay
+
+class JoinScreen {
+}
+JoinScreen -up-|> ApplicationListener
+JoinScreen -up-|> InputProcessor
+JoinScreen -up-|> Screen
+JoinScreen *-down- "1" GameMananger
+JoinScreen *-down- "1" GameServer
+JoinScreen *-down- "1" GameClient
+JoinScreen *-down- "1" Stage
+JoinScreen *-down- "1" inputManager
+JoinScreen *-down- "1" UIDisplay
+JoinScreen *-down- "1" DemoDisplay
+
+class MainMenu {
+}
+
+class MenuScreen {
+}
+MenuScreen -up-|> ScreenAdapter
+MenuScreen *-up- "1" Main
+
+class Splash {
+}
+
+@enduml
