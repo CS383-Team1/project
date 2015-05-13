@@ -5,7 +5,7 @@ skinparam shadowing false
 title Inventory System Class Diagram
 legend left
 	Authored: Mason Fabel
-	Reviewed: 
+	Reviewed: Casey Blair
 
 	External Classes: Entity, Move
 
